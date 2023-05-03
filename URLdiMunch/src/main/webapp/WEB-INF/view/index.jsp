@@ -15,5 +15,7 @@
 <br>
 <a href="carrello.jsp">carrello</a>
 <br>
+<a href="prodottiAdmin.jsp">prodottiAdmin</a>
+<br>
 </body>
 </html>
