@@ -29,7 +29,7 @@
 	<a href="index.jsp">Home</a>
 	<table border="1">
 		<tr>
-			<th>Code <a href="prodotto?sort=code">Sort</a></th>
+			<th>Code Admin<a href="prodotto?sort=code">Sort</a></th>
 			<th>Name <a href="prodotto?sort=name">Sort</a></th>
 			<th>Description <a href="prodotto?sort=description">Sort</a></th>
 			<th>Action</th>
