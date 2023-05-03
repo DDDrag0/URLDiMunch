@@ -47,8 +47,7 @@
 			<td><%=bean.getCodice()%></td>
 			<td><%=bean.getNome()%></td>
 			<td><%=bean.getDescrizione()%></td>
-			<td><a href="prodottoCliente?action=delete&id=<%=bean.getCodice()%>">Delete</a><br>
-				<a href="details.jsp?code=<%=bean.getCodice()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantità()%>">Details</a><br>
+			<td><a href="details.jsp?code=<%=bean.getCodice()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantità()%>">Details</a><br>
 				<a href="prodottoCliente?action=addC&id=<%=bean.getCodice()%>">Add to cart</a>
 				</td>
 		</tr>

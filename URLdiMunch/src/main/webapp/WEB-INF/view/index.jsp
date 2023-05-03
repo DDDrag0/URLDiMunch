@@ -11,8 +11,6 @@
 <br>
 <a href="logIn.jsp">LogIn</a>
 <br>
-<a href="prodotti.jsp">prodotti</a>
-<br>
 <a href="carrello.jsp">carrello</a>
 <br>
 <a href="prodottiAdmin.jsp">prodottiAdmin</a>

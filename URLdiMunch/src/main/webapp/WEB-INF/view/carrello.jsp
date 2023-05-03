@@ -10,7 +10,7 @@
     if(cart == null) {
         cart = new Carrello();
         mysession.setAttribute("cart", cart);
-        response.sendRedirect("./prodotto");    
+        response.sendRedirect("./prodottoCliente");    
         return;
     }
 %>
@@ -25,7 +25,7 @@
 <body>
     <h2>Shopping Cart</h2>
     <br>
-    <a href="prodotto">List</a>
+    <a href="prodottoCliente">List</a>
     <table border="1">
         <tr>
             <th>Name</th>
