@@ -5,7 +5,7 @@
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("products");
 	if(products == null) {
-		response.sendRedirect("./prodotto");	
+		response.sendRedirect("./prodottoCliente");	
 		return;
 	}
 	
@@ -28,13 +28,13 @@
 	<h2>Products</h2>
 	<br> 
 	<a href="carrello.jsp">cart</a>
-	<a href="prodotto">List</a>
+	<a href="prodottoCliente">List</a>
 	<a href="index.jsp">Home</a>
 	<table border="1">
 		<tr>
-			<th>Code <a href="prodotto?sort=code">Sort</a></th>
-			<th>Name <a href="prodotto?sort=name">Sort</a></th>
-			<th>Description <a href="prodotto?sort=description">Sort</a></th>
+			<th>Code <a href="prodottoCliente?sort=code">Sort</a></th>
+			<th>Name <a href="prodottoCliente?sort=name">Sort</a></th>
+			<th>Description <a href="prodottoCliente?sort=description">Sort</a></th>
 			<th>Action</th>
 		</tr>
 		<%
@@ -47,9 +47,9 @@
 			<td><%=bean.getCodice()%></td>
 			<td><%=bean.getNome()%></td>
 			<td><%=bean.getDescrizione()%></td>
-			<td><a href="prodotto?action=delete&id=<%=bean.getCodice()%>">Delete</a><br>
+			<td><a href="prodottoCliente?action=delete&id=<%=bean.getCodice()%>">Delete</a><br>
 				<a href="details.jsp?code=<%=bean.getCodice()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantità()%>">Details</a><br>
-				<a href="prodotto?action=addC&id=<%=bean.getCodice()%>">Add to cart</a>
+				<a href="prodottoCliente?action=addC&id=<%=bean.getCodice()%>">Add to cart</a>
 				</td>
 		</tr>
 		<%
