@@ -17,7 +17,7 @@
 <br>
 <a href="prodottiAdmin.jsp">prodottiAdmin</a>
 <br>
-<a href="prodottiClienti.jsp">prodottiAdmin</a>
+<a href="prodottiCliente.jsp">prodottiCliente</a>
 <br>
 </body>
 </html>
