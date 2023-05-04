@@ -3,6 +3,7 @@
 <%@ page contentType="text/html; charset=UTF-8" import="model.Prodotto" %>
 <%
 	String code = request.getParameter("code");
+	String image = request.getParameter("image");
 	String name = request.getParameter("name");
 	String description = request.getParameter("description");
 	double price = Double.parseDouble(request.getParameter("price"));
@@ -24,12 +25,14 @@
     						<th>Name</th>
     						<th>Description</th>
     						<th>Price</th>
+    						<th>Image</th>
     						<th>Quantity</th>
     				<tr>
     						<td><%=code%></td>
     						<td><%=name%></td>
     						<td><%=description%></td>
     						<td><%=price%></td>
+    						<td><img width="200" src="${pageContext.request.contextPath}<%=image%>" alt="la gioconda"></td>
     						<td><%=quantity%></td>
     				</tr>
     					
