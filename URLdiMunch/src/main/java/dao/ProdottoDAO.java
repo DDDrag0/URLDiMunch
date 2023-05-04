@@ -16,15 +16,15 @@ public class ProdottoDAO {
 		
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO product (NAME, DESCRIPTION, PRICE, QUANTITY) VALUES (?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO product (NAME, DESCRIPTION, PRICE, QUANTITY, IMAGEPATH) VALUES (?, ?, ?, ?,?)";
 
 		try (Connection connection = ConPool.getConnection()){
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, product.getNome());
 			preparedStatement.setString(2, product.getDescrizione());
-			preparedStatement.setInt(3, product.getPrezzo());
+			preparedStatement.setDouble(3, product.getPrezzo());
 			preparedStatement.setInt(4, product.getQuantità());
-
+			preparedStatement.setString(5,product.getImmagine());
 			preparedStatement.executeUpdate();
 
 			connection.commit();
@@ -52,7 +52,7 @@ public class ProdottoDAO {
 				prodotto.setCodice(rs.getInt("CODE"));
 				prodotto.setNome(rs.getString("NAME"));
 				prodotto.setDescrizione(rs.getString("DESCRIPTION"));
-				prodotto.setPrezzo(rs.getInt("PRICE"));
+				prodotto.setPrezzo(rs.getDouble("PRICE"));
 				prodotto.setQuantità(rs.getInt("QUANTITY"));
 			}
 
@@ -109,8 +109,9 @@ public class ProdottoDAO {
 				prodotto.setCodice(rs.getInt("CODE"));
 				prodotto.setNome(rs.getString("NAME"));
 				prodotto.setDescrizione(rs.getString("DESCRIPTION"));
-				prodotto.setPrezzo(rs.getInt("PRICE"));
+				prodotto.setPrezzo(rs.getDouble("PRICE"));
 				prodotto.setQuantità(rs.getInt("QUANTITY"));
+				prodotto.setImmagine(rs.getString("IMAGEPATH"));
 				products.add(prodotto);
 			}
 

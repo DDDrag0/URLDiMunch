@@ -32,6 +32,7 @@
 			<th>Code Admin<a href="prodottoAdmin?sort=code">Sort</a></th>
 			<th>Name <a href="prodottoAdmin?sort=name">Sort</a></th>
 			<th>Description <a href="prodottoAdmin?sort=description">Sort</a></th>
+			<th>Image</th>
 			<th>Action</th>
 		</tr>
 		<%
@@ -44,6 +45,7 @@
 			<td><%=bean.getCodice()%></td>
 			<td><%=bean.getNome()%></td>
 			<td><%=bean.getDescrizione()%></td>
+			<td><img src="<%=bean.getImmagine()%>" alt="la gioconda"></td>
 			<td><a href="prodottoAdmin?action=delete&id=<%=bean.getCodice()%>">Delete</a><br>
 				<a href="details.jsp?code=<%=bean.getCodice()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantità()%>">Details</a><br>
 				</td>
@@ -70,6 +72,7 @@
 			<th>Name</th>
 			<th>Description</th>
 			<th>Price</th>
+			<th>Image</th>
 			<th>Quantity</th>
 		</tr>
 		<tr>
@@ -78,6 +81,7 @@
 			<td><%=product.getDescrizione()%></td>
 			<td><%=product.getPrezzo()%></td>
 			<td><%=product.getQuantità()%></td>
+			<td><%=product.getImmagine()%></td>
 		</tr>
 	</table>
 	<%

@@ -9,8 +9,9 @@ public class Prodotto implements Serializable {
 	int codice;
 	String nome;
 	String descrizione;
-	int prezzo;
+	double prezzo;
 	int quantità;
+	String immagine;
 
 	public Prodotto() {
 		codice = -1;
@@ -43,11 +44,11 @@ public class Prodotto implements Serializable {
 		this.descrizione = descrizione;
 	}
 
-	public int getPrezzo() {
+	public double getPrezzo() {
 		return prezzo;
 	}
 
-	public void setPrezzo(int prezzo) {
+	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
 
@@ -57,8 +58,15 @@ public class Prodotto implements Serializable {
 
 	public void setQuantità(int quantità) {
 		this.quantità = quantità;
+		
 	}
-
+	public String getImmagine() {
+		return immagine;
+	}
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
+	}
+	
 	@Override
 	public String toString() {
 		return nome + " (" + codice + "), " + prezzo + " " + quantità + ". " + descrizione;
