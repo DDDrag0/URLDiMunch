@@ -45,7 +45,7 @@
 			<td><%=bean.getCodice()%></td>
 			<td><%=bean.getNome()%></td>
 			<td><%=bean.getDescrizione()%></td>
-			<td><img src="<%=bean.getImmagine()%>" alt="la gioconda"></td>
+			<td><img width="200" src="${pageContext.request.contextPath}<%=bean.getImmagine()%>" alt="la gioconda"></td>
 			<td><a href="prodottoAdmin?action=delete&id=<%=bean.getCodice()%>">Delete</a><br>
 				<a href="details.jsp?code=<%=bean.getCodice()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantità()%>">Details</a><br>
 				</td>
