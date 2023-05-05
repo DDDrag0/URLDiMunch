@@ -32,10 +32,10 @@
 	<a href="index.jsp">Home</a>
 	<table border="1">
 		<tr>
-			<th>Code <a href="prodottoCliente?sort=code">Sort</a></th>
-			<th>Name <a href="prodottoCliente?sort=name">Sort</a></th>
+			<th>Code 		<a href="prodottoCliente?sort=code">Sort</a></th>
+			<th>Name 		<a href="prodottoCliente?sort=name">Sort</a></th>
 			<th>Description <a href="prodottoCliente?sort=description">Sort</a></th>
-			<th>Image</th>
+			<th>Image</th>     <!--bho -->
 			<th>Action</th>
 		</tr>
 		<%
@@ -48,7 +48,7 @@
 			<td><%=bean.getCodice()%></td>
 			<td><%=bean.getNome()%></td>
 			<td><%=bean.getDescrizione()%></td>
-			<td><img width="200" src="${pageContext.request.contextPath}<%=bean.getImmagine()%>" alt="la gioconda"></td>
+			<td><img width="200" src="${pageContext.request.contextPath}<%=bean.getImmagine()%>" alt=<%=bean.getNome()%>></td>
 			<td><a href="details.jsp?code=<%=bean.getCodice()%>&image=<%=bean.getImmagine()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantità()%>">Details</a><br>
 				<a href="prodottoCliente?action=addC&id=<%=bean.getCodice()%>">Add to cart</a>
 				</td>
@@ -64,31 +64,7 @@
 			}
 		%>
 	</table>
+ <%@ include file="footer.jsp" %>
 	
-	<h2>Details</h2>
-	<%
-		if (product != null) {
-	%>
-	<table border="1">
-		<tr>
-			<th>Code</th>
-			<th>Name</th>
-			<th>Description</th>
-			<th>Price</th>
-			<th>Image</th>
-			<th>Quantity</th>
-		</tr>
-		<tr>
-			<td><%=product.getCodice()%></td>
-			<td><%=product.getNome()%></td>
-			<td><%=product.getDescrizione()%></td>
-			<td><%=product.getPrezzo()%></td>
-			<td><%=product.getQuantità()%></td>
-			<td><%=product.getImmagine()%></td>
-		</tr>
-	</table>
-	<%
-		}
-	%>
 </body>
 </html> 
