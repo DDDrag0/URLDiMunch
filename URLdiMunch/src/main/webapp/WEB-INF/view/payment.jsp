@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page import="model.Prodotto" %>
@@ -23,15 +23,13 @@
     <title>Shopping Cart</title>
 </head>
 <body>
-    <h2>Shopping Cart</h2>
+    <h2>pagamento</h2>
     <br>
     <a href="prodottoCliente">List</a>
-    <table border="1">
+ <table border="1">
         <tr>
             <th>Name</th>
-            <th>Description</th>
             <th>Price</th>
-            <th>Image</th>
             <th>Quantity</th>
             <th>Total</th>
             <th>Action</th>
@@ -44,9 +42,7 @@
         %>
         <tr>
             <td><%=product.getNome()%></td>
-            <td><%=product.getDescrizione()%></td>
             <td><%=product.getPrezzo()%></td>
-            <td><img width="100%" src="${pageContext.request.contextPath}<%=product.getImmagine()%>" alt=<%=product.getNome()%>></td>
             <td><%=product.getQuantità()%></td>
             <td><%=total%></td>
             <td>
@@ -61,11 +57,27 @@
             <td colspan="2"><%=grandTotal%></td>
         </tr>
     </table>
-    <button onclick="redirectToPayment()">go to payment</button>
-    <script>
-    function redirectToPayment(){
-    	window.location.href = "payment.jsp"
-    }
-    </script>
-</body>
-</html>
+    <div class="pagamento">
+        <h2>pay details</h2>
+        <form action="processaPagamento.jsp" method="post">
+            <label for="nome">Name:</label>
+            <input type="text" id="nome" name="nome" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="carta">Card number:</label>
+            <input type="text" id="carta" name="carta" required><br>
+
+            <!-- Aggiungi altri campi per i dati di pagamento come indirizzo, città, etc. -->
+
+            <button  onclick="redirectToBuyPage()" type="submit">Buy</button>
+        </form>
+     </div>
+     <script>
+     			function redirectToBuyPage() {
+     				window.location.href = "listaOrdini.jsp"
+     			}
+     </script>
+   </body>
+  </html>

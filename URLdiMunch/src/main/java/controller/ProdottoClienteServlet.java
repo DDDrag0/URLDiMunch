@@ -28,7 +28,6 @@ public class ProdottoClienteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		Carrello cart = (Carrello)request.getSession().getAttribute("cart");
 		if(cart == null) {
 			cart = new Carrello();
@@ -99,5 +98,4 @@ public class ProdottoClienteServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
