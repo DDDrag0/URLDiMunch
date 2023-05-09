@@ -4,11 +4,11 @@
 
 <%
     HttpSession mysession=request.getSession();
-	Carrello cart = (Carrello) session.getAttribute("cart");
-    if(cart == null) {
-        cart = new Carrello();
-        mysession.setAttribute("cart", cart);
-        response.sendRedirect("./prodottoCliente");    
+	User user = (User) session.getAttribute("utente");
+    if(user == null) {
+    	user = new User();
+        mysession.setAttribute("utente", user);
+        response.sendRedirect("./login");    
         return;
     }
 %>
@@ -22,6 +22,22 @@
 <body>
  <div align="center">
   <h1>Dettagli Account</h1>
+  <a>idUtente: <% user.getIdUtente();%></a>
+  <br>
+  <a>nome: <% user.getNome();%></a>
+  <br>
+  <a>Cognome: <% user.getCognome();%></a>
+  <br>
+  <a>Email: <% user.getEmail();%></a>
+  <br>
+  <a>Carta: <% user.getCarta();%></a>
+  <br>
+  <a>Telefono: <% user.getTelefono();%></a>
+  <br>
+  <a>Indirizzo Fatturazione: <% user.getIndirizzoFatturazione();%></a>
+  <br>
+  <a>Indirizzo Spedizione: <% user.getIndirizzoSpedizione();%></a>
+  <br>
  </div>
 </body>
 </html>
