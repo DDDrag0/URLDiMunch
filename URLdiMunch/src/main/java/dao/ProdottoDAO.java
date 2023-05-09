@@ -59,11 +59,22 @@ public class ProdottoDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				prodotto.setIdProdotto(rs.getString("idProdotto"));
+				prodotto.setIdProdotto(rs.getString("IdProdotto"));
 				prodotto.setNome(rs.getString("Nome"));
+				prodotto.setArtista(rs.getString("Artista"));
+				prodotto.setTipo(rs.getString("Tipo"));
+				prodotto.setEpoca(rs.getString("Epoca"));
+				prodotto.setDimensioni(rs.getString("Dimensioni"));
 				prodotto.setDescrizione(rs.getString("Descrizione"));
-				prodotto.setPrezzo(rs.getDouble("Prezzo"));
 				prodotto.setQuantità(rs.getInt("Quantità"));
+				prodotto.setTipoPittura(rs.getString("TipoPittura"));
+				prodotto.setCornice(rs.getInt("Cornice"));
+				prodotto.setMateriale(rs.getString("Materiale"));
+				prodotto.setColori(rs.getString("Colori"));
+				prodotto.setTipoStampa(rs.getString("TipoStampa"));
+				prodotto.setIva(rs.getDouble("Iva"));
+				prodotto.setPrezzo(rs.getDouble("Prezzo"));
+				prodotto.setImagepath(rs.getString("Imagepath"));
 			}
 
 		}
@@ -102,7 +113,7 @@ public class ProdottoDAO {
 
 		Collection<Prodotto> products = new LinkedList<Prodotto>();
 
-		String selectSQL = "SELECT * FROM  product ";
+		String selectSQL = "SELECT * FROM  prodotto ";
 
 		if (order != null && !order.equals("")) {
 			selectSQL += " ORDER BY " + order;
@@ -116,12 +127,23 @@ public class ProdottoDAO {
 			while (rs.next()) {
 				Prodotto prodotto = new Prodotto();
 
-				prodotto.setCodice(rs.getInt("CODE"));
-				prodotto.setNome(rs.getString("NAME"));
-				prodotto.setDescrizione(rs.getString("DESCRIPTION"));
-				prodotto.setPrezzo(rs.getDouble("PRICE"));
-				prodotto.setQuantità(rs.getInt("QUANTITY"));
-				prodotto.setImmagine(rs.getString("IMAGEPATH"));
+				prodotto.setIdProdotto(rs.getString("IdProdotto"));
+				prodotto.setNome(rs.getString("Nome"));
+				prodotto.setArtista(rs.getString("Artista"));
+				prodotto.setTipo(rs.getString("Tipo"));
+				prodotto.setEpoca(rs.getString("Epoca"));
+				prodotto.setDimensioni(rs.getString("Dimensioni"));
+				prodotto.setDescrizione(rs.getString("Descrizione"));
+				prodotto.setQuantità(rs.getInt("Quantità"));
+				prodotto.setTipoPittura(rs.getString("TipoPittura"));
+				prodotto.setCornice(rs.getInt("Cornice"));
+				prodotto.setMateriale(rs.getString("Materiale"));
+				prodotto.setColori(rs.getString("Colori"));
+				prodotto.setTipoStampa(rs.getString("TipoStampa"));
+				prodotto.setIva(rs.getDouble("Iva"));
+				prodotto.setPrezzo(rs.getDouble("Prezzo"));
+				prodotto.setImagepath(rs.getString("Imagepath"));
+				
 				products.add(prodotto);
 			}
 

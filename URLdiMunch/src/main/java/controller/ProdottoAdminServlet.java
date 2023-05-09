@@ -40,23 +40,23 @@ public class ProdottoAdminServlet extends HttpServlet {
 		try {
 			if (action != null) {
 				if (action.equalsIgnoreCase("addC")) {
-					int id = Integer.parseInt(request.getParameter("id"));
+					String id = request.getParameter("id");
 					cart.addProduct(prodottodao.doRetrieveByKey(id));
 					request.setAttribute("cart", cart);
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp");
 					dispatcher.forward(request, response);
 				} else if (action.equalsIgnoreCase("deleteC")) {
-					int id = Integer.parseInt(request.getParameter("id"));
+					String id = request.getParameter("id");
 					cart.deleteProduct(prodottodao.doRetrieveByKey(id));
 					request.setAttribute("cart", cart);
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp");
 					dispatcher.forward(request, response);
 				} else if (action.equalsIgnoreCase("read")) {
-					int id = Integer.parseInt(request.getParameter("id"));
+					String id = request.getParameter("id");
 					request.removeAttribute("product");
 					request.setAttribute("product", prodottodao.doRetrieveByKey(id));
 				} else if (action.equalsIgnoreCase("delete")) {
-					int id = Integer.parseInt(request.getParameter("id"));
+					String id = request.getParameter("id");
 					prodottodao.doDelete(id);
 				} else if (action.equalsIgnoreCase("insert")) {
 					String name = request.getParameter("name");
