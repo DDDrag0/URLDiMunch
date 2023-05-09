@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDAO;
+import model.Carrello;
 import model.User;
 
 @WebServlet("/login")
@@ -27,6 +28,7 @@ public class LogInServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -40,6 +42,18 @@ public class LogInServlet extends HttpServlet {
         try {
             if (loginDAO.validate(user)) {
                 response.sendRedirect("DettagliUser.jsp");
+                
+
+
+        		Carrello cart = (Carrello)request.getSession().getAttribute("cart");
+        		if(cart == null) {
+        			cart = new Carrello();
+        			request.getSession().setAttribute("cart", cart);
+        		}
+                
+                request.getSession().setAttribute("cart", cart);
+        		request.setAttribute("cart", cart);
+        		
             } else {
                 response.sendRedirect("logIn.jsp");
             }

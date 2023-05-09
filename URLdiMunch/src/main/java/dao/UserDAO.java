@@ -59,6 +59,40 @@ public class UserDAO {
         }
         return result;
     }
+    
+    public synchronized User ricercaUser(String code) throws SQLException {
+		PreparedStatement preparedStatement = null;
+
+		User user = new User();
+
+		String selectSQL = "SELECT * FROM utente WHERE idutente = ?";
+
+		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, code);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				
+				user.setIdUtente(rs.getString("idUtente"));
+				user.setPassword(rs.getString("password"));
+				user.setNome(rs.getString("nome"));
+				user.setCognome(rs.getString("cognome"));
+				user.setEmail(rs.getString("email"));
+				user.setCarta(rs.getString("carta"));
+				user.setTelefono(rs.getString("telefono"));
+				user.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
+				user.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
+			}
+
+		}
+		catch (SQLException e) {
+            // process sql exception
+            printSQLException(e);
+        }
+		return user;
+    }
 
     private void printSQLException(SQLException ex) {
         for (Throwable e: ex) {
