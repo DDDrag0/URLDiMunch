@@ -39,7 +39,7 @@ public class UserDAO {
 
             // Step 2:Create a statement using connection object
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO utente (idUtente,password,nome,cognome,email,carta,telefono,indirizzoFatturazione,indirizzoSpedizione) VALUES (?,?,?,?,?,?,?,?,?);");
-            preparedStatement.setString(1, user.getNome());
+            preparedStatement.setString(1, user.getIdUtente());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getNome());
             preparedStatement.setString(4, user.getCognome());

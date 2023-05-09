@@ -33,17 +33,27 @@ public class RegistraServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String idUser = request.getParameter("idUser");
+		String passw = request.getParameter("passw");
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
-		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		String carta = request.getParameter("carta");
 		String telefono = request.getParameter("telefono");
+		String indFatt = request.getParameter("indFatt");
+		String indSped = request.getParameter("indSped");
 		
 		User user = new User();
 		
-		user.setNome(nome);
-		user.setCognome(cognome);
-		user.setPassword(password);
-		user.setTelefono(telefono);
+		user.setIdUtente(idUser);
+        user.setPassword(passw);
+        user.setNome(nome);
+        user.setCognome(cognome);
+        user.setEmail(email);
+        user.setCarta(carta);
+        user.setTelefono(telefono);
+        user.setIndirizzoFatturazione(indFatt);
+        user.setIndirizzoSpedizione(indSped);
 		
 		try {
 			registraDAO.registerUser(user);
