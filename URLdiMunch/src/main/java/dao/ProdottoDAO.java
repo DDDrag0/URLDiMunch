@@ -74,17 +74,17 @@ public class ProdottoDAO {
 		return prodotto;
     }
 
-	public synchronized boolean doDelete(int code) throws SQLException {
+	public synchronized boolean doDelete(String code) throws SQLException {
 		
 		PreparedStatement preparedStatement = null;
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM product WHERE CODE = ?";
+		String deleteSQL = "DELETE FROM prodotto WHERE idProdotto = ?";
 
 		try (Connection connection = ConPool.getConnection()){
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setInt(1, code);
+			preparedStatement.setString(1, code);
 
 			result = preparedStatement.executeUpdate();
 
