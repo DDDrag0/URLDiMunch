@@ -31,10 +31,10 @@ public class LogInServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nome = request.getParameter("nome");
+		String nome = request.getParameter("idutente");
         String password = request.getParameter("password");
         User user = new User();
-        user.setNome(nome);
+        user.setIdUtente(nome);
         user.setPassword(password);
 
         try {

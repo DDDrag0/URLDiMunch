@@ -14,7 +14,7 @@
    <table style="with: 100%">
     <tr>
      <td>UserName</td>
-     <td><input type="text" name="nome" /></td>
+     <td><input type="text" name="idutente" /></td>
     </tr>
     <tr>
      <td>Password</td>
