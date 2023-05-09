@@ -65,7 +65,7 @@ public class ProdottoClienteServlet extends HttpServlet {
 					int quantity = Integer.parseInt(request.getParameter("quantity"));
 					
 					
-					//response.sendRedirect("carrello.jsp");	perchè?
+					//response.sendRedirect("carrello.jsp");	perchè no napoli justin?
 					Prodotto prodotto = new Prodotto();
 					prodotto.setNome(name);
 					prodotto.setDescrizione(description);

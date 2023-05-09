@@ -59,22 +59,22 @@ public class ProdottoDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				prodotto.setIdProdotto(rs.getString("IdProdotto"));
-				prodotto.setNome(rs.getString("Nome"));
-				prodotto.setArtista(rs.getString("Artista"));
-				prodotto.setTipo(rs.getString("Tipo"));
-				prodotto.setEpoca(rs.getString("Epoca"));
-				prodotto.setDimensioni(rs.getString("Dimensioni"));
-				prodotto.setDescrizione(rs.getString("Descrizione"));
-				prodotto.setQuantità(rs.getInt("Quantità"));
-				prodotto.setTipoPittura(rs.getString("TipoPittura"));
-				prodotto.setCornice(rs.getInt("Cornice"));
-				prodotto.setMateriale(rs.getString("Materiale"));
-				prodotto.setColori(rs.getString("Colori"));
-				prodotto.setTipoStampa(rs.getString("TipoStampa"));
-				prodotto.setIva(rs.getDouble("Iva"));
-				prodotto.setPrezzo(rs.getDouble("Prezzo"));
-				prodotto.setImagepath(rs.getString("Imagepath"));
+				prodotto.setIdProdotto(rs.getString("idProdotto"));
+				prodotto.setNome(rs.getString("nome"));
+				prodotto.setArtista(rs.getString("artista"));
+				prodotto.setTipo(rs.getString("tipo"));
+				prodotto.setEpoca(rs.getString("epoca"));
+				prodotto.setDimensioni(rs.getString("dimensioni"));
+				prodotto.setDescrizione(rs.getString("descrizione"));
+				prodotto.setQuantità(rs.getInt("quantità"));
+				prodotto.setTipoPittura(rs.getString("tipoPittura"));
+				prodotto.setCornice(rs.getInt("cornice"));
+				prodotto.setMateriale(rs.getString("materiale"));
+				prodotto.setColori(rs.getString("colori"));
+				prodotto.setTipoStampa(rs.getString("tipoStampa"));
+				prodotto.setIva(rs.getDouble("iva"));
+				prodotto.setPrezzo(rs.getDouble("prezzo"));
+				prodotto.setImagepath(rs.getString("imagepath"));
 			}
 
 		}
@@ -127,22 +127,22 @@ public class ProdottoDAO {
 			while (rs.next()) {
 				Prodotto prodotto = new Prodotto();
 
-				prodotto.setIdProdotto(rs.getString("IdProdotto"));
-				prodotto.setNome(rs.getString("Nome"));
-				prodotto.setArtista(rs.getString("Artista"));
-				prodotto.setTipo(rs.getString("Tipo"));
-				prodotto.setEpoca(rs.getString("Epoca"));
-				prodotto.setDimensioni(rs.getString("Dimensioni"));
-				prodotto.setDescrizione(rs.getString("Descrizione"));
-				prodotto.setQuantità(rs.getInt("Quantità"));
-				prodotto.setTipoPittura(rs.getString("TipoPittura"));
-				prodotto.setCornice(rs.getInt("Cornice"));
-				prodotto.setMateriale(rs.getString("Materiale"));
-				prodotto.setColori(rs.getString("Colori"));
-				prodotto.setTipoStampa(rs.getString("TipoStampa"));
-				prodotto.setIva(rs.getDouble("Iva"));
-				prodotto.setPrezzo(rs.getDouble("Prezzo"));
-				prodotto.setImagepath(rs.getString("Imagepath"));
+				prodotto.setIdProdotto(rs.getString("idProdotto"));
+				prodotto.setNome(rs.getString("nome"));
+				prodotto.setArtista(rs.getString("artista"));
+				prodotto.setTipo(rs.getString("tipo"));
+				prodotto.setEpoca(rs.getString("epoca"));
+				prodotto.setDimensioni(rs.getString("dimensioni"));
+				prodotto.setDescrizione(rs.getString("descrizione"));
+				prodotto.setQuantità(rs.getInt("quantità"));
+				prodotto.setTipoPittura(rs.getString("tipoPittura"));
+				prodotto.setCornice(rs.getInt("cornice"));
+				prodotto.setMateriale(rs.getString("materiale"));
+				prodotto.setColori(rs.getString("colori"));
+				prodotto.setTipoStampa(rs.getString("tipoStampa"));
+				prodotto.setIva(rs.getDouble("iva"));
+				prodotto.setPrezzo(rs.getDouble("prezzo"));
+				prodotto.setImagepath(rs.getString("imagepath"));
 				
 				products.add(prodotto);
 			}
