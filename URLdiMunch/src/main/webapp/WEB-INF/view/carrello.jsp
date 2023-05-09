@@ -46,11 +46,11 @@
             <td><%=product.getNome()%></td>
             <td><%=product.getDescrizione()%></td>
             <td><%=product.getPrezzo()%></td>
-            <td><img width="100%" src="${pageContext.request.contextPath}<%=product.getImmagine()%>" alt=<%=product.getNome()%>></td>
+            <td><img width="100%" src="${pageContext.request.contextPath}<%=product.getImagepath()%>" alt=<%=product.getNome()%>></td>
             <td><%=product.getQuantità()%></td>
             <td><%=total%></td>
             <td>
-                <a href="prodotto?action=deleteC&id=<%=product.getCodice()%>">Remove</a>
+                <a href="prodotto?action=deleteC&id=<%=product.getIdProdotto()%>">Remove</a>
             </td>
         </tr>
         <%

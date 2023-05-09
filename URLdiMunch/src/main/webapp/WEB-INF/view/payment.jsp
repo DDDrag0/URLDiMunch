@@ -46,7 +46,7 @@
             <td><%=product.getQuantità()%></td>
             <td><%=total%></td>
             <td>
-                <a href="prodotto?action=deleteC&id=<%=product.getCodice()%>">Remove</a>
+                <a href="prodotto?action=deleteC&id=<%=product.getIdProdotto()%>">Remove</a>
             </td>
         </tr>
         <%
