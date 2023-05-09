@@ -3,7 +3,7 @@
 Boolean adminRoles = (Boolean) session.getAttribute("adminRoles");
 if ((adminRoles == null) || (!adminRoles.booleanValue()))
 {	
-    response.sendRedirect("./login-form.jsp");
+    response.sendRedirect("logIn.jsp");
     return;
 }
 %>
