@@ -39,7 +39,7 @@ public class LogInServlet extends HttpServlet {
 
         try {
             if (loginDAO.validate(user)) {
-                response.sendRedirect("logInSuccesso.jsp");
+                response.sendRedirect("DettagliUser.jsp");
             } else {
                 response.sendRedirect("logIn.jsp");
             }
