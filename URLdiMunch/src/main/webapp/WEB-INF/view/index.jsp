@@ -18,6 +18,5 @@
 <a href="prodottiCliente.jsp">prodottiCliente</a>
 <br>
 <form action="<%=request.getContextPath()%>/LogOut" method="post"><input type="submit" value="LogOut" /></form>
-
 </body>
 </html>
