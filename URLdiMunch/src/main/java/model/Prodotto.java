@@ -11,6 +11,7 @@ public class Prodotto implements Serializable {
 	private String epoca;
 	private String dimensioni;
 	private String descrizione;
+	private int quantità;
 	private String tipoPittura;
 	private String materiale;
 	private String colori;
@@ -19,6 +20,13 @@ public class Prodotto implements Serializable {
 	private int cornice;
 	private double prezzo;
 	private double iva;
+	
+	public int getQuantità() {
+		return quantità;
+	}
+	public void setQuantità(int quantità) {
+		this.quantità = quantità;
+	}
 	public String getIdProdotto() {
 		return idProdotto;
 	}

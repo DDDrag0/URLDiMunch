@@ -16,8 +16,8 @@ public class UserDAO {
         try (Connection connection = ConPool.getConnection()){
 
             // Step 2:Create a statement using connection object
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from user where nome = ? and password = ? ");
-            preparedStatement.setString(1, user.getNome());
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from utente where idutente = ? and password = ? ");
+            preparedStatement.setString(1, user.getIdUtente());
             preparedStatement.setString(2, user.getPassword());
 
             System.out.println(preparedStatement);
@@ -38,11 +38,16 @@ public class UserDAO {
         try (Connection connection = ConPool.getConnection()){
 
             // Step 2:Create a statement using connection object
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO user (nome, cognome, password, telefono) VALUES (?,?,?,?);");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO utente (idUtente,password,nome,cognome,email,carta,telefono,indirizzoFatturazione,indirizzoSpedizione) VALUES (?,?,?,?,?,?,?,?,?);");
             preparedStatement.setString(1, user.getNome());
-            preparedStatement.setString(2, user.getCognome());
-            preparedStatement.setString(3, user.getPassword());
-            preparedStatement.setString(4, user.getTelefono());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getNome());
+            preparedStatement.setString(4, user.getCognome());
+            preparedStatement.setString(5, user.getEmail());
+            preparedStatement.setString(6, user.getCarta());
+            preparedStatement.setString(7, user.getTelefono());
+            preparedStatement.setString(8, user.getIndirizzoFatturazione());
+            preparedStatement.setString(9, user.getIndirizzoSpedizione());
 
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query

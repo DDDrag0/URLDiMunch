@@ -16,16 +16,26 @@ public class ProdottoDAO {
 		
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO product (NAME, DESCRIPTION, PRICE, QUANTITY, IMAGEPATH) VALUES (?, ?, ?, ?,?)";
+		String insertSQL = "INSERT INTO prodotto (idProdotto,nome, artista, tipo, epoca, dimensioni, descrizione, quantità, tipoPittura, cornice, materiale, colori, tipoStampa, iva, prezzo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		try (Connection connection = ConPool.getConnection()){
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, product.getNome());
-			preparedStatement.setString(2, product.getDescrizione());
-			preparedStatement.setDouble(3, product.getPrezzo());
-			preparedStatement.setInt(4, product.getQuantità());
-			preparedStatement.setString(5,product.getImmagine());
-			preparedStatement.executeUpdate();
+			preparedStatement.setString(1, product.getIdProdotto());
+			preparedStatement.setString(2, product.getNome());
+			preparedStatement.setString(3, product.getArtista());
+			preparedStatement.setString(4, product.getTipo());
+			preparedStatement.setString(5, product.getEpoca());
+			preparedStatement.setString(6, product.getDimensioni());
+			preparedStatement.setString(7, product.getDescrizione());
+			preparedStatement.setInt(8, product.getQuantità());
+			preparedStatement.setString(9, product.getTipoPittura());
+			preparedStatement.setInt(10, product.getCornice());
+			preparedStatement.setString(11, product.getMateriale());
+			preparedStatement.setString(12, product.getColori());
+			preparedStatement.setString(13, product.getTipoStampa());
+			preparedStatement.setDouble(14, product.getIva());
+			preparedStatement.setDouble(15, product.getPrezzo());
+			preparedStatement.setString(16, product.getImagepath());
 
 			connection.commit();
 		}
@@ -35,25 +45,25 @@ public class ProdottoDAO {
         }
     }
 
-	public synchronized Prodotto doRetrieveByKey(int code) throws SQLException {
+	public synchronized Prodotto doRetrieveByKey(String code) throws SQLException {
 		PreparedStatement preparedStatement = null;
 
 		Prodotto prodotto = new Prodotto();
 
-		String selectSQL = "SELECT * FROM product WHERE CODE = ?";
+		String selectSQL = "SELECT * FROM prodotto WHERE idProdotto = ?";
 
 		try (Connection connection = ConPool.getConnection()){
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, code);
+			preparedStatement.setString(1, code);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				prodotto.setCodice(rs.getInt("CODE"));
-				prodotto.setNome(rs.getString("NAME"));
-				prodotto.setDescrizione(rs.getString("DESCRIPTION"));
-				prodotto.setPrezzo(rs.getDouble("PRICE"));
-				prodotto.setQuantità(rs.getInt("QUANTITY"));
+				prodotto.setIdProdotto(rs.getString("idProdotto"));
+				prodotto.setNome(rs.getString("Nome"));
+				prodotto.setDescrizione(rs.getString("Descrizione"));
+				prodotto.setPrezzo(rs.getDouble("Prezzo"));
+				prodotto.setQuantità(rs.getInt("Quantità"));
 			}
 
 		}
