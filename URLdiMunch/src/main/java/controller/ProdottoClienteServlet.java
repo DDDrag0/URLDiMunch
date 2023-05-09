@@ -91,7 +91,7 @@ public class ProdottoClienteServlet extends HttpServlet {
 			System.out.println("Error:" + e.getMessage());
 		}
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/prodottiAdmin.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/prodottiCliente.jsp");
 		dispatcher.forward(request, response);
 	}
 

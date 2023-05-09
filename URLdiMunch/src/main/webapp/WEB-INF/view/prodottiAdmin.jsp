@@ -42,12 +42,12 @@
 					Prodotto bean = (Prodotto) it.next();
 		%>
 		<tr>
-			<td><%=bean.getCodice()%></td>
+			<td><%=bean.getIdProdotto()%></td>
 			<td><%=bean.getNome()%></td>
 			<td><%=bean.getDescrizione()%></td>
-			<td><img width="200" src="${pageContext.request.contextPath}<%=bean.getImmagine()%>" alt="la gioconda"></td>
-			<td><a href="prodottoAdmin?action=delete&id=<%=bean.getCodice()%>">Delete</a><br>
-				<a href="details.jsp?code=<%=bean.getCodice()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantità()%>">Details</a><br>
+			<td><img width="200" src="${pageContext.request.contextPath}<%=bean.getImagepath()%>" alt="la gioconda"></td>
+			<td><a href="prodottoAdmin?action=delete&id=<%=bean.getIdProdotto()%>">Delete</a><br>
+				<a href="details.jsp?code=<%=bean.getIdProdotto()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantità()%>">Details</a><br>
 				</td>
 		</tr>
 		<%
@@ -76,12 +76,12 @@
 			<th>Quantity</th>
 		</tr>
 		<tr>
-			<td><%=product.getCodice()%></td>
+			<td><%=product.getIdProdotto()%></td>
 			<td><%=product.getNome()%></td>
 			<td><%=product.getDescrizione()%></td>
 			<td><%=product.getPrezzo()%></td>
 			<td><%=product.getQuantità()%></td>
-			<td><%=product.getImmagine()%></td>
+			<td><%=product.getImagepath()%></td>
 		</tr>
 	</table>
 	<%
