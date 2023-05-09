@@ -25,15 +25,20 @@ public class LogInServlet extends HttpServlet {
 
     public LogInServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
-        
+	
+	private void checkLogin(String username, String password) throws Exception {
+		if ("root".equals(username) && "admin".equals(password)) {
+			//
+		} else
+			throw new Exception("Invalid login and password");
+	}
+	
+	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
@@ -43,23 +48,21 @@ public class LogInServlet extends HttpServlet {
         User user = new User();
         user.setIdUtente(nome);
         user.setPassword(password);
-        
-		
-
+        String redirectedPage;
         try {
         	
             if (loginDAO.validate(user)) {
-
         		session.setAttribute("utente", user);
-            	
-                response.sendRedirect("DettagliUser.jsp");
-       		
+				request.getSession().setAttribute("adminRoles", new Boolean(true));
+				redirectedPage = "/DettagliUser.jsp";
+				response.sendRedirect(request.getContextPath() + redirectedPage);
             } else {
-                response.sendRedirect("logIn.jsp");
+				request.getSession().setAttribute("adminRoles", new Boolean(false));
+				redirectedPage = "/logIn.jsp";
+				response.sendRedirect(request.getContextPath() + redirectedPage);
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-		doGet(request, response);
 		}
 	}
 }
