@@ -3,12 +3,11 @@
 <%@page import="model.User" %>
 
 <%
-    HttpSession mysession=request.getSession();
 	User user = (User) session.getAttribute("utente");
     if(user == null) {
     	user = new User();
-        mysession.setAttribute("utente", user);
-        response.sendRedirect("./login");    
+        session.setAttribute("utente", user);
+        response.sendRedirect("logIn.jsp");    
         return;
     }
 %>
