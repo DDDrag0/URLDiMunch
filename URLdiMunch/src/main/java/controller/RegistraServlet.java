@@ -62,7 +62,7 @@ public class RegistraServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/userDettagli.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/logIn.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -17,6 +17,8 @@
 <br>
 <a href="prodottiCliente.jsp">prodottiCliente</a>
 <br>
-<form action="<%=request.getContextPath()%>/LogOut" method="post"><input type="submit" value="LogOut" /></form>
+<a href="DettagliUser.jsp">dettagliUtente</a>
+<br>
+<form action="<%=request.getContextPath()%>/LogOut" method="post"><input type="submit" value="LogOut (elimina anche il carrello)" /></form>
 </body>
 </html>
