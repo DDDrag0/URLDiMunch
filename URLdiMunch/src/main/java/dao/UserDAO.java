@@ -60,7 +60,31 @@ public class UserDAO {
         return result;
     }
     
-    public synchronized User ricercaUser(String code) throws SQLException {
+    public synchronized boolean checkAdmin(String id) throws SQLException{
+		PreparedStatement preparedStatement = null;
+		Boolean check = false;
+		String selectSQL = "SELECT amministratore FROM utente WHERE idutente = ?";
+		
+		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, id);
+
+			ResultSet rs = preparedStatement.executeQuery();
+			rs.next();
+			int res=rs.getInt("amministratore");
+			if(res==1) {
+				check=true;
+			}
+		}
+		catch (SQLException e) {
+            // process sql exception
+            printSQLException(e);
+        }
+		
+    	return check;
+    }
+    
+    public synchronized User ricercaUser(String id) throws SQLException {
 		PreparedStatement preparedStatement = null;
 
 		User user = new User();
@@ -69,7 +93,7 @@ public class UserDAO {
 
 		try (Connection connection = ConPool.getConnection()){
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, code);
+			preparedStatement.setString(1, id);
 
 			ResultSet rs = preparedStatement.executeQuery();
 

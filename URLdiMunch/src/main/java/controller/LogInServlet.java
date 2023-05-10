@@ -47,12 +47,17 @@ public class LogInServlet extends HttpServlet {
             if (loginDAO.validate(user)) {
             	user= loginDAO.ricercaUser(idutente);
             	request.getSession().setAttribute("utente", user);
-				request.getSession().setAttribute("adminRoles", new Boolean(true)); //da cancellare dopo
+            	if(loginDAO.checkAdmin(idutente)) {
+    				request.getSession().setAttribute("adminRoles", new Boolean(true)); //da cancellare dopo
+            	}
+            	else {
+    				request.getSession().setAttribute("adminRoles", new Boolean(false));
+            	}
 				redirectedPage = "/DettagliUser.jsp";
 				response.sendRedirect(request.getContextPath() + redirectedPage);
             } else {
             	request.getSession().setAttribute("utente", null);
-				request.getSession().setAttribute("adminRoles", new Boolean(false)); //da cancellare dopo
+				request.getSession().setAttribute("adminRoles", new Boolean(false));
 				redirectedPage = "/logIn.jsp";
 				response.sendRedirect(request.getContextPath() + redirectedPage);
             }
