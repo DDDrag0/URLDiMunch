@@ -34,6 +34,7 @@
   <a>Indirizzo Fatturazione: <%= user.getIndirizzoFatturazione()%></a>
   <br>
   <a>Indirizzo Spedizione: <%= user.getIndirizzoSpedizione()%></a>
+  <a href="index.jsp">Torna alla Home</a>
   <br>
  </div>
 </body>

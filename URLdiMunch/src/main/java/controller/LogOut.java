@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 public class LogOut extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		
 
+    	request.getSession().removeAttribute("cart");
+    	request.getSession().removeAttribute("utente");
 		request.getSession().removeAttribute("adminRoles");
 		request.getSession().invalidate();
 

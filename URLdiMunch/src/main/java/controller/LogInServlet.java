@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
 import model.User;
@@ -34,7 +34,11 @@ public class LogInServlet extends HttpServlet {
 	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
+		//HttpSession session = request.getSession();
+		request.getSession().removeAttribute("cart");
+    	request.getSession().removeAttribute("utente");
+		request.getSession().removeAttribute("adminRoles");
+		request.getSession().invalidate();
 		
 		String idutente = request.getParameter("idutente");
         String password = request.getParameter("password");
