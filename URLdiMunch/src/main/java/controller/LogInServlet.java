@@ -31,13 +31,6 @@ public class LogInServlet extends HttpServlet {
 		doPost(request, response);
 	}
 	
-	private void checkLogin(String username, String password) throws Exception {
-		if ("root".equals(username) && "admin".equals(password)) {
-			//
-		} else
-			throw new Exception("Invalid login and password");
-	}
-	
 	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
