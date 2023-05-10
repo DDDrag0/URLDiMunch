@@ -83,6 +83,7 @@ CREATE TABLE `prodotto` (
 
 LOCK TABLES `prodotto` WRITE;
 /*!40000 ALTER TABLE `prodotto` DISABLE KEYS */;
+INSERT INTO `prodotto` VALUES ('1_Venere','Venere','Botticelli','Quadro','Vecchia','20*20','Venere dipinta da Botticelli',4,NULL,1,NULL,NULL,NULL,5,200,'/image/venere.jpg'),('2_Urlo','Urlo di Munch','Munch','Quadro','Vecchia','30*30','L\'urlo di Munch dipinto dall\'Omonimo',5,NULL,1,NULL,NULL,NULL,5,450,'/image/urlo.jpg'),('3_Notte','Notte Stellata','Van Gogh','Quadro','Vecchia','20*20','Notte stellata di Van Gogh',2,NULL,1,NULL,NULL,NULL,5,200,'/image/notte.jpg'),('4_Guernica','Guernica','Picasso','Quadro','Vecchia','20*20','Guernica di Picasso',6,NULL,1,NULL,NULL,NULL,5,167,'/image/guernica.jpg'),('5_Gioconda','Gioconda','Lenoardo Da Vinci','Quadro','Vecchia','30*30','La famosa Gioconda di Leonardo da Vinci',7,NULL,0,NULL,NULL,NULL,5,432,'/image/gioconda.png');
 /*!40000 ALTER TABLE `prodotto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,6 +115,7 @@ CREATE TABLE `utente` (
 
 LOCK TABLES `utente` WRITE;
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
+INSERT INTO `utente` VALUES ('Gennaro','gennaro','Gennaro','Nero','xde@gmail.com','32132132','312233','indFatt','IndSped',0),('Michele200','michele','Michele','D\'Arienzo','michele@gmail.com','2232323','32323232','si ','no',1);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,6 +144,14 @@ LOCK TABLES `wishlist` WRITE;
 /*!40000 ALTER TABLE `wishlist` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wishlist` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'urldimunch'
+--
+
+--
+-- Dumping routines for database 'urldimunch'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -152,4 +162,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-09 14:52:09
+-- Dump completed on 2023-05-10 16:09:07
