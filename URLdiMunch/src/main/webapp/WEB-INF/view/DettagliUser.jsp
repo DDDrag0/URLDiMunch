@@ -5,8 +5,6 @@
 <%
 	User user = (User) session.getAttribute("utente");
     if(user == null) {
-    	user = new User();
-        session.setAttribute("utente", user);
         response.sendRedirect("logIn.jsp");    
         return;
     }
@@ -21,21 +19,21 @@
 <body>
  <div align="center">
   <h1>Dettagli Account</h1>
-  <a>idUtente: <% user.getIdUtente();%></a>
+  <a>idUtente: <%= user.getIdUtente()%></a>
   <br>
-  <a>nome: <% user.getNome();%></a>
+  <a>nome: <%= user.getNome()%></a>
   <br>
-  <a>Cognome: <% user.getCognome();%></a>
+  <a>Cognome: <%= user.getCognome()%></a>
   <br>
-  <a>Email: <% user.getEmail();%></a>
+  <a>Email: <%= user.getEmail()%></a>
   <br>
-  <a>Carta: <% user.getCarta();%></a>
+  <a>Carta: <%= user.getCarta()%></a>
   <br>
-  <a>Telefono: <% user.getTelefono();%></a>
+  <a>Telefono: <%= user.getTelefono()%></a>
   <br>
-  <a>Indirizzo Fatturazione: <% user.getIndirizzoFatturazione();%></a>
+  <a>Indirizzo Fatturazione: <%= user.getIndirizzoFatturazione()%></a>
   <br>
-  <a>Indirizzo Spedizione: <% user.getIndirizzoSpedizione();%></a>
+  <a>Indirizzo Spedizione: <%= user.getIndirizzoSpedizione()%></a>
   <br>
  </div>
 </body>

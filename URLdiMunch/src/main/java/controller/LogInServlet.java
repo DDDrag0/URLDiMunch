@@ -36,15 +36,16 @@ public class LogInServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		String nome = request.getParameter("idutente");
+		String idutente = request.getParameter("idutente");
         String password = request.getParameter("password");
         User user = new User();
-        user.setIdUtente(nome);
+        user.setIdUtente(idutente);
         user.setPassword(password);
         String redirectedPage;
         try {
         	
             if (loginDAO.validate(user)) {
+            	user= loginDAO.ricercaUser(idutente);
             	request.getSession().setAttribute("utente", user);
 				request.getSession().setAttribute("adminRoles", new Boolean(true)); //da cancellare dopo
 				redirectedPage = "/DettagliUser.jsp";
@@ -57,6 +58,8 @@ public class LogInServlet extends HttpServlet {
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 }
