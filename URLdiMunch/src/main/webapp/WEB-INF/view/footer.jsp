@@ -1,7 +1,11 @@
-<div class="footer">
+<html>
+<head> <link href="footer.css" rel="stylesheet" type="text/css"></head>
+<body>
+<div>
+
                 <div class="newsletter" style="display: block;">
                 <div class="holder">
-                    <h3>Newsletter Signup</h3>
+                    <h3>Newsletter Sign up</h3>
                     <div class="newsletterWraper">
                         <div id="newsletterInfo">
                             <input name="email" placeholder="Enter your email" class="text" id="emailSubscription" type="text" maxlength="100" contactattributeid="3820038">
@@ -16,7 +20,6 @@
                     </div>
                 </div>
             </div>
-                <!-- Newsletter Modal -->
                 <div class="modal fade" style="display: none;" id="newsletterModal" tabindex="-1" role="dialog" aria-labelledby="newsletterModal">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -60,3 +63,5 @@
             </ul>
             <p>©2023 URLdiMunch Worldwide Corporation. All rights reserved.</p>
 </div>
+</body>
+</html>

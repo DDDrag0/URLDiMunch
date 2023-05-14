@@ -22,34 +22,13 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Storage DS/BF</title>
-	<link href="prodotticliente.css" rel="stylesheet" type="text/css">
+	<link href="header.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<header>
-  <div class="logo">
-    <a href="#">URLdiMunch</a>
-  </div>
-  <div class="search-bar">
-    <input type="text" placeholder="Cerca...">
-    <button class="search-button">search</button>
-  </div>
-  <div class="user-buttons">
-    <button onclick="redirectToLogin()">Login</button>
-    <button onclick="redirectToRegistrati()">sign up</button>
-  </div>
-  <div class="cart">
-  <button onclick="redirectToCart()" class="no-border" style="border: none;">
-  			<img class="no-border" src="image/carrello.png" alt="Carrello" style="border: none;">
-  </button>
-  <span id="contatorecarrello" class="cart-item-count"></span>
-  </div>
-</header>
-
+<%@ include file="header.jsp" %>
 	<h2>Products</h2>
 	<br> 
-	<a href="carrello.jsp">cart</a>
-	<a href="prodottoCliente">List</a>
 	<a href="index.jsp">Home</a>
 	<table border="1">
 		<tr>
@@ -89,18 +68,6 @@
 
 
 
-<!-- script login e registrati -->
-<script>
-function redirectToRegistrati() {
-	window.location.href = "registrazione.jsp"
-}
-function redirectToLogin() {
-	window.location.href = "logIn.jsp"
-}
-function redirectToCart() {
-	window.location.href = "carrello.jsp"
-}
 
-</script>
 </body>
 </html> 

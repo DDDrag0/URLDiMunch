@@ -1,0 +1,151 @@
+/* intestazione*/
+
+header {
+  background-color: #f2f2f2;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+
+.logo span {
+	margin-right:10px;
+}
+
+.logo a {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+
+
+.search-bar {
+  flex: 2;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+.user-buttons {
+  flex: 1;
+  text-align: right;
+}
+.search-button {
+	padding: 8px;
+	font-size: 16px;
+	margin-left: 10px;
+	flex: 1;
+}
+
+.user-buttons button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+}
+
+.cart img {
+  height: 35px;
+  max-width: 100%;
+  border: none !important;
+
+}
+.sidebar {
+	width: 0;
+	position: fixed;
+	top: 0;
+	right: -250px;
+	height: 100vh;
+	background-color: #f2f2f2;
+	overflow: hidden;
+	transition: right 0.9s ease-in-out;
+	z-index: 9999;
+}
+.sidebar.open {
+	width: 250px;
+	left: 0; 
+}
+.sidebar a {
+	display: block;
+	padding: 10px;
+	text-decoration: none;
+	color: #000;
+	margin-top: 5px;
+}
+.bottone {
+	position: absolute;
+	top: 10px;
+	left: -10px;
+}
+.link-sidebar {
+	margin-top: 50px;
+}
+.sidebar a:hover {
+	backgorund-color: #ddd;
+}
+.content-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Colore di sfondo semitrasparente */
+  z-index: 9999; /* Assicurarsi che l'overlay sia sopra gli altri elementi */
+}
+
+.sidebar.open ~ .content-overlay {
+  display: block; /* L'overlay diventa visibile quando la sidebar è aperta */
+}
+
+.sidebar.open ~ .page content{
+	margin-left: 250px;
+}
+.sidebar.open ~ .close-sidebar{
+	display: block;
+}
+.close-sidebar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: #333;
+  z-index: 999;
+  margin-down: 20px;
+}
+.hamburger {						/* tre linee orizzontali dette hamburger */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  width: 70%;
+  height: 2px;
+  background-color: #333;
+  margin-bottom: 4px;
+}
