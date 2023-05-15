@@ -5,19 +5,32 @@ body {
   font-family: Arial, sans-serif;
 }
 /*stile per il video della home*/
+.video-responsive {
+	width: 100%;
+	height: 0;
+	padding-top: 56.25%;
+	position: relative; 
+}
+.video-responsive video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 #video-container {
   position: relative;
   width: 100%;
-  height: 800px; /* Regola l'altezza desiderata */
-  overflow: hidden;
+  height: 50vh;
+ overflow: hidden;
 }
 #video-background {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width:  100%;
-	height: 100%;
-	object-fit: cover;
+	width: 100%;
+	height: auto;
 }
 /* stile scritta */
 #welcome-text {
