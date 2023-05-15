@@ -1,0 +1,162 @@
+/* Stile per il footer */
+footer {
+  background-color: black;
+  padding: 20px;
+}
+
+/* Stile per la sezione del modulo di iscrizione alla newsletter */
+.newsletter {
+  margin-bottom: 20px;
+  background-color: #f1f1f1;
+  padding: 10px;
+  overflow: hidden;
+  margin-top: 10px; /* Aggiunto */
+}
+
+h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.text {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#btSubscribe {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 200px; /* Ridotto */
+}
+
+.invalid-email,
+.success-newsletter {
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* Stile per il modal di iscrizione alla newsletter */
+#newsletterModal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-dialog {
+  margin-top: 200px;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+}
+
+.modal-header {
+  position: relative;
+}
+
+.brand-logo-style {
+  width: 100px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  color: #000;
+  opacity: 0.5;
+}
+
+.modal-body p {
+  margin-bottom: 10px;
+}
+
+.form-inline {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.form-control {
+  width: 100%;
+  max-width: 400px;
+  padding: 5px;
+}
+
+#modalSubmit {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#newsletterModalValidation {
+  color: red;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+#newsletterConfirmation p {
+  margin-bottom: 10px;
+}
+
+#newsletterConfirmationClose {
+  color: black;
+  text-decoration: none;
+  font-style: italic;
+}
+
+/* Stile per i link nel footer */
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: black;
+  padding: 10px;
+}
+
+.links li {
+  margin-bottom: 10px;
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* Stili per rendere il footer responsive */
+@media screen {
+  /* Per tutte le risoluzioni */
+  .newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding:
