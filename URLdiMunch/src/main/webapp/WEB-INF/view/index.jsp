@@ -21,9 +21,6 @@
 				<img src="foto2.png" alt="Banner destro">
 			</div>
 		</div>
-		<form action="<%=request.getContextPath()%>/LogOut" method="post">
-			<input type="submit" value="LogOut (elimina anche il carrello)" />
-		</form>
 		<%@ include file="footer.jsp" %>
 		<script src="index.js"></script>
 	</body>

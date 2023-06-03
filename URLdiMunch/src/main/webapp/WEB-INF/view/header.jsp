@@ -1,17 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@page import="model.User" %>
 
 <%
 	User user = (User) session.getAttribute("utente");
+	String login;
+	String commandLogin;
     if(user == null) {
-		String login = "login";    
-        return;
+    	login="Login";
+    	commandLogin="redirectToLogin()";
     }
+    else{
+    	login=user.getIdUtente();
+    	commandLogin="redirectToProfile()";
+    	}
 %>
 <html>
 <head>
-
 <link href="header.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -22,10 +26,9 @@
  </div>
  <div class="link-sidebar">
     <a href="index.jsp">Home</a>
-    <a href="">Profilo</a>
     <a href="prodottiCliente.jsp">prodotti</a>
     <form action="<%=request.getContextPath()%>/LogOut" method="post">
-			<input class="logout-button" type="submit" value="LogOut (elimina anche il carrello)" />
+			<input class="link-sidebar" type="submit" value="LogOut (elimina anche il carrello)" />
 		</form>
  </div> 
 </div>
@@ -42,7 +45,7 @@
     <button class="search-button">search</button>
   </div>
   <div class="user-buttons">
-    <button onclick="redirectToLogin()">Login</button>
+    <button onclick="<%=commandLogin%>"><%=login%></button>
   </div>
   <div class="cart">
   <button onclick="redirectToCart()" class="no-border" style="border: none;">
@@ -58,6 +61,9 @@ function redirectToRegistrati() {
 }
 function redirectToLogin() {
 	window.location.href = "logIn.jsp"
+}
+function redirectToProfile(){
+	window.location.href = "DettagliUser.jsp"
 }
 function redirectToCart() {
 	window.location.href = "carrello.jsp"
