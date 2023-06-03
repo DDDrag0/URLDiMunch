@@ -47,19 +47,20 @@
           <input type="password" name="password" placeholder="  PASSWORD">
         </div>
         <p>FORGET PASSWORD?</p>
-        <button>LOG IN</button>
-   		<input type="submit" value="Submit" />
- 	  </form>
+        <button value="Submit">Log In</button>
+        </form>
       </div>
 
       <div class="signup hide">
+  		<form action="<%= request.getContextPath() %>/register" method="post">
         <h2>SIGN UP</h2>
         <div class="inputbox">
-          <input type="text" name="fullname" placeholder="  FULLNAME">
+          <input type="text" name="idutente" placeholder="  USERNAME">
           <input type="text" name="email" placeholder="  EMAIL">
           <input type="password" name="password" placeholder="  PASSWORD">
         </div>
-        <button>SIGN UP</button>
+        <button value="Submit">Sign Up</button>
+        </form>
       </div>
 	
     </div>

@@ -38,16 +38,10 @@ public class UserDAO {
         try (Connection connection = ConPool.getConnection()){
 
             // Step 2:Create a statement using connection object
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO utente (idUtente,password,nome,cognome,email,carta,telefono,indirizzoFatturazione,indirizzoSpedizione) VALUES (?,?,?,?,?,?,?,?,?);");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO utente (idUtente,password,email) VALUES (?,?,?);");
             preparedStatement.setString(1, user.getIdUtente());
             preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setString(3, user.getNome());
-            preparedStatement.setString(4, user.getCognome());
-            preparedStatement.setString(5, user.getEmail());
-            preparedStatement.setString(6, user.getCarta());
-            preparedStatement.setString(7, user.getTelefono());
-            preparedStatement.setString(8, user.getIndirizzoFatturazione());
-            preparedStatement.setString(9, user.getIndirizzoSpedizione());
+            preparedStatement.setString(3, user.getEmail());
 
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
