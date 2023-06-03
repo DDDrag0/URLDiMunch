@@ -10,10 +10,12 @@
 <button class="close-sidebar" onclick="toggleSidebar()">X</button>
  </div>
  <div class="link-sidebar">
-    <a href="#">Home</a>
-    <a href="#">Profilo</a>
-    <a href="#">Impostazioni</a>
-    <a href="#">Logout</a>
+    <a href="index.jsp">Home</a>
+    <a href="">Profilo</a>
+    <a href="prodottiCliente.jsp">prodotti</a>
+    <form action="<%=request.getContextPath()%>/LogOut" method="post">
+			<input class="logout-button" type="submit" value="LogOut (elimina anche il carrello)" />
+		</form>
  </div> 
 </div>
  <div class="hamburger" onclick="toggleSidebar()">
@@ -30,7 +32,6 @@
   </div>
   <div class="user-buttons">
     <button onclick="redirectToLogin()">Login</button>
-    <button onclick="redirectToRegistrati()">sign up</button>
   </div>
   <div class="cart">
   <button onclick="redirectToCart()" class="no-border" style="border: none;">

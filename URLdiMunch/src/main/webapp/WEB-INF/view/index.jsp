@@ -8,30 +8,19 @@
 	</head>
 	<body>
 		<%@ include file="header.jsp" %>
-		<div id="video-container">
-  	<video class="bg-video z1 ntouch-ok" autoplay muted loop style="position:absolute; right:0;bottom:0;min-width:100%;min-height:100%; width:auto;height:auto; overflow:hidden;background:#333;">
+		<div class="container">
+			<div class="banner">
+				<img src="foto2.png" alt="Banner sinistro">
+			</div>
+			<div class="video">
+				<video style="width: 100%;"   autoplay muted loop >
    		 <source data-src="https://cdn.shopify.com/s/files/1/0188/7338/5024/files/home-dec-2021-new.mp4?v=1638810123" type="video/mp4" src="https://cdn.shopify.com/s/files/1/0188/7338/5024/files/home-dec-2021-new.mp4?v=1638810123">
   	</video>
-			<div id="welcome-text">
-			
-				Welcome to URLdiMunch<br>
-				<span style="font-size: 14px;">the first art site developed by unisastudents</span>
 			</div>
-
-			<div id="discover-text">
-				Discover our selection of unique artworks<br>
-				from the best contemporary and historical artists and designers worldwide
+			<div class="banner">
+				<img src="foto2.png" alt="Banner destro">
 			</div>
 		</div>
-
-		<h2>Scegli</h2>
-		<br>
-		<a href="prodottiAdmin.jsp">prodottiAdmin</a>
-		<br>
-		<a href="prodottiCliente.jsp">prodottiCliente</a>
-		<br>
-		<a href="DettagliUser.jsp">dettagliUtente</a>
-		<br>
 		<form action="<%=request.getContextPath()%>/LogOut" method="post">
 			<input type="submit" value="LogOut (elimina anche il carrello)" />
 		</form>

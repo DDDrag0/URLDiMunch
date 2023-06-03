@@ -5,7 +5,7 @@
 
                 <div class="newsletter" style="display: block;">
                 <div class="holder">
-                    <h3>Newsletter Sign up</h3>
+                    <h3 style="color: black">Newsletter Sign up</h3>
                     <div class="newsletterWraper">
                         <div id="newsletterInfo">
                             <input name="email" placeholder="Enter your email" class="text" id="emailSubscription" type="text" maxlength="100" contactattributeid="3820038">
