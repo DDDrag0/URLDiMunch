@@ -5,13 +5,16 @@
 	User user = (User) session.getAttribute("utente");
 	String login;
 	String commandLogin;
+	boolean test;
     if(user == null) {
     	login="Login";
     	commandLogin="redirectToLogin()";
+    	test=false;
     }
     else{
     	login=user.getIdUtente();
     	commandLogin="redirectToProfile()";
+    	test=true;
     	}
 %>
 <html>
@@ -27,9 +30,11 @@
  <div class="link-sidebar">
     <a href="index.jsp">Home</a>
     <a href="prodottiCliente.jsp">prodotti</a>
+    <% if(user!=null) {%>
     <form action="<%=request.getContextPath()%>/LogOut" method="post">
 			<input class="link-sidebar" type="submit" value="LogOut (elimina anche il carrello)" />
 		</form>
+	<% }%>
  </div> 
 </div>
  <div class="hamburger" onclick="toggleSidebar()">
