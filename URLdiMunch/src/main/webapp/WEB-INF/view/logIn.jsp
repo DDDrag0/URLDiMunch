@@ -40,13 +40,16 @@
 
     <div class="frontbox">
       <div class="login">
+  		<form action="<%=request.getContextPath()%>/login" method="post">
         <h2>LOG IN</h2>
         <div class="inputbox">
-          <input type="text" name="email" placeholder="  EMAIL">
+          <input type="text" name="idutente" placeholder="  USERNAME">
           <input type="password" name="password" placeholder="  PASSWORD">
         </div>
         <p>FORGET PASSWORD?</p>
         <button>LOG IN</button>
+   		<input type="submit" value="Submit" />
+ 	  </form>
       </div>
 
       <div class="signup hide">
