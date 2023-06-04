@@ -97,13 +97,13 @@ DROP TABLE IF EXISTS `utente`;
 CREATE TABLE `utente` (
   `idutente` varchar(45) NOT NULL,
   `password` varchar(16) NOT NULL,
-  `nome` varchar(45) NOT NULL,
-  `cognome` varchar(45) NOT NULL,
+  `nome` varchar(45) NOT NULL DEFAULT 'empty',
+  `cognome` varchar(45) NOT NULL DEFAULT 'empty',
   `email` varchar(65) NOT NULL,
-  `carta` varchar(16) DEFAULT NULL,
-  `telefono` varchar(10) DEFAULT NULL,
-  `indirizzoFatturazione` varchar(100) DEFAULT NULL,
-  `indirizzoSpedizione` varchar(100) DEFAULT NULL,
+  `carta` varchar(16) NOT NULL DEFAULT 'empty',
+  `telefono` varchar(10) NOT NULL DEFAULT 'empty',
+  `indirizzoFatturazione` varchar(100) NOT NULL DEFAULT 'empty',
+  `indirizzoSpedizione` varchar(100) NOT NULL DEFAULT 'empty',
   `amministratore` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`idutente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -115,7 +115,7 @@ CREATE TABLE `utente` (
 
 LOCK TABLES `utente` WRITE;
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` VALUES ('Gennaro','gennaro','Gennaro','Nero','xde@gmail.com','32132132','312233','indFatt','IndSped',0),('Michele200','michele','Michele','D\'Arienzo','michele@gmail.com','2232323','32323232','si ','no',1);
+INSERT INTO `utente` VALUES ('gennarin','gg','vai','gennaro','pis311in@gmail.com','empty','sei','troppo','forte',0),('Gennaro','gennaro','Gennaro','Nero','xde@gmail.com','32132132','312233','indFatt','IndSped',0),('luca','luca','si','no','yeye','non aggiunta','wewe','wa','we',0),('Michele200','michele','Michele','D\'Arienzo','michele@gmail.com','2232323','32323232','si ','no',1);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,4 +162,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-10 16:09:07
+-- Dump completed on 2023-06-04 22:21:20
