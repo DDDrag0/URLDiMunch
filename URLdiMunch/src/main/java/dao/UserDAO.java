@@ -61,7 +61,7 @@ public class UserDAO {
         try (Connection connection = ConPool.getConnection()){
 
             // Step 2:Create a statement using connection object
-        	PreparedStatement preparedStatement = connection.prepareStatement("UPDATE INTO utente (password,nome,cognome,email,telefono,indirizzoFatturazione,indirizzoSpedizione) VALUES (?,?,?,?,?,?,?) WHERE idUtente=?;");
+        	PreparedStatement preparedStatement = connection.prepareStatement("UPDATE utente SET password=?,nome=?,cognome=?,email=?,telefono=?,indirizzoFatturazione=?,indirizzoSpedizione=? WHERE idUtente=?;");
             preparedStatement.setString(1, user.getPassword());
             preparedStatement.setString(2, user.getNome());
             preparedStatement.setString(3, user.getCognome());

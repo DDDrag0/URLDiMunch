@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDAO;
+import model.Carrello;
 import model.User;
 
 @WebServlet("/profile")
@@ -30,9 +31,8 @@ public class ProfileServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		User userN = (User) request.getSession().getAttribute("utente");
-		String idUser = request.getParameter(userN.getIdUtente());
+		
+		User user = (User) request.getSession().getAttribute("utente");
 		String passw = request.getParameter("passw");
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
@@ -41,9 +41,8 @@ public class ProfileServlet extends HttpServlet {
 		String indFatt = request.getParameter("indFatt");
 		String indSped = request.getParameter("indSped");
 		
-		User user = new User();
+		System.out.println(user.getIdUtente());
 		
-		user.setIdUtente(idUser);
         user.setPassword(passw);
         user.setNome(nome);
         user.setCognome(cognome);
