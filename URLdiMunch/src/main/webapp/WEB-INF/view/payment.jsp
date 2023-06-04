@@ -3,6 +3,15 @@
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page import="model.Prodotto" %>
 <%@ page import="model.Carrello" %>
+<%@page import="model.User" %>
+
+<%
+	User userpage = (User) session.getAttribute("utente");
+    if(userpage == null) {
+        response.sendRedirect("logIn.jsp");    
+        return;
+    }
+%>
     
 <%
     HttpSession mysession=request.getSession();
