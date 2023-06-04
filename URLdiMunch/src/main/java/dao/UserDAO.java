@@ -54,6 +54,34 @@ public class UserDAO {
         return result;
     }
     
+    public synchronized int modUser(User user) throws ClassNotFoundException {
+
+        int result = 0;
+
+        try (Connection connection = ConPool.getConnection()){
+
+            // Step 2:Create a statement using connection object
+        	PreparedStatement preparedStatement = connection.prepareStatement("UPDATE INTO utente (password,nome,cognome,email,telefono,indirizzoFatturazione,indirizzoSpedizione) VALUES (?,?,?,?,?,?,?) WHERE idUtente=?;");
+            preparedStatement.setString(1, user.getPassword());
+            preparedStatement.setString(2, user.getNome());
+            preparedStatement.setString(3, user.getCognome());
+            preparedStatement.setString(4, user.getEmail());
+            preparedStatement.setString(5, user.getTelefono());
+            preparedStatement.setString(6, user.getIndirizzoFatturazione());
+            preparedStatement.setString(7, user.getIndirizzoSpedizione());
+            preparedStatement.setString(8, user.getIdUtente());
+
+            System.out.println(preparedStatement);
+            // Step 3: Execute the query or update query
+            result = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            // process sql exception
+            printSQLException(e);
+        }
+        return result;
+    }
+    
     public synchronized boolean checkAdmin(String id) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		Boolean check = false;

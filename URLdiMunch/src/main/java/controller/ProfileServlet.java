@@ -16,15 +16,13 @@ import model.User;
 public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private UserDAO registraDAO = new UserDAO();
+	private UserDAO profileDAO = new UserDAO();
 
     public ProfileServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/DettagliUser.jsp");
@@ -32,13 +30,13 @@ public class ProfileServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String idUser = request.getParameter("idUser");
+
+		User userN = (User) request.getSession().getAttribute("utente");
+		String idUser = request.getParameter(userN.getIdUtente());
 		String passw = request.getParameter("passw");
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String email = request.getParameter("email");
-		String carta = request.getParameter("carta");
 		String telefono = request.getParameter("telefono");
 		String indFatt = request.getParameter("indFatt");
 		String indSped = request.getParameter("indSped");
@@ -50,19 +48,17 @@ public class ProfileServlet extends HttpServlet {
         user.setNome(nome);
         user.setCognome(cognome);
         user.setEmail(email);
-        user.setCarta(carta);
         user.setTelefono(telefono);
         user.setIndirizzoFatturazione(indFatt);
         user.setIndirizzoSpedizione(indSped);
 		
 		try {
-			registraDAO.registerUser(user);
+			profileDAO.modUser(user);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/logIn.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/DettagliUser.jsp");
 		dispatcher.forward(request, response);
 	}
 
