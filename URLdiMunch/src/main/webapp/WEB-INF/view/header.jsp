@@ -32,7 +32,7 @@
     <a href="prodottiCliente.jsp">prodotti</a>
     <% if(user!=null) {%>
     <form action="<%=request.getContextPath()%>/LogOut" method="post">
-			<input class="link-sidebar" type="submit" value="LogOut (elimina anche il carrello)" />
+			<input class="link-sidebar" type="submit" value="LogOut" />
 		</form>
 	<% }%>
  </div> 
