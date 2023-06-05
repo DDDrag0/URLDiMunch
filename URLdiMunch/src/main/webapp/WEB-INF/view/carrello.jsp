@@ -18,7 +18,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Snippet - BBBootstrap</title>
+<title>cart</title>
 <style>
 @font-face { font-family: Arial !important; font-display: swap !important; }
 </style>
