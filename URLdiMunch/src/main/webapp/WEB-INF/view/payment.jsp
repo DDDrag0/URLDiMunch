@@ -44,7 +44,7 @@ background: #555;
 }
 
 .card {
-    height: 380px;
+    height: 500px;
     width: 350px;
     background-color: white;
     border-radius: 10px;
@@ -183,6 +183,7 @@ background: #555;
 }</style>
 </head>
 <body classname="snippet-body">
+<form action="<%= request.getContextPath() %>/fattura" method="post">
 <div class="container">
     <div class="card">
         <div class="top">
@@ -196,10 +197,14 @@ background: #555;
             <div class="card-details"> <input type="text" placeholder="000" data-slots="0" data-accept="\d" size="3" required> <span>CVV</span> <i class="fa fa-info-circle"></i> </div>
         </div>
         <div class="card-details mt-25"> <input type="text" placeholder="Enter cardholder's full name" required> <span>Card Holder Name</span> </div>
+        <div class="card-details mt-25"> <input type="text" placeholder="Enter City" required name="citta"> <span>City</span> </div>
+        <div class="card-details mt-25"> <input type="text" placeholder="Enter Region" required name="provincia"> <span>Region</span> </div>
         <br>
-        <div class="button"> <button>Pay</button> </div>
+        <div class="button"> <button value="Submit" type="submit">Pay</button> </div>
     </div>
 </div>
+</form>
+
 <script type="text/javascript">
 	var tick=document.querySelector(".tick span");
 	var tick_mark=document.querySelector(".tick span i");

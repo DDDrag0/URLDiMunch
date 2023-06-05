@@ -11,9 +11,9 @@ public class ListaOrdini {
 	private String citta;
 	private String provincia;
 	private double prezzo;
-	private Date dataOrdine;
-	private Date dataConsegna;
-	private Date dataArrivo;
+	private String dataOrdine;
+	private String dataConsegna;
+	private String dataArrivo;
 	private double iva;
 	
 	public String getIdOrdine() {
@@ -58,22 +58,22 @@ public class ListaOrdini {
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
-	public Date getDataOrdine() {
+	public String getDataOrdine() {
 		return dataOrdine;
 	}
-	public void setDataOrdine(Date dataOrdine) {
+	public void setDataOrdine(String dataOrdine) {
 		this.dataOrdine = dataOrdine;
 	}
-	public Date getDataConsegna() {
+	public String getDataConsegna() {
 		return dataConsegna;
 	}
-	public void setDataConsegna(Date dataConsegna) {
+	public void setDataConsegna(String dataConsegna) {
 		this.dataConsegna = dataConsegna;
 	}
-	public Date getDataArrivo() {
+	public String getDataArrivo() {
 		return dataArrivo;
 	}
-	public void setDataArrivo(Date dataArrivo) {
+	public void setDataArrivo(String dataArrivo) {
 		this.dataArrivo = dataArrivo;
 	}
 	public double getIva() {

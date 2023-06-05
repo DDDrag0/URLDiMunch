@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.Random;
 
 import model.ConPool;
 import model.ListaOrdini;
@@ -13,16 +14,35 @@ import model.ListaOrdini;
 public class ListaOrdiniDAO {
 	    
 	    public synchronized void CreaOrdine(ListaOrdini listaOrdini) throws ClassNotFoundException {
-
+			Random rand = new Random();
+			String co = null;
 	        try (Connection connection = ConPool.getConnection()){
 
 	            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO listaOrdini (idOrdine,nomeProdotto,prezzo,dataOrdine,dataConsegna,dataArrivo,indirizzoConsegna,citta,provincia, descrizioneProdotto, iva) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
-	            preparedStatement.setString(1, listaOrdini.getIdOrdine());
+	            PreparedStatement checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine="+co);
+	            int ordine_valido=0, ordine_invalido=0;
+				while(ordine_valido==0) {
+					int codr = rand.nextInt(999999999);
+					co= "ord-"+codr;
+					ResultSet resultSet = checkcodice.executeQuery();
+					while (resultSet.next()) {
+						String codTess= resultSet.getString("codice");
+						if(co.equals(codTess)) {
+							ordine_invalido=1;
+						}
+					}
+					if(ordine_invalido==0) {
+						ordine_valido=1;
+					}
+				}
+				System.out.println("Il codice ordine sarà: "+co);
+	            
+	            preparedStatement.setString(1, co);
 	            preparedStatement.setString(2, listaOrdini.getNomeProdotto());
 	            preparedStatement.setDouble(3, listaOrdini.getPrezzo());
-	            preparedStatement.setDate(4, listaOrdini.getDataOrdine());
-	            preparedStatement.setDate(5, listaOrdini.getDataConsegna());
-	            preparedStatement.setDate(6, listaOrdini.getDataArrivo());
+	            preparedStatement.setString(4, listaOrdini.getDataOrdine());
+	            preparedStatement.setString(5, listaOrdini.getDataConsegna());
+	            preparedStatement.setString(6, listaOrdini.getDataArrivo());
 	            preparedStatement.setString(7, listaOrdini.getIndirizzoConsegna());
 	            preparedStatement.setString(8, listaOrdini.getCitta());
 	            preparedStatement.setString(9, listaOrdini.getProvincia());
@@ -52,9 +72,9 @@ public class ListaOrdiniDAO {
 					ordine.setIdOrdine(rs.getString("idOrdine"));
 					ordine.setNomeProdotto(rs.getString("nomeProdotto"));
 					ordine.setPrezzo(rs.getDouble("prezzo"));
-					ordine.setDataOrdine(rs.getDate("dataOrdine"));
-					ordine.setDataConsegna(rs.getDate("dataConsegna"));
-					ordine.setDataArrivo(rs.getDate("dataArrivo"));
+					ordine.setDataOrdine(rs.getString("dataOrdine"));
+					ordine.setDataConsegna(rs.getString("dataConsegna"));
+					ordine.setDataArrivo(rs.getString("dataArrivo"));
 					ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
 					ordine.setCitta(rs.getString("citta"));
 					ordine.setProvincia(rs.getString("provincia"));
@@ -115,9 +135,9 @@ public class ListaOrdiniDAO {
 					ordine.setIdOrdine(rs.getString("idOrdine"));
 					ordine.setNomeProdotto(rs.getString("nomeProdotto"));
 					ordine.setPrezzo(rs.getDouble("prezzo"));
-					ordine.setDataOrdine(rs.getDate("dataOrdine"));
-					ordine.setDataConsegna(rs.getDate("dataConsegna"));
-					ordine.setDataArrivo(rs.getDate("dataArrivo"));
+					ordine.setDataOrdine(rs.getString("dataOrdine"));
+					ordine.setDataConsegna(rs.getString("dataConsegna"));
+					ordine.setDataArrivo(rs.getString("dataArrivo"));
 					ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
 					ordine.setCitta(rs.getString("citta"));
 					ordine.setProvincia(rs.getString("provincia"));
