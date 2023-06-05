@@ -6,8 +6,8 @@
 <%@page import="model.User" %>
 
 <%
-	User userpage = (User) session.getAttribute("utente");
-    if(userpage == null) {
+	User user = (User) session.getAttribute("utente");
+    if(user == null) {
         response.sendRedirect("logIn.jsp");    
         return;
     }
@@ -69,14 +69,12 @@
     <div class="pagamento">
         <h2>pay details</h2>
         <form action="processaPagamento.jsp" method="post">
-            <label for="nome">Name:</label>
-            <input type="text" id="nome" name="nome" required><br>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
-
-            <label for="carta">Card number:</label>
-            <input type="text" id="carta" name="carta" required><br>
+            
+            <label class="labels">Email ID</label><input type="text" class="form-control" placeholder="<%= user.getEmail()%>" value="<%= user.getEmail()%>" name="email" required>
+            
+            <label class="labels">Invoice Address</label><input type="text" class="form-control" placeholder="<%= user.getIndirizzoFatturazione()%>" value="<%= user.getIndirizzoFatturazione()%>" name="indFatt" required>
+			
+			<label class="labels">Delivery Address</label><input type="text" class="form-control" placeholder="<%= user.getIndirizzoSpedizione()%>" value="<%= user.getIndirizzoSpedizione()%>" name="indSped" required>
 
             <!-- Aggiungi altri campi per i dati di pagamento come indirizzo, città, etc. -->
 
@@ -85,7 +83,7 @@
      </div>
      <script>
      			function redirectToBuyPage() {
-     				window.location.href = "listaOrdini.jsp"
+     				window.location.href = "card&payment.jsp"
      			}
      </script>
    </body>
