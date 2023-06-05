@@ -68,7 +68,7 @@
     </table>
     <div class="pagamento">
         <h2>pay details</h2>
-        <form action="processaPagamento.jsp" method="post">
+        <form action="card&payment.jsp" method="post">
             
             <label class="labels">Email ID</label><input type="text" class="form-control" placeholder="<%= user.getEmail()%>" value="<%= user.getEmail()%>" name="email" required>
             
