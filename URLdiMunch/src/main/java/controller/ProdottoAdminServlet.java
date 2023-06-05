@@ -64,8 +64,6 @@ public class ProdottoAdminServlet extends HttpServlet {
 					int price = Integer.parseInt(request.getParameter("price"));
 					int quantity = Integer.parseInt(request.getParameter("quantity"));
 					
-					
-					//response.sendRedirect("carrello.jsp");	perchè non guardi le servlet?
 					Prodotto prodotto = new Prodotto();
 					prodotto.setNome(name);
 					prodotto.setDescrizione(description);

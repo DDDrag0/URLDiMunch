@@ -43,14 +43,10 @@ public class ProdottoClienteServlet extends HttpServlet {
 					String id = request.getParameter("id");
 					cart.addProduct(prodottodao.doRetrieveByKey(id));
 					request.setAttribute("cart", cart);
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp");
-					dispatcher.forward(request, response);
 				} else if (action.equalsIgnoreCase("deleteC")) {
 					String id = request.getParameter("id");
 					cart.deleteProduct(prodottodao.doRetrieveByKey(id));
 					request.setAttribute("cart", cart);
-					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp");
-					dispatcher.forward(request, response);
 				} else if (action.equalsIgnoreCase("read")) {
 					String id = request.getParameter("id");
 					request.removeAttribute("product");
@@ -64,8 +60,6 @@ public class ProdottoClienteServlet extends HttpServlet {
 					int price = Integer.parseInt(request.getParameter("price"));
 					int quantity = Integer.parseInt(request.getParameter("quantity"));
 					
-					
-					//response.sendRedirect("carrello.jsp");	perchè no napoli justin?
 					Prodotto prodotto = new Prodotto();
 					prodotto.setNome(name);
 					prodotto.setDescrizione(description);
