@@ -1,73 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="model.Prodotto" %>
-<%@ page import="model.Carrello" %>
-<%
-	Collection<?> products = (Collection<?>) request.getAttribute("products");
-	if(products == null) {
-		response.sendRedirect("./prodottoCliente");	
-		return;
-	}
-	
-	Prodotto product = (Prodotto) request.getAttribute("product");
-	
-	Carrello cart = (Carrello) request.getAttribute("cart");
-%>
-
 <!DOCTYPE html>
 <html>
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,model.Prodotto,model.Carrello"%>
-
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Storage DS/BF</title>
-	<link href="header.css" rel="stylesheet" type="text/css">
+  <title>Art E-commerce</title>
+  <link rel="stylesheet" type="text/css" href="prodotticliente.css">
 </head>
-
 <body>
-<%@ include file="header.jsp" %>
-	<h2>Products</h2>
-	<br> 
-	<a href="index.jsp">Home</a>
-	<table border="1">
-		<tr>
-			<th>Code 		<a href="prodottoCliente?sort=code">Sort</a></th>
-			<th>Name 		<a href="prodottoCliente?sort=name">Sort</a></th>
-			<th>Description <a href="prodottoCliente?sort=description">Sort</a></th>
-			<th>Image</th>     <!--bho -->
-			<th>Action</th>
-		</tr>
-		<%
-			if (products != null && products.size() != 0) {
-				Iterator<?> it = products.iterator();
-				while (it.hasNext()) {
-					Prodotto bean = (Prodotto) it.next();
-		%>
-		<tr>
-			<td><%=bean.getIdProdotto()%></td>
-			<td><%=bean.getNome()%></td>
-			<td><%=bean.getDescrizione()%></td>
-			<td><img width="200" src="${pageContext.request.contextPath}<%=bean.getImagepath()%>" alt=<%=bean.getNome()%>></td>
-			<td><a href="details.jsp?code=<%=bean.getIdProdotto()%>&image=<%=bean.getImagepath()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantità()%>">Details</a><br>
-				<a href="prodottoCliente?action=addC&id=<%=bean.getIdProdotto()%>">Add to cart</a>
-				</td>
-		</tr>
-		<%
-				}
-			} else {
-		%>
-		<tr>
-			<td colspan="6">No products available</td>
-		</tr>
-		<%
-			}
-		%>
-	</table>
- <%@ include file="footer.jsp" %>
+  <div class="slider">
+    <div class="slider-arrow left-arrow">&lt;</div>
+    <div class="slider-arrow right-arrow">&gt;</div>
+    <div class="slider-container">
+      <div class="product-card">
+        <div class="front">
+        <img src="foto1.png" alt="product">
+        </div>
+        <div class="back">
+          <p>The Mona Lisa is a half-length portrait painting by the Italian artist Leonardo da Vinci.</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="front"><img src="foto1.png" alt="product"></div>
+        <div class="back">
+          <p>Description of Artwork 2</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="front"></div>
+        <div class="back">
+          <p>Description of Artwork 3</p>
+        </div>
+      </div>
+      <!-- Add more product cards here -->
+    </div>
+  </div>
 
-
-
-
+  <script src="prodotticliente.js"></script>
 </body>
-</html> 
+</html>
