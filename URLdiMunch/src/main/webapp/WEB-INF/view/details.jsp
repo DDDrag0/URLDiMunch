@@ -15,11 +15,13 @@
 
     <html>
     <head>
+		<link href="header.css" rel="stylesheet" type="text/css">
     		 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     		 <title> details</title>
     </head>
     
     <body>
+		<%@ include file="header.jsp" %>
     		<h2> Product details</h2>
     		<table border="1">
     				<tr>

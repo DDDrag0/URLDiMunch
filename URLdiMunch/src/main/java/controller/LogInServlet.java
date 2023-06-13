@@ -50,7 +50,7 @@ public class LogInServlet extends HttpServlet {
             	user= loginDAO.ricercaUser(idutente);
             	request.getSession().setAttribute("utente", user);
             	if(loginDAO.checkAdmin(idutente)) {
-    				request.getSession().setAttribute("adminRoles", new Boolean(true)); //da cancellare dopo
+    				request.getSession().setAttribute("adminRoles", new Boolean(true));
             	}
             	else {
     				request.getSession().setAttribute("adminRoles", new Boolean(false));

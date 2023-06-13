@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -84,7 +85,50 @@ public class ProdottoDAO {
         }
 		return prodotto;
     }
+	
 
+	public synchronized ArrayList<Prodotto> RicercaProdottoNome(String nome) throws SQLException {
+		PreparedStatement preparedStatement = null;
+
+        ArrayList<Prodotto> a = new ArrayList<Prodotto>();
+
+		String selectSQL = "SELECT * FROM prodotto WHERE nome LIKE concat('%',?,'%')";
+
+		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, nome);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				Prodotto prodotto = new Prodotto();
+				prodotto.setIdProdotto(rs.getString("idProdotto"));
+				prodotto.setNome(rs.getString("nome"));
+				prodotto.setArtista(rs.getString("artista"));
+				prodotto.setTipo(rs.getString("tipo"));
+				prodotto.setEpoca(rs.getString("epoca"));
+				prodotto.setDimensioni(rs.getString("dimensioni"));
+				prodotto.setDescrizione(rs.getString("descrizione"));
+				prodotto.setQuantità(rs.getInt("quantità"));
+				prodotto.setTipoPittura(rs.getString("tipoPittura"));
+				prodotto.setCornice(rs.getInt("cornice"));
+				prodotto.setMateriale(rs.getString("materiale"));
+				prodotto.setColori(rs.getString("colori"));
+				prodotto.setTipoStampa(rs.getString("tipoStampa"));
+				prodotto.setIva(rs.getDouble("iva"));
+				prodotto.setPrezzo(rs.getDouble("prezzo"));
+				prodotto.setImagepath(rs.getString("imagepath"));
+
+				a.add(prodotto);
+			}
+		}
+		catch (SQLException e) {
+            // process sql exception
+            printSQLException(e);
+        }
+		return a;
+    }
+	
 	public synchronized boolean doDelete(String code) throws SQLException {
 		
 		PreparedStatement preparedStatement = null;

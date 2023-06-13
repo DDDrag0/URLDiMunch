@@ -46,8 +46,10 @@
     <a href="#">URLdiMunch</a> 
   </div>
   <div class="search-bar">
-    <input type="text" placeholder="Cerca...">
-    <button class="search-button">search</button>
+	<form action="SearchServlet" method="post">
+    <input type="text" placeholder="ParitoAnnuro..." id="ajaxsearch">
+    <div id="searchResult" style="display: none;"></div>
+    </form>
   </div>
   <div class="user-buttons">
     <button onclick="<%=commandLogin%>"><%=login%></button>
@@ -78,6 +80,8 @@ function toggleSidebar() {
 	sidebar.classList.toggle("open");
 }
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="search.js"></script>
 </body>
 
 
