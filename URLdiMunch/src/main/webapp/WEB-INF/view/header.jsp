@@ -43,7 +43,7 @@
     <span class="line"></span>
   </div>
   <div class="logo">
-    <a href="#">URLdiMunch</a> 
+    <a href="index.jsp">URLdiMunch</a> 
   </div>
   <div class="search-bar">
 	<form action="SearchServlet" method="post">
