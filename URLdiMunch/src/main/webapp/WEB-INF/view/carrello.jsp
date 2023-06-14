@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+  	<link href="header.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="carrello.css">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,6 +25,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <h1>Shopping Cart</h1>
 
 <div class="shopping-cart">
@@ -98,7 +99,6 @@
   </div>
       
       <button class="checkout">Checkout</button>
- <a href="index.jsp" class="button-home">Home</a>
 </div>
 <script src="carrello.js"></script>
 </body></html>
