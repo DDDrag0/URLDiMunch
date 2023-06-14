@@ -17,7 +17,7 @@ public class ProdottoDAO {
 		
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO prodotto (idProdotto,nome, artista, tipo, epoca, dimensioni, descrizione, quantità, tipoPittura, cornice, materiale, colori, tipoStampa, iva, prezzo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String insertSQL = "INSERT INTO prodotto (idProdotto,nome, artista, tipo, epoca, dimensioni, descrizione, quantità, iva, prezzo) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 		try (Connection connection = ConPool.getConnection()){
 			preparedStatement = connection.prepareStatement(insertSQL);
@@ -29,14 +29,9 @@ public class ProdottoDAO {
 			preparedStatement.setString(6, product.getDimensioni());
 			preparedStatement.setString(7, product.getDescrizione());
 			preparedStatement.setInt(8, product.getQuantità());
-			preparedStatement.setString(9, product.getTipoPittura());
-			preparedStatement.setInt(10, product.getCornice());
-			preparedStatement.setString(11, product.getMateriale());
-			preparedStatement.setString(12, product.getColori());
-			preparedStatement.setString(13, product.getTipoStampa());
-			preparedStatement.setDouble(14, product.getIva());
-			preparedStatement.setDouble(15, product.getPrezzo());
-			preparedStatement.setString(16, product.getImagepath());
+			preparedStatement.setDouble(9, product.getIva());
+			preparedStatement.setDouble(10, product.getPrezzo());
+			//preparedStatement.setString(11, product.getImagepath());
 
 			connection.commit();
 		}
@@ -68,11 +63,6 @@ public class ProdottoDAO {
 				prodotto.setDimensioni(rs.getString("dimensioni"));
 				prodotto.setDescrizione(rs.getString("descrizione"));
 				prodotto.setQuantità(rs.getInt("quantità"));
-				prodotto.setTipoPittura(rs.getString("tipoPittura"));
-				prodotto.setCornice(rs.getInt("cornice"));
-				prodotto.setMateriale(rs.getString("materiale"));
-				prodotto.setColori(rs.getString("colori"));
-				prodotto.setTipoStampa(rs.getString("tipoStampa"));
 				prodotto.setIva(rs.getDouble("iva"));
 				prodotto.setPrezzo(rs.getDouble("prezzo"));
 				prodotto.setImagepath(rs.getString("imagepath"));
@@ -110,11 +100,6 @@ public class ProdottoDAO {
 				prodotto.setDimensioni(rs.getString("dimensioni"));
 				prodotto.setDescrizione(rs.getString("descrizione"));
 				prodotto.setQuantità(rs.getInt("quantità"));
-				prodotto.setTipoPittura(rs.getString("tipoPittura"));
-				prodotto.setCornice(rs.getInt("cornice"));
-				prodotto.setMateriale(rs.getString("materiale"));
-				prodotto.setColori(rs.getString("colori"));
-				prodotto.setTipoStampa(rs.getString("tipoStampa"));
 				prodotto.setIva(rs.getDouble("iva"));
 				prodotto.setPrezzo(rs.getDouble("prezzo"));
 				prodotto.setImagepath(rs.getString("imagepath"));
@@ -179,11 +164,6 @@ public class ProdottoDAO {
 				prodotto.setDimensioni(rs.getString("dimensioni"));
 				prodotto.setDescrizione(rs.getString("descrizione"));
 				prodotto.setQuantità(rs.getInt("quantità"));
-				prodotto.setTipoPittura(rs.getString("tipoPittura"));
-				prodotto.setCornice(rs.getInt("cornice"));
-				prodotto.setMateriale(rs.getString("materiale"));
-				prodotto.setColori(rs.getString("colori"));
-				prodotto.setTipoStampa(rs.getString("tipoStampa"));
 				prodotto.setIva(rs.getDouble("iva"));
 				prodotto.setPrezzo(rs.getDouble("prezzo"));
 				prodotto.setImagepath(rs.getString("imagepath"));
