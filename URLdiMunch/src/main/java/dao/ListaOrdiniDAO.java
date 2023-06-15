@@ -19,7 +19,7 @@ public class ListaOrdiniDAO {
 	        try (Connection connection = ConPool.getConnection()){
 
 	            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO listaOrdini (idOrdine,nomeProdotto,prezzo,dataOrdine,dataConsegna,dataArrivo,"
-	            																+ "indirizzoConsegna,citta,provincia, iva) VALUES (?,?,?,?,?,?,?,?,?,?);");
+	            																+ "indirizzoConsegna, iva) VALUES (?,?,?,?,?,?,?,?);");
 	            PreparedStatement checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine="+co);
 	            int ordine_valido=0, ordine_invalido=0;
 				while(ordine_valido==0) {
@@ -45,8 +45,6 @@ public class ListaOrdiniDAO {
 	            preparedStatement.setString(5, listaOrdini.getDataConsegna());
 	            preparedStatement.setString(6, listaOrdini.getDataArrivo());
 	            preparedStatement.setString(7, listaOrdini.getIndirizzoConsegna());
-	            preparedStatement.setString(8, listaOrdini.getCitta());
-	            preparedStatement.setString(9, listaOrdini.getProvincia());
 	            preparedStatement.setDouble(10, listaOrdini.getIva());
 	            System.out.println(preparedStatement);
 
@@ -76,8 +74,6 @@ public class ListaOrdiniDAO {
 					ordine.setDataConsegna(rs.getString("dataConsegna"));
 					ordine.setDataArrivo(rs.getString("dataArrivo"));
 					ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
-					ordine.setCitta(rs.getString("citta"));
-					ordine.setProvincia(rs.getString("provincia"));
 					ordine.setIva(rs.getDouble("iva"));
 				}
 
@@ -132,14 +128,12 @@ public class ListaOrdiniDAO {
 					ListaOrdini ordine = new ListaOrdini();
 
 					ordine.setIdOrdine(rs.getString("idOrdine"));
-					ordine.setNomeProdotto(rs.getString("nomeProdotto"));
+					ordine.setIdProdotto(rs.getString("nomeProdotto"));
 					ordine.setPrezzo(rs.getDouble("prezzo"));
 					ordine.setDataOrdine(rs.getString("dataOrdine"));
 					ordine.setDataConsegna(rs.getString("dataConsegna"));
 					ordine.setDataArrivo(rs.getString("dataArrivo"));
 					ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
-					ordine.setCitta(rs.getString("citta"));
-					ordine.setProvincia(rs.getString("provincia"));
 					ordine.setIva(rs.getDouble("iva"));
 					
 					orders.add(ordine);

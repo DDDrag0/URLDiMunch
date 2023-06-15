@@ -1,6 +1,5 @@
 package model;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 public class ListaOrdini {
@@ -9,8 +8,6 @@ public class ListaOrdini {
 	private ArrayList<String> nomeProdotto;
 	private ArrayList<String> idProdotto;
 	private String indirizzoConsegna;
-	private String citta;
-	private String provincia;
 	private double prezzo;
 	private String dataOrdine;
 	private String dataConsegna;
@@ -40,18 +37,6 @@ public class ListaOrdini {
 	}
 	public void setIndirizzoConsegna(String indirizzoConsegna) {
 		this.indirizzoConsegna = indirizzoConsegna;
-	}
-	public String getCitta() {
-		return citta;
-	}
-	public void setCitta(String citta) {
-		this.citta = citta;
-	}
-	public String getProvincia() {
-		return provincia;
-	}
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
 	}
 	public double getPrezzo() {
 		return prezzo;
@@ -86,8 +71,7 @@ public class ListaOrdini {
 	@Override
 	public String toString() {
 		return "ListaOrdini [idOrdine=" + idOrdine + ", nomeProdotto=" + nomeProdotto 
-				+ ", indirizzoConsegna=" + indirizzoConsegna + ", citta=" + citta + ", provincia=" + provincia
-				+ ", prezzo=" + prezzo + ", dataOrdine=" + dataOrdine + ", dataConsegna=" + dataConsegna
-				+ ", dataArrivo=" + dataArrivo + ", iva=" + iva + "]";
+				+ ", indirizzoConsegna=" + indirizzoConsegna + ", prezzo=" + prezzo + ", dataOrdine=" + dataOrdine 
+				+ ", dataConsegna=" + dataConsegna + ", dataArrivo=" + dataArrivo + ", iva=" + iva + "]";
 	}
 }
