@@ -1,12 +1,13 @@
 package model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class ListaOrdini {
 
 	private String idOrdine;
-	private String nomeProdotto;
-	private String descrizione;
+	private ArrayList<String> nomeProdotto;
+	private ArrayList<String> idProdotto;
 	private String indirizzoConsegna;
 	private String citta;
 	private String provincia;
@@ -22,17 +23,17 @@ public class ListaOrdini {
 	public void setIdOrdine(String idOrdine) {
 		this.idOrdine = idOrdine;
 	}
-	public String getNomeProdotto() {
+	public ArrayList<String> getNomeProdotto() {
 		return nomeProdotto;
 	}
-	public void setNomeProdotto(String nomeProdotto) {
+	public void setNomeProdotto(ArrayList<String> nomeProdotto) {
 		this.nomeProdotto = nomeProdotto;
 	}
-	public String getDescrizione() {
-		return descrizione;
+	public ArrayList<String> getIdProdotto() {
+		return idProdotto;
 	}
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
+	public void setIdProdotto(ArrayList<String> idProdotto) {
+		this.idProdotto = idProdotto;
 	}
 	public String getIndirizzoConsegna() {
 		return indirizzoConsegna;
@@ -84,7 +85,7 @@ public class ListaOrdini {
 	}
 	@Override
 	public String toString() {
-		return "ListaOrdini [idOrdine=" + idOrdine + ", nomeProdotto=" + nomeProdotto + ", descrizione=" + descrizione
+		return "ListaOrdini [idOrdine=" + idOrdine + ", nomeProdotto=" + nomeProdotto 
 				+ ", indirizzoConsegna=" + indirizzoConsegna + ", citta=" + citta + ", provincia=" + provincia
 				+ ", prezzo=" + prezzo + ", dataOrdine=" + dataOrdine + ", dataConsegna=" + dataConsegna
 				+ ", dataArrivo=" + dataArrivo + ", iva=" + iva + "]";

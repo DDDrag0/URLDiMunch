@@ -18,7 +18,8 @@ public class ListaOrdiniDAO {
 			String co = null;
 	        try (Connection connection = ConPool.getConnection()){
 
-	            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO listaOrdini (idOrdine,nomeProdotto,prezzo,dataOrdine,dataConsegna,dataArrivo,indirizzoConsegna,citta,provincia, descrizioneProdotto, iva) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
+	            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO listaOrdini (idOrdine,nomeProdotto,prezzo,dataOrdine,dataConsegna,dataArrivo,"
+	            																+ "indirizzoConsegna,citta,provincia, iva) VALUES (?,?,?,?,?,?,?,?,?,?);");
 	            PreparedStatement checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine="+co);
 	            int ordine_valido=0, ordine_invalido=0;
 				while(ordine_valido==0) {
@@ -46,8 +47,7 @@ public class ListaOrdiniDAO {
 	            preparedStatement.setString(7, listaOrdini.getIndirizzoConsegna());
 	            preparedStatement.setString(8, listaOrdini.getCitta());
 	            preparedStatement.setString(9, listaOrdini.getProvincia());
-	            preparedStatement.setString(10, listaOrdini.getDescrizione());
-	            preparedStatement.setDouble(11, listaOrdini.getIva());
+	            preparedStatement.setDouble(10, listaOrdini.getIva());
 	            System.out.println(preparedStatement);
 
 	        } catch (SQLException e) {
@@ -78,7 +78,6 @@ public class ListaOrdiniDAO {
 					ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
 					ordine.setCitta(rs.getString("citta"));
 					ordine.setProvincia(rs.getString("provincia"));
-					ordine.setDescrizione(rs.getString("descrizione"));
 					ordine.setIva(rs.getDouble("iva"));
 				}
 
@@ -141,7 +140,6 @@ public class ListaOrdiniDAO {
 					ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
 					ordine.setCitta(rs.getString("citta"));
 					ordine.setProvincia(rs.getString("provincia"));
-					ordine.setDescrizione(rs.getString("descrizione"));
 					ordine.setIva(rs.getDouble("iva"));
 					
 					orders.add(ordine);
