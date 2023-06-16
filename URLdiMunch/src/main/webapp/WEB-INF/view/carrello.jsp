@@ -38,36 +38,23 @@
     <label class="product-removal">Remove</label>
     <label class="product-line-price">Total</label>
   </div>
-
+  
+	<%
+            double grandTotal = 0;
+            for ( Prodotto product : cart.getProducts()) {
+                double total = product.getPrezzo() * product.getQuantità();
+                grandTotal += total;
+        %>
+        
   <div class="product">
     <div class="product-image">
-      <img src="foto1.png">
+      <img src="${pageContext.request.contextPath}<%=product.getImagepath()%>" alt="<%=product.getNome()%>">
     </div>
     <div class="product-details">
-      <div class="product-title">statua</div>
-      <p class="product-description">statua</p>
+      <div class="product-title"><%=product.getNome()%></div>
+      <p class="product-description"><%=product.getDescrizione()%></p>
     </div>
-    <div class="product-price">12.99</div>
-    <div class="product-quantity">
-      <input type="number" value="2" min="1">
-    </div>
-    <div class="product-removal">
-      <button class="remove-product">
-        Remove
-      </button>
-    </div>
-    <div class="product-line-price">25.98</div>
-  </div>
-
-  <div class="product">
-    <div class="product-image">
-      <img src="foto2.png">
-    </div>
-    <div class="product-details">
-      <div class="product-title">statua</div>
-      <p class="product-description">statua</p>
-    </div>
-    <div class="product-price">45.99</div>
+    <div class="product-price"><%=product.getPrezzo()%></div>
     <div class="product-quantity">
       <input type="number" value="1" min="1">
     </div>
@@ -76,8 +63,12 @@
         Remove
       </button>
     </div>
-    <div class="product-line-price">45.99</div>
+    <div class="product-line-price">25.98</div>
   </div>
+  
+  <%
+            }
+        %>
 
   <div class="totals">
     <div class="totals-item">
