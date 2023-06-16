@@ -30,75 +30,38 @@
 <body>
 <div class="container">
   <div id="products" class="row list-group">
+  
+		<%
+			if (products != null && products.size() != 0) {
+				Iterator<?> it = products.iterator();
+				while (it.hasNext()) {
+					Prodotto bean = (Prodotto) it.next();
+		%>
+		
     <div class="item col-xs-4 col-md-3">
       <div class="thumbnail">
-        <img class="group list-group-image" src="foto1.png" alt="" />
+        <img class="group list-group-image" src="${pageContext.request.contextPath}<%=bean.getImagepath()%>" alt="<%=bean.getNome()%>" />
         <div class="caption">
-          <h4 class="group inner list-group-item-heading">statua</h4>
-          <p class="group inner list-group-item-text">$2,100</p>
+          <h4 class="group inner list-group-item-heading"><%=bean.getNome()%></h4>
+          <p class="group inner list-group-item-text">$<%=bean.getPrezzo()%></p>
         </div>
         <div class="btn-group">
-          <a class="btn btn-details" href="details.jsp">Details</a>
-          <a class="btn btn-cart" href="carrello.jsp">Add to Cart</a>
+          <a class="btn btn-details" href="details.jsp?code=<%=bean.getIdProdotto()%>&image=<%=bean.getImagepath()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantità()%>">Details</a>
+          <a class="btn btn-cart" href="prodottoCliente?action=addC&id=<%=bean.getIdProdotto()%>">Add to Cart</a>
         </div>
       </div>
     </div>
-
-    <div class="item col-xs-4 col-md-3">
-      <div class="thumbnail">
-        <img class="group list-group-image" src="foto1.png" alt="" />
-        <div class="caption">
-          <h4 class="group inner list-group-item-heading">elemento2.1</h4>
-          <p class="group inner list-group-item-text">$1,500</p>
-        </div>
-        <div class="btn-group">
-          <a class="btn btn-details" href="details.jsp">Details</a>
-          <a class="btn btn-cart" href="carrello.jsp">Add to Cart</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="item col-xs-4 col-md-3">
-      <div class="thumbnail">
-        <img class="group list-group-image" src="foto1.png" alt="" />
-        <div class="caption">
-          <h4 class="group inner list-group-item-heading">elemento3</h4>
-          <p class="group inner list-group-item-text">$800</p>
-        </div>
-        <div class="btn-group">
-          <a class="btn btn-details" href="details.jsp">Details</a>
-          <a class="btn btn-cart" href="carrello.jsp">Add to Cart</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="item col-xs-4 col-md-3">
-      <div class="thumbnail">
-        <img class="group list-group-image" src="foto1.png" alt="" />
-        <div class="caption">
-          <h4 class="group inner list-group-item-heading">elemento4</h4>
-          <p class="group inner list-group-item-text">$3,200</p>
-        </div>
-        <div class="btn-group">
-          <a class="btn btn-details" href="details.jsp">Details</a>
-          <a class="btn btn-cart" href="carrello.jsp">Add to Cart</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="item col-xs-4 col-md-3">
-      <div class="thumbnail">
-        <img class="group list-group-image" src="foto1.png" alt="" />
-        <div class="caption">
-          <h4 class="group inner list-group-item-heading">elemento5</h4>
-          <p class="group inner list-group-item-text">$2,700</p>
-        </div>
-        <div class="btn-group">
-          <a class="btn btn-details" href="details.jsp">Details</a>
-          <a class="btn btn-cart" href="carrello.jsp">Add to Cart</a>
-        </div>
-      </div>
-    </div>
+    
+		<%
+				}
+			} else {
+		%>
+    
+    <a>No products available</a>
+		<%
+			}
+		%>
+    
   </div>
 </div>
  <%@ include file="footer.jsp" %>
