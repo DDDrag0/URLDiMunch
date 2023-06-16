@@ -19,9 +19,9 @@
 	<style>
 		@font-face { font-family: Arial !important; font-display: swap !important; }
 	</style>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="styleSheetUser.css" rel="stylesheet">
 	<link href="#" rel="stylesheet">
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="jQueryUser.js"></script>
 	<style>
 		::-webkit-scrollbar {
 		width: 8px;

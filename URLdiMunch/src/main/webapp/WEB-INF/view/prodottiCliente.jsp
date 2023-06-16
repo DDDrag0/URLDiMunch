@@ -24,7 +24,7 @@
 	<title>Storage DS/BF</title>
 	<link href="header.css" rel="stylesheet" type="text/css">
 	<link href="prodotticliente.css" rel="stylesheet" type="text/css">
-	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <link rel="stylesheet" href="styleProdottiCliente.css">
 	</head>
 <%@ include file="header.jsp" %>
 <body>
@@ -103,9 +103,9 @@
 </div>
  <%@ include file="footer.jsp" %>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="jQueryProdottiCliente.js"></script>
 <script src="prodotticlienti.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="jsProdottiCliente.js"></script>
 	
 </body>
 </html> 
