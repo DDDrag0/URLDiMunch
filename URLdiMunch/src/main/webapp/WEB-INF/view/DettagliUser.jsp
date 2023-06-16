@@ -15,7 +15,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>MyProfile</title>
+	<title>Profile</title>
 	<style>
 		@font-face { font-family: Arial !important; font-display: swap !important; }
 	</style>
