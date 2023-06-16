@@ -48,7 +48,7 @@
       <div class="thumbnail">
         <img class="group list-group-image" src="foto1.png" alt="" />
         <div class="caption">
-          <h4 class="group inner list-group-item-heading">elemento2</h4>
+          <h4 class="group inner list-group-item-heading">elemento2.1</h4>
           <p class="group inner list-group-item-text">$1,500</p>
         </div>
         <div class="btn-group">
