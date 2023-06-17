@@ -59,6 +59,7 @@
       <input type="number" value="1" min="1">
     </div>
     <div class="product-removal">
+    <a class="remove-product" href="prodottoCliente?action=deleteC&id=<%=product.getIdProdotto()%>">Remove</a>
       <button class="remove-product">
         Remove
       </button>

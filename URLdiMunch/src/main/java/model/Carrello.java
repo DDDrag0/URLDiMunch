@@ -17,7 +17,7 @@ public class Carrello {
 	
 	public void deleteProduct(Prodotto product) {
 		for(Prodotto prod : prodotto) {
-			if(prod.getIdProdotto() == product.getIdProdotto()) {
+			if(prod.getIdProdotto().equals(product.getIdProdotto())) {
 				prodotto.remove(prod);
 				break;
 			}

@@ -36,6 +36,7 @@ public class ProdottoClienteServlet extends HttpServlet {
 		}
 		
 		String action = request.getParameter("action");
+		String link="/prodottiCliente.jsp";
 
 		try {
 			if (action != null) {
@@ -43,29 +44,21 @@ public class ProdottoClienteServlet extends HttpServlet {
 					String id = request.getParameter("id");
 					cart.addProduct(prodottodao.doRetrieveByKey(id));
 					request.setAttribute("cart", cart);
-				} else if (action.equalsIgnoreCase("deleteC")) {
+					link="/prodottiCliente.jsp";
+				} 
+				
+				else if (action.equalsIgnoreCase("deleteC")) {
 					String id = request.getParameter("id");
 					cart.deleteProduct(prodottodao.doRetrieveByKey(id));
 					request.setAttribute("cart", cart);
-				} else if (action.equalsIgnoreCase("read")) {
+					link="/carrello.jsp";
+				} 
+				
+				else if (action.equalsIgnoreCase("read")) {
 					String id = request.getParameter("id");
 					request.removeAttribute("product");
 					request.setAttribute("product", prodottodao.doRetrieveByKey(id));
-				} else if (action.equalsIgnoreCase("delete")) {
-					String id = request.getParameter("id");
-					prodottodao.doDelete(id);
-				} else if (action.equalsIgnoreCase("insert")) {
-					String name = request.getParameter("name");
-					String description = request.getParameter("description");
-					int price = Integer.parseInt(request.getParameter("price"));
-					int quantity = Integer.parseInt(request.getParameter("quantity"));
-					
-					Prodotto prodotto = new Prodotto();
-					prodotto.setNome(name);
-					prodotto.setDescrizione(description);
-					prodotto.setPrezzo(price);
-					prodotto.setQuantità(quantity);
-					prodottodao.doSave(prodotto);
+					link="/prodottiCliente.jsp";
 				}
 			}			
 		} catch (SQLException e) {
@@ -85,7 +78,7 @@ public class ProdottoClienteServlet extends HttpServlet {
 			System.out.println("Error:" + e.getMessage());
 		}
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/prodottiCliente.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(link);
 		dispatcher.forward(request, response);
 	}
 

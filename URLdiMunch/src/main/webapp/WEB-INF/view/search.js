@@ -7,15 +7,14 @@ $('#ajaxsearch').on('input focus', function(e) {
     if (value && value.length >0){
 		let url = "SearchAjaxServlet?cerca="+value;
 	    $.get( url , function( data ) {
-	  		//$( ".result" ).html( data );
-	  		//alert( data);
 	  		$("#searchResult").html("");
 	  		
 	  		if (data && data.length > 0){
 		
 				for (i = 0; i < min(data.length,5); i++){
 					let elem = data[i];
-					$("#searchResult").append("<div class=\"searchableitem\" data-cod=\""+elem.idProdotto+"\" onclick=\"openSearch(this)\"><div class=\"item-name\">"+elem.nome+"</div></div>");
+					$("#searchResult").append("<div class=\"searchableitem\" data-cod=\""+elem.idProdotto+"\"" +
+							" onclick=\"openSearch(this)\"><div class=\"item-name\">"+elem.nome+"</div></div>");
 				}
 				$("#searchResult").show();
 				
