@@ -45,12 +45,16 @@
   <div class="logo">
     <a href="index.jsp">URLdiMunch</a> 
   </div>
+  
+  
   <div class="search-bar">
 	<form action="SearchServlet" method="post">
-    <input type="text" placeholder="ParitoAnnuro..." id="ajaxsearch">
+    <input type="text" placeholder="Cerca..." id="ajaxsearch">
     <div id="searchResult" style="display: none;"></div>
     </form>
   </div>
+  
+  
   <div class="user-buttons">
     <button onclick="<%=commandLogin%>"><%=login%></button>
   </div>

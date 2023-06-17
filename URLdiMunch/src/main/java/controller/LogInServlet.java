@@ -35,7 +35,6 @@ public class LogInServlet extends HttpServlet {
 		//prese dalla logOut
     	request.getSession().removeAttribute("utente");
 		request.getSession().removeAttribute("adminRoles");
-		request.getSession().invalidate();
 		//prese dalla logOut
 		
 		String idutente = request.getParameter("idutente");
