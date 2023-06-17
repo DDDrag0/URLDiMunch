@@ -72,6 +72,16 @@ function removeItem(removeButton)
   var productRow = $(removeButton).parent().parent();
   productRow.slideUp(fadeTime, function() {
     productRow.remove();
+    //qui va aggiunta la servlet
     recalculateCart();
   });
+}
+
+//modificato qui
+function openSearch(elem){
+		let codice = $(elem).data("cod");
+		let url = "SearchServlet?cerca="+codice; 
+		$.get( url , function( data ){
+			window.location.href = 'detailsSearch.jsp';
+		});
 }
