@@ -113,7 +113,7 @@ public class ListaOrdiniDAO {
 
 			Collection<ListaOrdini> orders = new LinkedList<ListaOrdini>();
 
-			String selectSQL = "SELECT * FROM  listaOrdini ";
+			String selectSQL = "SELECT * FROM  listaOrdini";
 
 			try (Connection connection = ConPool.getConnection()){
 				preparedStatement = connection.prepareStatement(selectSQL);

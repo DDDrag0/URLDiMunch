@@ -142,7 +142,7 @@ public class ProdottoDAO {
 
 		Collection<Prodotto> products = new LinkedList<Prodotto>();
 
-		String selectSQL = "SELECT * FROM  prodotto ";
+		String selectSQL = "SELECT * FROM  prodotto";
 
 		try (Connection connection = ConPool.getConnection()){
 			preparedStatement = connection.prepareStatement(selectSQL);
