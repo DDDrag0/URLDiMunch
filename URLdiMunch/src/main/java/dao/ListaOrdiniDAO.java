@@ -23,11 +23,12 @@ public class ListaOrdiniDAO {
 			
 			String co = null;
 			PreparedStatement preparedStatement = null;
+			PreparedStatement checkcodice = null;
 	        try (Connection connection = ConPool.getConnection()){
 
 	            preparedStatement = connection.prepareStatement("INSERT INTO listaOrdini (idOrdine,nomeProdotto,prezzo,dataOrdine,dataConsegna,dataArrivo,"
 	            																+ "indirizzoConsegna, iva) VALUES (?,?,?,?,?,?,?,?);");
-	            PreparedStatement checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine = ?");
+	            checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine = ?");
 	            checkcodice.setString(1, co);
 	            
 	            int ordine_valido=0, ordine_invalido=0;
@@ -54,7 +55,7 @@ public class ListaOrdiniDAO {
 	            preparedStatement.setString(5, listaOrdini.getDataConsegna());
 	            preparedStatement.setString(6, listaOrdini.getDataArrivo());
 	            preparedStatement.setString(7, listaOrdini.getIndirizzoConsegna());
-	            preparedStatement.setDouble(10, listaOrdini.getIva());
+	            preparedStatement.setDouble(8, listaOrdini.getIva());
 	            System.out.println(preparedStatement);
 
 	        } catch (SQLException e) {
