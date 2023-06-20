@@ -115,10 +115,6 @@ public class ListaOrdiniDAO {
 
 			String selectSQL = "SELECT * FROM  listaOrdini ";
 
-			if (order != null && !order.equals("")) {
-				selectSQL += " ORDER BY " + order;
-			}
-
 			try (Connection connection = ConPool.getConnection()){
 				preparedStatement = connection.prepareStatement(selectSQL);
 

@@ -144,10 +144,6 @@ public class ProdottoDAO {
 
 		String selectSQL = "SELECT * FROM  prodotto ";
 
-		if (order != null && !order.equals("")) {
-			selectSQL += " ORDER BY " + order;
-		}
-
 		try (Connection connection = ConPool.getConnection()){
 			preparedStatement = connection.prepareStatement(selectSQL);
 
