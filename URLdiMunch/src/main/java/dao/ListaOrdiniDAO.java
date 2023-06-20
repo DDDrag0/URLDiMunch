@@ -13,7 +13,7 @@ import model.ListaOrdini;
 	
 public class ListaOrdiniDAO {
 	    
-	    public synchronized void creaOrdine(ListaOrdini listaOrdini) throws SQLException {
+	    public synchronized void creaOrdine(ListaOrdini listaOrdini) throws ClassNotFoundException {
 	    	
 			SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
 			byte[] bytes = new byte [20];
