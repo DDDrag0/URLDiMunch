@@ -20,7 +20,9 @@ public class ListaOrdiniDAO {
 
 	            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO listaOrdini (idOrdine,nomeProdotto,prezzo,dataOrdine,dataConsegna,dataArrivo,"
 	            																+ "indirizzoConsegna, iva) VALUES (?,?,?,?,?,?,?,?);");
-	            PreparedStatement checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine="+co);
+	            PreparedStatement checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine = ?");
+	            checkcodice.setString(1, co);
+	            
 	            int ordine_valido=0, ordine_invalido=0;
 				while(ordine_valido==0) {
 					int codr = rand.nextInt(999999999);
