@@ -26,7 +26,7 @@ public class SearchAjaxServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nome = request.getParameter("cerca");
         ProdottoDAO prod = new ProdottoDAO();
-        ArrayList<Prodotto> a = new ArrayList<Prodotto>();
+        ArrayList<Prodotto> a = new ArrayList<>();
 
         try {
            a = prod.RicercaProdottoNome(nome);
@@ -45,9 +45,6 @@ public class SearchAjaxServlet extends HttpServlet {
     }
 
     private String convertListToJson(ArrayList<Prodotto> list) {
-
-        String s = new Gson().toJson(list);
-
-        return s;
+        return new Gson().toJson(list);
     }
 }
