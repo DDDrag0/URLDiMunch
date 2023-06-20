@@ -1,8 +1,8 @@
-var $loginMsg = $('.loginMsg');
-var $login = $('.login');
-var $signupMsg = $('.signupMsg');
-var $signup = $('.signup');
-var $frontbox = $('.frontbox');
+let $loginMsg = $('.loginMsg');
+let $login = $('.login');
+let $signupMsg = $('.signupMsg');
+let $signup = $('.signup');
+let $frontbox = $('.frontbox');
 
 $('#switch1').on('click', function() {
   $loginMsg.toggleClass("visibility");
