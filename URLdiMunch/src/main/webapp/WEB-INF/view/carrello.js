@@ -1,7 +1,7 @@
 /* Set rates + misc */
-var taxRate = 0.05;
-var shippingRate = 15.00; 
-var fadeTime = 300;
+let taxRate = 0.05;
+let shippingRate = 15.00; 
+let fadeTime = 300;
 
 
 /* Assign actions */
@@ -17,7 +17,7 @@ $('.product-removal button').click( function() {
 /* Recalculate cart */
 function recalculateCart()
 {
-  var subtotal = 0;
+  let subtotal = 0;
   
   /* Sum up row totals */
   $('.product').each(function () {
@@ -25,9 +25,9 @@ function recalculateCart()
   });
   
   /* Calculate totals */
-  var tax = subtotal * taxRate;
-  var shipping = (subtotal > 0 ? shippingRate : 0);
-  var total = subtotal + tax + shipping;
+  let tax = subtotal * taxRate;
+  let shipping = (subtotal > 0 ? shippingRate : 0);
+  let total = subtotal + tax + shipping;
   
   /* Update totals display */
   $('.totals-value').fadeOut(fadeTime, function() {
@@ -49,10 +49,10 @@ function recalculateCart()
 function updateQuantity(quantityInput)
 {
   /* Calculate line price */
-  var productRow = $(quantityInput).parent().parent();
-  var price = parseFloat(productRow.children('.product-price').text());
-  var quantity = $(quantityInput).val();
-  var linePrice = price * quantity;
+  let productRow = $(quantityInput).parent().parent();
+  let price = parseFloat(productRow.children('.product-price').text());
+  let quantity = $(quantityInput).val();
+  let linePrice = price * quantity;
   
   /* Update line price display and recalc cart totals */
   productRow.children('.product-line-price').each(function () {
@@ -69,7 +69,7 @@ function updateQuantity(quantityInput)
 function removeItem(removeButton)
 {
   /* Remove row from DOM and recalc cart total */
-  var productRow = $(removeButton).parent().parent();
+  let productRow = $(removeButton).parent().parent();
   productRow.slideUp(fadeTime, function() {
     productRow.remove();
     recalculateCart();
