@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.Random;
 
 import model.ConPool;
 import model.ListaOrdini;
@@ -49,7 +48,7 @@ public class ListaOrdiniDAO {
 				System.out.println("Il codice ordine sarà: "+co);
 	            
 	            preparedStatement.setString(1, co);
-	            preparedStatement.setString(2, listaOrdini.getNomeProdotto());
+	            //preparedStatement.setString(2, listaOrdini.getNomeProdotto());
 	            preparedStatement.setDouble(3, listaOrdini.getPrezzo());
 	            preparedStatement.setString(4, listaOrdini.getDataOrdine());
 	            preparedStatement.setString(5, listaOrdini.getDataConsegna());
@@ -60,9 +59,17 @@ public class ListaOrdiniDAO {
 
 	        } catch (SQLException e) {
 	            printSQLException(e);
-	        } finally {
-	        	preparedStatement.close();
-	        	checkcodice.close();
+	        }finally {
+	            try {
+	                if (preparedStatement != null) {
+	                    preparedStatement.close();
+	                }
+	                if (checkcodice != null) {
+	                    checkcodice.close();
+	                }
+	            } catch (SQLException e) {
+	                printSQLException(e);
+	            }
 	        }
 	    }
 	    
@@ -81,7 +88,7 @@ public class ListaOrdiniDAO {
 
 				while (rs.next()) {
 					ordine.setIdOrdine(rs.getString("idOrdine"));
-					ordine.setNomeProdotto(rs.getString("nomeProdotto"));
+					//ordine.setNomeProdotto(rs.getString("nomeProdotto"));
 					ordine.setPrezzo(rs.getDouble("prezzo"));
 					ordine.setDataOrdine(rs.getString("dataOrdine"));
 					ordine.setDataConsegna(rs.getString("dataConsegna"));
@@ -139,7 +146,7 @@ public class ListaOrdiniDAO {
 					ListaOrdini ordine = new ListaOrdini();
 
 					ordine.setIdOrdine(rs.getString("idOrdine"));
-					ordine.setIdProdotto(rs.getString("nomeProdotto"));
+					//ordine.setIdProdotto(rs.getString("nomeProdotto"));
 					ordine.setPrezzo(rs.getDouble("prezzo"));
 					ordine.setDataOrdine(rs.getString("dataOrdine"));
 					ordine.setDataConsegna(rs.getString("dataConsegna"));
