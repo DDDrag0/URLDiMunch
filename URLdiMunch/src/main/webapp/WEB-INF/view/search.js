@@ -28,7 +28,7 @@ $('#ajaxsearch').on('input focus', function(e) {
 });
 
 /* Manage hover on results */
-var hovered = false;
+let hovered = false;
 
 $("#searchResult").bind("mouseover",function() {
     hovered = true;
