@@ -20,6 +20,7 @@ public class ListaOrdiniDAO {
 			byte bytes[] = new byte [20];
 			rand.nextBytes(bytes);
 			
+			
 			String co = null;
 	        try (Connection connection = ConPool.getConnection()){
 
