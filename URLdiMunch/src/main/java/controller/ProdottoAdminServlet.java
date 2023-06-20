@@ -66,7 +66,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 					prodotto.setNome(name);
 					prodotto.setDescrizione(description);
 					prodotto.setPrezzo(price);
-					prodotto.setQuantità(quantity);
+					prodotto.setQuantita(quantity);
 					prodottodao.doSave(prodotto);
 				}
 			}			
