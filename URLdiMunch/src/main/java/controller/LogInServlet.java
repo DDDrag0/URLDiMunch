@@ -63,9 +63,9 @@ public class LogInServlet extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + redirectedPage);
             }
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            e.printStackTrace();	//sensitive
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.printStackTrace();	//sensitive
 		}
 	}
 }

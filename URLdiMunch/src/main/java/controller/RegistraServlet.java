@@ -20,11 +20,9 @@ public class RegistraServlet extends HttpServlet {
 
     public RegistraServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/userRegistrazione.jsp");
@@ -46,7 +44,6 @@ public class RegistraServlet extends HttpServlet {
 		try {
 			registraDAO.registerUser(user);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
