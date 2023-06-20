@@ -32,7 +32,7 @@ public class SearchAjaxServlet extends HttpServlet {
            a = prod.RicercaProdottoNome(nome);
         } catch (SQLException e) {
 
-        	//e.printStackTrace();	//sensitive
+        	e.printStackTrace();	//sensitive
 		}
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");

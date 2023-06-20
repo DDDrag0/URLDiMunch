@@ -34,7 +34,7 @@ public class SearchServlet extends HttpServlet {
         	opera = prod.doRetrieveByKey(nome);
         } catch (SQLException e) {
 
-        	//e.printStackTrace();	//sensitive
+        	e.printStackTrace();	//sensitive
 		}
         
     	request.getSession().setAttribute("prodottoDettagli", opera);

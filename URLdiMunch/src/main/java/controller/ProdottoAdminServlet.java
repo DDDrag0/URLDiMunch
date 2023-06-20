@@ -71,7 +71,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 				}
 			}			
 		} catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			System.out.println("Error:" + e.getMessage());	//NonCompilant
 		}
 
 		request.getSession().setAttribute("cart", cart);
@@ -84,7 +84,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 			request.removeAttribute("products");
 			request.setAttribute("products", prodottodao.doRetrieveAll(sort));
 		} catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			System.out.println("Error:" + e.getMessage());	//NonCompilant
 		}
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/prodottiAdmin.jsp");
