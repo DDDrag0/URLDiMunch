@@ -12,7 +12,18 @@ import model.ConPool;
 import model.Prodotto;
 
 public class ProdottoDAO {
-
+	String idProdotto ="idProdotto";
+	String nome = "nome";
+	String artista = "artista";
+	String tipo = "tipo";
+	String epoca = "epoca";
+	String dimensioni = "dimensioni";
+	String descrizione = "descrizione";
+	String quantità = "quantità";
+	String iva = "iva";
+	String prezzo = "prezzo";
+	String imagepath ="imagepath";
+	
 	public synchronized void doSave(Prodotto product) throws SQLException {
 		
 		PreparedStatement preparedStatement = null;
@@ -63,17 +74,17 @@ public class ProdottoDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				prodotto.setIdProdotto(rs.getString("idProdotto"));
-				prodotto.setNome(rs.getString("nome"));
-				prodotto.setArtista(rs.getString("artista"));
-				prodotto.setTipo(rs.getString("tipo"));
-				prodotto.setEpoca(rs.getString("epoca"));
-				prodotto.setDimensioni(rs.getString("dimensioni"));
-				prodotto.setDescrizione(rs.getString("descrizione"));
-				prodotto.setQuantità(rs.getInt("quantità"));
-				prodotto.setIva(rs.getDouble("iva"));
-				prodotto.setPrezzo(rs.getDouble("prezzo"));
-				prodotto.setImagepath(rs.getString("imagepath"));
+				prodotto.setIdProdotto(rs.getString(idProdotto));
+				prodotto.setNome(rs.getString(nome));
+				prodotto.setArtista(rs.getString(artista));
+				prodotto.setTipo(rs.getString(tipo));
+				prodotto.setEpoca(rs.getString(epoca));
+				prodotto.setDimensioni(rs.getString(dimensioni));
+				prodotto.setDescrizione(rs.getString(descrizione));
+				prodotto.setQuantità(rs.getInt(quantità));
+				prodotto.setIva(rs.getDouble(iva));
+				prodotto.setPrezzo(rs.getDouble(prezzo));
+				prodotto.setImagepath(rs.getString(imagepath));
 			}
 
 		}
@@ -108,17 +119,17 @@ public class ProdottoDAO {
 
 			while (rs.next()) {
 				Prodotto prodotto = new Prodotto();
-				prodotto.setIdProdotto(rs.getString("idProdotto"));
-				prodotto.setNome(rs.getString("nome"));
-				prodotto.setArtista(rs.getString("artista"));
-				prodotto.setTipo(rs.getString("tipo"));
-				prodotto.setEpoca(rs.getString("epoca"));
-				prodotto.setDimensioni(rs.getString("dimensioni"));
-				prodotto.setDescrizione(rs.getString("descrizione"));
-				prodotto.setQuantità(rs.getInt("quantità"));
-				prodotto.setIva(rs.getDouble("iva"));
-				prodotto.setPrezzo(rs.getDouble("prezzo"));
-				prodotto.setImagepath(rs.getString("imagepath"));
+				prodotto.setIdProdotto(rs.getString(idProdotto));
+				prodotto.setNome(rs.getString(nome));
+				prodotto.setArtista(rs.getString(artista));
+				prodotto.setTipo(rs.getString(tipo));
+				prodotto.setEpoca(rs.getString(epoca));
+				prodotto.setDimensioni(rs.getString(dimensioni));
+				prodotto.setDescrizione(rs.getString(descrizione));
+				prodotto.setQuantità(rs.getInt(quantità));
+				prodotto.setIva(rs.getDouble(iva));
+				prodotto.setPrezzo(rs.getDouble(prezzo));
+				prodotto.setImagepath(rs.getString(imagepath));
 
 				a.add(prodotto);
 			}
@@ -184,17 +195,17 @@ public class ProdottoDAO {
 			while (rs.next()) {
 				Prodotto prodotto = new Prodotto();
 
-				prodotto.setIdProdotto(rs.getString("idProdotto"));
-				prodotto.setNome(rs.getString("nome"));
-				prodotto.setArtista(rs.getString("artista"));
-				prodotto.setTipo(rs.getString("tipo"));
-				prodotto.setEpoca(rs.getString("epoca"));
-				prodotto.setDimensioni(rs.getString("dimensioni"));
-				prodotto.setDescrizione(rs.getString("descrizione"));
-				prodotto.setQuantità(rs.getInt("quantità"));
-				prodotto.setIva(rs.getDouble("iva"));
-				prodotto.setPrezzo(rs.getDouble("prezzo"));
-				prodotto.setImagepath(rs.getString("imagepath"));
+				prodotto.setIdProdotto(rs.getString(idProdotto));
+				prodotto.setNome(rs.getString(nome));
+				prodotto.setArtista(rs.getString(artista));
+				prodotto.setTipo(rs.getString(tipo));
+				prodotto.setEpoca(rs.getString(epoca));
+				prodotto.setDimensioni(rs.getString(dimensioni));
+				prodotto.setDescrizione(rs.getString(descrizione));
+				prodotto.setQuantità(rs.getInt(quantità));
+				prodotto.setIva(rs.getDouble(iva));
+				prodotto.setPrezzo(rs.getDouble(prezzo));
+				prodotto.setImagepath(rs.getString(imagepath));
 				
 				products.add(prodotto);
 			}
