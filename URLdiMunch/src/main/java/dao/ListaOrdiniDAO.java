@@ -55,6 +55,8 @@ public class ListaOrdiniDAO {
 	            preparedStatement.setString(7, listaOrdini.getIndirizzoConsegna());
 	            preparedStatement.setDouble(10, listaOrdini.getIva());
 	            System.out.println(preparedStatement);
+	            
+	            preparedStatement.close();
 
 	        } catch (SQLException e) {
 	            printSQLException(e);
@@ -84,7 +86,7 @@ public class ListaOrdiniDAO {
 					ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
 					ordine.setIva(rs.getDouble("iva"));
 				}
-
+				preparedStatement.close();
 			}
 			catch (SQLException e) {
 	            // process sql exception
@@ -106,6 +108,8 @@ public class ListaOrdiniDAO {
 				preparedStatement.setString(1, code);
 
 				result = preparedStatement.executeUpdate();
+				
+				preparedStatement.close();
 
 			}
 			catch (SQLException e) {
@@ -142,6 +146,7 @@ public class ListaOrdiniDAO {
 					
 					orders.add(ordine);
 				}
+				preparedStatement.close();
 
 			}
 			catch (SQLException e) {
