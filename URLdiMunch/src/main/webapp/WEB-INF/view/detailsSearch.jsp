@@ -39,7 +39,7 @@
     						<td><%=prod.getDescrizione()%></td>
     						<td><%=prod.getPrezzo()%></td>
     						<td><img width="200" src="${pageContext.request.contextPath}<%=prod.getImagepath()%>" alt="<%=prod.getNome()%>"></td>
-    						<td><%=prod.getQuantità()%></td>
+    						<td><%=prod.getQuantita()%></td>
     						
     				</tr>
     					

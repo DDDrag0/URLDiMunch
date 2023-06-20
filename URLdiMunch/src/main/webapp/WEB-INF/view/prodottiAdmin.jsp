@@ -57,7 +57,7 @@ if ((adminRoles == null) || (!adminRoles.booleanValue()))
 			<td><%=bean.getDescrizione()%></td>
 			<td><img width="200" src="${pageContext.request.contextPath}<%=bean.getImagepath()%>" alt="la gioconda"></td>
 			<td><a href="prodottoAdmin?action=delete&id=<%=bean.getIdProdotto()%>">Delete</a><br>
-				<a href="details.jsp?code=<%=bean.getIdProdotto()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantità()%>">Details</a><br>
+				<a href="details.jsp?code=<%=bean.getIdProdotto()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantita()%>">Details</a><br>
 				</td>
 		</tr>
 		<%
@@ -91,7 +91,7 @@ if ((adminRoles == null) || (!adminRoles.booleanValue()))
 			<td><%=product.getNome()%></td>
 			<td><%=product.getDescrizione()%></td>
 			<td><%=product.getPrezzo()%></td>
-			<td><%=product.getQuantità()%></td>
+			<td><%=product.getQuantita()%></td>
 			<td><%=product.getImagepath()%></td>
 		</tr>
 	</table>

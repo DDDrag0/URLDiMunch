@@ -46,7 +46,7 @@
           <p class="group inner list-group-item-text">$<%=bean.getPrezzo()%></p>
         </div>
         <div class="btn-group">
-          <a class="btn btn-details" href="details.jsp?code=<%=bean.getIdProdotto()%>&image=<%=bean.getImagepath()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantità()%>">Details</a>
+          <a class="btn btn-details" href="details.jsp?code=<%=bean.getIdProdotto()%>&image=<%=bean.getImagepath()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantita()%>">Details</a>
           <a class="btn btn-cart" href="prodottoCliente?action=addC&id=<%=bean.getIdProdotto()%>">Add to Cart</a>
         </div>
       </div>

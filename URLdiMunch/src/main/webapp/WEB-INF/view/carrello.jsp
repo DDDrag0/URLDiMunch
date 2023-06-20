@@ -42,7 +42,7 @@
 	<%
             double grandTotal = 0;
             for ( Prodotto product : cart.getProducts()) {
-                double total = product.getPrezzo() * product.getQuantità();
+                double total = product.getPrezzo() * product.getQuantita();
                 grandTotal += total;
         %>
         
