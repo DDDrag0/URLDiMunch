@@ -13,65 +13,62 @@ import model.ListaOrdini;
 	
 public class ListaOrdiniDAO {
 	    
-	    public synchronized void CreaOrdine(ListaOrdini listaOrdini) throws ClassNotFoundException {
-	    	
-			SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
-			byte bytes[] = new byte [20];
-			rand.nextBytes(bytes);
-			
-			
-			String co = null;
-			PreparedStatement preparedStatement = null;
-			PreparedStatement checkcodice = null;
-	        try (Connection connection = ConPool.getConnection()){
+	public synchronized void CreaOrdine(ListaOrdini listaOrdini) throws ClassNotFoundException {
 
-	            preparedStatement = connection.prepareStatement("INSERT INTO listaOrdini (idOrdine,nomeProdotto,prezzo,dataOrdine,dataConsegna,dataArrivo,"
-	            																+ "indirizzoConsegna, iva) VALUES (?,?,?,?,?,?,?,?);");
-	            checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine = ?");
-	            checkcodice.setString(1, co);
-	            
-	            int ordine_valido=0, ordine_invalido=0;
-				while(ordine_valido==0) {
-					int codr = rand.nextInt(999999999);
-					co= "ord-"+codr;
-					ResultSet resultSet = checkcodice.executeQuery();
-					while (resultSet.next()) {
-						String codTess= resultSet.getString("codice");
-						if(co.equals(codTess)) {
-							ordine_invalido=1;
-						}
-					}
-					if(ordine_invalido==0) {
-						ordine_valido=1;
-					}
-				}
-				System.out.println("Il codice ordine sarà: "+co);
-	            
-	            preparedStatement.setString(1, co);
-	            //preparedStatement.setString(2, listaOrdini.getNomeProdotto());
-	            preparedStatement.setDouble(3, listaOrdini.getPrezzo());
-	            preparedStatement.setString(4, listaOrdini.getDataOrdine());
-	            preparedStatement.setString(5, listaOrdini.getDataConsegna());
-	            preparedStatement.setString(6, listaOrdini.getDataArrivo());
-	            preparedStatement.setString(7, listaOrdini.getIndirizzoConsegna());
-	            preparedStatement.setDouble(8, listaOrdini.getIva());
-	            System.out.println(preparedStatement);
+	    SecureRandom rand = new SecureRandom();    // per casi di security sensitive
+	    byte bytes[] = new byte[20];
+	    rand.nextBytes(bytes);
 
-	        } catch (SQLException e) {
-	            printSQLException(e);
-	        }finally {
-	            try {
-	                if (preparedStatement != null) {
-	                    preparedStatement.close();
+	    String co = null;
+	    PreparedStatement preparedStatement = null;
+	    PreparedStatement checkcodice = null;
+	    try (Connection connection = ConPool.getConnection()) {
+	        preparedStatement = connection.prepareStatement("INSERT INTO listaOrdini (idOrdine,nomeProdotto,prezzo,dataOrdine,dataConsegna,dataArrivo,"
+	                + "indirizzoConsegna, iva) VALUES (?,?,?,?,?,?,?,?);");
+	        checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine = ?");
+	        checkcodice.setString(1, co);
+
+	        int ordine_valido = 0, ordine_invalido = 0;
+	        while (ordine_valido == 0) {
+	            int codr = rand.nextInt(999999999);
+	            co = "ord-" + codr;
+	            ResultSet resultSet = checkcodice.executeQuery();
+	            while (resultSet.next()) {
+	                String codTess = resultSet.getString("codice");
+	                if (co.equals(codTess)) {
+	                    ordine_invalido = 1;
 	                }
-	                if (checkcodice != null) {
-	                    checkcodice.close();
-	                }
-	            } catch (SQLException e) {
-	                printSQLException(e);
+	            }
+	            if (ordine_invalido == 0) {
+	                ordine_valido = 1;
 	            }
 	        }
+	        System.out.println("Il codice ordine sarÃ : " + co);
+
+	        preparedStatement.setString(1, co);
+	        //preparedStatement.setString(2, listaOrdini.getNomeProdotto());
+	        preparedStatement.setDouble(3, listaOrdini.getPrezzo());
+	        preparedStatement.setString(4, listaOrdini.getDataOrdine());
+	        preparedStatement.setString(5, listaOrdini.getDataConsegna());
+	        preparedStatement.setString(6, listaOrdini.getDataArrivo());
+	        preparedStatement.setString(7, listaOrdini.getIndirizzoConsegna());
+	        preparedStatement.setDouble(8, listaOrdini.getIva());
+	        System.out.println(preparedStatement);
+	    } catch (SQLException e) {
+	        printSQLException(e);
+	    } finally {
+	        try {
+	            if (preparedStatement != null) {
+	                preparedStatement.close();
+	            }
+	            if (checkcodice != null) {
+	                checkcodice.close();
+	            }
+	        } catch (SQLException e) {
+	            printSQLException(e);
+	        }
 	    }
+	}
 	    
 	    public synchronized ListaOrdini ricercaOrdine(String id) throws SQLException {
 			PreparedStatement preparedStatement = null;
