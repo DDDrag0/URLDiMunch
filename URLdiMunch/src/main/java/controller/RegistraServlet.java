@@ -44,7 +44,7 @@ public class RegistraServlet extends HttpServlet {
 		try {
 			registraDAO.registerUser(user);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();	//sensitive
+			//e.printStackTrace();	//sensitive
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/logIn.jsp");
