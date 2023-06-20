@@ -60,6 +60,8 @@ public class ListaOrdiniDAO {
 
 	        } catch (SQLException e) {
 	            printSQLException(e);
+	        } finally {
+	        	preparedStatement.close();
 	        }
 	    }
 	    
