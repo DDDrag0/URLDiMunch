@@ -26,18 +26,15 @@ public class SearchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nome = request.getParameter("cerca");
-        System.out.println(nome);
         ProdottoDAO prod = new ProdottoDAO();
         Prodotto opera = new Prodotto();
-        System.out.println("Servlet pre-Try");
-        System.out.println(opera);
 		request.getSession().removeAttribute("prodottoDettagli");
 
         try {
         	opera = prod.doRetrieveByKey(nome);
         } catch (SQLException e) {
 
-			e.printStackTrace();
+        	//e.printStackTrace();	//sensitive
 		}
         
     	request.getSession().setAttribute("prodottoDettagli", opera);

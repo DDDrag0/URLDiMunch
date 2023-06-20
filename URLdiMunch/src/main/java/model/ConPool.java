@@ -29,7 +29,7 @@ public class ConPool{
 		try {
 			connection = ds.getConnection();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();	//sensitive
 		}
 		return connection;
 	}
