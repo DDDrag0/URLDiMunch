@@ -13,10 +13,10 @@ import model.ListaOrdini;
 	
 public class ListaOrdiniDAO {
 	    
-	    public synchronized void CreaOrdine(ListaOrdini listaOrdini) throws ClassNotFoundException {
+	    public synchronized void creaOrdine(ListaOrdini listaOrdini) throws SQLException {
 	    	
 			SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
-			byte bytes[] = new byte [20];
+			byte[] bytes = new byte [20];
 			rand.nextBytes(bytes);
 			
 			
@@ -30,19 +30,20 @@ public class ListaOrdiniDAO {
 	            checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine = ?");
 	            checkcodice.setString(1, co);
 	            
-	            int ordine_valido=0, ordine_invalido=0;
-				while(ordine_valido==0) {
+	            int ordineValido=0;
+	            int ordineInvalido=0;
+				while(ordineValido==0) {
 					int codr = rand.nextInt(999999999);
 					co= "ord-"+codr;
 					ResultSet resultSet = checkcodice.executeQuery();
 					while (resultSet.next()) {
 						String codTess= resultSet.getString("codice");
 						if(co.equals(codTess)) {
-							ordine_invalido=1;
+							ordineInvalido=1;
 						}
 					}
-					if(ordine_invalido==0) {
-						ordine_valido=1;
+					if(ordineInvalido==0) {
+						ordineValido=1;
 					}
 				}
 				System.out.println("Il codice ordine sarà: "+co);
@@ -149,7 +150,7 @@ public class ListaOrdiniDAO {
 			
 			PreparedStatement preparedStatement = null;
 
-			Collection<ListaOrdini> orders = new LinkedList<ListaOrdini>();
+			Collection<ListaOrdini> orders = new LinkedList<>();
 
 			String selectSQL = "SELECT * FROM  listaOrdini";
 
