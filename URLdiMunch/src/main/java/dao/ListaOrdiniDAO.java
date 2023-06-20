@@ -145,7 +145,7 @@ public class ListaOrdiniDAO {
 			return (result != 0);
 		}
 
-		public synchronized Collection<ListaOrdini> ricercaTuttiOrdini(String order) throws SQLException {
+		public synchronized Collection<ListaOrdini> ricercaTuttiOrdini() throws SQLException {
 			
 			PreparedStatement preparedStatement = null;
 

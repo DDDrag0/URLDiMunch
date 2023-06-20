@@ -179,7 +179,7 @@ public class ProdottoDAO {
 		return (result != 0);
 	}
 
-	public synchronized Collection<Prodotto> doRetrieveAll(String order) throws SQLException {
+	public synchronized Collection<Prodotto> doRetrieveAll() throws SQLException {
 		
 		PreparedStatement preparedStatement = null;
 

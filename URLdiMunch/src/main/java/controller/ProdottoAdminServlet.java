@@ -77,12 +77,9 @@ public class ProdottoAdminServlet extends HttpServlet {
 		request.getSession().setAttribute("cart", cart);
 		request.setAttribute("cart", cart);
 		
-		
-		String sort = request.getParameter("sort");
-
 		try {
 			request.removeAttribute("products");
-			request.setAttribute("products", prodottodao.doRetrieveAll(sort));
+			request.setAttribute("products", prodottodao.doRetrieveAll());
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());	//NonCompilant
 		}

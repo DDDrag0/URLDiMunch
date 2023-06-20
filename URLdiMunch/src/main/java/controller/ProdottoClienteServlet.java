@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Carrello;
 import dao.ProdottoDAO;
-import model.Prodotto;
 
 @WebServlet("/prodottoCliente")
 public class ProdottoClienteServlet extends HttpServlet {
@@ -66,12 +65,9 @@ public class ProdottoClienteServlet extends HttpServlet {
 		request.getSession().setAttribute("cart", cart);
 		request.setAttribute("cart", cart);
 		
-		
-		String sort = request.getParameter("sort");
-
 		try {
 			request.removeAttribute("products");
-			request.setAttribute("products", prodottodao.doRetrieveAll(sort));
+			request.setAttribute("products", prodottodao.doRetrieveAll());
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());
 		}
