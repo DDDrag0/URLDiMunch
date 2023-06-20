@@ -101,6 +101,14 @@ public class ListaOrdiniDAO {
 			catch (SQLException e) {
 	            // process sql exception
 	            printSQLException(e);
+	        }finally {
+	            try {
+	                if (preparedStatement != null) {
+	                    preparedStatement.close();
+	                }
+	            } catch (SQLException e) {
+	                printSQLException(e);
+	            }
 	        }
 			return ordine;
 	    }
@@ -125,6 +133,14 @@ public class ListaOrdiniDAO {
 			catch (SQLException e) {
 	            // process sql exception
 	            printSQLException(e);
+	        }finally {
+	            try {
+	                if (preparedStatement != null) {
+	                    preparedStatement.close();
+	                }
+	            } catch (SQLException e) {
+	                printSQLException(e);
+	            }
 	        }
 			return (result != 0);
 		}
@@ -162,6 +178,14 @@ public class ListaOrdiniDAO {
 			catch (SQLException e) {
 	            // process sql exception
 	            printSQLException(e);
+	        }finally {
+	            try {
+	                if (preparedStatement != null) {
+	                    preparedStatement.close();
+	                }
+	            } catch (SQLException e) {
+	                printSQLException(e);
+	            }
 	        }
 			return orders;
 		}
