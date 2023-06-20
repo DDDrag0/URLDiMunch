@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="e" uri="https://www.owasp.org/index.php/OWASP_Java_Encoder_Project"%>
 <%@ page contentType="text/html; charset=UTF-8" import="model.Prodotto" %>
 <%
 	String code = request.getParameter("code");
@@ -32,12 +32,12 @@
     						<th>Image</th>
     						<th>Quantity</th>
     				<tr>
-    						<td><%=code%></td>
-    						<td><%=name%></td>
-    						<td><%=description%></td>
-    						<td><%=price%></td>
-    						<td><img width="200" src="${pageContext.request.contextPath}<%=image%>" alt="la gioconda"></td>
-    						<td><%=quantity%></td>
+    						<td>${e:forHtml(code)}</td>
+    						<td>${e:forHtml(name)}</td>
+    						<td>${e:forHtml(description)}</td>
+    						<td>${e:forHtml(price)}</td>
+    						<td><img width="200" src="${pageContext.request.contextPath}${e:forHtml(image)}" alt="la gioconda"></td>
+    						<td>${e:forHtml(quantity)}</td>
     				</tr>
     					
     		</table>
