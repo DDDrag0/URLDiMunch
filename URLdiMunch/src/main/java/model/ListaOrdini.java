@@ -1,12 +1,12 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ListaOrdini {
 
 	private String idOrdine;
-	private ArrayList<String> nomeProdotto;
-	private ArrayList<String> idProdotto;
+	private List<String> nomeProdotto;
+	private List<String> idProdotto;
 	private String indirizzoConsegna;
 	private double prezzo;
 	private String dataOrdine;
@@ -20,16 +20,16 @@ public class ListaOrdini {
 	public void setIdOrdine(String idOrdine) {
 		this.idOrdine = idOrdine;
 	}
-	public ArrayList<String> getNomeProdotto() {
+	public List<String> getNomeProdotto() {
 		return nomeProdotto;
 	}
-	public void setNomeProdotto(ArrayList<String> nomeProdotto) {
+	public void setNomeProdotto(List<String> nomeProdotto) {
 		this.nomeProdotto = nomeProdotto;
 	}
-	public ArrayList<String> getIdProdotto() {
+	public List<String> getIdProdotto() {
 		return idProdotto;
 	}
-	public void setIdProdotto(ArrayList<String> idProdotto) {
+	public void setIdProdotto(List<String> idProdotto) {
 		this.idProdotto = idProdotto;
 	}
 	public String getIndirizzoConsegna() {
