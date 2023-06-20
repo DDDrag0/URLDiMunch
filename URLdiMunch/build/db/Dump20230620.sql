@@ -26,15 +26,13 @@ DROP TABLE IF EXISTS `listaordini`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `listaordini` (
   `idOrdine` varchar(45) NOT NULL,
-  `nomeProdotto` varchar(45) NOT NULL,
+  `nomeProdotto` varchar(1000) NOT NULL,
+  `idProdotto` varchar(1000) NOT NULL,
   `prezzo` double NOT NULL,
-  `dataOrdine` date NOT NULL,
-  `dataConsegna` date NOT NULL,
-  `dataArrivo` date NOT NULL,
+  `dataOrdine` varchar(45) NOT NULL,
+  `dataConsegna` varchar(45) NOT NULL,
+  `dataArrivo` varchar(45) NOT NULL,
   `indirizzoConsegna` varchar(100) NOT NULL,
-  `citta` varchar(50) NOT NULL,
-  `provincia` varchar(50) NOT NULL,
-  `descrizioneProdotto` varchar(1000) NOT NULL,
   `iva` double NOT NULL,
   PRIMARY KEY (`idOrdine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -65,11 +63,6 @@ CREATE TABLE `prodotto` (
   `dimensioni` varchar(45) NOT NULL,
   `descrizione` varchar(1000) NOT NULL,
   `quantità` int NOT NULL,
-  `tipoPittura` varchar(45) DEFAULT NULL,
-  `cornice` int DEFAULT NULL,
-  `materiale` varchar(45) DEFAULT NULL,
-  `colori` varchar(45) DEFAULT NULL,
-  `tipoStampa` varchar(45) DEFAULT NULL,
   `iva` double NOT NULL,
   `prezzo` double NOT NULL,
   `imagepath` varchar(100) DEFAULT NULL,
@@ -83,7 +76,7 @@ CREATE TABLE `prodotto` (
 
 LOCK TABLES `prodotto` WRITE;
 /*!40000 ALTER TABLE `prodotto` DISABLE KEYS */;
-INSERT INTO `prodotto` VALUES ('1_Venere','Venere','Botticelli','Quadro','Vecchia','20*20','Venere dipinta da Botticelli',4,NULL,1,NULL,NULL,NULL,5,200,'/image/venere.jpg'),('2_Urlo','Urlo di Munch','Munch','Quadro','Vecchia','30*30','L\'urlo di Munch dipinto dall\'Omonimo',5,NULL,1,NULL,NULL,NULL,5,450,'/image/urlo.jpg'),('3_Notte','Notte Stellata','Van Gogh','Quadro','Vecchia','20*20','Notte stellata di Van Gogh',2,NULL,1,NULL,NULL,NULL,5,200,'/image/notte.jpg'),('4_Guernica','Guernica','Picasso','Quadro','Vecchia','20*20','Guernica di Picasso',6,NULL,1,NULL,NULL,NULL,5,167,'/image/guernica.jpg'),('5_Gioconda','Gioconda','Lenoardo Da Vinci','Quadro','Vecchia','30*30','La famosa Gioconda di Leonardo da Vinci',7,NULL,0,NULL,NULL,NULL,5,432,'/image/gioconda.png');
+INSERT INTO `prodotto` VALUES ('1_Venere','Venere','Botticelli','Quadro','Vecchia','20*20','Venere dipinta da Botticelli',4,22,200,'/image/venere.jpg'),('2_Urlo','Urlo di Munch','Munch','Quadro','Vecchia','30*30','L\'urlo di Munch dipinto dall\'Omonimo',5,22,450,'/image/urlo.jpg'),('3_Notte','Notte Stellata','Van Gogh','Quadro','Vecchia','20*20','Notte stellata di Van Gogh',2,22,200,'/image/notte.jpg'),('4_Guernica','Guernica','Picasso','Quadro','Vecchia','20*20','Guernica di Picasso',6,22,167,'/image/guernica.jpg'),('5_Gioconda','Gioconda','Lenoardo Da Vinci','Quadro','Vecchia','30*30','La famosa Gioconda di Leonardo da Vinci',7,22,432,'/image/gioconda.png');
 /*!40000 ALTER TABLE `prodotto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +108,7 @@ CREATE TABLE `utente` (
 
 LOCK TABLES `utente` WRITE;
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` VALUES ('gennarin','gg','vai','gennaro','pis311in@gmail.com','empty','sei','troppo','forte',0),('Gennaro','gennaro','Gennaro','Nero','xde@gmail.com','32132132','312233','indFatt','IndSped',0),('luca','luca','si','no','yeye','non aggiunta','wewe','wa','we',0),('Michele200','michele','Michele','D\'Arienzo','michele@gmail.com','2232323','32323232','si ','no',1);
+INSERT INTO `utente` VALUES ('gennarin','gg','vai','gennaro','pis311in@gmail.com','empty','sei','troppo','forte',0),('Gennaro','gennaro','Gennaro','Nero','xde@gmail.com','32132132','312233','indFatt','IndSped',0),('luca','luca','luca','palle','asdadsad','non aggiunta','palle','palle','palle',0),('Michele200','michele','Michele','D\'Arienzo','michele@gmail.com','2232323','32323232','si ','no',1);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,4 +155,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-04 22:21:20
+-- Dump completed on 2023-06-20 11:39:07
