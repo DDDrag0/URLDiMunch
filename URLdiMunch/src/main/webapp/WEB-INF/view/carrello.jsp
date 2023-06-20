@@ -56,7 +56,7 @@
     </div>
     <div class="product-price"><%=product.getPrezzo()%></div>
     <div class="product-quantity">
-      <input type="number" value="1" min="1">
+      <input type="number" value="1" min="1" id="numeroprodotti">
     </div>
     <div class="product-removal">
     <a class="remove-product" href="prodottoCliente?action=deleteC&id=<%=product.getIdProdotto()%>">Remove</a>
