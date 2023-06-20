@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 	<head>
 		<link href="header.css" rel="stylesheet" type="text/css">
 		<link href="index.css" rel="stylesheet" type="text/css">

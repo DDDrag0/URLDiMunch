@@ -27,7 +27,6 @@ body {
   width: 40%;
   position: relative;
   overflow: hidden;
-  object-cover: cover;
 }
 
 .video video {

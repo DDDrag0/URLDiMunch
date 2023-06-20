@@ -22,7 +22,7 @@ if ((adminRoles == null) || (!adminRoles.booleanValue()))
 %>
 
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*"%>
 
 <head>
@@ -37,6 +37,7 @@ if ((adminRoles == null) || (!adminRoles.booleanValue()))
 	<a href="prodottoAdmin">List</a>
 	<a href="index.jsp">Home</a>
 	<table border="1">
+	<caption>tabella1</caption>
 		<tr>
 			<th>Code Admin<a href="prodottoAdmin?sort=code">Sort</a></th>
 			<th>Name <a href="prodottoAdmin?sort=name">Sort</a></th>
@@ -76,6 +77,7 @@ if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		if (product != null) {
 	%>
 	<table border="1">
+	<caption>tabella2</caption>
 		<tr>
 			<th>Code</th>
 			<th>Name</th>

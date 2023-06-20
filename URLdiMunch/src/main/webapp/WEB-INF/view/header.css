@@ -108,7 +108,7 @@ header {
 	margin-top: 50px;
 }
 .sidebar a:hover {
-	backgorund-color: #ddd;
+	color: #ddd;
 }
 .content-overlay {
   display: none;
@@ -141,7 +141,7 @@ header {
   border: none;
   color: #333;
   z-index: 999;
-  margin-down: 20px;
+  margin-bottom: 20px;
 }
 .hamburger {						/* tre linee orizzontali dette hamburger */
   display: flex;

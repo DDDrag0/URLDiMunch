@@ -17,8 +17,11 @@
     	test=true;
     	}
 %>
-<html>
+
+<!DOCTYPE html>
+<html lang="it">
 <head>
+<title>header</title>
 <link href="header.css" rel="stylesheet" type="text/css">
 </head>
 <body>

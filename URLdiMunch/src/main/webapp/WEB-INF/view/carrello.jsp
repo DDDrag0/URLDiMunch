@@ -14,7 +14,7 @@
     }
 %>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
   	<link href="header.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="carrello.css">
