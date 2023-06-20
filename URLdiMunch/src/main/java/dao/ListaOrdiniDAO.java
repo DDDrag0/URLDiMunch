@@ -62,6 +62,7 @@ public class ListaOrdiniDAO {
 	            printSQLException(e);
 	        } finally {
 	        	preparedStatement.close();
+	        	checkcodice.close();
 	        }
 	    }
 	    
