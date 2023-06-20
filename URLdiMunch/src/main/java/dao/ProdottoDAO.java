@@ -38,6 +38,14 @@ public class ProdottoDAO {
 		catch (SQLException e) {
             // process sql exception
             printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
         }
     }
 
@@ -72,6 +80,14 @@ public class ProdottoDAO {
 		catch (SQLException e) {
             // process sql exception
             printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
         }
 		return prodotto;
     }
@@ -110,6 +126,14 @@ public class ProdottoDAO {
 		catch (SQLException e) {
             // process sql exception
             printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
         }
 		return a;
     }
@@ -132,6 +156,14 @@ public class ProdottoDAO {
 		catch (SQLException e) {
             // process sql exception
             printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
         }
 		return (result != 0);
 	}
@@ -171,6 +203,14 @@ public class ProdottoDAO {
 		catch (SQLException e) {
             // process sql exception
             printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
         }
 		return products;
 	}

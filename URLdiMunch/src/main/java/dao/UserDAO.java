@@ -12,11 +12,11 @@ public class UserDAO {
 
     public synchronized boolean validate(User user) throws ClassNotFoundException {
         boolean status = false;
-        
+        PreparedStatement preparedStatement = null;
         try (Connection connection = ConPool.getConnection()){
 
             // Step 2:Create a statement using connection object
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from utente where idutente = ? and password = ? ");
+            preparedStatement = connection.prepareStatement("select * from utente where idutente = ? and password = ? ");
             preparedStatement.setString(1, user.getIdUtente());
             preparedStatement.setString(2, user.getPassword());
 
@@ -27,6 +27,14 @@ public class UserDAO {
         } catch (SQLException e) {
             // process sql exception
             printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
         }
         return status;
     }
@@ -35,10 +43,11 @@ public class UserDAO {
 
         int result = 0;
 
+		PreparedStatement preparedStatement = null;
         try (Connection connection = ConPool.getConnection()){
 
             // Step 2:Create a statement using connection object
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO utente (idUtente,password,email) VALUES (?,?,?);");
+            preparedStatement = connection.prepareStatement("INSERT INTO utente (idUtente,password,email) VALUES (?,?,?);");
             preparedStatement.setString(1, user.getIdUtente());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getEmail());
@@ -50,6 +59,14 @@ public class UserDAO {
         } catch (SQLException e) {
             // process sql exception
             printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
         }
         return result;
     }
@@ -57,11 +74,12 @@ public class UserDAO {
     public synchronized int modUser(User user) throws ClassNotFoundException {
 
         int result = 0;
+		PreparedStatement preparedStatement = null;
 
         try (Connection connection = ConPool.getConnection()){
 
             // Step 2:Create a statement using connection object
-        	PreparedStatement preparedStatement = connection.prepareStatement("UPDATE utente SET password=?,nome=?,cognome=?,email=?,telefono=?,indirizzoFatturazione=?,indirizzoSpedizione=? WHERE idUtente=?;");
+        	preparedStatement = connection.prepareStatement("UPDATE utente SET password=?,nome=?,cognome=?,email=?,telefono=?,indirizzoFatturazione=?,indirizzoSpedizione=? WHERE idUtente=?;");
             preparedStatement.setString(1, user.getPassword());
             preparedStatement.setString(2, user.getNome());
             preparedStatement.setString(3, user.getCognome());
@@ -78,6 +96,14 @@ public class UserDAO {
         } catch (SQLException e) {
             // process sql exception
             printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
         }
         return result;
     }
@@ -101,6 +127,14 @@ public class UserDAO {
 		catch (SQLException e) {
             // process sql exception
             printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
         }
 		
     	return check;
@@ -136,6 +170,14 @@ public class UserDAO {
 		catch (SQLException e) {
             // process sql exception
             printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
         }
 		return user;
     }
