@@ -19,7 +19,7 @@ public class ProdottoDAO {
 	String epoca = "epoca";
 	String dimensioni = "dimensioni";
 	String descrizione = "descrizione";
-	String quantità = "quantità";
+	String quantita = "quantità";
 	String iva = "iva";
 	String prezzo = "prezzo";
 	String imagepath ="imagepath";
@@ -81,7 +81,7 @@ public class ProdottoDAO {
 				prodotto.setEpoca(rs.getString(epoca));
 				prodotto.setDimensioni(rs.getString(dimensioni));
 				prodotto.setDescrizione(rs.getString(descrizione));
-				prodotto.setQuantità(rs.getInt(quantità));
+				prodotto.setQuantità(rs.getInt(quantita));
 				prodotto.setIva(rs.getDouble(iva));
 				prodotto.setPrezzo(rs.getDouble(prezzo));
 				prodotto.setImagepath(rs.getString(imagepath));
@@ -104,10 +104,10 @@ public class ProdottoDAO {
     }
 	
 
-	public synchronized ArrayList<Prodotto> RicercaProdottoNome(String nome) throws SQLException {
+	public synchronized ArrayList<Prodotto> ricercaProdottoNome(String nome) throws SQLException {
 		PreparedStatement preparedStatement = null;
 
-        ArrayList<Prodotto> a = new ArrayList<Prodotto>();
+        ArrayList<Prodotto> a = new ArrayList<>();
 
 		String selectSQL = "SELECT * FROM prodotto WHERE nome LIKE concat('%',?,'%')";
 
@@ -126,7 +126,7 @@ public class ProdottoDAO {
 				prodotto.setEpoca(rs.getString(epoca));
 				prodotto.setDimensioni(rs.getString(dimensioni));
 				prodotto.setDescrizione(rs.getString(descrizione));
-				prodotto.setQuantità(rs.getInt(quantità));
+				prodotto.setQuantità(rs.getInt(quantita));
 				prodotto.setIva(rs.getDouble(iva));
 				prodotto.setPrezzo(rs.getDouble(prezzo));
 				prodotto.setImagepath(rs.getString(imagepath));
@@ -183,7 +183,7 @@ public class ProdottoDAO {
 		
 		PreparedStatement preparedStatement = null;
 
-		Collection<Prodotto> products = new LinkedList<Prodotto>();
+		Collection<Prodotto> products = new LinkedList<>();
 
 		String selectSQL = "SELECT * FROM  prodotto";
 
@@ -202,7 +202,7 @@ public class ProdottoDAO {
 				prodotto.setEpoca(rs.getString(epoca));
 				prodotto.setDimensioni(rs.getString(dimensioni));
 				prodotto.setDescrizione(rs.getString(descrizione));
-				prodotto.setQuantità(rs.getInt(quantità));
+				prodotto.setQuantità(rs.getInt(quantita));
 				prodotto.setIva(rs.getDouble(iva));
 				prodotto.setPrezzo(rs.getDouble(prezzo));
 				prodotto.setImagepath(rs.getString(imagepath));

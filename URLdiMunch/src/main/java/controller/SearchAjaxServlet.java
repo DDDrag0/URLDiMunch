@@ -29,7 +29,7 @@ public class SearchAjaxServlet extends HttpServlet {
         ArrayList<Prodotto> a = new ArrayList<>();
 
         try {
-           a = prod.RicercaProdottoNome(nome);
+           a = prod.ricercaProdottoNome(nome);
         } catch (SQLException e) {
 
         	//e.printStackTrace();	//sensitive
