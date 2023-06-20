@@ -11,7 +11,7 @@ $('#ajaxsearch').on('input focus', function(e) {
 	  		
 	  		if (data && data.length > 0){
 		
-				for (i = 0; i < min(data.length,5); i++){
+				for (let i = 0; i < min(data.length,5); i++){
 					let elem = data[i];
 					$("#searchResult").append("<div class=\"searchableitem\" data-cod=\""+elem.idProdotto+"\"" +
 							" onclick=\"openSearch(this)\"><div class=\"item-name\">"+elem.nome+"</div></div>");
