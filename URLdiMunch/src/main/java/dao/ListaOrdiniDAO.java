@@ -1,5 +1,6 @@
 package dao;
 
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +15,11 @@ import model.ListaOrdini;
 public class ListaOrdiniDAO {
 	    
 	    public synchronized void CreaOrdine(ListaOrdini listaOrdini) throws ClassNotFoundException {
-			Random rand = new Random();
+	    	
+			SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
+			byte bytes[] = new byte [20];
+			rand.nextBytes(bytes);
+			
 			String co = null;
 	        try (Connection connection = ConPool.getConnection()){
 
