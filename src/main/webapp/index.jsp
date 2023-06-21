@@ -10,7 +10,7 @@
 		<%@ include file="header.jsp" %>
 		<div class="container">
 			<div class="banner">
-				<img src="foto2.png" alt="Banner sinistro">
+				<img src="./image/foto2.png" alt="Banner sinistro">
 			</div>
 			<div class="video">
 				<iframe width="100%" height="100%"
@@ -18,7 +18,7 @@
 					</iframe>
 			</div>
 			<div class="banner">
-				<img src="foto2.png" alt="Banner destro">
+				<img src="./image/foto1.png" alt="Banner destro">
 			</div>
 		</div>
 		<%@ include file="footer.jsp" %>
