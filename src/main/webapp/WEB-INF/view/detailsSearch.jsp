@@ -44,5 +44,24 @@
     				</tr>
     					
     		</table>
+<div class="user-reviews">
+  <h2>Recensioni degli utenti</h2>
+  <div class="review">
+    <h3>John Doe</h3>
+    <p class="rating">Voto: 4.5/5</p>
+    <p class="comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis urna vel dolor finibus mollis. Suspendisse sed lectus nec magna finibus porttitor ac sit amet lacus.</p>
+  </div>
+  <div class="review">
+    <h3>Jane Smith</h3>
+    <p class="rating">Voto: 3/5</p>
+    <p class="comment">Fusce aliquam justo ac ante fermentum rutrum. Nullam non lacus finibus, consectetur nulla ut, ultrices metus. Curabitur sed convallis ligula.</p>
+  </div>
+  <div class="review">
+    <h3>Mark Johnson</h3>
+    <p class="rating">Voto: 5/5</p>
+    <p class="comment">Vestibulum finibus ex non orci efficitur ultricies. Integer quis sollicitudin turpis. Duis condimentum nunc sed lacus faucibus, sed condimentum quam tincidunt.</p>
+  </div>
+</div>
+    		
     </body>
     </html>
