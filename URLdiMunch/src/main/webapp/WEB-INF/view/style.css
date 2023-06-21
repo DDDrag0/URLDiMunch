@@ -46,7 +46,7 @@ body{
   right:45%;
 }
 
-.loginMsg, .signupMsg{
+.loginMsg .signupMsg{
   width: 50%;
   height: 100%;
   font-size: 15px;

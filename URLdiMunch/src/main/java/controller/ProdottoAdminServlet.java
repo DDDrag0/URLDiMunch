@@ -23,11 +23,9 @@ public class ProdottoAdminServlet extends HttpServlet {
        
     public ProdottoAdminServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		Carrello cart = (Carrello)request.getSession().getAttribute("cart");
 		if(cart == null) {
@@ -68,25 +66,22 @@ public class ProdottoAdminServlet extends HttpServlet {
 					prodotto.setNome(name);
 					prodotto.setDescrizione(description);
 					prodotto.setPrezzo(price);
-					prodotto.setQuantità(quantity);
+					prodotto.setQuantita(quantity);
 					prodottodao.doSave(prodotto);
 				}
 			}			
 		} catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			System.out.println("Error:" + e.getMessage());	//NonCompilant
 		}
 
 		request.getSession().setAttribute("cart", cart);
 		request.setAttribute("cart", cart);
 		
-		
-		String sort = request.getParameter("sort");
-
 		try {
 			request.removeAttribute("products");
-			request.setAttribute("products", prodottodao.doRetrieveAll(sort));
+			request.setAttribute("products", prodottodao.doRetrieveAll());
 		} catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			System.out.println("Error:" + e.getMessage());	//NonCompilant
 		}
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/prodottiAdmin.jsp");
@@ -94,7 +89,6 @@ public class ProdottoAdminServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -1,55 +1,76 @@
 package dao;
 
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.Random;
 
 import model.ConPool;
 import model.ListaOrdini;
 	
 public class ListaOrdiniDAO {
 	    
-	    public synchronized void CreaOrdine(ListaOrdini listaOrdini) throws ClassNotFoundException {
-			Random rand = new Random();
+	    public synchronized void creaOrdine(ListaOrdini listaOrdini) throws ClassNotFoundException {
+	    	
+			SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
+			byte[] bytes = new byte [20];
+			rand.nextBytes(bytes);
+			
+			
 			String co = null;
+			PreparedStatement preparedStatement = null;
+			PreparedStatement checkcodice = null;
 	        try (Connection connection = ConPool.getConnection()){
 
-	            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO listaOrdini (idOrdine,nomeProdotto,prezzo,dataOrdine,dataConsegna,dataArrivo,"
+	            preparedStatement = connection.prepareStatement("INSERT INTO listaOrdini (idOrdine,nomeProdotto,prezzo,dataOrdine,dataConsegna,dataArrivo,"
 	            																+ "indirizzoConsegna, iva) VALUES (?,?,?,?,?,?,?,?);");
-	            PreparedStatement checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine="+co);
-	            int ordine_valido=0, ordine_invalido=0;
-				while(ordine_valido==0) {
+	            checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine = ?");
+	            checkcodice.setString(1, co);
+	            
+	            int ordineValido=0;
+	            int ordineInvalido=0;
+				while(ordineValido==0) {
 					int codr = rand.nextInt(999999999);
 					co= "ord-"+codr;
 					ResultSet resultSet = checkcodice.executeQuery();
 					while (resultSet.next()) {
 						String codTess= resultSet.getString("codice");
 						if(co.equals(codTess)) {
-							ordine_invalido=1;
+							ordineInvalido=1;
 						}
 					}
-					if(ordine_invalido==0) {
-						ordine_valido=1;
+					if(ordineInvalido==0) {
+						ordineValido=1;
 					}
 				}
 				System.out.println("Il codice ordine sarà: "+co);
 	            
 	            preparedStatement.setString(1, co);
-	            preparedStatement.setString(2, listaOrdini.getNomeProdotto());
+	            //preparedStatement.setString(2, listaOrdini.getNomeProdotto());
 	            preparedStatement.setDouble(3, listaOrdini.getPrezzo());
 	            preparedStatement.setString(4, listaOrdini.getDataOrdine());
 	            preparedStatement.setString(5, listaOrdini.getDataConsegna());
 	            preparedStatement.setString(6, listaOrdini.getDataArrivo());
 	            preparedStatement.setString(7, listaOrdini.getIndirizzoConsegna());
-	            preparedStatement.setDouble(10, listaOrdini.getIva());
+	            preparedStatement.setDouble(8, listaOrdini.getIva());
 	            System.out.println(preparedStatement);
 
 	        } catch (SQLException e) {
 	            printSQLException(e);
+	        }finally {
+	            try {
+	                if (preparedStatement != null) {
+	                    preparedStatement.close();
+	                }
+	                if (checkcodice != null) {
+	                    checkcodice.close();
+	                }
+	            } catch (SQLException e) {
+	                printSQLException(e);
+	            }
 	        }
 	    }
 	    
@@ -68,7 +89,7 @@ public class ListaOrdiniDAO {
 
 				while (rs.next()) {
 					ordine.setIdOrdine(rs.getString("idOrdine"));
-					ordine.setNomeProdotto(rs.getString("nomeProdotto"));
+					//ordine.setNomeProdotto(rs.getString("nomeProdotto"));
 					ordine.setPrezzo(rs.getDouble("prezzo"));
 					ordine.setDataOrdine(rs.getString("dataOrdine"));
 					ordine.setDataConsegna(rs.getString("dataConsegna"));
@@ -76,11 +97,19 @@ public class ListaOrdiniDAO {
 					ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
 					ordine.setIva(rs.getDouble("iva"));
 				}
-
+				preparedStatement.close();
 			}
 			catch (SQLException e) {
 	            // process sql exception
 	            printSQLException(e);
+	        }finally {
+	            try {
+	                if (preparedStatement != null) {
+	                    preparedStatement.close();
+	                }
+	            } catch (SQLException e) {
+	                printSQLException(e);
+	            }
 	        }
 			return ordine;
 	    }
@@ -98,26 +127,32 @@ public class ListaOrdiniDAO {
 				preparedStatement.setString(1, code);
 
 				result = preparedStatement.executeUpdate();
+				
+				preparedStatement.close();
 
 			}
 			catch (SQLException e) {
 	            // process sql exception
 	            printSQLException(e);
+	        }finally {
+	            try {
+	                if (preparedStatement != null) {
+	                    preparedStatement.close();
+	                }
+	            } catch (SQLException e) {
+	                printSQLException(e);
+	            }
 	        }
 			return (result != 0);
 		}
 
-		public synchronized Collection<ListaOrdini> ricercaTuttiOrdini(String order) throws SQLException {
+		public synchronized Collection<ListaOrdini> ricercaTuttiOrdini() throws SQLException {
 			
 			PreparedStatement preparedStatement = null;
 
-			Collection<ListaOrdini> orders = new LinkedList<ListaOrdini>();
+			Collection<ListaOrdini> orders = new LinkedList<>();
 
-			String selectSQL = "SELECT * FROM  listaOrdini ";
-
-			if (order != null && !order.equals("")) {
-				selectSQL += " ORDER BY " + order;
-			}
+			String selectSQL = "SELECT * FROM  listaOrdini";
 
 			try (Connection connection = ConPool.getConnection()){
 				preparedStatement = connection.prepareStatement(selectSQL);
@@ -128,7 +163,7 @@ public class ListaOrdiniDAO {
 					ListaOrdini ordine = new ListaOrdini();
 
 					ordine.setIdOrdine(rs.getString("idOrdine"));
-					ordine.setIdProdotto(rs.getString("nomeProdotto"));
+					//ordine.setIdProdotto(rs.getString("nomeProdotto"));
 					ordine.setPrezzo(rs.getDouble("prezzo"));
 					ordine.setDataOrdine(rs.getString("dataOrdine"));
 					ordine.setDataConsegna(rs.getString("dataConsegna"));
@@ -138,11 +173,20 @@ public class ListaOrdiniDAO {
 					
 					orders.add(ordine);
 				}
+				preparedStatement.close();
 
 			}
 			catch (SQLException e) {
 	            // process sql exception
 	            printSQLException(e);
+	        }finally {
+	            try {
+	                if (preparedStatement != null) {
+	                    preparedStatement.close();
+	                }
+	            } catch (SQLException e) {
+	                printSQLException(e);
+	            }
 	        }
 			return orders;
 		}

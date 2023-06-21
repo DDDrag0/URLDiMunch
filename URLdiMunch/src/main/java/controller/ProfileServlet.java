@@ -54,7 +54,7 @@ public class ProfileServlet extends HttpServlet {
 		try {
 			profileDAO.modUser(user);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			//e.printStackTrace();	//sensitive
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/DettagliUser.jsp");

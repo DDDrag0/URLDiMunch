@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
  pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="loginJQuerySrc.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 <meta charset="ISO-8859-1">
 <title>Login</title>
 </head>
 <body>
 <head>
+<title>logIn</title>
   <link href="header.css" rel="stylesheet" type="text/css">
 </head>
 <body>

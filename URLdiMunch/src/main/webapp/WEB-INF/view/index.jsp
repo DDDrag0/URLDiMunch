@@ -4,7 +4,7 @@
 <%@ page import="java.util.Collection" %>
 <%@ page import="java.util.Iterator" %>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 	<head>
 		<link href="header.css" rel="stylesheet" type="text/css">
 		<link href="index.css" rel="stylesheet" type="text/css">
@@ -89,7 +89,7 @@
     
 		
 		<%@ include file="footer.jsp" %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="ajaxheadersrc.min.js"></script>
 <script src="search.js"></script>
 	</body>
 </html>

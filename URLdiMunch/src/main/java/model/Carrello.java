@@ -8,7 +8,7 @@ public class Carrello {
 	private List<Prodotto> prodotto;
 	
 	public Carrello() {
-		prodotto = new ArrayList<Prodotto>();
+		prodotto = new ArrayList<>();
 	}
 	
 	public void addProduct(Prodotto product) {

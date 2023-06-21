@@ -14,7 +14,7 @@
     }
 %>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
   	<link href="header.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="carrello.css">
@@ -42,7 +42,7 @@
 	<%
             double grandTotal = 0;
             for ( Prodotto product : cart.getProducts()) {
-                double total = product.getPrezzo() * product.getQuantità();
+                double total = product.getPrezzo() * product.getQuantita();
                 grandTotal += total;
         %>
         

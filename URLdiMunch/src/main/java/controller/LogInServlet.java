@@ -30,11 +30,12 @@ public class LogInServlet extends HttpServlet {
 		doPost(request, response);
 	}
 	
-	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//prese dalla logOut
-    	request.getSession().removeAttribute("utente");
-		request.getSession().removeAttribute("adminRoles");
+		String utente="utente";
+		String admin="adminRoles";
+    	request.getSession().removeAttribute(utente);
+		request.getSession().removeAttribute(admin);
 		//prese dalla logOut
 		
 		String idutente = request.getParameter("idutente");
@@ -47,25 +48,23 @@ public class LogInServlet extends HttpServlet {
         	
             if (loginDAO.validate(user)) {
             	user= loginDAO.ricercaUser(idutente);
-            	request.getSession().setAttribute("utente", user);
+            	request.getSession().setAttribute(utente, user);
             	if(loginDAO.checkAdmin(idutente)) {
-    				request.getSession().setAttribute("adminRoles", new Boolean(true));
+    				request.getSession().setAttribute(admin, Boolean.valueOf(true));
             	}
             	else {
-    				request.getSession().setAttribute("adminRoles", new Boolean(false));
+    				request.getSession().setAttribute(admin, Boolean.valueOf(false));
             	}
 				redirectedPage = "/DettagliUser.jsp";
 				response.sendRedirect(request.getContextPath() + redirectedPage);
             } else {
-            	request.getSession().setAttribute("utente", null);
-				request.getSession().setAttribute("adminRoles", new Boolean(false));
+            	request.getSession().setAttribute(utente, null);
+				request.getSession().setAttribute(admin, Boolean.valueOf(false));
 				redirectedPage = "/logIn.jsp";
 				response.sendRedirect(request.getContextPath() + redirectedPage);
             }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+        } catch (ClassNotFoundException | SQLException e) {
+            //e.printStackTrace();	//sensitive
 		}
 	}
 }

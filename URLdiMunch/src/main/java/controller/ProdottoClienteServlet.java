@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Carrello;
 import dao.ProdottoDAO;
-import model.Prodotto;
 
 @WebServlet("/prodottoCliente")
 public class ProdottoClienteServlet extends HttpServlet {
@@ -23,11 +22,9 @@ public class ProdottoClienteServlet extends HttpServlet {
        
     public ProdottoClienteServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		Carrello cart = (Carrello)request.getSession().getAttribute("cart");
 		if(cart == null) {
@@ -68,12 +65,9 @@ public class ProdottoClienteServlet extends HttpServlet {
 		request.getSession().setAttribute("cart", cart);
 		request.setAttribute("cart", cart);
 		
-		
-		String sort = request.getParameter("sort");
-
 		try {
 			request.removeAttribute("products");
-			request.setAttribute("products", prodottodao.doRetrieveAll(sort));
+			request.setAttribute("products", prodottodao.doRetrieveAll());
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());
 		}
@@ -83,7 +77,6 @@ public class ProdottoClienteServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

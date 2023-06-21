@@ -9,16 +9,16 @@ public class Prodotto {
 	private String epoca;
 	private String dimensioni;
 	private String descrizione;
-	private int quantità;
+	private int quantita;
 	private String imagepath;
 	private double prezzo;
 	private double iva;
 	
-	public int getQuantità() {
-		return quantità;
+	public int getQuantita() {
+		return quantita;
 	}
-	public void setQuantità(int quantità) {
-		this.quantità = quantità;
+	public void setQuantita(int quantita) {
+		this.quantita = quantita;
 	}
 	public String getIdProdotto() {
 		return idProdotto;
@@ -84,8 +84,8 @@ public class Prodotto {
 	@Override
 	public String toString() {
 		return "Prodotto [idProdotto=" + idProdotto + ", nome=" + nome + ", artista=" + artista + ", tipo=" + tipo
-				+ ", epoca=" + epoca + ", dimensioni=" + dimensioni + ", descrizione=" + descrizione + ", quantità="
-				+ quantità + ", imagepath=" + imagepath + ", prezzo=" + prezzo + ", iva=" + iva + "]";
+				+ ", epoca=" + epoca + ", dimensioni=" + dimensioni + ", descrizione=" + descrizione + ", quantita="
+				+ quantita + ", imagepath=" + imagepath + ", prezzo=" + prezzo + ", iva=" + iva + "]";
 	}
 
 }

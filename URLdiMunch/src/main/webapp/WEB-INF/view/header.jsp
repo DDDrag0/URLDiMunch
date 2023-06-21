@@ -17,8 +17,11 @@
     	test=true;
     	}
 %>
-<html>
+
+<!DOCTYPE html>
+<html lang="it">
 <head>
+<title>header</title>
 <link href="header.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -84,7 +87,7 @@ function toggleSidebar() {
 	sidebar.classList.toggle("open");
 }
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="ajaxheadersrc.min.js"></script>
 <script src="search.js"></script>
 </body>
 

@@ -1,5 +1,9 @@
-<html>
-<head> <link href="footer.css" rel="stylesheet" type="text/css"></head>
+<!DOCTYPE html>
+<html lang="it">
+<head> 
+<link href="footer.css" rel="stylesheet" type="text/css">
+<title>footer</title>
+</head>
 <body>
 <div>
 
@@ -24,7 +28,7 @@
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <img src="/media/redesign/img/logo_brand.svg?v=2" class="brand-logo-style">
+                        <img src="/media/redesign/img/logo_brand.svg?v=2" alt="logo" class="brand-logo-style">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true"></span>
                           </button>
