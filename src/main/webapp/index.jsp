@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
 	<head>
-		<link href="header.css" rel="stylesheet" type="text/css">
-		<link href="index.css" rel="stylesheet" type="text/css">
+		<link href="./css/header.css" rel="stylesheet" type="text/css">
+		<link href="./css/index.css" rel="stylesheet" type="text/css">
 		<meta charset="UTF-8">
 		<title>Lobby</title>
 	</head>
@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<%@ include file="footer.jsp" %>
-<script src="ajaxheadersrc.min.js"></script>
-<script src="search.js"></script>
+<script src="./js/ajaxheadersrc.min.js"></script>
+<script src="./js/search.js"></script>
 	</body>
 </html>

@@ -16,13 +16,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  	<link href="header.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="carrello.css">
+  	<link href="./css/header.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="./css/carrello.css">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>cart</title>
 <link href="#" rel="stylesheet">
-<script type="text/javascript" src="jQueryCarrello.js"></script>
+<script type="text/javascript" src="./js/jQueryCarrello.js"></script>
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -92,5 +92,5 @@
       
       <button class="checkout">Checkout</button>
 </div>
-<script src="carrello.js"></script>
+<script src="./js/carrello.js"></script>
 </body></html>

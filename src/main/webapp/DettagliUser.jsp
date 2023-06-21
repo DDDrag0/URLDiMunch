@@ -19,9 +19,9 @@
 	<style>
 		@font-face { font-family: Arial !important; font-display: swap !important; }
 	</style>
-	<link href="styleSheetUser.css" rel="stylesheet">
+	<link href="./css/styleSheetUser.css" rel="stylesheet">
 	<link href="#" rel="stylesheet">
-	<script type="text/javascript" src="jQueryUser.js"></script>
+	<script type="text/javascript" src="./js/jQueryUser.js"></script>
 	<style>
 		::-webkit-scrollbar {
 		width: 8px;

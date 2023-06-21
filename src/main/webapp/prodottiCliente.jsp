@@ -22,9 +22,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Storage DS/BF</title>
-	<link href="header.css" rel="stylesheet" type="text/css">
-	<link href="prodotticliente.css" rel="stylesheet" type="text/css">
-	  <link rel="stylesheet" href="styleProdottiCliente.css">
+	<link href="./css/header.css" rel="stylesheet" type="text/css">
+	<link href="./css/prodotticliente.css" rel="stylesheet" type="text/css">
+	  <link rel="stylesheet" href="./css/styleProdottiCliente.css">
 	</head>
 <%@ include file="header.jsp" %>
 <body>
@@ -66,9 +66,9 @@
 </div>
  <%@ include file="footer.jsp" %>
 
-<script src="jQueryProdottiCliente.js"></script>
-<script src="prodotticlienti.js"></script>
-<script src="jsProdottiCliente.js"></script>
+<script src="./js/jQueryProdottiCliente.js"></script>
+<script src="./js/prodotticlienti.js"></script>
+<script src="./js/jsProdottiCliente.js"></script>
 	
 </body>
 </html> 

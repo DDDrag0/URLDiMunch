@@ -3,15 +3,15 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<script src="loginJQuerySrc.min.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
+<script src="./js/loginJQuerySrc.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
 <meta charset="ISO-8859-1">
 <title>Login</title>
 </head>
 <body>
 <head>
 <title>logIn</title>
-  <link href="header.css" rel="stylesheet" type="text/css">
+  <link href="./css/header.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   <header>
@@ -69,7 +69,7 @@
   </div>
   </div>
   <a href="index.jsp" class="button-home">Home</a>
-  <script src="scriptlogin.js"></script>
+  <script src="./js/scriptlogin.js"></script>
   
 </body>
 

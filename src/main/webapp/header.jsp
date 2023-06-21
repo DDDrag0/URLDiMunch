@@ -22,7 +22,7 @@
 <html lang="it">
 <head>
 <title>header</title>
-<link href="header.css" rel="stylesheet" type="text/css">
+<link href="./css/header.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header>
@@ -85,8 +85,8 @@ function toggleSidebar() {
 	sidebar.classList.toggle("open");
 }
 </script>
-<script src="ajaxheadersrc.min.js"></script>
-<script src="search.js"></script>
+<script src="./js/ajaxheadersrc.min.js"></script>
+<script src="./js/search.js"></script>
 </body>
 
 
