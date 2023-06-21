@@ -104,7 +104,7 @@ public class ProdottoDAO {
     }
 	
 
-	public synchronized ArrayList<Prodotto> ricercaProdottoNome(String nome) throws SQLException {
+	public synchronized ArrayList<Prodotto> ricercaProdottoNome(String nomeq) throws SQLException {
 		PreparedStatement preparedStatement = null;
 
         ArrayList<Prodotto> a = new ArrayList<>();
@@ -113,7 +113,7 @@ public class ProdottoDAO {
 
 		try (Connection connection = ConPool.getConnection()){
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, nome);
+			preparedStatement.setString(1, nomeq);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
