@@ -115,7 +115,20 @@
                 <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="<%= user.getEmail()%>" value="<%= user.getEmail()%>" name="email"></div>
                 <div class="col-md-12"><label class="labels">Password</label><input type="password" class="form-control" placeholder="insert new password" value="<%= user.getPassword()%>" name="passw"></div>
             </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" value="Submit">Save Profile</button></div>
+            	
+                <div class="mt-5 text-center">
+                <%
+				// Check user credentials
+				Boolean adminRoles = (Boolean) session.getAttribute("adminRoles");
+				if (adminRoles.booleanValue())
+				{	
+					%>
+                	<a class="btn btn-primary profile-button" href="prodottiAdmin.jsp">Vai alla pagina di Gestione</a>
+					<% 
+				}
+				%>
+				<button class="btn btn-primary profile-button" type="submit" value="Submit">Save Profile</button>
+                </div>
         </div>
     </div>
 </div>

@@ -34,10 +34,8 @@
     <a href="index.jsp">Home</a>
     <a href="prodottiCliente.jsp">prodotti</a>
     <% if(user!=null) {%>
-    <form action="<%=request.getContextPath()%>/LogOut" method="post">
-			<input class="link-sidebar" type="submit" value="LogOut" />
-		</form>
-	<% }%>
+    <a href="<%=request.getContextPath()%>/LogOut">LogOut</a>
+	<% } %>
  </div> 
 </div>
  <div class="hamburger" onclick="toggleSidebar()">

@@ -13,9 +13,9 @@
 				<img src="foto2.png" alt="Banner sinistro">
 			</div>
 			<div class="video">
-				<video style="width: 100%;"   autoplay muted loop >
-   		 <source data-src="https://cdn.shopify.com/s/files/1/0188/7338/5024/files/home-dec-2021-new.mp4?v=1638810123" type="video/mp4" src="https://cdn.shopify.com/s/files/1/0188/7338/5024/files/home-dec-2021-new.mp4?v=1638810123">
-  	</video>
+				<iframe width="100%" height="100%"
+					src="https://www.youtube.com/embed/z3IF_UFXmL8?autoplay=1">
+					</iframe>
 			</div>
 			<div class="banner">
 				<img src="foto2.png" alt="Banner destro">
