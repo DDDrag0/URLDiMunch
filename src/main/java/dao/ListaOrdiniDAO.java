@@ -37,8 +37,8 @@ public class ListaOrdiniDAO {
 					co= "ord-"+codr;
 					ResultSet resultSet = checkcodice.executeQuery();
 					while (resultSet.next()) {
-						String codTess= resultSet.getString("codice");
-						if(co.equals(codTess)) {
+						String codOrdine= resultSet.getString("codice");
+						if(co.equals(codOrdine)) {
 							ordineInvalido=1;
 						}
 					}

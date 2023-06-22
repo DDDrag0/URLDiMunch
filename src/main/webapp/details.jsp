@@ -44,6 +44,18 @@
     </tr>
 </table>
 
+<h2>Scrivi una recensione</h2>
+<form action="recensioni" method="POST">
+    <input type="hidden" name="action" value="doSave">
+    <input type="hidden" name="idProdotto" value="<%= Encode.forHtml(code) %>">
+    <label for="idUtente">Nome utente:</label>
+    <input type="text" name="idUtente" required><br>
+    <label for="recensione">Recensione:</label>
+    <textarea name="recensione" rows="4" cols="50" required></textarea><br>
+    <input type="submit" value="Invia recensione">
+</form>
+
+<h2>Recensioni utenti</h2>
 <%
     RecensioneDAO recensioneDAO = new RecensioneDAO();
     Collection<Recensione> recensioni = recensioneDAO.doRetrieveByProduct(code);

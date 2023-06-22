@@ -27,13 +27,12 @@ public class RecensioniServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/prodottiCliente.jsp");
 		dispatcher.forward(request, response);
     }
  
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String referer = request.getHeader("referer");
 		String action = request.getParameter("action");
 		
 		try {
@@ -49,19 +48,17 @@ public class RecensioniServlet extends HttpServlet {
 			}
 			
 			else if (action.equalsIgnoreCase("doSave")) {
-		        String idRecensione = request.getParameter("idRecensione");
-		        String idProdotto = request.getParameter("idProdotto");
-		        String idUtente = request.getParameter("idUtente");
-		        String recensione = request.getParameter("recensione");
-		        
-		        Recensione nuovaRecensione = new Recensione();
-		        
-		        nuovaRecensione.setIdRecensione(Integer.parseInt(idRecensione));
-		        nuovaRecensione.setIdProdotto(idProdotto);
-		        nuovaRecensione.setIdUtente(idUtente);
-		        nuovaRecensione.setRecensione(recensione);
-		        
-		        recensioneDAO.doSave(nuovaRecensione);
+			    String idProdotto = request.getParameter("idProdotto");
+			    String idUtente = request.getParameter("idUtente");
+			    String recensione = request.getParameter("recensione");
+
+			    Recensione nuovaRecensione = new Recensione();
+			    nuovaRecensione.setIdProdotto(idProdotto);
+			    nuovaRecensione.setIdUtente(idUtente);
+			    nuovaRecensione.setRecensione(recensione);
+
+			    recensioneDAO.doSave(nuovaRecensione);
+			    
 			}
 			
 			else if (action.equalsIgnoreCase("doDelete")) {
@@ -108,12 +105,7 @@ public class RecensioniServlet extends HttpServlet {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		if (referer != null) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher(referer);
-			dispatcher.forward(request, response);
-	    } else {
-	        // Nessuna pagina di provenienza, reindirizzamento a una pagina predefinita
-	        response.sendRedirect(request.getContextPath() + "/index.jsp");
-	    }        
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/prodottiCliente.jsp");
+		dispatcher.forward(request, response);
     }
 }
