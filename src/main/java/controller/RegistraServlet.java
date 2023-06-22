@@ -25,7 +25,7 @@ public class RegistraServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/userRegistrazione.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/logIn.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -47,7 +47,7 @@ public class RegistraServlet extends HttpServlet {
 			//e.printStackTrace();	//sensitive
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/logIn.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/logIn.jsp");
 		dispatcher.forward(request, response);
 	}
 
