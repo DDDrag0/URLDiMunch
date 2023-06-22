@@ -23,7 +23,7 @@ public class PhotoControlDAO {
 
 		try {
 			connection = ConPool.getConnection();
-			String sql = "SELECT photo FROM lectures WHERE id = " + id;
+			String sql = "SELECT immagine FROM prodotto WHERE idProdotto = " + id;
 			stmt = connection.prepareStatement(sql);
 			rs = stmt.executeQuery();
 
@@ -59,7 +59,7 @@ public class PhotoControlDAO {
 		try {
 			con = ConPool.getConnection();
 
-			stmt = con.prepareStatement("UPDATE lectures SET photo = ? WHERE id = ?");
+			stmt = con.prepareStatement("UPDATE prodotto SET immagine = ? WHERE idProdotto = ?");
 			
 			File file = new File(photo);
 			try {
