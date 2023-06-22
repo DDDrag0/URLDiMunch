@@ -33,7 +33,7 @@ public class RecensioniServlet extends HttpServlet {
  
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    	String referer = request.getHeader("referer");
 		String action = request.getParameter("action");
 		
 		try {
@@ -108,9 +108,12 @@ public class RecensioniServlet extends HttpServlet {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-        
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-		dispatcher.forward(request, response);
-        
+		if (referer != null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher(referer);
+			dispatcher.forward(request, response);
+	    } else {
+	        // Nessuna pagina di provenienza, reindirizzamento a una pagina predefinita
+	        response.sendRedirect(request.getContextPath() + "/index.jsp");
+	    }        
     }
 }
