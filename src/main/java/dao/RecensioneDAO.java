@@ -11,6 +11,38 @@ import model.ConPool;
 import model.Recensione;
 
 public class RecensioneDAO {
+
+public synchronized Recensione doRetrieveById(String idRecensione) throws SQLException {
+	    PreparedStatement preparedStatement = null;
+	    Recensione recensione = null;
+	    
+	    String selectSQL = "SELECT * FROM recensione WHERE idRecensione = ?";
+	    
+	    try (Connection connection = ConPool.getConnection()) {
+	        preparedStatement = connection.prepareStatement(selectSQL);
+	        preparedStatement.setString(1, idRecensione);
+	        
+	        ResultSet rs = preparedStatement.executeQuery();
+	        
+	        if (rs.next()) {
+	            recensione = new Recensione();
+	            
+	            recensione.setIdRecensione(rs.getInt("idRecensione"));
+	            recensione.setIdProdotto(rs.getString("idProdotto"));
+	            recensione.setIdUtente(rs.getString("idUtente"));
+	            recensione.setRecensione(rs.getString("recensione"));
+	        }
+	    } catch (SQLException e) {
+	        printSQLException(e);
+	    } finally {
+	        if (preparedStatement != null) {
+	            preparedStatement.close();
+	        }
+	    }
+	    
+	    return recensione;
+}
+
 public synchronized int doSave(Recensione recensione) throws SQLException {
 		
 		PreparedStatement preparedStatement = null;
@@ -73,6 +105,36 @@ public synchronized boolean doDelete(String code) throws SQLException {
         }
     }
 	return (result != 0);
+}
+
+public synchronized int modRecensione(Recensione rec) throws ClassNotFoundException {
+
+    int result = 0;
+	PreparedStatement preparedStatement = null;
+
+    try (Connection connection = ConPool.getConnection()){
+
+        // Step 2:Create a statement using connection object
+    	preparedStatement = connection.prepareStatement("UPDATE recensione SET recensione=? WHERE idRecensione=?;");
+        preparedStatement.setString(1, rec.getRecensione());
+
+        System.out.println(preparedStatement);
+        // Step 3: Execute the query or update query
+        result = preparedStatement.executeUpdate();
+
+    } catch (SQLException e) {
+        // process sql exception
+        printSQLException(e);
+    }finally {
+        try {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
+    return result;
 }
 
 public synchronized Collection<Recensione> doRetrieveByProduct(String code) throws SQLException {
