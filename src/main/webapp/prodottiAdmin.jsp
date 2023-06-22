@@ -19,18 +19,29 @@ if ((adminRoles == null) || (!adminRoles.booleanValue()))
 </head>
 
 <body>
+	<%@ include file="header.jsp" %>
 	<h2>Insert</h2>
 	<form action="<%=request.getContextPath()%>/prodottoAdmin" method="post">
 		  <input type="text" name="idProdotto" placeholder="idProdotto">
+		  <br>
 		  <input type="text" name="nome" placeholder="nome">
+		  <br>
 		  <input type="text" name="artista" placeholder="artista">
+		  <br>
 		  <input type="text" name="tipo" placeholder="tipo">
+		  <br>
 		  <input type="text" name="epoca" placeholder="epoca">
+		  <br>
 		  <input type="text" name="dimensioni" placeholder="dimensioni">
+		  <br>
 		  <input type="text" name="descrizione" placeholder="descrizione">
-		  <input type="text" name="quantità" placeholder="quantità">
-		  <input type="text" name="prezzo" placeholder="prezzo">
-		  <input type="text" name="iva" placeholder="iva">
+		  <br>
+		  <input type="number" name="quantita" placeholder="quantità">
+		  <br>
+		  <input type="number" name="prezzo" placeholder="prezzo">
+		  <br>
+		  <input type="number" name="iva" placeholder="iva">
+		  <br>
 		  
         <button value="Submit">inserisci prodotto</button>
 	</form>

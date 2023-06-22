@@ -24,10 +24,12 @@ public class ProdottoDAO {
 	String prezzo = "prezzo";
 	String imagepath ="imagepath";
 	
-	public synchronized void doSave(Prodotto product) throws SQLException {
+	public synchronized int doSave(Prodotto product) throws SQLException {
 		
 		PreparedStatement preparedStatement = null;
-
+		
+		int result = 0;
+		
 		String insertSQL = "INSERT INTO prodotto (idProdotto,nome, artista, tipo, epoca, dimensioni, descrizione, quantità, iva, prezzo) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 		try (Connection connection = ConPool.getConnection()){
@@ -42,11 +44,12 @@ public class ProdottoDAO {
 			preparedStatement.setInt(8, product.getQuantita());
 			preparedStatement.setDouble(9, product.getIva());
 			preparedStatement.setDouble(10, product.getPrezzo());
-			//preparedStatement.setString(11, product.getImagepath());
 
-			connection.commit();
-		}
-		catch (SQLException e) {
+            System.out.println(preparedStatement);
+
+            result = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
             // process sql exception
             printSQLException(e);
         }finally {
@@ -58,6 +61,7 @@ public class ProdottoDAO {
                 printSQLException(e);
             }
         }
+        return result;
     }
 
 	public synchronized Prodotto doRetrieveByKey(String code) throws SQLException {
