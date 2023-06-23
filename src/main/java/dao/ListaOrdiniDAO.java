@@ -208,7 +208,7 @@ public class ListaOrdiniDAO {
 		return orders;
 	}
 	
-public synchronized Collection<ListaOrdini> ricercaTuttiOrdiniUtente(User user) throws SQLException {
+	public synchronized Collection<ListaOrdini> ricercaTuttiOrdiniUtente(User user) throws SQLException {
 		
 		PreparedStatement preparedStatement = null;
 

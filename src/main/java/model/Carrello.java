@@ -27,4 +27,12 @@ public class Carrello {
 	public List<Prodotto> getProducts() {
 		return  prodotto;
 	}
+	
+	public List<String> getProductIds() {
+        List<String> productIds = new ArrayList<>();
+        for (Prodotto prodotti : prodotto) {
+            productIds.add(prodotti.getIdProdotto());
+        }
+        return productIds;
+    }
 }
