@@ -183,7 +183,7 @@ public class ProdottoDAO {
 		return (result != 0);
 	}
 	
-public synchronized boolean subProd(String code,int quant) throws SQLException {
+public synchronized void subProd(String code,int quant) throws SQLException {
 		
 		PreparedStatement preparedStatement = null;
 
@@ -212,7 +212,6 @@ public synchronized boolean subProd(String code,int quant) throws SQLException {
                 printSQLException(e);
             }
         }
-		return (result != 0);
 	}
 
 	public synchronized Collection<Prodotto> doRetrieveAll() throws SQLException {

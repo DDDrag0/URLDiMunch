@@ -16,7 +16,7 @@ import model.User;
 	
 public class ListaOrdiniDAO {
 	
-	public void insertOrder(String idProdotti, double prezzo, String indirizzo) {
+	public void insertOrder(String idProdotti, double prezzo, int[] quantita, String indirizzo) {
 		SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
 		byte[] bytes = new byte [20];
 		rand.nextBytes(bytes);
@@ -53,7 +53,7 @@ public class ListaOrdiniDAO {
 	    	
 	        statement.setString(1, co);
 	        
-	        String nomeProdotti = getProductNames(idProdotti);
+	        String nomeProdotti = getProductNames(idProdotti, quantita);
 	        statement.setString(2, nomeProdotti);
 	        
 	        statement.setString(3, idProdotti);
@@ -67,28 +67,32 @@ public class ListaOrdiniDAO {
 	    }
 	}
 
-	private String getProductNames(String idProdotti) {
-	    String[] nomiArray = idProdotti.split("&");
-	    StringBuilder idBuilder = new StringBuilder();
-	    
+	private String getProductNames(String idProdotti,int[] quantita) {
+		ProdottoDAO prod = new ProdottoDAO();
+		int counter=0;
+	    String[] idArray = idProdotti.split("&");
+	    StringBuilder nameBuilder = new StringBuilder();
 	    try (Connection connection = ConPool.getConnection()) {
-	        for (String nome : nomiArray) {
-				PreparedStatement search = connection.prepareStatement("SELECT nome FROM urldimunch.prodotto WHERE idProdotto =  ? ");
-				search.setString(1, nome);
-				ResultSet resultSet = search.executeQuery();
+	        for (String id : idArray) {
+	            PreparedStatement search = connection.prepareStatement("SELECT nome FROM urldimunch.prodotto WHERE idProdotto = ?");
+	            search.setString(1, id);
+	            ResultSet resultSet = search.executeQuery();
 	            if (resultSet.next()) {
-	                int idProdotto = resultSet.getInt("idProdotto");
-	                idBuilder.append("ID").append(idProdotto).append("&");
+	            	prod.subProd(idProdotti, quantita[counter]);
+	                String nome = resultSet.getString("nome");
+	                nameBuilder.append(nome).append("&");
 	            }
+	            counter++;
 	            resultSet.close();
+	            search.close();
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
-	    if (idBuilder.length() > 0) {
-	        idBuilder.setLength(idBuilder.length() - 1);
+	    if (nameBuilder.length() > 0) {
+	        nameBuilder.setLength(nameBuilder.length() - 1);
 	    }
-	    return idBuilder.toString();
+	    return nameBuilder.toString();
 	}
 
     public synchronized ListaOrdini ricercaOrdine(String id) throws SQLException {

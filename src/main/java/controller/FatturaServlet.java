@@ -50,12 +50,22 @@ public class FatturaServlet extends HttpServlet {
 				String[] productIdsArray = productIds.toArray(new String[productIds.size()]);
 				String idProdotti = String.join("&", productIdsArray);
 				
+				String[] quantitaArray = request.getParameterValues("quantitaProdotto");
+				int[] quantita = new int[quantitaArray.length];
+				for (int i = 0; i < quantitaArray.length; i++) {
+				    try {
+				      quantita[i] = Integer.parseInt(quantitaArray[i]);
+				    } catch (NumberFormatException e) {
+				      quantita[i] = 0;
+				    }
+				  }
+				
 				String prezzoStr = request.getParameter("prezzo");
 			    double prezzo = Double.parseDouble(prezzoStr);
 			    
 				String indirizzo= request.getParameter("indirizzo");
 				
-		        ordiniDAO.insertOrder(idProdotti,prezzo,indirizzo);
+		        ordiniDAO.insertOrder(idProdotti,prezzo,quantita,indirizzo);
 			}
 			
 			else if (action.equalsIgnoreCase("ricercaOrdine")) {
