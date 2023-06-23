@@ -15,29 +15,32 @@ $('.product-removal button').click( function() {
 
 
 /* Recalculate cart */
-function recalculateCart()
-{
+function recalculateCart() {
   let subtotal = 0;
-  
+
   /* Sum up row totals */
-  $('.product').each(function () {
-    subtotal += parseFloat($(this).children('.product-line-price').text());
+  $('.product').each(function() {
+    let quantity = parseInt($(this).find('.product-quantity input').val());
+    let price = parseFloat($(this).find('.product-price').text());
+    let linePrice = price * quantity;
+    subtotal += linePrice;
+    $(this).find('.product-line-price').text(linePrice.toFixed(2));
   });
-  
+
   /* Calculate totals */
   let tax = subtotal * taxRate;
   let shipping = (subtotal > 0 ? shippingRate : 0);
   let total = subtotal + tax + shipping;
-  
+
   /* Update totals display */
   $('.totals-value').fadeOut(fadeTime, function() {
     $('#cart-subtotal').html(subtotal.toFixed(2));
     $('#cart-tax').html(tax.toFixed(2));
     $('#cart-shipping').html(shipping.toFixed(2));
     $('#cart-total').html(total.toFixed(2));
-    if(total == 0){
+    if (total == 0) {
       $('.checkout').fadeOut(fadeTime);
-    }else{
+    } else {
       $('.checkout').fadeIn(fadeTime);
     }
     $('.totals-value').fadeIn(fadeTime);
@@ -66,12 +69,28 @@ function updateQuantity(quantityInput)
 
 
 /* Remove item from cart */
-function removeItem(removeButton)
-{
-  /* Remove row from DOM and recalc cart total */
+function removeItem(removeButton) {
+  /* Remove row from DOM with animation */
   let productRow = $(removeButton).parent().parent();
   productRow.slideUp(fadeTime, function() {
     productRow.remove();
+    
+    /* Get product ID */
+    let productId = $(removeButton).data('id');
+    
+    /* Send request to servlet */
+    $.ajax({
+      url: 'prodottoCliente?action=deleteC&id=' + productId,
+      type: 'POST',
+      success: function(response) {
+        /* Handle success response, if needed */
+      },
+      error: function(xhr, status, error) {
+        /* Handle error response, if needed */
+      }
+    });
+    
+    /* Recalculate cart totals */
     recalculateCart();
   });
 }
