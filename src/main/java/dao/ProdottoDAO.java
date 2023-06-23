@@ -183,35 +183,16 @@ public class ProdottoDAO {
 		return (result != 0);
 	}
 	
-public synchronized void subProd(String code,int quant) throws SQLException {
-		
-		PreparedStatement preparedStatement = null;
-
-		int result = 0;
-
-		String sql = "UPDATE prodotto SET quantità = quantità - ? WHERE idProdotto = ?";
-
-		try (Connection connection = ConPool.getConnection()){
-			PreparedStatement statement = connection.prepareStatement(sql);
-			statement.setInt(1, quant);
-			statement.setString(2, code);
-
-
-			result = statement.executeUpdate();
-
-		}
-		catch (SQLException e) {
-            // process sql exception
-            printSQLException(e);
-        }finally {
-            try {
-                if (preparedStatement != null) {
-                    preparedStatement.close();
-                }
-            } catch (SQLException e) {
-                printSQLException(e);
-            }
-        }
+	public synchronized void subProd(String code,int quant) throws SQLException {
+	 	try (Connection connection = ConPool.getConnection();
+	         PreparedStatement statement = connection.prepareStatement("UPDATE prodotto SET quantità = quantità - ? WHERE idProdotto = ?")) {
+	        statement.setInt(1, quant);
+	        statement.setString(2, code);
+	        statement.executeUpdate();
+	    } catch (SQLException e) {
+	        printSQLException(e);
+	        throw e;
+	    }
 	}
 
 	public synchronized Collection<Prodotto> doRetrieveAll() throws SQLException {
