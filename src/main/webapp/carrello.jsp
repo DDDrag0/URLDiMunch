@@ -65,7 +65,7 @@
         </div>
         <div class="product-price"><%= product.getPrezzo() %></div>
         <div class="product-quantity">
-            <input type="number" value="1" min="1" id="numeroprodotti" name="quantita">
+            <input type="number" value="1" min="1" id="numeroprodotti" name="quantitaProdotto">
         </div>
         <div class="product-removal">
             <button class="remove-product" data-id="<%= product.getIdProdotto() %>">Remove</button>
@@ -91,6 +91,7 @@
         <div class="totals-item totals-item-total">
             <label>Grand Total</label>
             <div class="totals-value" id="cart-total"><%= grandTotal %></div>
+            <input type="hidden" name="prezzo" value="<%= grandTotal %>">
         </div>
     </div>
 
