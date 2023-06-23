@@ -30,11 +30,12 @@ public class FatturaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/ordini.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("entro nella servlet");
 		String action = request.getParameter("action");
 		User user = (User) request.getSession().getAttribute("utente");
 		Carrello cart = (Carrello) request.getSession().getAttribute("cart");
@@ -84,7 +85,7 @@ public class FatturaServlet extends HttpServlet {
 		        request.setAttribute("ordini", ordini);
 			}
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/ordini.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 			dispatcher.forward(request, response);
 		}
 		catch (SQLException e) {
