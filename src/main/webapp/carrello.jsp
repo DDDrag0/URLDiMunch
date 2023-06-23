@@ -12,16 +12,17 @@
         response.sendRedirect("./prodottoCliente");
         return;
     }
-    
+    Prodotto producto;
     double subtotal = 0;
-    double taxRate = 0.05;
+    double taxRate = 0;
     double shippingRate = 15.00;
     
     for (Prodotto product : cart.getProducts()) {
         double total = product.getPrezzo() * product.getQuantita();
         subtotal += total;
+        taxRate=product.getIva();
     }
-    
+    taxRate=taxRate/100;
     double tax = subtotal * taxRate;
     double shipping = (subtotal > 0) ? shippingRate : 0;
     double grandTotal = subtotal + tax + shipping;
@@ -81,7 +82,7 @@
             <div class="totals-value" id="cart-subtotal"><%= subtotal %></div>
         </div>
         <div class="totals-item">
-            <label>Tax (5%)</label>
+            <label>Tax</label>
             <div class="totals-value" id="cart-tax"><%= tax %></div>
         </div>
         <div class="totals-item">
