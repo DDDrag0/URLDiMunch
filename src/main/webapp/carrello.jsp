@@ -27,7 +27,7 @@
     
     double tax = taxpazz;
     double shipping = (subtotal > 0) ? shippingRate : 0;
-    double grandTotal = subtotal + tax + shipping;
+    double grandTotal = subtotal + shipping;
 %>
 
 <!DOCTYPE html>

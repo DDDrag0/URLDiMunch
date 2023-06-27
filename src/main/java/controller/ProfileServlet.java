@@ -26,7 +26,7 @@ public class ProfileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/DettagliUser.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("./DettagliUser.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -57,7 +57,7 @@ public class ProfileServlet extends HttpServlet {
 			//e.printStackTrace();	//sensitive
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/DettagliUser.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("./DettagliUser.jsp");
 		dispatcher.forward(request, response);
 	}
 
