@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="model.Prodotto" %>
+<%@ page import="dao.RecensioneDAO" %>
+<%@ page import="model.Recensione" %>
+<%@ page import="java.util.Collection" %>
 
 <%
 	Prodotto prod = (Prodotto) session.getAttribute("prodottoDettagli");
@@ -41,24 +45,39 @@
     				</tr>
     					
     		</table>
-<div class="user-reviews">
-  <h2>Recensioni degli utenti</h2>
+    		
+    		
+<h2>Scrivi una recensione</h2>
+<form action="recensioni" method="POST">
+    <input type="hidden" name="action" value="doSave">
+    <input type="hidden" name="idProdotto" value="<%=prod.getIdProdotto()%>">
+    <label for="idUtente">Nome utente:</label>
+    <input type="text" name="idUtente" required><br>
+    <label for="recensione">Recensione:</label>
+    <textarea name="recensione" rows="4" cols="50" required></textarea><br>
+    <input type="submit" value="Invia recensione">
+</form>
+
+<h2>Recensioni utenti</h2>
+<%
+    RecensioneDAO recensioneDAO = new RecensioneDAO();
+    Collection<Recensione> recensioni = recensioneDAO.doRetrieveByProduct(prod.getIdProdotto());
+    if (recensioni != null && !recensioni.isEmpty()) {
+        for (Recensione recensione : recensioni) {
+%>
   <div class="review">
-    <h3>John Doe</h3>
-    <p class="rating">Voto: 4.5/5</p>
-    <p class="comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lobortis urna vel dolor finibus mollis. Suspendisse sed lectus nec magna finibus porttitor ac sit amet lacus.</p>
+    <h3><%= Encode.forHtml(recensione.getIdUtente()) %></h3>
+    <p class="comment"><%= Encode.forHtml(recensione.getRecensione()) %></p>
   </div>
-  <div class="review">
-    <h3>Jane Smith</h3>
-    <p class="rating">Voto: 3/5</p>
-    <p class="comment">Fusce aliquam justo ac ante fermentum rutrum. Nullam non lacus finibus, consectetur nulla ut, ultrices metus. Curabitur sed convallis ligula.</p>
-  </div>
-  <div class="review">
-    <h3>Mark Johnson</h3>
-    <p class="rating">Voto: 5/5</p>
-    <p class="comment">Vestibulum finibus ex non orci efficitur ultricies. Integer quis sollicitudin turpis. Duis condimentum nunc sed lacus faucibus, sed condimentum quam tincidunt.</p>
-  </div>
-</div>
+<%
+        }
+    } else {
+%>
+  <p>Nessuna recensione disponibile.</p>
+<%
+    }
+%>
+    		
     		
     </body>
     </html>

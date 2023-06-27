@@ -46,8 +46,10 @@
           <p class="group inner list-group-item-text">$<%=bean.getPrezzo()%></p>
         </div>
         <div class="btn-group">
-          <a class="btn btn-details" href="details.jsp?code=<%=bean.getIdProdotto()%>&image=<%=bean.getImagepath()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantita()%>">Details</a>
-          <a class="btn btn-cart" href="prodottoCliente?action=addC&id=<%=bean.getIdProdotto()%>">Add to Cart</a>
+          <button class="btn btn-details">Details</button>
+          <button class="btn btn-cart">Add to Cart</button>
+          <input class="cart-qnt" type="number" min="1" max="<%=bean.getQuantita()%>">
+          <input class = "prod_id" type="hidden" value="<%=bean.getIdProdotto()%>">
         </div>
       </div>
     </div>
@@ -69,6 +71,17 @@
 <script src="./js/jQueryProdottiCliente.js"></script>
 <script src="./js/prodotticlienti.js"></script>
 <script src="./js/jsProdottiCliente.js"></script>
-	
+<script type="text/javascript">
+$(".btn-cart").click(function(){
+	var id = $(this).parent().find(".prod_id").val()
+    var qnt = $(this).parent().find(".cart-qnt").val()
+    window.location.href="prodottoCliente?action=addC&id="+id+"&quantity="+qnt
+});
+
+$(".btn-details").click(function(){
+	var id = $(this).parent().find(".prod_id").val()
+    window.location.href="SearchServlet?cerca="+id
+});
+</script>
 </body>
 </html> 

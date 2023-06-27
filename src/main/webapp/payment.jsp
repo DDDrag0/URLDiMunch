@@ -183,7 +183,7 @@ background: #555;
 }</style>
 </head>
 <body classname="snippet-body">
-<form action="<%= request.getContextPath() %>/fattura" method="post">
+<form action="<%= request.getContextPath() %>/fattura?action=insertOrder" method="post">
 <div class="container">
     <div class="card">
         <div class="top">

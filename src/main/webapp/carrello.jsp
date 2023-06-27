@@ -18,11 +18,14 @@
     double shippingRate = 15.00;
     
     for (Prodotto product : cart.getProducts()) {
+        taxRate=product.getIva()/100;
+    	double prodprice= (product.getPrezzo() + (product.getPrezzo() * taxRate));
         double total = product.getPrezzo() * product.getQuantita();
         subtotal += total;
-        taxRate=product.getIva();
     }
+    
     taxRate=taxRate/100;
+    
     double tax = subtotal * taxRate;
     double shipping = (subtotal > 0) ? shippingRate : 0;
     double grandTotal = subtotal + tax + shipping;
@@ -44,7 +47,6 @@
 <h1>Shopping Cart</h1>
 
 <div class="shopping-cart">
-<form action="<%= request.getContextPath() %>/fattura?action=insertOrder" method="post">
 
     <div class="column-labels">
         <label class="product-image">Image</label>
@@ -67,7 +69,7 @@
         </div>
         <div class="product-price"><%= product.getPrezzo() %></div>
         <div class="product-quantity">
-            <input type="number" value="1" min="1" id="numeroprodotti" name="quantitaProdotto">
+            <input type="number" min="1" id="numeroprodotti" name="quantitaProdotto">
         </div>
         <div class="product-removal">
             <button class="remove-product" data-id="<%= product.getIdProdotto() %>">Remove</button>
@@ -97,9 +99,14 @@
         </div>
     </div>
 
-    <button id="checkout-button" class="checkout" type="Submit" value="Submit">CheckOut</button>
-	</form>
+    <button id="checkout-button" class="checkout" onclick="payment()" >CheckOut</button>
+    
 </div>
 <script src="./js/carrello.js"></script>
+<script type="text/javascript">
+function payment() {
+	window.location.href = "payment.jsp?total=<%= grandTotal %>&tax=<%= tax %>"
+}
+</script>
 </body>
 </html>
