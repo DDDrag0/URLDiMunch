@@ -48,7 +48,7 @@
         <div class="btn-group">
           <button class="btn btn-details">Details</button>
           <button class="btn btn-cart">Add to Cart</button>
-          <input class="cart-qnt" type="number" min="1" max="<%=bean.getQuantita()%>">
+          <input class="cart-qnt" type="number" value="1" min="1" max="<%=bean.getQuantita()%>">
           <input class = "prod_id" type="hidden" value="<%=bean.getIdProdotto()%>">
         </div>
       </div>

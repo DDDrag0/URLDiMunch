@@ -16,17 +16,16 @@
     double subtotal = 0;
     double taxRate = 0;
     double shippingRate = 15.00;
+    double taxpazz=0;
     
     for (Prodotto product : cart.getProducts()) {
         taxRate=product.getIva()/100;
-    	double prodprice= (product.getPrezzo() + (product.getPrezzo() * taxRate));
-        double total = product.getPrezzo() * product.getQuantita();
-        subtotal += total;
+    	double prodprice= (product.getPrezzo() + (product.getPrezzo() * taxRate))*product.getQuantitaCart();
+        subtotal += prodprice;
+        taxpazz += product.getPrezzo() * taxRate;
     }
     
-    taxRate=taxRate/100;
-    
-    double tax = subtotal * taxRate;
+    double tax = taxpazz;
     double shipping = (subtotal > 0) ? shippingRate : 0;
     double grandTotal = subtotal + tax + shipping;
 %>
@@ -69,7 +68,7 @@
         </div>
         <div class="product-price"><%= product.getPrezzo() %></div>
         <div class="product-quantity">
-            <input type="number" min="1" id="numeroprodotti" name="quantitaProdotto">
+            <input type="number" value="<%= product.getQuantitaCart() %>" min="1" id="numeroprodotti" name="quantitaProdotto">
         </div>
         <div class="product-removal">
             <button class="remove-product" data-id="<%= product.getIdProdotto() %>">Remove</button>

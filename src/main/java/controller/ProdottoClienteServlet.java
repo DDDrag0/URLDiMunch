@@ -39,7 +39,9 @@ public class ProdottoClienteServlet extends HttpServlet {
 			if (action != null) {
 				if (action.equalsIgnoreCase("addC")) {
 					String id = request.getParameter("id");
-					cart.addProduct(prodottodao.doRetrieveByKey(id));
+					String quantS = request.getParameter("quantity");
+					int quant = Integer.parseInt(quantS);
+					cart.addProduct(prodottodao.doRetrieveByKey(id),quant);
 					request.setAttribute("cart", cart);
 					link="/prodottiCliente.jsp";
 				} 

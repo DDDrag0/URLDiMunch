@@ -13,7 +13,14 @@ public class Prodotto {
 	private String imagepath;
 	private double prezzo;
 	private double iva;
+	private int quantitaCart;
 	
+	public int getQuantitaCart() {
+		return quantitaCart;
+	}
+	public void setQuantitaCart(int quantitaCart) {
+		this.quantitaCart = quantitaCart;
+	}
 	public int getQuantita() {
 		return quantita;
 	}

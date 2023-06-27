@@ -11,7 +11,8 @@ public class Carrello {
 		prodotto = new ArrayList<>();
 	}
 	
-	public void addProduct(Prodotto product) {
+	public void addProduct(Prodotto product, int quant) {
+		product.setQuantitaCart(quant);
 		prodotto.add(product);
 	}
 	
