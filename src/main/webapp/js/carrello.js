@@ -17,7 +17,11 @@ $('.product-removal button').click( function() {
 /* Recalculate cart */
 function recalculateCart() {
   let subtotal = 0;
-
+  if ($('.product').length === 0) {
+	  $('#checkout-button').hide();
+	} else {
+	  $('#checkout-button').show();
+	}
   /* Sum up row totals */
   $('.product').each(function() {
     let quantity = parseInt($(this).find('.product-quantity input').val());

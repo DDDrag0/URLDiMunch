@@ -40,11 +40,11 @@
     <script type="text/javascript" src="./js/jQueryCarrello.js"></script>
 </head>
 <body>
-<form action="<%= request.getContextPath() %>/fattura?action=insertOrder" method="post">
 <%@ include file="header.jsp" %>
 <h1>Shopping Cart</h1>
 
 <div class="shopping-cart">
+<form action="<%= request.getContextPath() %>/fattura?action=insertOrder" method="post">
 
     <div class="column-labels">
         <label class="product-image">Image</label>
@@ -97,9 +97,9 @@
         </div>
     </div>
 
-    <button class="checkout" type="Submit" value="Submit">CheckOut</button>
+    <button id="checkout-button" class="checkout" type="Submit" value="Submit">CheckOut</button>
+	</form>
 </div>
 <script src="./js/carrello.js"></script>
-</form>
 </body>
 </html>
