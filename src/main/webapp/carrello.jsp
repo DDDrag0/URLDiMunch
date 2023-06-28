@@ -99,8 +99,19 @@
             <input type="hidden" name="prezzo" value="<%= grandTotal %>">
         </div>
     </div>
-
+	<% 
+	User userpage = (User) session.getAttribute("utente");
+    if(userpage == null) {
+    	%>
+    	<button id="checkout-button" class="checkout" onclick="LogIn()" >You must be logged</button>
+    	<% 
+    } 
+    else{
+    %>
     <button id="checkout-button" class="checkout" onclick="payment()" >CheckOut</button>
+    <%
+    }
+    %>
     
 </div>
 <script src="./js/carrello.js"></script>
@@ -110,8 +121,10 @@ function payment() {
 	jspSession.setAttribute("iva", iva);
 	jspSession.setAttribute("tasse", <%= tax %>);
 	
-    }
-	window.location.href = "payment.jsp"
+	window.location.href = "./payment.jsp"
+}
+function LogIn() {
+	window.location.href = "./logIn.jsp"
 }
 </script>
 </body>
