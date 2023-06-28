@@ -66,3 +66,10 @@ function Modulo() {
   alert(numero);
     return controllo;
 }
+function mod() {
+  if (Modulo()) {
+    window.location.href = "http://localhost:8080/URLdiMunch/carrello.jsp";
+  } else {
+    alert("Errore");
+  }
+}
