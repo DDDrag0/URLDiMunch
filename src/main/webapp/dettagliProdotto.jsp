@@ -95,6 +95,10 @@ function toggleSidebar() {
 
 </html>
     		<h2> Product details</h2>
+    		<div>
+    		<img width="200" src="/URLdiMunch/image/venere.jpg" alt="Venere">
+    		
+    		</div>
     		<table border="1">
     			<caption>Prodotto</caption>
     				<tr>
@@ -128,9 +132,9 @@ function toggleSidebar() {
     <input type="text" name="idUtente" required><br>
     <label for="recensione">Recensione:</label>
     <textarea name="recensione" rows="4" cols="50" required></textarea><br>
-    <button style="background-color:red; border-color:blue; color:white">Invia recensione</button>
-    <button style="background-color:red; border-color:blue; color:white">Modifica recensione</button>
-    <button style="background-color:red; border-color:blue; color:white">Elimina recensione</button>
+    <button style="background-color:grey; border-color:black; color:black">Invia recensione</button>
+    <button style="background-color:grey; border-color:black; color:black">Modifica recensione</button>
+    <button style="background-color:grey; border-color:black; color:black">Elimina recensione</button>
 </form>
 
 <h2>Recensioni utenti</h2>
