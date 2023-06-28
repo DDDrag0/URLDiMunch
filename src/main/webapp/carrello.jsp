@@ -17,9 +17,11 @@
     double taxRate = 0;
     double shippingRate = 15.00;
     double taxpazz=0;
+    double iva=0;
     
     for (Prodotto product : cart.getProducts()) {
         taxRate=product.getIva()/100;
+        iva= product.getIva();
     	double prodprice= (product.getPrezzo() + (product.getPrezzo() * taxRate))*product.getQuantitaCart();
         subtotal += prodprice;
         taxpazz += product.getPrezzo() * taxRate;
@@ -104,7 +106,12 @@
 <script src="./js/carrello.js"></script>
 <script type="text/javascript">
 function payment() {
-	window.location.href = "payment.jsp?total=<%= grandTotal %>&tax=<%= tax %>"
+	jspSession.setAttribute("totale", <%= grandTotal %>);
+	jspSession.setAttribute("iva", iva);
+	jspSession.setAttribute("tasse", <%= tax %>);
+	
+    }
+	window.location.href = "payment.jsp"
 }
 </script>
 </body>

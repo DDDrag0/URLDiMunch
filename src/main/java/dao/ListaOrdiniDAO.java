@@ -16,7 +16,7 @@ import model.User;
 	
 public class ListaOrdiniDAO {
 	
-	public void insertOrder(String idProdotti, double prezzo, int[] quantita, String indirizzo) {
+	public void insertOrder(String idProdotti, double prezzo, String indirizzo) {
 		SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
 		byte[] bytes = new byte [20];
 		rand.nextBytes(bytes);
@@ -53,7 +53,7 @@ public class ListaOrdiniDAO {
 	    	
 	        statement.setString(1, co);
 	        
-	        String nomeProdotti = getProductNames(idProdotti, quantita);
+	        String nomeProdotti = getProductNames(idProdotti);
 	        statement.setString(2, nomeProdotti);
 	        
 	        statement.setString(3, idProdotti);
@@ -67,9 +67,8 @@ public class ListaOrdiniDAO {
 	    }
 	}
 
-	private String getProductNames(String idProdotti,int[] quantita) {
+	private String getProductNames(String idProdotti) {
 		ProdottoDAO prod = new ProdottoDAO();
-		int counter=0;
 	    String[] idArray = idProdotti.split("&");
 	    StringBuilder nameBuilder = new StringBuilder();
 	    try (Connection connection = ConPool.getConnection()) {
@@ -78,11 +77,10 @@ public class ListaOrdiniDAO {
 	            search.setString(1, id);
 	            ResultSet resultSet = search.executeQuery();
 	            if (resultSet.next()) {
-	            	prod.subProd(idProdotti, quantita[counter]);
+	            	prod.subProd(idProdotti);
 	                String nome = resultSet.getString("nome");
 	                nameBuilder.append(nome).append("&");
 	            }
-	            counter++;
 	            resultSet.close();
 	            search.close();
 	        }

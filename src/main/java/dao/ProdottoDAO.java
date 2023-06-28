@@ -183,10 +183,14 @@ public class ProdottoDAO {
 		return (result != 0);
 	}
 	
-	public synchronized void subProd(String code,int quant) throws SQLException {
+	public synchronized void subProd(String code) throws SQLException {
 	 	try (Connection connection = ConPool.getConnection();
 	         PreparedStatement statement = connection.prepareStatement("UPDATE prodotto SET quantità = quantità - ? WHERE idProdotto = ?")) {
-	        statement.setInt(1, quant);
+	        int quant= 0;
+	        Prodotto prodotto = doRetrieveByKey(code);
+	        quant = prodotto.getQuantitaCart();
+	        
+	 		statement.setInt(1, quant);
 	        statement.setString(2, code);
 	        statement.executeUpdate();
 	    } catch (SQLException e) {
