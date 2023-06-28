@@ -11,7 +11,7 @@
     if(prod == null) {
         response.sendRedirect("index.jsp");    
         return;
-    }
+    }          
 %>
 
 <!DOCTYPE html>
@@ -46,9 +46,6 @@
     					
     		</table>
     		
-          <button class="btn btn-cart">Add to Cart</button>
-          <input class="cart-qnt" type="number" value="1" min="1" max="<%=prod.getQuantita()%>">
-          <input class = "prod_id" type="hidden" value="<%=prod.getIdProdotto()%>">
     		
 <h2>Scrivi una recensione</h2>
 <form action="recensioni" method="POST">
@@ -59,8 +56,6 @@
     <label for="recensione">Recensione:</label>
     <textarea name="recensione" rows="4" cols="50" required></textarea><br>
     <input type="submit" value="Invia recensione">
-    <input type="submit" value="Modifica recensione">
-    <input type="submit" value="Elimina recensione">
 </form>
 
 <h2>Recensioni utenti</h2>
@@ -82,19 +77,7 @@
 <%
     }
 %>
-
-<script type="text/javascript">
-$(".btn-cart").click(function(){
-	var id = $(this).parent().find(".prod_id").val()
-    var qnt = $(this).parent().find(".cart-qnt").val()
-    window.location.href="prodottoCliente?action=addC&id="+id+"&quantity="+qnt
-});
-
-$(".btn-details").click(function(){
-	var id = $(this).parent().find(".prod_id").val()
-    window.location.href="SearchServlet?cerca="+id
-});
-</script>
     		
-</body>
-</html>
+    		
+    </body>
+    </html>
