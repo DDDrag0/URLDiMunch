@@ -128,6 +128,7 @@ function toggleSidebar() {
     <input type="text" name="idUtente" required><br>
     <label for="recensione">Recensione:</label>
     <textarea name="recensione" rows="4" cols="50" required></textarea><br>
+    
     <input type="submit" value="Invia recensione">
     <input type="submit" value="Modifica recensione">
     <input type="submit" value="Elimina recensione">
