@@ -87,6 +87,7 @@
 </head>
 <body classname="snippet-body">
 	<%@ include file="header.jsp" %>
+	<script src="dettagliuser.js"></script>
 	<form action="<%= request.getContextPath() %>/profile" method="post">
 	<div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
@@ -127,7 +128,7 @@
 					<% 
 				}
 				%>
-				<button class="btn btn-primary profile-button" type="submit" value="Submit">Save Profile</button>
+				<button class="btn btn-primary profile-button" type="submit" value="Submit" onclick="Mod()">Save Profile</button>
                 </div>
         </div>
     </div>
