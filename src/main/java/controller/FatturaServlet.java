@@ -52,10 +52,11 @@ public class FatturaServlet extends HttpServlet {
 				String idProdotti = String.join("&", productIdsArray);
 				
 				String prezzoStr = request.getParameter("prezzo");
+				System.out.println(prezzoStr);
 			    double prezzo = Double.parseDouble(prezzoStr);
 			    
-				String indirizzo= request.getParameter("indirizzo");
-				
+				String indirizzo= user.getIndirizzoSpedizione();
+				System.out.println(indirizzo);
 		        ordiniDAO.insertOrder(idProdotti,prezzo,indirizzo);
 			}
 			

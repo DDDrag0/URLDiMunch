@@ -17,11 +17,9 @@
     double taxRate = 0;
     double shippingRate = 15.00;
     double taxpazz=0;
-    double iva=0;
     
     for (Prodotto product : cart.getProducts()) {
         taxRate=product.getIva()/100;
-        iva= product.getIva();
     	double prodprice= (product.getPrezzo() + (product.getPrezzo() * taxRate))*product.getQuantitaCart();
         subtotal += prodprice;
         taxpazz += product.getPrezzo() * taxRate;
@@ -106,23 +104,40 @@
     	<button id="checkout-button" class="checkout" onclick="LogIn()" >You must be logged</button>
     	<% 
     } 
-    else{
+    //else{
     %>
     <button id="checkout-button" class="checkout" onclick="payment()" >CheckOut</button>
     <%
-    }
+    //}
     %>
     
 </div>
 <script src="./js/carrello.js"></script>
 <script type="text/javascript">
+
 function payment() {
-	jspSession.setAttribute("totale", <%= grandTotal %>);
-	jspSession.setAttribute("iva", iva);
-	jspSession.setAttribute("tasse", <%= tax %>);
-	
-	window.location.href = "./payment.jsp"
+	  var grandTotal = <%= grandTotal %>;
+	  
+	  var form = document.createElement("form");
+	  form.method = "POST";
+	  form.action = "fattura";
+
+	  var actionInput = document.createElement("input");
+	  actionInput.type = "hidden";
+	  actionInput.name = "action";
+	  actionInput.value = "insertOrder";
+	  form.appendChild(actionInput);
+
+	  var prezzoInput = document.createElement("input");
+	  prezzoInput.type = "hidden";
+	  prezzoInput.name = "prezzo";
+	  prezzoInput.value = grandTotal;
+	  form.appendChild(prezzoInput);
+
+	  document.body.appendChild(form);
+	  form.submit();
 }
+
 function LogIn() {
 	window.location.href = "./logIn.jsp"
 }
