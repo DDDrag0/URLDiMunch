@@ -104,7 +104,7 @@
                     <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" placeholder="<%= user.getCognome()%>" value="<%= user.getCognome()%>" name="cognome"></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="number" class="form-control" placeholder="<%= user.getTelefono()%>" value="<%= user.getTelefono()%>" name="telefono"></div>
+                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="<%= user.getTelefono()%>" value="<%= user.getTelefono()%>" name="telefono"></div>
                     <div class="col-md-12"><label class="labels">Invoice Address</label><input type="text" class="form-control" placeholder="<%= user.getIndirizzoFatturazione()%>" value="<%= user.getIndirizzoFatturazione()%>" name="indFatt"></div>
                     <div class="col-md-12"><label class="labels">Delivery Address</label><input type="text" class="form-control" placeholder="<%= user.getIndirizzoSpedizione()%>" value="<%= user.getIndirizzoSpedizione()%>" name="indSped"></div>
                 </div>
