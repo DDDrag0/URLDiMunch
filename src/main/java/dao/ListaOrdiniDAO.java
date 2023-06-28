@@ -16,14 +16,14 @@ import model.User;
 	
 public class ListaOrdiniDAO {
 	
-	public void insertOrder(String idProdotti, double prezzo, String indirizzo) {
+	public void insertOrder(String idUtente, String idProdotti, double prezzo, String indirizzo) {
 		SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
 		byte[] bytes = new byte [20];
 		rand.nextBytes(bytes);
 		String co = null;
 		PreparedStatement checkcodice = null;
-	    String insertQuery = "INSERT INTO listaOrdini (idOrdine, nomeProdotto, idProdotto, prezzo, dataOrdine, indirizzoConsegna, iva) " +
-	                        "VALUES (?, ?, ?, ?, ?, ?, (SELECT iva FROM urldimunch.prodotto LIMIT 1))";
+	    String insertQuery = "INSERT INTO listaOrdini (idOrdine, nomeProdotto, idProdotto, idUtente, prezzo, dataOrdine, indirizzoConsegna, iva) " +
+	                        "VALUES (?, ?, ?, ?, ?, ?, ?, (SELECT iva FROM urldimunch.prodotto LIMIT 1))";
 	    
 	    try (Connection connection = ConPool.getConnection();
 	         PreparedStatement statement = connection.prepareStatement(insertQuery)) {
@@ -57,9 +57,10 @@ public class ListaOrdiniDAO {
 	        statement.setString(2, nomeProdotti);
 	        
 	        statement.setString(3, idProdotti);
-	        statement.setDouble(4, prezzo);
-	        statement.setDate(5, Date.valueOf(LocalDate.now()));
-	        statement.setString(6, indirizzo);
+	        statement.setString(4, idProdotti);
+	        statement.setDouble(5, prezzo);
+	        statement.setDate(6, Date.valueOf(LocalDate.now()));
+	        statement.setString(7, indirizzo);
 	        
 	        statement.executeUpdate();
 	    } catch (SQLException e) {

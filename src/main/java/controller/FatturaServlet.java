@@ -57,7 +57,8 @@ public class FatturaServlet extends HttpServlet {
 			    
 				String indirizzo= user.getIndirizzoSpedizione();
 				System.out.println(indirizzo);
-		        ordiniDAO.insertOrder(idProdotti,prezzo,indirizzo);
+				String idUtente= user.getIdUtente();
+		        ordiniDAO.insertOrder(idUtente,idProdotti,prezzo,indirizzo);
 			}
 			
 			else if (action.equalsIgnoreCase("ricercaOrdine")) {
