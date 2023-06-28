@@ -97,28 +97,20 @@ function toggleSidebar() {
     		<h2> Product details</h2>
     		<div>
     		<img width="200" src="/URLdiMunch/image/venere.jpg" alt="Venere">
+    		<caption>Prodotto</caption>
+    		<p class="right-align">Code: Venere
+    						Name: Venere
+    						Description:Venere dipinta da Botticelli
+    						Price:200.0
+    						Quantity:999
+    						</p>
+    		
+    		.right-align {
+  			text-align: right;
+			}
     		
     		</div>
-    		<table border="1">
-    			<caption>Prodotto</caption>
-    				<tr>
-    						<th>Code</th>
-    						<th>Name</th>
-    						<th>Description</th>
-    						<th>Price</th>
-    						<th>Image</th>
-    						<th>Quantity</th>
-    				<tr>
-    						<td>1_Venere</td>
-    						<td>Venere</td>
-    						<td>Venere dipinta da Botticelli</td>
-    						<td>200.0</td>
-    						<td><img width="200" src="/URLdiMunch/image/venere.jpg" alt="Venere"></td>
-    						<td>999</td>
-    						
-    				</tr>
-    					
-    		</table>
+    			
     		
           <button class="btn btn-cart">Add to Cart</button>
           <input class="cart-qnt" type="number" value="1" min="1" max="999">
