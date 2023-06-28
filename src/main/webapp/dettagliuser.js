@@ -11,7 +11,6 @@ function Modulo() {
   var numero = 0;
   var email_reg_exp = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-]{2,})+.)+([a-zA-Z0-9]{2,})+$/;
  
-  // Effettua il controllo sui campi del modulo
  
   // Effettua il controllo sul campo NOME
   if ((nome == "") || (nome == "undefined")) {
