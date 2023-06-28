@@ -25,6 +25,10 @@ public class Carrello {
 		}
  	}
 	
+	public boolean isEmpty() {
+        return prodotto.isEmpty();
+    }
+	
 	public List<Prodotto> getProducts() {
 		return  prodotto;
 	}
