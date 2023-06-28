@@ -104,11 +104,11 @@
     	<button id="checkout-button" class="checkout" onclick="LogIn()" >You must be logged</button>
     	<% 
     } 
-    //else{
+    else if (cart.isEmpty()){}else{
     %>
     <button id="checkout-button" class="checkout" onclick="payment()" >CheckOut</button>
     <%
-    //}
+    }
     %>
     
 </div>
