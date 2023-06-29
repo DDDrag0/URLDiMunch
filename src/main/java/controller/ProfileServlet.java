@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDAO;
-import model.Carrello;
 import model.User;
 
 @WebServlet("/profile")

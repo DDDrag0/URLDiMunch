@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ProdottoDAO;
 import dao.UserDAO;
 import dao.ListaOrdiniDAO;
 import dao.RecensioneDAO;

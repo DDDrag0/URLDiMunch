@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 @WebServlet("/SearchServlet")
 public class SearchServlet extends HttpServlet {
