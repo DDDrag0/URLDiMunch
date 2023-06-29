@@ -27,7 +27,7 @@ public class ProdottoAdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/prodottiAdmin.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/adminProduct.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -73,7 +73,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/prodottiAdmin.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/adminProduct.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -1,8 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
+
 <!DOCTYPE html>
-<!-- Per il momento è solo grafica, dopo aggiungo i controlli -->
-<html>
+<html lang="it">
+<!-- Per il momento Ã¨ solo grafica, dopo aggiungo i controlli -->
 <head>
-	<meta charset="ISO-8859-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Admin Page</title>
     <link href="./css/admin.css" rel="stylesheet" type="text/css">
     <link href="./css/header.css" rel="stylesheet" type="text/css">
@@ -25,19 +28,19 @@
   </div>
 
   <div id="modal1" class="modal">
-    <%@ include file="prodottiAdmin.jsp" %>
+    <%@ include file="adminProduct.jsp" %>
   </div>
 
   <div id="modal2" class="modal">
-    Contenuto Modal 2
+    <%@ include file="adminUsers.jsp" %>
   </div>
 
   <div id="modal3" class="modal">
-    Contenuto Modal 3
+    <%@ include file="adminOrders.jsp" %>
   </div>
 
   <div id="modal4" class="modal">
-    Contenuto Modal 4
+    <%@ include file="adminReview.jsp" %>
   </div>
 
   <script src="./js/admin.js"></script>

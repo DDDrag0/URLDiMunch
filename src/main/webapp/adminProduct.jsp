@@ -25,7 +25,7 @@
 		  <br>
 		  <input type="text" name="descrizione" placeholder="descrizione">
 		  <br>
-		  <input type="number" name="quantita" placeholder="quantità">
+		  <input type="number" name="quantita" placeholder="quantitÃ ">
 		  <br>
 		  <input type="number" name="prezzo" placeholder="prezzo">
 		  <br>
