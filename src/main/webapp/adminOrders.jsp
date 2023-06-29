@@ -2,10 +2,10 @@
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%
 // Check user credentials
-Boolean adminRoles3 = (Boolean) session.getAttribute("adminRoles");
-if ((adminRoles3 == null) || (!adminRoles3.booleanValue()))
+Boolean adminRoles1 = (Boolean) session.getAttribute("adminRoles");
+if ((adminRoles1 == null) || (!adminRoles1.booleanValue()))
 {	
-    response.sendRedirect("logIn.jsp");
+    response.sendRedirect("/logIn.jsp");
     return;
 }
 %>
@@ -18,7 +18,7 @@ if ((adminRoles3 == null) || (!adminRoles3.booleanValue()))
 </head>
 
 <body>
-	<h2>Reviews</h2>
+	<h2>Orders</h2>
 
 </body>
 </html>

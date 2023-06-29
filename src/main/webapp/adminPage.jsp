@@ -37,19 +37,19 @@ if ((adminRoles0 == null) || (!adminRoles0.booleanValue()))
   </div>
 
   <div id="modal1" class="modal">
-    <%@ include file="ammin/adminProduct.jsp" %>
+    <%@ include file="adminProduct.jsp" %>
   </div>
 
   <div id="modal2" class="modal">
-    <%@ include file="ammin/adminUsers.jsp" %>
+    <%@ include file="adminUsers.jsp" %>
   </div>
 
   <div id="modal3" class="modal">
-    <%@ include file="ammin/adminOrders.jsp" %>
+    <%@ include file="adminOrders.jsp" %>
   </div>
 
   <div id="modal4" class="modal">
-    <%@ include file="ammin/adminReview.jsp" %>
+    <%@ include file="adminReview.jsp" %>
   </div>
 
   <script src="./js/admin.js"></script>
