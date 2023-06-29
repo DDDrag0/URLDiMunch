@@ -9,8 +9,6 @@
 		return;
 	}
 	
-	Prodotto product = (Prodotto) request.getAttribute("product");
-	
 	Carrello cart = (Carrello) request.getAttribute("cart");
 %>
 
