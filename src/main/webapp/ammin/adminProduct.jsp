@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
+<%
+// Check user credentials
+Boolean adminRoles2 = (Boolean) session.getAttribute("adminRoles");
+if ((adminRoles2 == null) || (!adminRoles2.booleanValue()))
+{	
+    response.sendRedirect("logIn.jsp");
+    return;
+}
+%>
 
 <!DOCTYPE html>
 <html lang="it">

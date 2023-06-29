@@ -52,13 +52,13 @@ public class ProdottoClienteServlet extends HttpServlet {
 					request.setAttribute("cart", cart);
 					link="/carrello.jsp";
 				} 
-				
+				/*	non so se serve in realtà
 				else if (action.equalsIgnoreCase("read")) {
 					String id = request.getParameter("id");
 					request.removeAttribute("product");
 					request.setAttribute("product", prodottodao.doRetrieveByKey(id));
 					link="/prodottiCliente.jsp";
-				}
+				}*/
 			}			
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());

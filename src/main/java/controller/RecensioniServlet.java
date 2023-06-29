@@ -27,7 +27,7 @@ public class RecensioniServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/prodottiCliente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/detailsSearch.jsp");
 		dispatcher.forward(request, response);
     }
  
@@ -104,7 +104,7 @@ public class RecensioniServlet extends HttpServlet {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/prodottiCliente.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/detailsSearch.jsp");
 		dispatcher.forward(request, response);
     }
 }

@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
+<%
+// Check user credentials
+Boolean adminRoles0 = (Boolean) session.getAttribute("adminRoles");
+if ((adminRoles0 == null) || (!adminRoles0.booleanValue()))
+{	
+    response.sendRedirect("logIn.jsp");
+    return;
+}
+%>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -28,19 +37,19 @@
   </div>
 
   <div id="modal1" class="modal">
-    <%@ include file="adminProduct.jsp" %>
+    <%@ include file="ammin/adminProduct.jsp" %>
   </div>
 
   <div id="modal2" class="modal">
-    <%@ include file="adminUsers.jsp" %>
+    <%@ include file="ammin/adminUsers.jsp" %>
   </div>
 
   <div id="modal3" class="modal">
-    <%@ include file="adminOrders.jsp" %>
+    <%@ include file="ammin/adminOrders.jsp" %>
   </div>
 
   <div id="modal4" class="modal">
-    <%@ include file="adminReview.jsp" %>
+    <%@ include file="ammin/adminReview.jsp" %>
   </div>
 
   <script src="./js/admin.js"></script>
