@@ -11,13 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ListaOrdiniDAO;
+import dao.RecensioneDAO;
+import dao.UserDAO;
 
-@WebServlet("/ordersAdmin")
-public class OrdersAdminServlet extends HttpServlet {
+@WebServlet("/adminGestion")
+public class AdminGestionSearchServlet extends HttpServlet {
+	static UserDAO userdao = new UserDAO();
+	static RecensioneDAO recensionedao = new RecensioneDAO();
 	static ListaOrdiniDAO listaordinidao = new ListaOrdiniDAO();
 	private static final long serialVersionUID = 1L;
        
-    public OrdersAdminServlet() {
+    public AdminGestionSearchServlet() {
         super();
     }
 
@@ -25,6 +29,18 @@ public class OrdersAdminServlet extends HttpServlet {
         try {
             request.removeAttribute("adminOrders");
             request.setAttribute("adminOrders", listaordinidao.ricercaTuttiOrdini());
+        } catch (SQLException e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+        try {
+            request.removeAttribute("adminReviews");
+            request.setAttribute("adminReviews", recensionedao.doRetrieveAll());
+        } catch (SQLException e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+        try {
+            request.removeAttribute("adminUsers");
+            request.setAttribute("adminUsers", userdao.ricercaTuttiUtenti());
         } catch (SQLException e) {
             System.out.println("Error:" + e.getMessage());
         }

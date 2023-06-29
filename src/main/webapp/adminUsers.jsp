@@ -8,14 +8,7 @@ if ((adminRoles4 == null) || (!adminRoles4.booleanValue()))
     response.sendRedirect("/logIn.jsp");
     return;
 }
-%>
-<%	
-	Collection<?> users = (Collection<?>) request.getAttribute("adminUsers");
-	if(users == null) {
-		//response.sendRedirect("./usersAdmin");	
-		//return;
-	}
-	
+Collection<?> users = (Collection<?>) request.getAttribute("adminUsers");
 %>
 <!DOCTYPE html>
 <html lang="it">

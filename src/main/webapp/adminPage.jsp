@@ -9,6 +9,15 @@ if ((adminRoles0 == null) || (!adminRoles0.booleanValue()))
     return;
 }
 %>
+<%
+Collection<?> orders1 = (Collection<?>) request.getAttribute("adminOrders");
+Collection<?> reviews1 = (Collection<?>) request.getAttribute("adminReviews");
+Collection<?> users1 = (Collection<?>) request.getAttribute("adminUsers");
+if(orders1 == null||reviews1 == null||users1 == null) {
+	response.sendRedirect("./adminGestion");	
+	return;
+}
+%>
 
 <!DOCTYPE html>
 <html lang="it">
