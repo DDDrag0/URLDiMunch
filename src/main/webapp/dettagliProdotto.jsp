@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
     <html lang="it">
     <head>
@@ -18,22 +7,46 @@
     </head>
     
     <body>
-		
-
-
-
 
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<style>
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.left-image {
+  margin-right: 500px;
+}
+
+.right-text {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.button {
+  display: inline-block;
+  /* Aggiungi altri stili desiderati */
+}
+
+</style>
 <title>header</title>
 <link href="./css/header.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+
+
+			
+    		
+    	
 <header>
 <div class="sidebar" id="sidebar">
 <div class="bottone">
+<div class="button">
 <button class="close-sidebar" onclick="toggleSidebar()">X</button>
+ </div>
  </div>
  <div class="link-sidebar">
     <a href="index.jsp">Home</a>
@@ -57,16 +70,34 @@
     <div id="searchResult" style="display: none;"></div>
     </form>
   </div>
+
   
   
   <div class="user-buttons">
-    <button onclick="redirectToLogin()">Login</button>
-  </div>
+  <button onclick="redirectToLogin()">Login</button>
+  
+  
   <div class="cart">
-  <button onclick="redirectToCart()" class="no-border" style="border: none;">
-  			<img class="no-border" src="image/carrello.png" alt="Carrello" style="border: none;">
-  </button>
+  <button onclick="redirectToCart()" class="no-border" style="border: none; background-color: white; width: 43px; height: 42px">
+  <img class="no-border" src="image/carrello.png" alt="Carrello" style="border: none;">
+</button>
+  
   <span id="contatorecarrello" class="cart-item-count"></span>
+  </div>
+  </div>
+  <div class="container">
+  <div class="left-image">
+  <div class="right-text">
+    <img src="/URLdiMunch/image/venere.jpg" alt="Venere" style="width: 200px;">
+    <p> 
+    Code: Venere <br>
+    Name: Venere <br>
+   	Description:Venere dipinta da Botticelli <br>
+    Price:200.0 <br>
+    Quantity:999 <br>
+    </p>
+  </div>
+  </div>
   </div>
 </header>
 
@@ -93,25 +124,9 @@ function toggleSidebar() {
 </body>
 
 
-</html>
+
     		<h2> Product details</h2>
-    		<div>
-    		<img width="200" src="/URLdiMunch/image/venere.jpg" alt="Venere">
     		<caption>Prodotto</caption>
-    		<p class="right-align">Code: Venere
-    						Name: Venere
-    						Description:Venere dipinta da Botticelli
-    						Price:200.0
-    						Quantity:999
-    						</p>
-    		
-    		.right-align {
-  			text-align: right;
-			}
-    		
-    		</div>
-    			
-    		
           <button class="btn btn-cart">Add to Cart</button>
           <input class="cart-qnt" type="number" value="1" min="1" max="999">
           <input class = "prod_id" type="hidden" value="1_Venere">
