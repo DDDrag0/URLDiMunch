@@ -5,8 +5,10 @@
 	<meta charset="ISO-8859-1">
 	<title>Admin Page</title>
     <link href="./css/admin.css" rel="stylesheet" type="text/css">
+    <link href="./css/header.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<%@ include file="header.jsp" %>
   <div class="container">
     <div class="row">
       <div class="button" onclick="toggleModal('modal1', this)">Inserisci prodotto</div>
@@ -23,7 +25,7 @@
   </div>
 
   <div id="modal1" class="modal">
-    Contenuto Modal 1
+    <%@ include file="prodottiAdmin.jsp" %>
   </div>
 
   <div id="modal2" class="modal">
