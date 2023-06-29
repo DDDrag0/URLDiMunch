@@ -12,7 +12,6 @@ if ((adminRoles0 == null) || (!adminRoles0.booleanValue()))
 
 <!DOCTYPE html>
 <html lang="it">
-<!-- Per il momento è solo grafica, dopo aggiungo i controlli -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Admin Page</title>

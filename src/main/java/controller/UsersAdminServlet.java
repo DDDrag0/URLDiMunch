@@ -14,9 +14,7 @@ import dao.UserDAO;
 
 @WebServlet("/usersAdmin")
 public class UsersAdminServlet extends HttpServlet {
-	
 	static UserDAO userdao = new UserDAO();
-	
 	private static final long serialVersionUID = 1L;
        
     public UsersAdminServlet() {
@@ -30,8 +28,7 @@ public class UsersAdminServlet extends HttpServlet {
         } catch (SQLException e) {
             System.out.println("Error:" + e.getMessage());
         }
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/adminUsers.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/adminPage.jsp");
         dispatcher.forward(request, response);
     }
 

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,model.Recensione"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%
 // Check user credentials
@@ -9,7 +9,14 @@ if ((adminRoles3 == null) || (!adminRoles3.booleanValue()))
     return;
 }
 %>
-
+<%	
+	Collection<?> reviews = (Collection<?>) request.getAttribute("adminReviews");
+	if(reviews == null) {
+		//response.sendRedirect("./reviewsAdmin");	
+		//return;
+	}
+	
+%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -19,6 +26,21 @@ if ((adminRoles3 == null) || (!adminRoles3.booleanValue()))
 
 <body>
 	<h2>Reviews</h2>
-
+	<%
+	if (reviews != null && reviews.size() != 0) {
+		Iterator<?> it = reviews.iterator();
+		while (it.hasNext()) {
+			Recensione bean = (Recensione) it.next();
+	%>
+				<p><%=bean.getRecensione()%></p>
+				<br>
+	<%
+			}
+		} else {
+	%>
+		<a>No Reviews available</a>
+	<%
+		}
+	%>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,model.ListaOrdini"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%
 // Check user credentials
@@ -9,7 +9,14 @@ if ((adminRoles1 == null) || (!adminRoles1.booleanValue()))
     return;
 }
 %>
-
+<%	
+	Collection<?> orders = (Collection<?>) request.getAttribute("adminOrders");
+	if(orders == null) {
+		//response.sendRedirect("./ordersAdmin");	
+		//return;
+	}
+	
+%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -18,7 +25,22 @@ if ((adminRoles1 == null) || (!adminRoles1.booleanValue()))
 </head>
 
 <body>
-	<h2>Orders</h2>
-
+	<h2>Users</h2>
+	<%
+	if (orders != null && orders.size() != 0) {
+		Iterator<?> it = orders.iterator();
+		while (it.hasNext()) {
+			ListaOrdini bean = (ListaOrdini) it.next();
+	%>
+				<p><%=bean.getIdOrdine()%></p>
+				<br>
+	<%
+			}
+		} else {
+	%>
+		<a>No Orders available</a>
+	<%
+		}
+	%>
 </body>
 </html>

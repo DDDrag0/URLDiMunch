@@ -12,11 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.ListaOrdiniDAO;
 
-@WebServlet("/usersAdmin")
+@WebServlet("/ordersAdmin")
 public class OrdersAdminServlet extends HttpServlet {
-	
 	static ListaOrdiniDAO listaordinidao = new ListaOrdiniDAO();
-	
 	private static final long serialVersionUID = 1L;
        
     public OrdersAdminServlet() {
@@ -24,15 +22,13 @@ public class OrdersAdminServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
         try {
             request.removeAttribute("adminOrders");
             request.setAttribute("adminOrders", listaordinidao.ricercaTuttiOrdini());
         } catch (SQLException e) {
             System.out.println("Error:" + e.getMessage());
         }
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/adminUsers.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/adminPage.jsp");
         dispatcher.forward(request, response);
     }
 

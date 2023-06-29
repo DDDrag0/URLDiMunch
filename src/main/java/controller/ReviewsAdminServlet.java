@@ -12,11 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.RecensioneDAO;
 
-@WebServlet("/usersAdmin")
+@WebServlet("/reviewsAdmin")
 public class ReviewsAdminServlet extends HttpServlet {
-	
 	static RecensioneDAO recensionedao = new RecensioneDAO();
-	
 	private static final long serialVersionUID = 1L;
        
     public ReviewsAdminServlet() {
@@ -24,14 +22,13 @@ public class ReviewsAdminServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
         try {
             request.removeAttribute("adminReviews");
             request.setAttribute("adminReviews", recensionedao.doRetrieveAll());
         } catch (SQLException e) {
             System.out.println("Error:" + e.getMessage());
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/adminUsers.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/adminPage.jsp");
         dispatcher.forward(request, response);
     }
 

@@ -12,8 +12,8 @@ if ((adminRoles4 == null) || (!adminRoles4.booleanValue()))
 <%	
 	Collection<?> users = (Collection<?>) request.getAttribute("adminUsers");
 	if(users == null) {
-		response.sendRedirect("./usersAdmin");	
-		return;
+		//response.sendRedirect("./usersAdmin");	
+		//return;
 	}
 	
 %>
@@ -38,7 +38,7 @@ if ((adminRoles4 == null) || (!adminRoles4.booleanValue()))
 			}
 		} else {
 	%>
-		<a>No users available</a>
+		<a>No Users available</a>
 	<%
 		}
 	%>
