@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.LinkedList;
 
 import model.ConPool;
 import model.User;
@@ -181,7 +183,52 @@ public class UserDAO {
         }
 		return user;
     }
+    
+	public synchronized Collection<User> ricercaTuttiUtenti() throws SQLException {
+		
+		PreparedStatement preparedStatement = null;
 
+		Collection<User> users = new LinkedList<>();
+
+		String selectSQL = "SELECT * FROM  utente";
+
+		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				User user = new User();
+				
+				user.setIdUtente(rs.getString("idUtente"));
+				user.setNome(rs.getString("nome"));
+				user.setCognome(rs.getString("cognome"));
+				user.setEmail(rs.getString("email"));
+				user.setCarta(rs.getString("carta"));
+				user.setTelefono(rs.getString("telefono"));
+				user.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
+				user.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
+				
+				users.add(user);
+			}
+			preparedStatement.close();
+
+		}
+		catch (SQLException e) {
+            // process sql exception
+            printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
+        }
+		return users;
+	}
+	
     private void printSQLException(SQLException ex) {
         for (Throwable e: ex) {
             if (e instanceof SQLException) {

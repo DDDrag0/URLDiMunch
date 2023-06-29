@@ -52,7 +52,7 @@ public class ProdottoClienteServlet extends HttpServlet {
 					request.setAttribute("cart", cart);
 					link="/carrello.jsp";
 				} 
-				/*	non so se serve in realtà
+				/*  non so se serve in realtà
 				else if (action.equalsIgnoreCase("read")) {
 					String id = request.getParameter("id");
 					request.removeAttribute("product");

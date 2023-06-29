@@ -72,6 +72,13 @@ public class ProdottoAdminServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		//per fare nel caso la tabella
+		try {
+			request.removeAttribute("adminProducts");
+			request.setAttribute("adminProducts", prodottodao.doRetrieveAll());
+		} catch (SQLException e) {
+			System.out.println("Error:" + e.getMessage());
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/adminPage.jsp");
 		dispatcher.forward(request, response);
