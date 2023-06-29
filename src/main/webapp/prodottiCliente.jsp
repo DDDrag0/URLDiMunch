@@ -1,7 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="model.Prodotto" %>
-<%@ page import="model.Carrello" %>
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,model.Prodotto,model.Carrello"%>
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("products");
 	if(products == null) {
@@ -14,7 +11,6 @@
 
 <!DOCTYPE html>
 <html lang="it">
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,model.Prodotto,model.Carrello"%>
 <head>
     
 	<meta charset="UTF-8">
