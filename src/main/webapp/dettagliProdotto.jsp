@@ -1,49 +1,72 @@
-<!DOCTYPE html>
-<html lang="it">
-<script src="./js/script.js"></script>
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Details</title>
-  <link href="./css/header.css" rel="stylesheet" type="text/css">
-  <link href="./css/style.css" rel="stylesheet" type="text/css">
-</head>
+	<style>
+	.container {
+	  overflow: auto;
+	}
+	
+	.left-image {
+	  float: left;
+	  margin-right: 10px;
+	}
+	
+	.review img {
+	  float: left;
+	  margin-right: 10px;
+	}
+	.product-info {
+	  overflow: hidden;
+	  text-align: left;
+	}
+	
+	.btn {
+	  background-color: #CCCCCC;
+	  border-color: black;
+	  color: black;
+	}
+	
+	.btn-cart {
+	  display: block;
+	  margin-top: 20px;
+	}
+	
+	.cart-qnt {
+	  display: block;
+	  margin-top: 10px;
+	}
+	
+	.review {
+	  margin-top: 20px;
+	  
+	}
+	
+	.review h3 {
+	  margin-bottom: 5px;
+	}
+	
+	.comment {
+	  margin-top: 5px;
+	}
+	.button {
+	  display: inline-block;
+	  padding: 10px 10px;
+	  border-radius: 20px;
+	  background-color: #CCCCCC;
+	  border: none;
+	  color: black;
+	  text-align: center;
+	  text-decoration: none;
+	  font-size: 16px;
+	  cursor: pointer;
+	}
+	.approval-heading {
+	  display: inline;
+	  margin-left: 5px;
+	}
+	</style>
+<title>Details</title>
 <body>
-  <header>
-    <div class="sidebar" id="sidebar">
-      <div class="bottone">
-        <div class="button">
-          <button class="close-sidebar" onclick="toggleSidebar()">X</button>
-        </div>
-      </div>
-      <div class="link-sidebar">
-        <a href="index.jsp">Home</a>
-        <a href="prodottiCliente.jsp">Prodotti</a>
-      </div> 
-    </div>
-    <div class="hamburger" onclick="toggleSidebar()">
-      <span class="line"></span>
-      <span class="line"></span>
-      <span class="line"></span>
-    </div>
-    <div class="logo">
-      <a href="index.jsp">URLdiMunch</a> 
-    </div>
-    <div class="search-bar">
-      <form action="SearchServlet" method="post">
-        <input type="text" placeholder="Cerca..." id="ajaxsearch">
-        <div id="searchResult" style="display: none;"></div>
-      </form>
-    </div>
-    <div class="user-buttons">
-      <button onclick="redirectToLogin()" style= "border:none; width: 43px; height: 42px">Login</button>
-      <div class="cart">
-        <button onclick="redirectToCart()" class="no-border" style="border: none; background-color: white; width: 43px; height: 42px">
-          <img class="no-border" src="image/carrello.png" alt="Carrello" style="border: none;">
-        </button>
-        <span id="contatorecarrello" class="cart-item-count"></span>
-      </div>
-    </div>
-  </header>
+
   <h2>Product Details</h2>
   <div class="container">
     <div class="left-image">
@@ -70,18 +93,61 @@
 <button class="button">Invia recensione</button>
 <button class="button">Modifica recensione</button>
 <button class="button">Elimina recensione</button>
+
   </form>
   <h2>Recensioni utenti</h2>
   <div class="review">
     <div class="container">
        <div class="left-image">
-       <img width="20" src=  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMAF_VmUyJeP-gtQu3c3vQ1Og4FeAB0uQs4Zu8KmK0BQ&s>
+       <img width="20" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMAF_VmUyJeP-gtQu3c3vQ1Og4FeAB0uQs4Zu8KmK0BQ&amp;s">
       </div>
       <div class="product-info img"> 
         <h3 class="approval-heading">Approvato</h3>
     <p class="comment">Ottimo dipinto di un'ottima fattura, veramente spettacolare</p>
   </div>
   </div>
-  </div>                                 
+  </div>                    
+               
+
+
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+  
+      <script id="rendered-js">
+<script>
+<script src="./js/ajaxheadersrc.min.js"</script>
+  <script src="./js/search.js"></script>
+  <script type="text/javascript"> $(".btn-cart").click(function() {
+      var id = $(this).parent().find(".prod_id").val();
+      var qnt = $(this).parent().find(".cart-qnt").val();
+      window.location.href = "prodottoCliente?action=addC&id=" + id + "&quantity=" + qnt;
+    });
+
+    $(".btn-details").click(function() {
+      var id = $(this).parent().find(".prod_id").val();
+      window.location.href = "SearchServlet?cerca=" + id;
+    });
+
+    function redirectToRegistrati() {
+      window.location.href = "registrazione.jsp";
+    }
+
+    function redirectToLogin() {
+      window.location.href = "logIn.jsp";
+    }
+
+    function redirectToProfile() {
+      window.location.href = "DettagliUser.jsp";
+    }
+
+    function redirectToCart() {
+      window.location.href = "carrello.jsp";
+    }
+
+    function toggleSidebar() {
+      var sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("open");
+    }
+ </script>
 </body>
 </html>
