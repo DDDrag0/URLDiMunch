@@ -53,7 +53,6 @@ public class UserDAO {
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getEmail());
 
-            System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
             result = preparedStatement.executeUpdate();
 
@@ -90,7 +89,6 @@ public class UserDAO {
             preparedStatement.setString(7, user.getIndirizzoSpedizione());
             preparedStatement.setString(8, user.getIdUtente());
 
-            System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
             result = preparedStatement.executeUpdate();
 
