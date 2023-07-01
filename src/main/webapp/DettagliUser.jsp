@@ -128,7 +128,8 @@
 					<% 
 				}
 				%>
-				<button class="btn btn-primary profile-button" type="submit" value="Submit" onclick="Mod()">Save Profile</button>
+				<button class="btn btn-primary profile-button" type="submit" value="Submit" onclick="Mod()">Save Profile</button><br>
+				<a class="btn btn-primary profile-button" href="listaOrdini.jsp">Ordini Lista</a>
                 </div>
         </div>
     </div>
