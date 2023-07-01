@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@page import="model.User" %>
-
 <%
 	User userpage = (User) session.getAttribute("utente");
     if(userpage == null) {
@@ -9,83 +8,18 @@
         return;
     }
 %>
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Profile</title>
-	<style>
-		@font-face { font-family: Arial !important; font-display: swap !important; }
-	</style>
 	<link href="./css/styleSheetUser.css" rel="stylesheet">
+	<link href="./css/dettagliUser.css" rel="stylesheet">
 	<link href="#" rel="stylesheet">
 	<script type="text/javascript" src="./js/jQueryUser.js"></script>
-	<style>
-		::-webkit-scrollbar {
-		width: 8px;
-		}
-		/* Track */
-		::-webkit-scrollbar-track {
-		background: #f1f1f1; 
-		}
-		
-		/* Handle */
-		::-webkit-scrollbar-thumb {
-		background: #888; 
-		}
-		
-		/* Handle on hover */
-		::-webkit-scrollbar-thumb:hover {
-		background: #555; 
-		} body {
-		background: rgb(242, 242, 242)
-		}
-		
-		.form-control:focus {
-		    box-shadow: none;
-		    border-color: #f2f2f2
-		}
-		
-		.profile-button {
-		    background: rgb(0, 0, 0);	/*colore del bottone*/
-		    box-shadow: none;
-		    border: none
-		}
-		
-		.profile-button:hover {
-		    background: #f2f2f2
-		}
-		
-		.profile-button:focus {
-		    background: #f2f2f2;
-		    box-shadow: none
-		}
-		
-		.profile-button:active {
-		    background: #f2f2f2;
-		    box-shadow: none
-		}
-		
-		.back:hover {
-		    color: #f2f2f2;
-		    cursor: pointer
-		}
-		
-		.labels {
-		    font-size: 11px
-		}
-		
-		.add-experience:hover {
-		    background: #f2f2f2;
-		    color: #fff;
-		    cursor: pointer;
-		    border: solid 1px #f2f2f2
-		}
-	</style>
 </head>
-<body classname="snippet-body">
+<body>
 	<%@ include file="header.jsp" %>
 	<script src="dettagliuser.js"></script>
 	<form action="<%= request.getContextPath() %>/profile" method="post">
@@ -128,7 +62,7 @@
 					<% 
 				}
 				%>
-				<button class="btn btn-primary profile-button" type="submit" value="Submit" onclick="Mod()">Save Profile</button><br>
+				<button class="btn btn-primary profile-button" type="submit" value="Submit" onclick="Modulo()">Save Profile</button><br>
 				<a class="btn btn-primary profile-button" href="listaOrdini.jsp">Ordini Lista</a>
                 </div>
         </div>
