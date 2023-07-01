@@ -67,6 +67,7 @@
 	</style>
 <title>Details</title>
 <body>
+		<%@ include file="header.jsp" %>
 
   <h2>Product Details</h2>
   <div class="container">
@@ -82,7 +83,7 @@
     </div>
   </div>
 
-  <button class="btn btn-cart">Add to Cart</button>
+  <button class="button">Add to Cart</button>
   <input class="cart-qnt" type="number" value="1" min="1" max="999">
   <input class="prod_id" type="hidden" value="1_Venere">
 
@@ -107,48 +108,6 @@
     <p class="comment">Ottimo dipinto di un'ottima fattura, veramente spettacolare</p>
   </div>
   </div>
-  </div>                    
-               
-
-
-    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
-
-  
-      <script id="rendered-js">
-<script>
-<script src="./js/ajaxheadersrc.min.js"</script>
-  <script src="./js/search.js"></script>
-  <script type="text/javascript"> $(".btn-cart").click(function() {
-      var id = $(this).parent().find(".prod_id").val();
-      var qnt = $(this).parent().find(".cart-qnt").val();
-      window.location.href = "prodottoCliente?action=addC&id=" + id + "&quantity=" + qnt;
-    });
-
-    $(".btn-details").click(function() {
-      var id = $(this).parent().find(".prod_id").val();
-      window.location.href = "SearchServlet?cerca=" + id;
-    });
-
-    function redirectToRegistrati() {
-      window.location.href = "registrazione.jsp";
-    }
-
-    function redirectToLogin() {
-      window.location.href = "logIn.jsp";
-    }
-
-    function redirectToProfile() {
-      window.location.href = "DettagliUser.jsp";
-    }
-
-    function redirectToCart() {
-      window.location.href = "carrello.jsp";
-    }
-
-    function toggleSidebar() {
-      var sidebar = document.getElementById("sidebar");
-      sidebar.classList.toggle("open");
-    }
- </script>
+  </div>
 </body>
 </html>
