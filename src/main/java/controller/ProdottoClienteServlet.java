@@ -41,9 +41,13 @@ public class ProdottoClienteServlet extends HttpServlet {
 					String id = request.getParameter("id");
 					String quantS = request.getParameter("quantity");
 					int quant = Integer.parseInt(quantS);
-					cart.addProduct(prodottodao.doRetrieveByKey(id),quant);
-					request.setAttribute("cart", cart);
-					link="/prodottiCliente.jsp";
+					if(cart.prodExist(id)) {
+						cart.updateProduct(quant, id);
+					}else {
+						cart.addProduct(prodottodao.doRetrieveByKey(id),quant);
+						request.setAttribute("cart", cart);
+						link="/prodottiCliente.jsp";
+					}
 				} 
 				
 				else if (action.equalsIgnoreCase("deleteC")) {

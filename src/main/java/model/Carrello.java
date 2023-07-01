@@ -11,6 +11,15 @@ public class Carrello {
 		prodotto = new ArrayList<>();
 	}
 	
+	public void updateProduct(int quant, String idProdotto) {
+		for(Prodotto prod : prodotto) {
+			if(prod.getIdProdotto().equals(idProdotto)) {
+				prod.setQuantitaCart(prod.getQuantitaCart()+quant);
+				break;
+			}
+		}
+	}
+	
 	public void addProduct(Prodotto product, int quant) {
 		product.setQuantitaCart(quant);
 		prodotto.add(product);
@@ -39,5 +48,16 @@ public class Carrello {
             productIds.add(prodotti.getIdProdotto());
         }
         return productIds;
+    }
+	public boolean prodExist(String name) {
+        String namesearch;
+        boolean check=false;
+        for (Prodotto prodotti : prodotto) {
+            namesearch= prodotti.getIdProdotto();
+            if (namesearch.equals(name)) {
+            	check=true;
+            }
+        }
+        return check;
     }
 }
