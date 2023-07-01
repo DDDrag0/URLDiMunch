@@ -35,7 +35,6 @@ public class FatturaServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("entro nella servlet");
 		String action = request.getParameter("action");
 		User user = (User) request.getSession().getAttribute("utente");
 		Carrello cart = (Carrello) request.getSession().getAttribute("cart");
@@ -52,13 +51,12 @@ public class FatturaServlet extends HttpServlet {
 				String idProdotti = String.join("&", productIdsArray);
 				
 				String prezzoStr = request.getParameter("prezzo");
-				System.out.println(prezzoStr);
 			    double prezzo = Double.parseDouble(prezzoStr);
 			    
 				String indirizzo= user.getIndirizzoSpedizione();
-				System.out.println(indirizzo);
 				String idUtente= user.getIdUtente();
 		        ordiniDAO.insertOrder(idUtente,idProdotti,prezzo,indirizzo);
+		    	request.getSession().removeAttribute("cart");
 			}
 			
 			else if (action.equalsIgnoreCase("ricercaOrdine")) {

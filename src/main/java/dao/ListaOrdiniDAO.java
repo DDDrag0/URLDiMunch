@@ -48,7 +48,6 @@ public class ListaOrdiniDAO {
 					ordineValido=1;
 				}
 			}
-			System.out.println("Il codice ordine sarà: "+co);
 	        //fine parte del controllo per l'id ordine univoco
 	    	
 	        statement.setString(1, co);
@@ -57,7 +56,7 @@ public class ListaOrdiniDAO {
 	        statement.setString(2, nomeProdotti);
 	        
 	        statement.setString(3, idProdotti);
-	        statement.setString(4, idProdotti);
+	        statement.setString(4, idUtente);
 	        statement.setDouble(5, prezzo);
 	        statement.setDate(6, Date.valueOf(LocalDate.now()));
 	        statement.setString(7, indirizzo);
