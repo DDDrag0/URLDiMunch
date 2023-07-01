@@ -22,7 +22,6 @@ public class UserDAO {
             preparedStatement.setString(1, user.getIdUtente());
             preparedStatement.setString(2, user.getPassword());
 
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             status = rs.next();
 

@@ -38,9 +38,6 @@ public class SearchServlet extends HttpServlet {
         
     	request.getSession().setAttribute("prodottoDettagli", opera);
         
-        System.out.println("Servlet");
-        System.out.println(opera);
-        
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/detailsSearch.jsp");
 		dispatcher.forward(request, response);
     }

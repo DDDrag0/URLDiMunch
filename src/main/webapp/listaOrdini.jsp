@@ -9,7 +9,7 @@
     }
 %>
 <% 
-Collection<?> orders = (Collection<?>) request.getAttribute("Orders");
+Collection<?> orders = (Collection<?>) request.getAttribute("orders");
 if(orders == null) {
 	response.sendRedirect("./userOrders");	
 	return;
@@ -32,6 +32,7 @@ if(orders == null) {
   </style>
 </head>
 <body>
+	<%@ include file="header.jsp" %>
   <h1>Fattura</h1>
   
   <%
@@ -63,9 +64,11 @@ if(orders == null) {
 		      <td id="dataOrdine"><%=bean.getDataOrdine()%></td>
 		      <td id="iva"><%=bean.getIva()%></td>
 		    </tr>
-		  </table>
 	<%
 			}
+  	%>
+	  </table>
+	<%
 		} else {
 	%>
 		<a>No Orders available</a>
