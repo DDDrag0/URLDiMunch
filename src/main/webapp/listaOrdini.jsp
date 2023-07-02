@@ -49,6 +49,7 @@ if(orders == null) {
 		      <th>Prezzo</th>
 		      <th>Data Ordine</th>
 		      <th>IVA</th>
+		      <th>Fattura</th>
 		    </tr>
   	<%
 		while (it.hasNext()) {
@@ -63,6 +64,7 @@ if(orders == null) {
 		      <td id="prezzo"><%=bean.getPrezzo()%></td>
 		      <td id="dataOrdine"><%=bean.getDataOrdine()%></td>
 		      <td id="iva"><%=bean.getIva()%></td>
+		      <td></td>
 		    </tr>
 	<%
 			}
