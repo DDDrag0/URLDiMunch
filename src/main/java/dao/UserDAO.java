@@ -107,6 +107,35 @@ public class UserDAO {
         return result;
     }
     
+    public synchronized void addCard(User user, String card) {
+
+		PreparedStatement preparedStatement = null;
+		//form per ottenere le stringhe come xxxx xxxx xxxx 1234, per le carte censurate dato che sarebbe illegale salvarle nel sito.
+		String hiddenPart = card.substring(0, card.length() - 4).replaceAll("\\d", "x");
+		String visiblePart = card.substring(card.length() - 4);
+		String result = hiddenPart + visiblePart;
+
+        try (Connection connection = ConPool.getConnection()){
+
+        	preparedStatement = connection.prepareStatement("UPDATE utente SET carta=? WHERE idUtente=?;");
+            preparedStatement.setString(1, result);
+            preparedStatement.setString(2, user.getIdUtente());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
+        }
+    }
+    
     public synchronized boolean checkAdmin(String id) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		Boolean check = false;

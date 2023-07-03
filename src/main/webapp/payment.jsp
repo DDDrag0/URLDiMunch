@@ -1,7 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
+<%@page import="model.User" %>
+<%
+	User userpage = (User) session.getAttribute("utente");
+    if(userpage == null) {
+        response.sendRedirect("logIn.jsp");    
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>payment</title>
 <link href="#" rel="stylesheet">
@@ -10,7 +19,7 @@
 <script type="text/javascript" src="./js/jquery.3_2_1.min.js"></script>
 </head>
 <body>
-<form action="<%= request.getContextPath() %>/utente=sasaprova" method="post">
+<form action="<%= request.getContextPath() %>/profile?action=paymeth" method="post">
 <div class="container">
     <div class="card">
         <div class="top">
@@ -19,7 +28,7 @@
             <hr>
         </div>
         <div class="card-details"> 
-        	<input type="text" placeholder="xxxx xxxx xxxx xxxx" required pattern="(\d{4}\s?){4}"> <span>Card Number</span> <i class="fa fa-credit-card"></i>
+        	<input type="text" name="ccn" placeholder="xxxx xxxx xxxx xxxx" required pattern="(\d{4}\s?){4}"> <span>Card Number</span> <i class="fa fa-credit-card"></i>
         </div>
         <div class="exp-cvv">
             <div class="card-details"> <input type="text" placeholder="mm/yyyy" required pattern="\d{2}/\d{4}"> <span>Expiry date</span> <i class="fa fa-calendar"></i> </div>

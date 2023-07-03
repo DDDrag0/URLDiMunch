@@ -12,6 +12,13 @@ public class User {
 	private String indirizzoSpedizione;
 	private int amministratore;
 	
+	public boolean checkCarta() {
+		boolean check=false;
+		if (carta.equals("empty")) {
+			check=true;
+		}
+		return check;
+	}
 	
 	public String getIdUtente() {
 		return idUtente;

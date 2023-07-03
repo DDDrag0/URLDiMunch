@@ -22,7 +22,7 @@
 <body>
 	<%@ include file="header.jsp" %>
 	<script src="dettagliuser.js"></script>
-	<form action="<%= request.getContextPath() %>/profile" method="post">
+	<form action="<%= request.getContextPath() %>/profile?action=mod" method="post">
 	<div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
@@ -76,7 +76,15 @@
                 <div class="col-md-12">
                 	<label class="labels">Password</label>
                 	<input required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="inserisci minimo 8 caratteri con maiuscole, minuscole e numeri." type="password" class="form-control" placeholder="insert new password" value="<%= user.getPassword()%>" name="passw">
-                </div>
+                </div><div class="col-md-12">
+			    <label class="labels">Payment Method</label>
+			    <div class="input-group">
+			        <input readonly type="text" placeholder="<%= user.getCarta()%>" class="form-control" value="<%= user.getCarta()%>" name="carta">
+			        <div class="input-group-append">
+			            <a class="btn btn-primary profile-button float-right" href="payment.jsp">Modify Card</a>
+			        </div>
+			    </div>
+			</div>
             </div>
             	
                 <div class="mt-5 text-center">

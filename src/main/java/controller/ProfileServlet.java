@@ -30,34 +30,44 @@ public class ProfileServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String action = request.getParameter("action");
 		
-		User user = (User) request.getSession().getAttribute("utente");
-		String passw = request.getParameter("passw");
-		String nome = request.getParameter("nome");
-		String cognome = request.getParameter("cognome");
-		String email = request.getParameter("email");
-		String telefono = request.getParameter("telefono");
-		String indFatt = request.getParameter("indFatt");
-		String indSped = request.getParameter("indSped");
-		
-		System.out.println(user.getIdUtente());
-		
-        user.setPassword(passw);
-        user.setNome(nome);
-        user.setCognome(cognome);
-        user.setEmail(email);
-        user.setTelefono(telefono);
-        user.setIndirizzoFatturazione(indFatt);
-        user.setIndirizzoSpedizione(indSped);
-		
-		try {
-			profileDAO.modUser(user);
-		} catch (ClassNotFoundException e) {
-			//e.printStackTrace();	//sensitive
+		if(action.equals("mod")) {
+			User user = (User) request.getSession().getAttribute("utente");
+			String passw = request.getParameter("passw");
+			String nome = request.getParameter("nome");
+			String cognome = request.getParameter("cognome");
+			String email = request.getParameter("email");
+			String telefono = request.getParameter("telefono");
+			String indFatt = request.getParameter("indFatt");
+			String indSped = request.getParameter("indSped");
+			
+	        user.setPassword(passw);
+	        user.setNome(nome);
+	        user.setCognome(cognome);
+	        user.setEmail(email);
+	        user.setTelefono(telefono);
+	        user.setIndirizzoFatturazione(indFatt);
+	        user.setIndirizzoSpedizione(indSped);
+			
+			try {
+				profileDAO.modUser(user);
+			} catch (ClassNotFoundException e) {
+				//e.printStackTrace();	//sensitive
+			}
+			RequestDispatcher dispatcher = request.getRequestDispatcher("./DettagliUser.jsp");
+			dispatcher.forward(request, response);
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("./DettagliUser.jsp");
-		dispatcher.forward(request, response);
+		else if (action.equals("paymeth")) {
+			User user = (User) request.getSession().getAttribute("utente");
+			String ccn = request.getParameter("ccn");
+			
+			profileDAO.addCard(user, ccn);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("./DettagliUser.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
-
 }

@@ -104,10 +104,14 @@
     	<button id="checkout-button" class="checkout" onclick="LogIn()" >You must be logged</button>
     	<% 
     } 
-    else if (cart.isEmpty()){}else{
+    else if (cart.isEmpty()){}else if (user.checkCarta()){
     %>
-    <button id="checkout-button" class="checkout" onclick="payment()" >CheckOut</button>
+    <button id="checkout-button" class="checkout" onclick="addcard()" >Add Payment Method</button>
     <%
+    }else{
+        %>
+        <button id="checkout-button" class="checkout" onclick="payment()" >CheckOut</button>
+        <%
     }
     %>
     
@@ -140,6 +144,10 @@ function payment() {
 
 function LogIn() {
 	window.location.href = "./logIn.jsp"
+}
+
+function addcard() {
+	window.location.href = "./DettagliUser.jsp"
 }
 </script>
 </body>
