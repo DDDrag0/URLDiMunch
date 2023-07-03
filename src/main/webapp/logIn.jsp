@@ -33,7 +33,8 @@
   <body>
     <header>
       <div class="logo">
-        <a href="#">URLdiMunch</a> 
+        <a href="index.jsp">URLdiMunch</a> 
+        
       </div>
     </header>
     <div style="height:100%; z-index:5;">
@@ -84,7 +85,6 @@
         <!-- frontbox -->
       </div>
     </div>
-    <a href="index.jsp" class="button-home">Home</a>
     <script src="./js/scriptlogin.js"></script>
     <script>
       document.getElementById("signupButton").addEventListener("click", function() {
