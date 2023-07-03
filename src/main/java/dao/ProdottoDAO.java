@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import model.Carrello;
 import model.ConPool;
 import model.Prodotto;
 
@@ -183,12 +184,15 @@ public class ProdottoDAO {
 		return (result != 0);
 	}
 	
-	public synchronized void subProd(String code) throws SQLException {
+	public synchronized void subProd(String code, Carrello cart) throws SQLException {
 	 	try (Connection connection = ConPool.getConnection();
 	         PreparedStatement statement = connection.prepareStatement("UPDATE prodotto SET quantità = quantità - ? WHERE idProdotto = ?")) {
 	        int quant= 0;
-	        Prodotto prodotto = doRetrieveByKey(code);
+	        Prodotto prodotto = cart.searchProduct(code);
 	        quant = prodotto.getQuantitaCart();
+	        
+	        System.out.println(code);
+	        System.out.println(quant);
 	        
 	 		statement.setInt(1, quant);
 	        statement.setString(2, code);

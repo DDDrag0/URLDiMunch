@@ -20,6 +20,16 @@ public class Carrello {
 		}
 	}
 	
+	public Prodotto searchProduct(String idProdotto) {
+	    for (Prodotto prod : prodotto) {
+	        if (prod.getIdProdotto().equals(idProdotto)) {
+	            return prod;
+	        }
+	    }
+	    // If no match is found, return null or throw an exception
+	    return null;
+	}
+	
 	public void addProduct(Prodotto product, int quant) {
 		product.setQuantitaCart(quant);
 		prodotto.add(product);
@@ -49,6 +59,7 @@ public class Carrello {
         }
         return productIds;
     }
+	
 	public boolean prodExist(String name) {
         String namesearch;
         boolean check=false;

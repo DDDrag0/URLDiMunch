@@ -75,7 +75,7 @@ public class FatturaServlet extends HttpServlet {
 			    
 				String indirizzo= user.getIndirizzoSpedizione();
 				String idUtente= user.getIdUtente();
-		        ordiniDAO.insertOrder(idUtente,idProdotti,prezzo,indirizzo);
+		        ordiniDAO.insertOrder(idUtente,idProdotti,prezzo,indirizzo, cart);
 		    	request.getSession().removeAttribute("cart");
 			}
 

@@ -10,13 +10,14 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import model.Carrello;
 import model.ConPool;
 import model.ListaOrdini;
 import model.User;
 	
 public class ListaOrdiniDAO {
 	
-	public void insertOrder(String idUtente, String idProdotti, double prezzo, String indirizzo) {
+	public void insertOrder(String idUtente, String idProdotti, double prezzo, String indirizzo, Carrello cart) {
 		SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
 		byte[] bytes = new byte [20];
 		rand.nextBytes(bytes);
@@ -52,7 +53,7 @@ public class ListaOrdiniDAO {
 	    	
 	        statement.setString(1, co);
 	        
-	        String nomeProdotti = getProductNames(idProdotti);
+	        String nomeProdotti = getProductNames(idProdotti, cart);
 	        statement.setString(2, nomeProdotti);
 	        
 	        statement.setString(3, idProdotti);
@@ -67,7 +68,7 @@ public class ListaOrdiniDAO {
 	    }
 	}
 
-	private String getProductNames(String idProdotti) {
+	private String getProductNames(String idProdotti, Carrello cart) {
 		ProdottoDAO prod = new ProdottoDAO();
 	    String[] idArray = idProdotti.split("&");
 	    StringBuilder nameBuilder = new StringBuilder();
@@ -77,7 +78,7 @@ public class ListaOrdiniDAO {
 	            search.setString(1, id);
 	            ResultSet resultSet = search.executeQuery();
 	            if (resultSet.next()) {
-	            	prod.subProd(idProdotti);
+	            	prod.subProd(idProdotti, cart);
 	                String nome = resultSet.getString("nome");
 	                nameBuilder.append(nome).append("&");
 	            }
