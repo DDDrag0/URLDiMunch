@@ -46,8 +46,6 @@ public class ProdottoDAO {
 			preparedStatement.setDouble(9, product.getIva());
 			preparedStatement.setDouble(10, product.getPrezzo());
 
-            System.out.println(preparedStatement);
-
             result = preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -188,17 +186,21 @@ public class ProdottoDAO {
 	 	try (Connection connection = ConPool.getConnection();
 	         PreparedStatement statement = connection.prepareStatement("UPDATE prodotto SET quantità = quantità - ? WHERE idProdotto = ?")) {
 	        int quant= 0;
-	        Prodotto prodotto = cart.searchProduct(code);
-	        System.out.println(code);
-	        System.out.println(prodotto.getNome());
-	        quant = prodotto.getQuantitaCart();
-	        
-	        System.out.println(code);
-	        System.out.println(quant);
-	        
-	 		statement.setInt(1, quant);
-	        statement.setString(2, code);
-	        statement.executeUpdate();
+	        int i = code.length;
+	        for (int j=0; j<=i-1; j++) {
+		        Prodotto prodotto = cart.searchProduct(code[j]);
+		        quant = prodotto.getQuantitaCart();
+		        
+		        System.out.println("ciclo:"+j);
+		        System.out.println(i);
+		        System.out.println(code[j]);
+		        System.out.println(quant);
+		        
+		 		statement.setInt(1, quant);
+		        statement.setString(2, code[j]);
+		        statement.executeUpdate();
+	        	
+	        }
 	    } catch (SQLException e) {
 	        printSQLException(e);
 	        throw e;

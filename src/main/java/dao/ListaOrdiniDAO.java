@@ -73,12 +73,12 @@ public class ListaOrdiniDAO {
 	    String[] idArray = idProdotti.split("&");
 	    StringBuilder nameBuilder = new StringBuilder();
 	    try (Connection connection = ConPool.getConnection()) {
+        	prod.subProd(idArray, cart);
 	        for (String id : idArray) {
 	            PreparedStatement search = connection.prepareStatement("SELECT nome FROM urldimunch.prodotto WHERE idProdotto = ?");
 	            search.setString(1, id);
 	            ResultSet resultSet = search.executeQuery();
 	            if (resultSet.next()) {
-	            	prod.subProd(idArray[i], cart);
 	                String nome = resultSet.getString("nome");
 	                nameBuilder.append(nome).append("&");
 	            }
