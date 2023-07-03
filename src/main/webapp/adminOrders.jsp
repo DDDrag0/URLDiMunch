@@ -18,7 +18,7 @@ Collection<?> orders = (Collection<?>) request.getAttribute("adminOrders");
 </head>
 
 <body>
-	<h2>Users</h2>
+	<h2>Orders</h2>
 	<%
 	if (orders != null && orders.size() != 0) {
 		Iterator<?> it = orders.iterator();

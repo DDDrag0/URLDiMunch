@@ -184,11 +184,13 @@ public class ProdottoDAO {
 		return (result != 0);
 	}
 	
-	public synchronized void subProd(String code, Carrello cart) throws SQLException {
+	public synchronized void subProd(String code[], Carrello cart) throws SQLException {
 	 	try (Connection connection = ConPool.getConnection();
 	         PreparedStatement statement = connection.prepareStatement("UPDATE prodotto SET quantità = quantità - ? WHERE idProdotto = ?")) {
 	        int quant= 0;
 	        Prodotto prodotto = cart.searchProduct(code);
+	        System.out.println(code);
+	        System.out.println(prodotto.getNome());
 	        quant = prodotto.getQuantitaCart();
 	        
 	        System.out.println(code);

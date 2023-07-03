@@ -78,7 +78,7 @@ public class ListaOrdiniDAO {
 	            search.setString(1, id);
 	            ResultSet resultSet = search.executeQuery();
 	            if (resultSet.next()) {
-	            	prod.subProd(idProdotti, cart);
+	            	prod.subProd(idArray[i], cart);
 	                String nome = resultSet.getString("nome");
 	                nameBuilder.append(nome).append("&");
 	            }

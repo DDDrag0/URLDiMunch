@@ -26,7 +26,6 @@ public class Carrello {
 	            return prod;
 	        }
 	    }
-	    // If no match is found, return null or throw an exception
 	    return null;
 	}
 	
