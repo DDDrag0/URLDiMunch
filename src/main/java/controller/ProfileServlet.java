@@ -64,7 +64,7 @@ public class ProfileServlet extends HttpServlet {
 			User user = (User) request.getSession().getAttribute("utente");
 			String ccn = request.getParameter("ccn");
 			
-			profileDAO.addCard(user, ccn);
+			user.setCarta(profileDAO.addCard(user, ccn));
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("./DettagliUser.jsp");
 			dispatcher.forward(request, response);

@@ -19,6 +19,13 @@ public class User {
 		}
 		return check;
 	}
+	public boolean checkIndirizzi() {
+		boolean check=false;
+		if (indirizzoFatturazione.equals("empty")||indirizzoSpedizione.equals("empty")) {
+			check=true;
+		}
+		return check;
+	}
 	
 	public String getIdUtente() {
 		return idUtente;

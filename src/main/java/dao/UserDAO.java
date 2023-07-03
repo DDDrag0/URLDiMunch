@@ -107,7 +107,7 @@ public class UserDAO {
         return result;
     }
     
-    public synchronized void addCard(User user, String card) {
+    public synchronized String addCard(User user, String card) {
 
 		PreparedStatement preparedStatement = null;
 		//form per ottenere le stringhe come xxxx xxxx xxxx 1234, per le carte censurate dato che sarebbe illegale salvarle nel sito.
@@ -134,6 +134,7 @@ public class UserDAO {
                 printSQLException(e);
             }
         }
+        return result;
     }
     
     public synchronized boolean checkAdmin(String id) throws SQLException{

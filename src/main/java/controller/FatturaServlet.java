@@ -33,7 +33,6 @@ public class FatturaServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		User user = (User) request.getSession().getAttribute("utente");
 		String link="/index.jsp";
-		System.out.println("entra nella servlet Get");
 		
 		try {
 			if (action.equalsIgnoreCase("ricercaOrdine")) {
@@ -41,7 +40,6 @@ public class FatturaServlet extends HttpServlet {
 				String idUtente= user.getIdUtente();
 		        ListaOrdini ordine = ordiniDAO.ricercaOrdine(idOrdine,idUtente);
 		        if (ordine==null) {
-		        	System.out.println("ordine non esistente");
 		        	response.sendRedirect("./logIn.jsp");
 		        }
 		        request.setAttribute("fatturau", ordine);
@@ -61,7 +59,6 @@ public class FatturaServlet extends HttpServlet {
 		User user = (User) request.getSession().getAttribute("utente");
 		Carrello cart = (Carrello) request.getSession().getAttribute("cart");
 		String link="/index.jsp";
-		System.out.println("entra nella servlet Post");
 		try {
 			if (action.equalsIgnoreCase("ricercaTuttiOrdiniUtente")) {
 		        Collection<ListaOrdini> ordini = ordiniDAO.ricercaTuttiOrdiniUtente(user);

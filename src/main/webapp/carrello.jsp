@@ -108,12 +108,16 @@
     %>
     <button id="checkout-button" class="checkout" onclick="addcard()" >Add Payment Method</button>
     <%
-    }else{
+    }else if (user.checkIndirizzi()){
         %>
-        <button id="checkout-button" class="checkout" onclick="payment()" >CheckOut</button>
+        <button id="checkout-button" class="checkout" onclick="addcard()" >An address is Invalid</button>
         <%
-    }
-    %>
+        }else{
+            %>
+            <button id="checkout-button" class="checkout" onclick="payment()" >CheckOut</button>
+            <%
+        }
+        %>
     
 </div>
 <script src="./js/carrello.js"></script>
