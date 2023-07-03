@@ -30,15 +30,38 @@ public class FatturaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-		dispatcher.forward(request, response);
+		String action = request.getParameter("action");
+		User user = (User) request.getSession().getAttribute("utente");
+		String link="/index.jsp";
+		System.out.println("entra nella servlet Get");
+		
+		try {
+			if (action.equalsIgnoreCase("ricercaOrdine")) {
+				String idOrdine= request.getParameter("idOrdine");
+				String idUtente= user.getIdUtente();
+		        ListaOrdini ordine = ordiniDAO.ricercaOrdine(idOrdine,idUtente);
+		        if (ordine==null) {
+		        	System.out.println("ordine non esistente");
+		        	response.sendRedirect("./logIn.jsp");
+		        }
+		        request.setAttribute("fatturau", ordine);
+		        link="/fattura.jsp";
+			}
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher(link);
+			dispatcher.forward(request, response);
+		}
+		catch (SQLException e) {
+			System.out.println("Error:" + e.getMessage());
+		} 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		User user = (User) request.getSession().getAttribute("utente");
 		Carrello cart = (Carrello) request.getSession().getAttribute("cart");
-
+		String link="/index.jsp";
+		System.out.println("entra nella servlet Post");
 		try {
 			if (action.equalsIgnoreCase("ricercaTuttiOrdiniUtente")) {
 		        Collection<ListaOrdini> ordini = ordiniDAO.ricercaTuttiOrdiniUtente(user);
@@ -58,12 +81,6 @@ public class FatturaServlet extends HttpServlet {
 		        ordiniDAO.insertOrder(idUtente,idProdotti,prezzo,indirizzo);
 		    	request.getSession().removeAttribute("cart");
 			}
-			
-			else if (action.equalsIgnoreCase("ricercaOrdine")) {
-				String idOrdine= request.getParameter("idOrdine");
-		        ListaOrdini ordine = ordiniDAO.ricercaOrdine(idOrdine);
-		        request.setAttribute("ordini", ordine);
-			}
 
 			else if (action.equalsIgnoreCase("doDelete")) {
 				String idOrdine= request.getParameter("idOrdine");
@@ -75,7 +92,7 @@ public class FatturaServlet extends HttpServlet {
 		        request.setAttribute("ordini", ordini);
 			}
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher(link);
 			dispatcher.forward(request, response);
 		}
 		catch (SQLException e) {

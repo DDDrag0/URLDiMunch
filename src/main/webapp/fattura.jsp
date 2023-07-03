@@ -9,9 +9,9 @@
     }
 %>
 <% 
-Collection<?> orders = (Collection<?>) request.getAttribute("orders");
-if(orders == null) {
-	response.sendRedirect("./userOrders");	
+ListaOrdini fattur = (ListaOrdini) request.getAttribute("fatturau");
+if(fattur == null) {
+	response.sendRedirect("./listaOrdini.jsp");	
 	return;
 }
 %>
@@ -23,5 +23,6 @@ if(orders == null) {
 <body>
 	<%@ include file="header.jsp" %>
 	<h1>Fattura</h1>
+	<p><%= fattur.getIdOrdine() %></p>
 </body>
 </html>

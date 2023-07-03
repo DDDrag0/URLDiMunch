@@ -93,7 +93,7 @@ public class ListaOrdiniDAO {
 	    return nameBuilder.toString();
 	}
 
-    public synchronized ListaOrdini ricercaOrdine(String id) throws SQLException {
+    public synchronized ListaOrdini ricercaOrdine(String id,String idUtente) throws SQLException {
 		PreparedStatement preparedStatement = null;
 
 		ListaOrdini ordine = new ListaOrdini();
@@ -115,6 +115,9 @@ public class ListaOrdiniDAO {
 				ordine.setDataOrdine(rs.getString("dataOrdine"));
 				ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
 				ordine.setIva(rs.getDouble("iva"));
+			}
+			if(!ordine.getIdUtente().equals(idUtente)){
+				return null;
 			}
 			preparedStatement.close();
 		}

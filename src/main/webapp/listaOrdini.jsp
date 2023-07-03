@@ -56,15 +56,18 @@ if(orders == null) {
 			ListaOrdini bean = (ListaOrdini) it.next();
 	%>
 		    <tr>
-		      <td id="idOrdine"><%=bean.getIdOrdine()%></td>
-		      <td id="nomeProdotto"><%=bean.getNomeProdotto()%></td>
-		      <td id="idProdotto"><%=bean.getIdProdotto()%></td>
-		      <td id="idUtente"><%=bean.getIdUtente()%></td>
-		      <td id="indirizzoConsegna"><%=bean.getIndirizzoConsegna()%></td>
-		      <td id="prezzo"><%=bean.getPrezzo()%></td>
-		      <td id="dataOrdine"><%=bean.getDataOrdine()%></td>
-		      <td id="iva"><%=bean.getIva()%></td>
-		      <td></td>
+		      <td class="idOrdinetd"><%=bean.getIdOrdine()%></td>
+		      <td class="nomeProdotto"><%=bean.getNomeProdotto()%></td>
+		      <td class="idProdotto"><%=bean.getIdProdotto()%></td>
+		      <td class="idUtente"><%=bean.getIdUtente()%></td>
+		      <td class="indirizzoConsegna"><%=bean.getIndirizzoConsegna()%></td>
+		      <td class="prezzo"><%=bean.getPrezzo()%></td>
+		      <td class="dataOrdine"><%=bean.getDataOrdine()%></td>
+		      <td class="iva"><%=bean.getIva()%></td>
+		      <td>
+		      	<button class="details">Details</button>
+          		<input class = "idOrdine" type="hidden" value="<%=bean.getIdOrdine()%>">
+          	  </td>
 		    </tr>
 	<%
 			}
@@ -77,6 +80,11 @@ if(orders == null) {
 	<%
 		}
 	%>
-
+<script type="text/javascript">
+$(".details").click(function(){
+	var id = $(this).parent().find(".idOrdine").val()
+    window.location.href="fattura?action=ricercaOrdine&idOrdine="+id
+});
+</script>
 </body>
 </html>

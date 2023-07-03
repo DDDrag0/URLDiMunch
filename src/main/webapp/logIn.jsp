@@ -44,8 +44,8 @@
   		<form action="<%=request.getContextPath()%>/login" method="post">
         <h2>LOG IN</h2>
         <div class="inputbox">
-          <input title="inserisci un username di massimo 15 caratteri" required pattern="^[A-Za-z0-9_]{1,15}$" type="text" name="idutente" placeholder="  USERNAME">
-          <input title="inserisci minimo 8 caratteri con maiuscole, minuscole e numeri." required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" type="password" name="password" placeholder="  PASSWORD">
+          <input required type="text" name="idutente" placeholder="  USERNAME">
+          <input required type="password" name="password" placeholder="  PASSWORD">
         </div>
         <p>FORGET PASSWORD?</p>
         <button value="Submit">Log In</button>
