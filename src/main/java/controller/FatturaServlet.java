@@ -40,6 +40,7 @@ public class FatturaServlet extends HttpServlet {
 				String idUtente= user.getIdUtente();
 		        ListaOrdini ordine = ordiniDAO.ricercaOrdine(idOrdine,idUtente);
 		        if (ordine==null) {
+		        	//nel caso si cerca di accedere ad un area riservata
 		        	response.sendRedirect("./logIn.jsp");
 		        }
 		        request.setAttribute("fatturau", ordine);
@@ -77,11 +78,13 @@ public class FatturaServlet extends HttpServlet {
 				String idUtente= user.getIdUtente();
 		        ordiniDAO.insertOrder(idUtente,idProdotti,prezzo,indirizzo, cart);
 		    	request.getSession().removeAttribute("cart");
+		    	link="/listaOrdini.jsp";
 			}
 
 			else if (action.equalsIgnoreCase("doDelete")) {
 				String idOrdine= request.getParameter("idOrdine");
 				ordiniDAO.doDelete(idOrdine);
+		    	link="/listaOrdini.jsp";
 			}
 			
 			else if (action.equalsIgnoreCase("ricercaTuttiOrdini")) {
