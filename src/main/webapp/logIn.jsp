@@ -65,6 +65,14 @@
                 <input required type="text" name="idutente" placeholder="  USERNAME">
                 <input required type="password" name="password" placeholder="  PASSWORD">
               </div>
+			<%
+				String error = (String) session.getAttribute("error");
+			    if(error != null) {
+				%>
+					<h4 style="color:red;"><%=error %></h4>
+				<%
+			    }
+			%>
               <p>FORGET PASSWORD?</p>
               <button value="Submit">Log In</button>
             </form>

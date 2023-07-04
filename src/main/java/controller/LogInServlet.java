@@ -32,6 +32,8 @@ public class LogInServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//prese dalla logOut
+    	String error= "error";
+    	String errormsg= "credenziali errate";
 		String utente="utente";
 		String admin="adminRoles";
     	request.getSession().removeAttribute(utente);
@@ -47,6 +49,7 @@ public class LogInServlet extends HttpServlet {
         try {
         	
             if (loginDAO.validate(user)) {
+            	request.getSession().setAttribute(error, null);
             	user= loginDAO.ricercaUser(idutente);
             	request.getSession().setAttribute(utente, user);
             	if(loginDAO.checkAdmin(idutente)) {
@@ -58,6 +61,7 @@ public class LogInServlet extends HttpServlet {
 				redirectedPage = "/DettagliUser.jsp";
 				response.sendRedirect(request.getContextPath() + redirectedPage);
             } else {
+            	request.getSession().setAttribute(error, errormsg);
             	request.getSession().setAttribute(utente, null);
 				request.getSession().setAttribute(admin, Boolean.valueOf(false));
 				redirectedPage = "/logIn.jsp";
