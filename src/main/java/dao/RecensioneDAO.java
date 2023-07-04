@@ -12,20 +12,21 @@ import model.ConPool;
 import model.Recensione;
 
 public class RecensioneDAO {
-
-public synchronized Recensione doRetrieveById(String idRecensione) throws SQLException {
+	
+	public synchronized Recensione doRetrieveByProdUser(String idUser, String idProdotto) throws SQLException {
 	    PreparedStatement preparedStatement = null;
 	    Recensione recensione = null;
 	    
-	    String selectSQL = "SELECT * FROM recensione WHERE idRecensione = ?";
+	    String selectSQL = "SELECT * FROM recensione WHERE idUtente = ? and idProdotto= ?";
 	    
 	    try (Connection connection = ConPool.getConnection()) {
 	        preparedStatement = connection.prepareStatement(selectSQL);
-	        preparedStatement.setString(1, idRecensione);
-	        
+	        preparedStatement.setString(1, idUser);
+	        preparedStatement.setString(2, idProdotto);
+
 	        ResultSet rs = preparedStatement.executeQuery();
 	        
-	        if (rs.next()) {
+	        if (rs.next()!=false) {
 	            recensione = new Recensione();
 	            
 	            recensione.setIdRecensione(rs.getInt("idRecensione"));
@@ -33,6 +34,7 @@ public synchronized Recensione doRetrieveById(String idRecensione) throws SQLExc
 	            recensione.setIdUtente(rs.getString("idUtente"));
 	            recensione.setRecensione(rs.getString("recensione"));
 	        }
+	        else recensione=null;
 	    } catch (SQLException e) {
 	        printSQLException(e);
 	    } finally {
@@ -40,7 +42,6 @@ public synchronized Recensione doRetrieveById(String idRecensione) throws SQLExc
 	            preparedStatement.close();
 	        }
 	    }
-	    
 	    return recensione;
 }
 
@@ -109,7 +110,9 @@ public synchronized int doSave(Recensione recensione) throws SQLException {
 public synchronized boolean doDelete(String code) throws SQLException {
 	
 	PreparedStatement preparedStatement = null;
-
+	
+	System.out.println(code);
+	
 	int result = 0;
 
 	String deleteSQL = "DELETE FROM recensione WHERE idRecensione = ?";
@@ -146,6 +149,7 @@ public synchronized int modRecensione(Recensione rec) throws ClassNotFoundExcept
         // Step 2:Create a statement using connection object
     	preparedStatement = connection.prepareStatement("UPDATE recensione SET recensione=? WHERE idRecensione=?;");
         preparedStatement.setString(1, rec.getRecensione());
+        preparedStatement.setInt(2, rec.getIdRecensione());
 
         System.out.println(preparedStatement);
         // Step 3: Execute the query or update query

@@ -24,8 +24,16 @@
 	}
 	
 	.btn-cart {
-	  display: block;
-	  margin-top: 20px;
+	  display: inline-block;
+	  padding: 10px 10px;
+	  border-radius: 20px;
+	  background-color: #CCCCCC;
+	  border: none;
+	  color: black;
+	  text-align: center;
+	  text-decoration: none;
+	  font-size: 16px;
+	  cursor: pointer;
 	}
 	
 	.cart-qnt {

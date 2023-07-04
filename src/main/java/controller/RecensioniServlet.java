@@ -33,6 +33,7 @@ public class RecensioniServlet extends HttpServlet {
  
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
+		System.out.println(action);
 		
 		try {
 			if (action.equalsIgnoreCase("doRetrieveAll")) {
@@ -77,20 +78,19 @@ public class RecensioniServlet extends HttpServlet {
 			}
 			
 			else if (action.equalsIgnoreCase("modRecensione")) {
-				String idRecensione = request.getParameter("idRecensione");
-			    String nuovaRecensione = request.getParameter("nuovaRecensione");
+				String idUser = request.getParameter("idUtente");
+				String idProdotto = request.getParameter("idProdotto");
+			    String nuovaRecensione = request.getParameter("recensione");
 			    
-			    Recensione recensione = recensioneDAO.doRetrieveById(idRecensione);
+			    Recensione recensione = recensioneDAO.doRetrieveByProdUser(idUser, idProdotto);
 
 		        if (recensione != null) {
-		            // Modifica la recensione
+		        	
 		            recensione.setRecensione(nuovaRecensione);
 
-		            // Chiamata al metodo modRecensione del RecensioneDAO
 		            int result = recensioneDAO.modRecensione(recensione);
 
 		            if (result <= 0) {
-		                // Errore nella modifica della recensione
 		                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Errore durante la modifica della recensione.");
 		            }
 		        } else {
