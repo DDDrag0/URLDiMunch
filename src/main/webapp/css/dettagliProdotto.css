@@ -1,0 +1,63 @@
+
+	.container {
+	  overflow: auto;
+	}
+	
+	.left-image {
+	  float: left;
+	  margin-right: 10px;
+	}
+	
+	.review img {
+	  float: left;
+	  margin-right: 10px;
+	}
+	.product-info {
+	  overflow: hidden;
+	  text-align: left;
+	}
+	
+	.btn {
+	  background-color: #CCCCCC;
+	  border-color: black;
+	  color: black;
+	}
+	
+	.btn-cart {
+	  display: block;
+	  margin-top: 20px;
+	}
+	
+	.cart-qnt {
+	  display: block;
+	  margin-top: 10px;
+	}
+	
+	.review {
+	  margin-top: 20px;
+	  
+	}
+	
+	.review h3 {
+	  margin-bottom: 5px;
+	}
+	
+	.comment {
+	  margin-top: 5px;
+	}
+	.button {
+	  display: inline-block;
+	  padding: 10px 10px;
+	  border-radius: 20px;
+	  background-color: #CCCCCC;
+	  border: none;
+	  color: black;
+	  text-align: center;
+	  text-decoration: none;
+	  font-size: 16px;
+	  cursor: pointer;
+	}
+	.approval-heading {
+	  display: inline;
+	  margin-left: 5px;
+	}

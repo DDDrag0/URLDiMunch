@@ -13,88 +13,83 @@
         return;
     }
 %>
-
 <!DOCTYPE html>
-    <html lang="it">
-    <head>
-		<link href="./css/header.css" rel="stylesheet" type="text/css">
-    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    	<title> details</title>
-    </head>
-    
-    <body>
-		<%@ include file="header.jsp" %>
-    		<h2> Product details</h2>
-    		<table border="1">
-    			<caption>Prodotto</caption>
-    				<tr>
-    						<th>Code</th>
-    						<th>Name</th>
-    						<th>Description</th>
-    						<th>Price</th>
-    						<th>Image</th>
-    						<th>Quantity</th>
-    				<tr>
-    						<td><%=prod.getIdProdotto()%></td>
-    						<td><%=prod.getNome()%></td>
-    						<td><%=prod.getDescrizione()%></td>
-    						<td><%=prod.getPrezzo()%></td>
-    						<td><img width="200" src="${pageContext.request.contextPath}<%=prod.getImagepath()%>" alt="<%=prod.getNome()%>"></td>
-    						<td><%=prod.getQuantita()%></td>
-    						
-    				</tr>
-    					
-    		</table>
-    		
-          <button class="btn btn-cart">Add to Cart</button>
-          <input class="cart-qnt" type="number" value="1" min="1" max="<%=prod.getQuantita()%>">
-          <input class = "prod_id" type="hidden" value="<%=prod.getIdProdotto()%>">
-    		
-<h2>Scrivi una recensione</h2>
-<form action="recensioni" method="POST">
-    <input type="hidden" name="action" value="doSave">
-    <input type="hidden" name="idProdotto" value="<%=prod.getIdProdotto()%>">
-    <label for="idUtente">Nome utente:</label>
-    <input type="text" name="idUtente" required><br>
-    <label for="recensione">Recensione:</label>
-    <textarea name="recensione" rows="4" cols="50" required></textarea><br>
-    <input type="submit" value="Invia recensione">
-    <input type="submit" value="Modifica recensione">
-    <input type="submit" value="Elimina recensione">
-</form>
+<html lang="it">
+<head>
+	<title>Details</title>
+	<link href="./css/dettagliProdotto.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<%@ include file="header.jsp" %>
 
-<h2>Recensioni utenti</h2>
-<%
-    RecensioneDAO recensioneDAO = new RecensioneDAO();
-    Collection<Recensione> recensioni = recensioneDAO.doRetrieveByProduct(prod.getIdProdotto());
-    if (recensioni != null && !recensioni.isEmpty()) {
-        for (Recensione recensione : recensioni) {
-%>
-  <div class="review">
-    <h3><%= Encode.forHtml(recensione.getIdUtente()) %></h3>
-    <p class="comment"><%= Encode.forHtml(recensione.getRecensione()) %></p>
-  </div>
-<%
-        }
-    } else {
-%>
-  <p>Nessuna recensione disponibile.</p>
-<%
-    }
-%>
+  	<h2>Product Details</h2>
+  	<div class="container">
+    	<div class="left-image">
+      		<img src="${pageContext.request.contextPath}<%=prod.getImagepath()%>" alt="<%=prod.getNome()%>" style="width: 200px;">
+    	</div>
+    	<div class="product-info">
+      		Name: <%=prod.getNome()%> <br>
+      		Description: <%=prod.getDescrizione()%> <br>
+      		Price: <%=prod.getPrezzo()%> $ <br>
+      		Quantity: <%=prod.getQuantita()%> pieces available<br>
+    	</div>
+  	</div>
 
-<script type="text/javascript">
-$(".btn-cart").click(function(){
-	var id = $(this).parent().find(".prod_id").val()
-    var qnt = $(this).parent().find(".cart-qnt").val()
-    window.location.href="prodottoCliente?action=addC&id="+id+"&quantity="+qnt
-});
+  	<button class="btn btn-cart">Add to Cart</button>
+    <input class="cart-qnt" type="number" value="1" min="1" max="<%=prod.getQuantita()%>">
+	<input class = "prod_id" type="hidden" value="<%=prod.getIdProdotto()%>">
 
-$(".btn-details").click(function(){
-	var id = $(this).parent().find(".prod_id").val()
-    window.location.href="SearchServlet?cerca="+id
-});
-</script>
+  	<h2>Write a Review!</h2>
+  	<form action="recensioni" method="POST">
+	    <input type="hidden" name="action" value="doSave">
+	    <input type="hidden" name="idProdotto" value="<%=prod.getIdProdotto()%>">
+		<textarea name="recensione" rows="4" cols="40" required></textarea><br>
+		
+		<button class="button">Invia recensione</button>
+		<button class="button">Modifica recensione</button>
+		<button class="button">Elimina recensione</button>
+	</form>
+	
+  	<h2>Reviews</h2>
+	
+	<%
+	    RecensioneDAO recensioneDAO = new RecensioneDAO();
+	    Collection<Recensione> recensioni = recensioneDAO.doRetrieveByProduct(prod.getIdProdotto());
+	    if (recensioni != null && !recensioni.isEmpty()) {
+	        for (Recensione recensione : recensioni) {
+	%>
+  	<div class="review">
+    	<div class="container">
+       		<div class="left-image">
+       			<img width="20" src="./image/revpic.jpg">
+      		</div>
+	      	<div class="product-info img"> 
+	        	<h3 class="approval-heading"><%= Encode.forHtml(recensione.getIdUtente()) %></h3>
+	    		<p class="comment"><%= Encode.forHtml(recensione.getRecensione()) %></p>
+	  		</div>
+	  	</div>
+  	</div>
+	<%
+	        }
+	    } else {
+	%>
+	  <p>No reviews on this product.</p>
+	<%
+	    }
+	%>
+
+	<script type="text/javascript">
+		$(".btn-cart").click(function(){
+			var id = $(this).parent().find(".prod_id").val()
+		    var qnt = $(this).parent().find(".cart-qnt").val()
+		    window.location.href="prodottoCliente?action=addC&id="+id+"&quantity="+qnt
+		});
+		
+		$(".btn-details").click(function(){
+			var id = $(this).parent().find(".prod_id").val()
+		    window.location.href="SearchServlet?cerca="+id
+		});
+	</script>
     		
 </body>
 </html>

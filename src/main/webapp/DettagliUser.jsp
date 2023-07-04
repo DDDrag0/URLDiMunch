@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-            	<img class="rounded-circle mt-5" width="150px" alt="profile_img" src="./image/propic.jpg">
+            	<img class="rounded-circle mt-5" width="150px" alt="profile_img" src="./image/revpic.jpg">
             	<span class="font-weight-bold"><%= user.getIdUtente()%></span>
             	<span class="text-black-50"><%= user.getEmail()%></span>
             </div>
