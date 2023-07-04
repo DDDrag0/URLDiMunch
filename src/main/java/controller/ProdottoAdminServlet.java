@@ -27,11 +27,25 @@ public class ProdottoAdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
+		if ((adminRoles == null) || (!adminRoles.booleanValue()))
+		{	
+		    response.sendRedirect("./logIn.jsp");
+		    return;
+		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/adminPage.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
+		if ((adminRoles == null) || (!adminRoles.booleanValue()))
+		{	
+		    response.sendRedirect("./logIn.jsp");
+		    return;
+		}
 		
 		String idProdotto = request.getParameter("idProdotto");
 		String nome = request.getParameter("nome");

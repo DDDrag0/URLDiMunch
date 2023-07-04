@@ -26,7 +26,14 @@ public class AdminGestionSearchServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
+    	Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
+		if ((adminRoles == null) || (!adminRoles.booleanValue()))
+		{	
+		    response.sendRedirect("./logIn.jsp");
+		    return;
+		}
+    	
+    	try {
             request.removeAttribute("adminOrders");
             request.setAttribute("adminOrders", listaordinidao.ricercaTuttiOrdini());
         } catch (SQLException e) {
@@ -50,5 +57,11 @@ public class AdminGestionSearchServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
+		if ((adminRoles == null) || (!adminRoles.booleanValue()))
+		{	
+		    response.sendRedirect("./logIn.jsp");
+		    return;
+		}
 	}
 }

@@ -88,6 +88,12 @@ public class FatturaServlet extends HttpServlet {
 			}
 			
 			else if (action.equalsIgnoreCase("ricercaTuttiOrdini")) {
+				Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
+				if ((adminRoles == null) || (!adminRoles.booleanValue()))
+				{	
+				    response.sendRedirect("./logIn.jsp");
+				    return;
+				}
 		        Collection<ListaOrdini> ordini = ordiniDAO.ricercaTuttiOrdini();
 		        request.setAttribute("ordini", ordini);
 			}

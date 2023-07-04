@@ -37,6 +37,12 @@ public class RecensioniServlet extends HttpServlet {
 		
 		try {
 			if (action.equalsIgnoreCase("doRetrieveAll")) {
+				Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
+				if ((adminRoles == null) || (!adminRoles.booleanValue()))
+				{	
+				    response.sendRedirect("./logIn.jsp");
+				    return;
+				}
 		        Collection<Recensione> recensioni = recensioneDAO.doRetrieveAll();
 		        request.setAttribute("recensioni", recensioni);
 			}
