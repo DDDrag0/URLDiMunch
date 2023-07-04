@@ -33,7 +33,7 @@ public class ProdottoClienteServlet extends HttpServlet {
 		}
 		
 		String action = request.getParameter("action");
-		String link="/prodottiCliente.jsp";
+		String link="/index.jsp";
 
 		try {
 			if (action != null) {
