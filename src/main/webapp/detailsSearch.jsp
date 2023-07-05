@@ -19,9 +19,9 @@
 <head>
   <title>Details</title>
   <link href="./css/dettagliProdotto.css" rel="stylesheet" type="text/css">
+  <%@ include file="header.jsp" %>
 </head>
 <body>
-  <%@ include file="header.jsp" %>
 
   <h2><%=prod.getNome() %></h2>
   <div class="container">
@@ -37,6 +37,7 @@
         <p><%=prod.getPrezzo()%> $</p>
       </div>
       <button class="btn btn-cart">Add to Cart</button>
+	  <input class = "prod_id" type="hidden" value="<%=prod.getIdProdotto()%>">
       <input class="cart-qnt" type="number" value="1" min="1" max="<%=prod.getQuantita()%>">
     </div>
   </div>
@@ -46,24 +47,28 @@
   <tr>
   </tr>
   <tr>
+    <td>Artista</td>
+    <td><%=prod.getArtista()%></td>
+  </tr>
+  <tr>
+    <td>Tipo</td>
+    <td><%=prod.getTipo()%></td>
+  </tr>
+  <tr>
+    <td>Epoca</td>
+    <td><%=prod.getEpoca()%></td>
+  </tr>
+  <tr>
     <td>Dimensioni</td>
-    <td>10 cm x 15 cm</td>
+    <td><%=prod.getDimensioni()%></td>
   </tr>
   <tr>
-    <td>Peso</td>
-    <td>200 grammi</td>
+    <td>Quantità in stock</td>
+    <td><%=prod.getQuantita()%></td>
   </tr>
   <tr>
-    <td>Colore</td>
-    <td>Nero</td>
-  </tr>
-  <tr>
-    <td>Materiali</td>
-    <td>Plastica resistente</td>
-  </tr>
-  <tr>
-    <td>Compatibilità</td>
-    <td>Windows, macOS, Linux</td>
+    <td>Data di inserizione</td>
+    <td><%=prod.getDataaggiunta()%></td>
   </tr>
 </table>    </div>
     </div>

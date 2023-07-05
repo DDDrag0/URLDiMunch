@@ -14,7 +14,14 @@ public class Prodotto {
 	private double prezzo;
 	private double iva;
 	private int quantitaCart;
+	private String dataaggiunta;
 	
+	public String getDataaggiunta() {
+		return dataaggiunta;
+	}
+	public void setDataaggiunta(String dataaggiunta) {
+		this.dataaggiunta = dataaggiunta;
+	}
 	public int getQuantitaCart() {
 		return quantitaCart;
 	}
