@@ -72,15 +72,20 @@
   </tr>
 </table>    </div>
     </div>
+    
+    
+  <div class="wrapper">
   <div class="form-container">
+    <h2 style="margin-left:20px;">Write a Review!</h2>
     <% 
     User userpage = (User) session.getAttribute("utente");
-    if(userpage != null) {
+    if(userpage == null) {
     %>
+    	<h4 style="margin-left:20px; margin-top:15px;">To write a review you must be logged!</h4><br>
+      	<a class="button" href="./logIn.jsp">LogIn</a>
 
-    <h2>Write a Review!</h2>
-
-    <% if (recensioneDAO.doRetrieveByProdUser(userpage.getIdUtente(), prod.getIdProdotto()) != null) {
+    <%} else {
+    	if (recensioneDAO.doRetrieveByProdUser(userpage.getIdUtente(), prod.getIdProdotto()) != null) {
         Recensione recensioneut = recensioneDAO.doRetrieveByProdUser(userpage.getIdUtente(), prod.getIdProdotto());
     %>
 
@@ -117,9 +122,9 @@
     <% } %>
   </div>
 
-  <h2>Reviews</h2>
 
   <div class="review-list">
+  <h2>Reviews</h2>
     <% Collection<Recensione> recensioni = recensioneDAO.doRetrieveByProduct(prod.getIdProdotto());
     if (recensioni != null && !recensioni.isEmpty()) {
       for (Recensione recensione : recensioni) { %>
@@ -138,6 +143,7 @@
     } else { %>
     <p class="no-reviews">No reviews on this product.</p>
     <% } %>
+  </div>
   </div>
 
   <script type="text/javascript">

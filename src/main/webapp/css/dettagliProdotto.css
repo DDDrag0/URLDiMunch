@@ -153,7 +153,18 @@ table {
   margin-top: 10px;
 }
 
-.form-container {
+.wrapper {
+  display: flex;
+}
+
+.form-container{
+  flex: 1;
+  width: 30%;
+  margin-top: 20px;
+}
+
+.review-list {
+  width: 70%;
   margin-top: 20px;
 }
 
@@ -173,5 +184,5 @@ table {
   cursor: pointer;
   margin-top: 10px;
   border-radius: 5px;
+  margin-left:20px;
 }
-
