@@ -1,15 +1,134 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-	<title>Contatti</title>
+  <meta charset="UTF-8">
+  <title>Contatti</title>
+  <style>
+    html, body, h1, h2, p, label, input, form, nav, a {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      /* Global Styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+      }
+      
+      header h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+      
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 10px;
+      }
+      
+      main {
+        padding: 20px;
+      }
+      
+      h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      
+      p {
+        margin-bottom: 20px;
+      }
+      
+      form {
+        margin-bottom: 20px;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      
+      input[type="text"],
+      input[type="email"],
+      input[type="file"],
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      
+      input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+      
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
+      
+      /* Responsive Styles */
+      @media (min-width: 768px) {
+        body {
+          font-size: 16px;
+        }
+      
+        header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      
+        nav a {
+          margin-right: 20px;
+        }
+      
+        main {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+      
+        form {
+          max-width: 500px;
+          margin: 0 auto;
+        }
+      }
+  </style>
 </head>
 <body>
-	<h1>Contatti</h1>
-	<ul>
-		<li>Email di Michele: <a href="mailto:michele@example.com">michele@example.com</a></li>
-		<li>Email di Marco: <a href="mailto:marco@example.com">marco@example.com</a></li>
-		<li>Email di Anna: <a href="mailto:anna@example.com">anna@example.com</a></li>
-		<li>Email di Nello: <a href="mailto:nello@example.com">nello@example.com</a></li>
-	</ul>
+<header>
+
+      <a href="./index.jsp">Urldimunch</a>
+      <nav>
+      <a href="./WEB-INF/prodottiCliente.jsp">Back</a>
+      <a href="./static/about.html">About</a>
+        <a href="./static/jobs.html">Jobs</a>
+        <a href="./static/faq.html">Faq</a>
+      </nav>
+    </header>
+    <main>
+<h1>Contatti</h1>
+<ul>
+  <li>Email di Michele: <a href="mailto:michele@example.com">michele@example.com</a></li>
+  <li>Email di Marco: <a href="mailto:marco@example.com">marco@example.com</a></li>
+  <li>Email di Anna: <a href="mailto:anna@example.com">anna@example.com</a></li>
+  <li>Email di Nello: <a href="mailto:nello@example.com">nello@example.com</a></li>
+</ul>
+</main>
+<footer>
+		<p>&copy; Urldimunch 2023</p>
+	</footer>
 </body>
 </html>

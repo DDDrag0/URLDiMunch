@@ -1,56 +1,110 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-	<title>FAQ - Urldimunch</title>
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-			background-color: #F7F7F7;
-			margin: 0;
-			padding: 0;
-		}
-		h1 {
-			font-size: 36px;
-			font-weight: bold;
-			text-align: center;
-			margin-top: 50px;
-			margin-bottom: 30px;
-		}
-		.container {
-			max-width: 800px;
-			margin: 0 auto;
-			padding: 50px 20px;
-			background-color: #FFFFFF;
-			box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-			border-radius: 5px;
-			box-sizing: border-box;
-		}
-		.question {
-			font-size: 24px;
-			font-weight: bold;
-			margin-top: 20px;
-			margin-bottom: 10px;
-		}
-		.answer {
-			font-size: 16px;
-			line-height: 1.5;
-			margin-bottom: 20px;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title>FAQ - Urldimunch</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F7F7F7;
+      margin: 0;
+      padding: 0;
+    }
+    
+    h1 {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFFFFF;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    
+    .question {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .answer {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    
+    .header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    
+    .nav {
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
+    
+  </style>
 </head>
+
 <body>
-	<h1>FAQ - Urldimunch</h1>
-	<div class="container">
-		<div class="question">What forms of payment do you accept?</div>
-		<div class="answer">We accept Visa, Mastercard, American Express, and PayPal.</div>
-		<div class="question">What is your return policy?</div>
-		<div class="answer">We offer a 30-day return policy for all our products. If you are not satisfied with your purchase, please contact us to initiate the return process.</div>
-		<div class="question">Do you offer international shipping?</div>
-		<div class="answer">Yes, we offer international shipping to most countries. Shipping rates and delivery times may vary depending on your location.</div>
-		<div class="question">Can I track my order?</div>
-		<div class="answer">Yes, you will receive a tracking number via email once your order has been shipped.</div>
-		<div class="question">How do I cancel my order?</div>
-		<div class="answer">Please contact us as soon as possible if you wish to cancel your order. If your order has not been shipped yet, we will cancel it and issue a refund. If your order has already been shipped, you will need to initiate a return once you receive the item.</div>
-	</div>
+  <header class="header">
+    <a href="./index.jsp">Urldimunch</a>
+    <nav class="nav">
+      <a href="prodottiCliente.jsp">Back</a>
+      <a href="contatti.html">Contact</a>
+      <a href="about.html">About</a>
+      <a href="jobs.html">Jobs</a>
+    </nav>
+  </header>
+  <main>
+  <div class="container">
+    <h1>FAQ</h1>
+    <div class="question">What forms of payment do you accept?</div>
+    <div class="answer">We accept Visa, Mastercard, American Express, and PayPal.</div>
+    <div class="question">What is your return policy?</div>
+    <div class="answer">We offer a 30-day return policy for all our products. If you are not satisfied with your purchase, please contact us to initiate the return process.</div>
+    <div class="question">Do you offer international shipping?</div>
+    <div class="answer">Yes, we offer international shipping to most countries. Shipping rates and delivery times may vary depending on your location.</div>
+    <div class="question">Can I track my order?</div>
+    <div class="answer">Yes, you will receive a tracking number via email once your order has been shipped.</div>
+    <div class="question">How do I cancel my order?</div>
+    <div class="answer">Please contact us as soon as possible if you wish to cancel your order. If your order has not been shipped yet, we will cancel it and issue a refund. If your order has already been shipped, you will need to initiate a return once you receive the item.</div>
+  </div>
+  </main>
+  <footer>
+		<p>&copy; Urldimunch 2023</p>
+	</footer>
 </body>
+
 </html>
