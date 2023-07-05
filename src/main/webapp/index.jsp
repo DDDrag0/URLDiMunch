@@ -46,6 +46,7 @@
                     </div>
                     <div class="card-buttons">
 				          <button class="btn btn-details">Details</button>
+				          <input class = "prod_id" type="hidden" value="<%=bean.getIdProdotto()%>">
                     </div>
                 </div>
             </div>
@@ -78,6 +79,7 @@
                     </div>
                     <div class="card-buttons">
 				          <button class="btn btn-details">Details</button>
+				          <input class = "prod_id" type="hidden" value="<%=bean.getIdProdotto()%>">
                     </div>
                 </div>
             </div>
@@ -92,12 +94,6 @@
 <script src="./js/prodotticlienti.js"></script>
 <script src="./js/jsProdottiCliente.js"></script>
 <script type="text/javascript">
-$(".btn-cart").click(function(){
-	var id = $(this).parent().find(".prod_id").val()
-    var qnt = $(this).parent().find(".cart-qnt").val()
-    window.location.href="prodottoCliente?source=/index.jsp&action=addC&id="+id+"&quantity="+qnt
-});
-
 $(".btn-details").click(function(){
 	var id = $(this).parent().find(".prod_id").val()
     window.location.href="SearchServlet?cerca="+id
