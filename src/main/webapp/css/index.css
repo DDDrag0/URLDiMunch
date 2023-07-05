@@ -1,63 +1,191 @@
-/* Stile per il body */
+/* Stile per il banner */
+
 body {
   padding: 20px;
   color: white;
   font-family: Arial, sans-serif;
 }
-/*roba banner centrale */
-.container {
-  display: flex;
-  height: 50vh;
-}
-.banner {
-  width: 30%;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.banner img {
-  width: 100%;
-  height: 100%;
-}
-/* chiedi aiuto a sabato */
-.video {
-	background-color: #000;
-  width: 40%;
-  position: relative;
+
+/*carosello */
+
+body {
+  background-color: #262626;
+  font-family: "Open Sans", sans-serif;
   overflow: hidden;
 }
 
-.video video {
-  width: 100%;
-  height: 50vh;
-  position: absolute;
-  top: 0;
+.carousel-indicators {
+  bottom: 14%;
 }
+
+.carousel-indicators li {
+  display: inline-block;
+  text-indent: 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  background-color: #666;
+  box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-indicators .active {
+  background-color: #fff;
+}
+
+/*
+inspired from https://codepen.io/Rowno/pen/Afykb 
+*/
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+/*
+WHAT IS NEW IN 3.3: "Added transforms to improve carousel performance in modern browsers."
+now override the 3.3 new styles for modern browsers & apply opacity
+*/
+@media all and (transform-3d), (-webkit-transform-3d) {
+  .carousel-fade .carousel-inner > .item.next,
+.carousel-fade .carousel-inner > .item.active.right {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .carousel-fade .carousel-inner > .item.prev,
+.carousel-fade .carousel-inner > .item.active.left {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .carousel-fade .carousel-inner > .item.next.left,
+.carousel-fade .carousel-inner > .item.prev.right,
+.carousel-fade .carousel-inner > .item.active {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+.carousel-caption {
+  font-family: "Open Sans", sans-serif;
+  font-size: 2em;
+  font-weight: 300;
+  width: 100%;
+  position: absolute;
+  bottom: -12px;
+  left: -30%;
+  color: white;
+  text-decoration: none;
+  text-shadow: 2px 2px #000000;
+  animation-delay: 1.5s;
+  animation-duration: 1.5s;
+}
+
+.btn-teo-caption {
+  width: 155px;
+  border-radius: 500px !important;
+  border: 3px solid #106470;
+  margin-top: 6px;
+  margin-right: 21%;
+  background-color: #106470;
+  font-weight: bold;
+  color: white;
+}
+
+.btn-teo-caption:hover {
+  background-color: white;
+  color: #106470;
+  border: 3px solid #106470;
+  transition-property: ease 1s;
+}
+
+#caption1-button {
+  font-family: "Open Sans", sans-serif;
+  font-size: 2em;
+  font-weight: 300;
+  position: absolute;
+  bottom: -10px;
+  left: 40%;
+  color: black;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Stile per i link */
 a {
   color: black;
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
+
 /* Stile per il bottone */
-input[type="submit"] {
+input[type="submit"],
+.card-buttons button {
   background-color: black;
   color: white;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+  width: 100%;
 }
-input[type="submit"]:hover {
+
+input[type="submit"]:hover,
+.card-buttons button:hover {
   background-color: #333333;
 }
-input[type="submit"]:active {
+
+input[type="submit"]:active,
+.card-buttons button:active {
   background-color: #222222;
 }
-
-
-
 
 .card-details {
   color: #000000;
@@ -149,7 +277,7 @@ input[type="submit"]:active {
 .item.list-group-item:after {
   clear: both;
 }
-  
+
 .card {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -198,11 +326,48 @@ input[type="submit"]:active {
   /* Aggiungi altri stili desiderati */
 }
 
-@media (max-width: 600px) {
+.separator {
+  background-color: black;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.text {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Stile per dispositivi mobili */
+@media (max-width: 767px) {
   .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .banner {
+    width: 100%;
+    height: 200px;
+  }
+
+  .video {
+    width: 100%;
+  }
+
+  .video video {
+    height: 200px;
+  }
+
+  .containerp {
     grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
   }
-  
+
   .row {
     margin: -5px;
   }
@@ -215,22 +380,9 @@ input[type="submit"]:active {
     width: 100%;
     height: auto;
   }
-}
-.separator {
-  background-color: black;
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  
-}
 
-.content {
-  text-align: center;
-  padding: 20px 0;
-}
-
-.text {
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
+  input[type="submit"],
+  .card-buttons button {
+    width: 100%;
+  }
 }
