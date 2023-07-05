@@ -60,7 +60,7 @@
 
     <div class="product">
         <div class="product-image">
-            <img src="${pageContext.request.contextPath}<%= product.getImagepath() %>" alt="<%= product.getNome() %>">
+            <img src="${pageContext.request.contextPath}<%= product.getImagepath() %>" onerror="this.src='./image/errImg.jpg'" alt="<%= product.getNome() %>">
         </div>
         <div class="product-details">
             <div class="product-title"><%= product.getNome() %></div>

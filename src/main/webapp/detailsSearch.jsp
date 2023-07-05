@@ -26,7 +26,7 @@
   	<h2>Product Details</h2>
   	<div class="container">
     	<div class="left-image">
-      		<img src="${pageContext.request.contextPath}<%=prod.getImagepath()%>" alt="<%=prod.getNome()%>" style="width: 200px;">
+      		<img src="${pageContext.request.contextPath}<%=prod.getImagepath()%>" onerror="this.src='./image/errImg.jpg'" alt="<%=prod.getNome()%>" style="width: 200px;">
     	</div>
     	<div class="product-info">
       		Name: <%=prod.getNome()%> <br>

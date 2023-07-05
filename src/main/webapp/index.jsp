@@ -6,7 +6,7 @@
 <%
     Collection<?> products = (Collection<?>) request.getAttribute("products");
     if (products == null) {
-        response.sendRedirect("./prodottoCliente");
+        response.sendRedirect("./prodottoCliente?source=/index.jsp");
         return;
     }
 %>
@@ -22,7 +22,7 @@
 		<%@ include file="header.jsp" %>
 		<div class="container">
 			<div class="banner">
-				<img src="foto2.png" alt="Banner sinistro">
+				<img src="${pageContext.request.contextPath}/image/foto2.png" alt="Banner sinistro">
 			</div>
 			<div class="video">
 				<video style="width: 100%;"   autoplay muted loop >
@@ -30,7 +30,7 @@
   	</video>
 			</div>
 			<div class="banner">
-				<img src="foto2.png" alt="Banner destro">
+				<img src="${pageContext.request.contextPath}/image/foto2.png" alt="Banner destro">
 			</div>
 		</div>
 		<div class="separator">
@@ -40,21 +40,25 @@
     </div>
     <div class="container">
         <div class="row">
-            <% if (products != null && products.size() != 0) {
+            <% int i=0;
+            	if (products != null && products.size() != 0) {
                 Iterator<?> it = products.iterator();
-                while (it.hasNext()) {
+                while (it.hasNext()&& i<=4) {
                     Prodotto bean = (Prodotto) it.next();
+                    i++;
             %>
             <div class="col">
                 <div class="card">
-                    <img src="${pageContext.request.contextPath}<%=bean.getImagepath()%>" alt="<%=bean.getNome()%>" />
+                    <img src="${pageContext.request.contextPath}<%=bean.getImagepath()%>" onerror="this.src='./image/errImg.jpg'"alt="<%=bean.getNome()%>" />
                     <div class="card-details">
                         <h4><%=bean.getNome()%></h4>
                         <p>$<%=bean.getPrezzo()%></p>
                     </div>
                     <div class="card-buttons">
-                        <a href="details.jsp?code=<%=bean.getIdProdotto()%>&image=<%=bean.getImagepath()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantita()%>">Details</a>
-                        <a href="prodottoCliente?action=addC&id=<%=bean.getIdProdotto()%>">Add to Cart</a>
+				          <button class="btn btn-details">Details</button>
+				          <button class="btn btn-cart">Add to Cart</button>
+				          <input class="cart-qnt" type="number" value="1" min="1" max="<%=bean.getQuantita()%>">
+				          <input class = "prod_id" type="hidden" value="<%=bean.getIdProdotto()%>">
                     </div>
                 </div>
             </div>
@@ -70,21 +74,25 @@
     </div>
         <div class="container">
         <div class="row">
-            <% if (products != null && products.size() != 0) {
+            <%  i=0;
+            	if (products != null && products.size() != 0) {
                 Iterator<?> it = products.iterator();
-                while (it.hasNext()) {
+                while (it.hasNext()&& i<=4) {
                     Prodotto bean = (Prodotto) it.next();
+                    i++;
             %>
             <div class="col">
                 <div class="card">
-                    <img src="${pageContext.request.contextPath}<%=bean.getImagepath()%>" alt="<%=bean.getNome()%>" />
+                    <img src="${pageContext.request.contextPath}<%=bean.getImagepath()%>" onerror="this.src='./image/errImg.jpg'" alt="<%=bean.getNome()%>" />
                     <div class="card-details">
                         <h4><%=bean.getNome()%></h4>
                         <p>$<%=bean.getPrezzo()%></p>
                     </div>
                     <div class="card-buttons">
-                        <a href="details.jsp?code=<%=bean.getIdProdotto()%>&image=<%=bean.getImagepath()%>&name=<%=bean.getNome()%>&description=<%=bean.getDescrizione()%>&price=<%=bean.getPrezzo()%>&quantity=<%=bean.getQuantita()%>">Details</a>
-                        <a href="prodottoCliente?action=addC&id=<%=bean.getIdProdotto()%>">Add to Cart</a>
+				          <button class="btn btn-details">Details</button>
+				          <button class="btn btn-cart">Add to Cart</button>
+				          <input class="cart-qnt" type="number" value="1" min="1" max="<%=bean.getQuantita()%>">
+				          <input class = "prod_id" type="hidden" value="<%=bean.getIdProdotto()%>">
                     </div>
                 </div>
             </div>
@@ -95,8 +103,23 @@
     </div>
     
 		
-		<%@ include file="footer.jsp" %>
+<%@ include file="footer.jsp" %>
 <script src="./js/ajaxheadersrc.min.js"></script>
 <script src="./js/search.js"></script>
+<script src="./js/jQueryProdottiCliente.js"></script>
+<script src="./js/prodotticlienti.js"></script>
+<script src="./js/jsProdottiCliente.js"></script>
+<script type="text/javascript">
+$(".btn-cart").click(function(){
+	var id = $(this).parent().find(".prod_id").val()
+    var qnt = $(this).parent().find(".cart-qnt").val()
+    window.location.href="prodottoCliente?source=/index.jsp&action=addC&id="+id+"&quantity="+qnt
+});
+
+$(".btn-details").click(function(){
+	var id = $(this).parent().find(".prod_id").val()
+    window.location.href="SearchServlet?cerca="+id
+});
+</script>
 	</body>
 </html>

@@ -57,6 +57,12 @@ input[type="submit"]:active {
 }
 
 
+
+
+.card-details {
+  color: #000000;
+}
+
 .containerp {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -79,10 +85,6 @@ input[type="submit"]:active {
 
 .well {
   background: transparent;
-  border-style: none;
-}
-
-.btn {
   border-style: none;
 }
 
@@ -147,16 +149,6 @@ input[type="submit"]:active {
 .item.list-group-item:after {
   clear: both;
 }
-
-.btn-details {
-  background: black;
-  border-style: solid;
-  color: white;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-}
   
 .card {
   border: 1px solid #ccc;
@@ -186,11 +178,7 @@ input[type="submit"]:active {
   margin-top: 10px;
 }
 
-.card-details {
-  color: #000000;
-}
-
-.card-buttons a {
+.card-buttons button {
   display: inline-block;
   margin-right: 10px;
   padding: 8px 15px;
@@ -198,6 +186,16 @@ input[type="submit"]:active {
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
+}
+
+.cart-qnt {
+  width: 30px; /* Imposta la larghezza desiderata */
+  height: 30px; /* Imposta l'altezza desiderata */
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  /* Aggiungi altri stili desiderati */
 }
 
 @media (max-width: 600px) {

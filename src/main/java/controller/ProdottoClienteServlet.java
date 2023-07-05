@@ -33,7 +33,7 @@ public class ProdottoClienteServlet extends HttpServlet {
 		}
 		
 		String action = request.getParameter("action");
-		String link="/index.jsp";
+		String link= request.getParameter("source");
 
 		try {
 			if (action != null) {
@@ -78,5 +78,4 @@ public class ProdottoClienteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

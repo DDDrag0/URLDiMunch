@@ -92,6 +92,7 @@ CREATE TABLE `prodotto` (
   `prezzo` double DEFAULT NULL,
   `imagepath` varchar(100) DEFAULT NULL,
   `immagine` mediumblob,
+  `dataaggiunta` date DEFAULT NULL,
   PRIMARY KEY (`idProdotto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -102,7 +103,7 @@ CREATE TABLE `prodotto` (
 
 LOCK TABLES `prodotto` WRITE;
 /*!40000 ALTER TABLE `prodotto` DISABLE KEYS */;
-INSERT INTO `prodotto` VALUES ('1_Venere','Venere','Botticelli','Quadro','Vecchia','20*20','Venere dipinta da Botticelli',984,22,200,'/image/venere.jpg',NULL),('2_Urlo','Urlo di Munch','Munch','Quadro','Vecchia','30*30','L\'urlo di Munch dipinto dall\'Omonimo',999,22,450,'/image/urlo.jpg',NULL),('3_Notte','Notte Stellata','Van Gogh','Quadro','Vecchia','20*20','Notte stellata di Van Gogh',-4369,22,200,'/image/notte.jpg',NULL),('4_Guernica','Guernica','Picasso','Quadro','Vecchia','20*20','Guernica di Picasso',989,22,167,'/image/guernica.jpg',NULL),('5_Gioconda','Gioconda','Lenoardo Da Vinci','Quadro','Vecchia','30*30','La famosa Gioconda di Leonardo da Vinci',999,22,432,'/image/gioconda.png',NULL),('aaaa','aaaa','a','a','a','aa','a',996,22,222,NULL,NULL),('b','b','b','b','b','b','b',34,33,223,NULL,NULL),('pazzo','pazzo','veramente pazzo','pazzissimo','pazza','pazze','pazza descrizione',11,22,2,NULL,NULL);
+INSERT INTO `prodotto` VALUES ('1_Venere','Venere','Botticelli','Quadro','Vecchia','20*20','Venere dipinta da Botticelli',984,22,200,'/image/venere.jpg',NULL,NULL),('2_Urlo','Urlo di Munch','Munch','Quadro','Vecchia','30*30','L\'urlo di Munch dipinto dall\'Omonimo',999,22,450,'/image/urlo.jpg',NULL,NULL),('3_Notte','Notte Stellata','Van Gogh','Quadro','Vecchia','20*20','Notte stellata di Van Gogh',-4369,22,200,'/image/notte.jpg',NULL,NULL),('4_Guernica','Guernica','Picasso','Quadro','Vecchia','20*20','Guernica di Picasso',989,22,167,'/image/guernica.jpg',NULL,NULL),('5_Gioconda','Gioconda','Lenoardo Da Vinci','Quadro','Vecchia','30*30','La famosa Gioconda di Leonardo da Vinci',999,22,432,'/image/gioconda.png',NULL,NULL),('aaaa','aaaa','a','a','a','aa','a',996,22,222,NULL,NULL,NULL),('b','b','b','b','b','b','b',34,33,223,NULL,NULL,NULL),('pazzo','pazzo','veramente pazzo','pazzissimo','pazza','pazze','pazza descrizione',11,22,2,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `prodotto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,4 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-04 20:50:10
+-- Dump completed on 2023-07-05  2:55:23
