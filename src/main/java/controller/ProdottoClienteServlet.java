@@ -46,7 +46,6 @@ public class ProdottoClienteServlet extends HttpServlet {
 					}else {
 						cart.addProduct(prodottodao.doRetrieveByKey(id),quant);
 						request.setAttribute("cart", cart);
-						link="/prodottiCliente.jsp";
 					}
 				} 
 				
