@@ -87,19 +87,19 @@
 			</div>
             </div>
             	
-                <div class="mt-5 text-center">
+                <div class="mt-5 text-center" style="margin-top: 0px !important; margin-bottom: 30px !important;">
                 <%
 				// Check user credentials
 				Boolean adminRoles = (Boolean) session.getAttribute("adminRoles");
 				if (adminRoles.booleanValue())
 				{	
 					%>
-                	<a class="btn btn-primary profile-button" href="adminPage.jsp">Vai alla pagina di Gestione</a>
+                	<a class="btn btn-primary profile-button" href="adminPage.jsp" style="margin-bottom: 10px !important;">Vai alla pagina di Gestione</a>
                 	<br>
 					<% 
 				}
 				%>
-				<button class="btn btn-primary profile-button" type="submit" value="Submit">Save Profile</button>
+				<button class="btn btn-primary profile-button" type="submit" value="Submit"style="margin-bottom: 10px !important;">Save Profile</button>
 				<br>
 				<a class="btn btn-primary profile-button" href="listaOrdini.jsp">Ordini Lista</a>
                 </div>
