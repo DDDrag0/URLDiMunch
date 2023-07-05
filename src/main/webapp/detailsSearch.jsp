@@ -117,12 +117,7 @@
 		$(".btn-cart").click(function(){
 			var id = $(this).parent().find(".prod_id").val()
 		    var qnt = $(this).parent().find(".cart-qnt").val()
-		    window.location.href="prodottoCliente?action=addC&id="+id+"&quantity="+qnt
-		});
-		
-		$(".btn-details").click(function(){
-			var id = $(this).parent().find(".prod_id").val()
-		    window.location.href="SearchServlet?cerca="+id
+		    window.location.href="prodottoCliente?source=/detailsSearch.jsp&action=addC&id="+id+"&quantity="+qnt
 		});
 	</script>
     		
