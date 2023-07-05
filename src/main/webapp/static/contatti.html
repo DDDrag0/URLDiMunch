@@ -33,10 +33,7 @@
         text-decoration: none;
         margin-right: 10px;
       }
-      a {
-      color: white; 
-      text-decoration: none; 
-      }
+      
       main {
         padding: 20px;
       }
@@ -102,9 +99,22 @@
           max-width: 800px;
           margin: 0 auto;
         }
-      .grande {
-  	font-size: 25px;
-	}
+        
+        .grande {
+          font-size: 25px;
+          color: white; /* Cambio il colore in bianco */
+        }
+        
+        ul li a {
+          color: black; /* Cambio il colore delle email in nero */
+          text-decoration: underline;
+        }
+        
+        .grande a {
+          color: white; /* Cambio il colore del testo "UrldiMunch" in bianco */
+          text-decoration: none; /* Rimuovo la sottolineatura */
+        }
+		
         form {
           max-width: 500px;
           margin: 0 auto;
@@ -114,25 +124,25 @@
 </head>
 <body>
 <header>
-<div class="grande"><a href="./index.jsp">Urldimunch</a></div>
-      <nav>
-      <a href="./WEB-INF/prodottiCliente.jsp">Back</a>
-      <a href="./static/about.html">About</a>
-        <a href="./static/jobs.html">Jobs</a>
-        <a href="./static/faq.html">Faq</a>
-      </nav>
-    </header>
-    <main>
-<h1>Contatti</h1>
-<ul>
-  <li>Email di Michele: <a href="mailto:michele@example.com">michele@example.com</a></li>
-  <li>Email di Marco: <a href="mailto:marco@example.com">marco@example.com</a></li>
-  <li>Email di Anna: <a href="mailto:anna@example.com">anna@example.com</a></li>
-  <li>Email di Nello: <a href="mailto:nello@example.com">nello@example.com</a></li>
-</ul>
+  <div class="grande" style="color: white;">UrldiMunch</div>
+  <nav>
+    <a href="./WEB-INF/prodottiCliente.jsp"style="display: inline-block; border: 1px solid #fff; padding: 5px;">Back</a>
+    <a href="./static/about.html">About</a>
+    <a href="./static/jobs.html">Jobs</a>
+    <a href="./static/faq.html">Faq</a>
+  </nav>
+</header>
+<main>
+  <h1>Contatti</h1>
+  <ul>
+    <li>Email di Michele: <a href="mailto:michele@example.com">michele@example.com</a></li>
+    <li>Email di Marco: <a href="mailto:marco@example.com">marco@example.com</a></li>
+    <li>Email di Anna: <a href="mailto:anna@example.com">anna@example.com</a></li>
+    <li>Email di Nello: <a href="mailto:nello@example.com">nello@example.com</a></li>
+  </ul>
 </main>
 <footer>
-		<p>&copy; Urldimunch 2023</p>
-	</footer>
+  <p>&copy; Urldimunch 2023</p>
+</footer>
 </body>
 </html>
