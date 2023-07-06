@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8">
-    <title>Lavora con noi - Urldimunch</title>
-    <style>
-      /* CSS Styles */
-      /* Reset CSS */
-      html, body, h1, h2, p, label, input, form, nav, a {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      .container {
+
+<head>
+  <meta charset="UTF-8">
+  <title>Lavora con noi - Urldimunch</title>
+  <style>
+    /* CSS Styles */
+    /* Reset CSS */
+    html,
+    body,
+    h1,
+    h2,
+    p,
+    label,
+    input,
+    form,
+    nav,
+    a {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .container {
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
@@ -20,68 +31,101 @@
       border-radius: 5px;
       box-sizing: border-box;
     }
-      /* Global Styles */
+    
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+    
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+    
+    main {
+      padding: 20px;
+    }
+    
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    p {
+      margin-bottom: 20px;
+    }
+    
+    form {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="file"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    input[type="submit"] {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    /* Responsive Styles */
+    @media (min-width: 768px) {
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        color: #333;
+        font-size: 16px;
       }
-      
+    
       header {
         background-color: #333;
         color: #fff;
         padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
-      
-      header h1 {
-        font-size: 28px;
-        margin-bottom: 10px;
-      }
-      
-      nav a {
-        color: #fff;
-        text-decoration: none;
-        margin-right: 10px;
-      }
-      
+    
       main {
-        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
       }
-      
-      h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-      }
-      
-      p {
-        margin-bottom: 20px;
-      }
-      
+    
       form {
-        margin-bottom: 20px;
+        max-width: 500px;
+        margin: 0 auto;
       }
-      
-      label {
-        display: block;
-        margin-bottom: 5px;
-      }
-      
-      input[type="text"],
-      input[type="email"],
-      input[type="file"],
-      input[type="submit"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-      }
-      
-      input[type="submit"] {
-        background-color: #333;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-      }
-      
+    
       footer {
         background-color: #333;
         color: #fff;
@@ -89,62 +133,30 @@
         text-align: center;
       }
       
-      /* Responsive Styles */
-      @media (min-width: 768px) {
-        body {
-          font-size: 16px;
-        }
-      
-        header {
-          background-color: #333;
-  	color: #fff;
-  	padding: 20px;
-  	display: flex;
-  	justify-content: space-between;
-  	align-items: center;
-        }
-      
-        main {
-          max-width: 800px;
-          margin: 0 auto;
-        }
-      
-        form {
-          max-width: 500px;
-          margin: 0 auto;
-        }
-        footer {
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-      }
-      footer p {
-  display: inline-block;
-  margin: 0;
-}
       .grande {
-  	font-size: 25px;
-	}
-      a {
-      color: white; 
-      text-decoration: none; 
+        font-size: 25px;
       }
-      
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="grande"><a href="./index.jsp">Urldimunch</a></div>
-      <nav>
-        <a href="./WEB-INF/prodottiCliente.jsp"style="display: inline-block; border: 1px solid #fff; padding: 5px;">Back</a>
-        <a href="contatti.html">Contact</a>
-        <a href="about.html">About</a>
-        <a href="faq.html">Faq</a>
-      </nav>
-      
-    </header>
-    <main>
+    
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="grande"><a href="../index.jsp">Urldimunch</a></div>
+    <nav>
+      <a href="contatti.html">Contact</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">Faq</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </header>
+  <main>
     <div class="container">
       <h2>Lavora con noi</h2>
       <p>Siamo sempre alla ricerca di persone appassionate d'arte e altamente qualificate per unirsi al nostro team. Se vuoi lavorare in un ambiente creativo e stimolante, mandaci il tuo CV e la tua lettera di motivazione.</p>
@@ -159,10 +171,11 @@
         <input type="file" id="lettera" name="lettera">
         <input type="submit" value="Invia">
       </form>
-      </div>
-    </main>
-    <footer>
-      <p>&copy; Urldimunch 2023</p>
-    </footer>
-  </body>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; Urldimunch 2023</p>
+  </footer>
+</body>
+
 </html>
