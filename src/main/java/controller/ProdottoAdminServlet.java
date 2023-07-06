@@ -5,15 +5,21 @@ import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import dao.ProdottoDAO;
 import model.Prodotto;
 
 @WebServlet("/prodottoAdmin")
+@MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
+                 maxFileSize=1024*1024*10,      // 10MB
+                 maxRequestSize=1024*1024*50)   // 50MB
+
 public class ProdottoAdminServlet extends HttpServlet {
 	
 	static ProdottoDAO prodottodao = new ProdottoDAO();
@@ -44,7 +50,12 @@ public class ProdottoAdminServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		Part filePart = request.getPart("img");
+		String fileName = filePart.getSubmittedFileName();
+		System.out.println(fileName);
+		String uploadPath = getServletContext().getRealPath("/image");
+		filePart.write(uploadPath + "/" + fileName);
+		
 		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		{	

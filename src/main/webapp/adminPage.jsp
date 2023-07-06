@@ -109,7 +109,7 @@ if(products == null) {
 			</form>
 			<!-- INSERTION FORM -->
 			
-			<form action="<%=request.getContextPath()%>/prodottoAdmin" method="POST" class="form">
+			<form action="<%=request.getContextPath()%>/prodottoAdmin" enctype='multipart/form-data' method="POST" class="form">
 			    <div class="formHeader row">
 			        <h2 class="text-1 fl">Product Detail</h2>
 			        <div class="fr">
@@ -176,10 +176,8 @@ if(products == null) {
 			            </label>
 			            <label class="inputGroup">
 			                <span>Image</span>
-			                <input type="hidden" name="img" value="src">
 			                <span>
-			                    <input type="file" name="img" onchange="getImg(this)" >
-			                    <img src="http://bookstore.crunchpress.com/wp-content/uploads/2013/05/b2.jpg" alt="" width="50">
+			                    <input type="file" name="img" >
 			                </span>
 			                
 			            </label>

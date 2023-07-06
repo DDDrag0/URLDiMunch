@@ -43,8 +43,8 @@ public class ProdottoDAO {
 
 		try (Connection connection = ConPool.getConnection()){
 
-			//la parte del controllo per l'id ordine univoco
-	    	checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine = ?");
+			//la parte del controllo per l'id prodotto univoco
+	    	checkcodice = connection.prepareStatement("SELECT idProdotto FROM prodotto where idProdotto = ?");
 	        
 	        int ordineValido=0;
 	        int ordineInvalido=0;
@@ -63,7 +63,7 @@ public class ProdottoDAO {
 					ordineValido=1;
 				}
 			}
-	        //fine parte del controllo per l'id ordine univoco
+	        //fine parte del controllo per l'id prodotto univoco
 			
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, co);
