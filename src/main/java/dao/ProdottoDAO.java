@@ -35,12 +35,22 @@ public class ProdottoDAO {
 		String co = null;
 		PreparedStatement checkcodice = null;
 		PreparedStatement preparedStatement = null;
-		
+
+	    double iva = 0.0;
 		int result = 0;
 		
-		
-		String insertSQL = "INSERT INTO prodotto (idProdotto,nome, artista, tipo, epoca, dimensioni, descrizione, quantità, iva, prezzo, dataaggiunta) VALUES (?,?,?,?,?,?,?,?,(SELECT iva FROM urldimunch.prodotto LIMIT 1),?,?)";
+		String subquery = "SELECT iva FROM urldimunch.prodotto LIMIT 1";
+		String insertSQL = "INSERT INTO prodotto (idProdotto,nome, artista, tipo, epoca, dimensioni, descrizione, quantità, iva, prezzo, dataaggiunta, imagepath) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
+		try (Connection connection2 = ConPool.getConnection()) {
+		    // Esegui la subquery per ottenere il valore di iva
+		    PreparedStatement subqueryStatement = connection2.prepareStatement(subquery);
+		    ResultSet subqueryResult = subqueryStatement.executeQuery();
+		    if (subqueryResult.next()) {
+		        iva = subqueryResult.getDouble("iva");
+		    }
+		}
+		
 		try (Connection connection = ConPool.getConnection()){
 
 			//la parte del controllo per l'id prodotto univoco
@@ -74,8 +84,10 @@ public class ProdottoDAO {
 			preparedStatement.setString(6, product.getDimensioni());
 			preparedStatement.setString(7, product.getDescrizione());
 			preparedStatement.setInt(8, product.getQuantita());
-			preparedStatement.setDouble(9, product.getPrezzo());
-			preparedStatement.setDate(10, Date.valueOf(LocalDate.now()));
+		    preparedStatement.setDouble(9, iva);
+		    preparedStatement.setDouble(10, product.getPrezzo());
+		    preparedStatement.setDate(11, Date.valueOf(LocalDate.now()));
+		    preparedStatement.setString(12, product.getImagepath());
 
             result = preparedStatement.executeUpdate();
 

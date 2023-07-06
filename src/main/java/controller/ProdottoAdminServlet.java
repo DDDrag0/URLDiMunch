@@ -50,14 +50,15 @@ public class ProdottoAdminServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		Part filePart = request.getPart("img");
 		String fileName = filePart.getSubmittedFileName();
 		System.out.println(fileName);
-		String uploadPath = getServletContext().getRealPath("/image/");
+		// questa è quella da mettere prima dell'esame, dato che di base non funziona
+		//String uploadPath = getServletContext().getRealPath("/image");
+		// questa è quella da cambiare, fai tasto destro sulla cartella image del progetto, dovrebbe esserci: show in.../system explorer, e prendi il path della cartella image del tuo pc, che bellezza.
+		String uploadPath="C:\\Users\\"/*qua inserisci il nome del tuo pc*/+"\\git\\URLDiMunch\\src\\main\\webapp\\image";
 		System.out.println(uploadPath);
 		filePart.write(uploadPath + fileName);
-		System.out.println();
 		
 		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
@@ -74,6 +75,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 		String descrizione = request.getParameter("descrizione");
 		String Squantita = request.getParameter("quantita");
 		String Sprezzo = request.getParameter("prezzo");
+		String imagepath="/image/"+fileName;
 		
 		int quantita = Integer.parseInt(Squantita);
 		double prezzo = Double.parseDouble(Sprezzo);
@@ -88,6 +90,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 		product.setDescrizione(descrizione);
 		product.setQuantita(quantita);
 		product.setPrezzo(prezzo);
+		product.setImagepath(imagepath);
 		
 		
 		try {
