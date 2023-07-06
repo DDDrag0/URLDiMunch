@@ -52,7 +52,6 @@ public class ProdottoAdminServlet extends HttpServlet {
 		    return;
 		}
 		
-		String idProdotto = request.getParameter("idProdotto");
 		String nome = request.getParameter("nome");
 		String artista = request.getParameter("artista");
 		String tipo = request.getParameter("tipo");
@@ -61,20 +60,12 @@ public class ProdottoAdminServlet extends HttpServlet {
 		String descrizione = request.getParameter("descrizione");
 		String Squantita = request.getParameter("quantita");
 		String Sprezzo = request.getParameter("prezzo");
-		String Siva = request.getParameter("iva");
-
-		System.out.println(idProdotto);
-		System.out.println(Squantita);
-		System.out.println(Sprezzo);
-		System.out.println(Siva);
 		
 		int quantita = Integer.parseInt(Squantita);
 		double prezzo = Double.parseDouble(Sprezzo);
-		double iva = Double.parseDouble(Siva);
 		
 		Prodotto product = new Prodotto();
 		
-		product.setIdProdotto(idProdotto);
 		product.setNome(nome);
 		product.setArtista(artista);
 		product.setTipo(tipo);
@@ -83,7 +74,6 @@ public class ProdottoAdminServlet extends HttpServlet {
 		product.setDescrizione(descrizione);
 		product.setQuantita(quantita);
 		product.setPrezzo(prezzo);
-		product.setIva(iva);
 		
 		
 		try {

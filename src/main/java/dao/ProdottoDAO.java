@@ -1,9 +1,12 @@
 package dao;
 
+import java.security.SecureRandom;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -26,16 +29,44 @@ public class ProdottoDAO {
 	String imagepath ="imagepath";
 	
 	public synchronized int doSave(Prodotto product) throws SQLException {
-		
+		SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
+		byte[] bytes = new byte [20];
+		rand.nextBytes(bytes);
+		String co = null;
+		PreparedStatement checkcodice = null;
 		PreparedStatement preparedStatement = null;
 		
 		int result = 0;
 		
-		String insertSQL = "INSERT INTO prodotto (idProdotto,nome, artista, tipo, epoca, dimensioni, descrizione, quantità, iva, prezzo) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		
+		String insertSQL = "INSERT INTO prodotto (idProdotto,nome, artista, tipo, epoca, dimensioni, descrizione, quantità, iva, prezzo, dataaggiunta) VALUES (?,?,?,?,?,?,?,?,(SELECT iva FROM urldimunch.prodotto LIMIT 1),?,?)";
 
 		try (Connection connection = ConPool.getConnection()){
+
+			//la parte del controllo per l'id ordine univoco
+	    	checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine = ?");
+	        
+	        int ordineValido=0;
+	        int ordineInvalido=0;
+			while(ordineValido==0) {
+				int codr = rand.nextInt(99999);
+				co= "prod-"+codr;
+				checkcodice.setString(1, co);
+				ResultSet resultSet = checkcodice.executeQuery();
+				while (resultSet.next()) {
+					String codOrdine= resultSet.getString("codice");
+					if(co.equals(codOrdine)) {
+						ordineInvalido=1;
+					}
+				}
+				if(ordineInvalido==0) {
+					ordineValido=1;
+				}
+			}
+	        //fine parte del controllo per l'id ordine univoco
+			
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, product.getIdProdotto());
+			preparedStatement.setString(1, co);
 			preparedStatement.setString(2, product.getNome());
 			preparedStatement.setString(3, product.getArtista());
 			preparedStatement.setString(4, product.getTipo());
@@ -43,8 +74,8 @@ public class ProdottoDAO {
 			preparedStatement.setString(6, product.getDimensioni());
 			preparedStatement.setString(7, product.getDescrizione());
 			preparedStatement.setInt(8, product.getQuantita());
-			preparedStatement.setDouble(9, product.getIva());
-			preparedStatement.setDouble(10, product.getPrezzo());
+			preparedStatement.setDouble(9, product.getPrezzo());
+			preparedStatement.setDate(10, Date.valueOf(LocalDate.now()));
 
             result = preparedStatement.executeUpdate();
 

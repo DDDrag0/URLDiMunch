@@ -62,9 +62,10 @@ if(products == null) {
 			<!-- LIST FORM -->
 			<form action="" method="GET" name="listForm" class="form scrollX">
 			    <div class="formHeader row">
-			        <h2 class="text-1 fl">Review List</h2>
+			        <h2 class="text-1 fl">Product List</h2>
 			        <div class="fr">
-			          <button type="submit" class="btnSave bg-1 text-fff text-bold fr">SAVE</button>
+						<span>TaxRate:</span><input type="text" name="taxRate" style="width: 50px" pattern="[0-9]{2}">
+						<a href="" class="btnAdd fa fa-plus bg-1 text-fff" onclick="return confirm(&quot;Do you want to change the taxes?&quot;)"></a>
 			        </div>
 			    </div>
 			    <div class="table">
@@ -91,7 +92,7 @@ if(products == null) {
 			                <div class="cell cell-250 text-center"><%= bean.getPrezzo() %>$</div>
 			                <div class="cell cell-100p text-center"></div>
 			                <div class="cell cell-100 text-center">
-			                    <a href="" class="btnEdit fa fa-pencil bg-1 text-fff" onclick="return confirm(&quot;Do you really want to give administration perms?&quot;)"></a>
+			                    <a href="" class="btnEdit fa fa-eye bg-1 text-fff"></a>
 			                    <a href="" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
 			                </div>
 			            </li>
@@ -106,60 +107,78 @@ if(products == null) {
 			    <!--   END LOOP -->
 			    </div>
 			</form>
-          
-			<!-- DETAIL FORM -->
-			<form action="" method="POST" enctype="multipart/form-data" class="form">
+			<!-- INSERTION FORM -->
+			
+			<form action="<%=request.getContextPath()%>/prodottoAdmin" method="POST" class="form">
 			    <div class="formHeader row">
 			        <h2 class="text-1 fl">Product Detail</h2>
 			        <div class="fr">
-			            <button type="submit" class="btnSave bg-1 text-fff text-bold fr">SAVE</button><a href="" class="btnAdd fa fa-plus bg-1 text-fff"></a>
+			            <button type="submit" class="btnSave bg-1 text-fff text-bold fr">SAVE</button>
 			        </div>
 			    </div>
 			    <div class="formBody row">
 			        <div class="column s-6">
 			            <label class="inputGroup">
 			                <span>Name</span>
-			                <span><input type="text" name="name"></span>
+			                <span><input type="text" title="at least 5 characters" name="nome" pattern="^[a-zA-Z\d\.\s,-]{5,45}$" required></span>
 			            </label>
 			            <label class="inputGroup">
-			                <span>Code</span>
-			                <span><input type="text" name="code"></span>
+			                <span>Artist</span>
+			                <span><input type="text" title="at least 5 characters" name="artista" pattern="^[a-zA-Z\d\.\s,-]{5,45}$" required></span>
 			            </label>
 			            <label class="inputGroup">
 			                <span>Price</span>
-			                <span><input type="text" name="price"></span>
+			                <span><input type="text" title="only numbers" name="prezzo" pattern="[0-9]*" required></span>
 			            </label>
 			            <label class="inputGroup">
-			                <span>Note</span>
-			                <span><input type="text" name="note"></span>
+			                <span>Quantity</span>
+			                <span><input type="text" title="only numbers" name="quantita" pattern="[0-9]*" required></span>
 			            </label>
 			        </div>
+			        
 			        <div class="column s-6">
+			            <label class="inputGroup">
+			                <span>Dimensions</span>
+			                <span>
+			                    <select name="dimensioni">
+			                        <option value="40cm x 40cm">40cm x 40cm</option>
+			                        <option value="60cm x 40cm">60cm x 40cm</option>
+			                        <option value="40cm x 60cm">40cm x 60cm</option>
+			                        <option value="70cm x 70cm">70cm x 70cm</option>
+			                        <option value="100cm x 70cm">100cm x 70cm</option>
+			                        <option value="70cm x 100cm">70cm x 100cm</option>
+			                    </select>
+			                </span>
+			            </label>
 			            <label class="inputGroup">
 			                <span>Category</span>
 			                <span>
-			                    <select name="cate">
-			                        <option value="cate01">Category01</option>
-			                        <option value="cate02">Category02</option>
+			                    <select name="tipo">
+			                        <option value="Painting">Painting</option>
+			                        <option value="Statue">Statue</option>
+			                        <option value="Carpet">Carpet</option>
 			                    </select>
-			                    <i class="btnNewInput fa fa-plus bg-1 text-fff"></i>
 			                </span>
 			            </label>
-			            <label class="inputGroup hide">
-			                <span>Brand</span>
+			            <label class="inputGroup">
+			                <span>Age</span>
 			                <span>
-			                    <input type="text" name="cate">
-			                    <select name="brand">
-			                        <option value="cate01">Brand01</option>
-			                        <option value="cate02">Brand02</option>
+			                    <select name="epoca">
+			                        <option value="before 1500">before 1500</option>
+			                        <option value="1500-1600">1500-1600</option>
+			                        <option value="1600-1700">1600-1700</option>
+			                        <option value="1700-1800">1700-1800</option>
+			                        <option value="1800-1900">1800-1900</option>
+			                        <option value="1900-2000">1900-2000</option>
+			                        <option value="modern">modern</option>
 			                    </select>
-			                </span> 
+			                </span>
 			            </label>
 			            <label class="inputGroup">
 			                <span>Image</span>
 			                <input type="hidden" name="img" value="src">
 			                <span>
-			                    <input type="file" name="img" onchange="getImg(this)" multiple="">
+			                    <input type="file" name="img" onchange="getImg(this)" >
 			                    <img src="http://bookstore.crunchpress.com/wp-content/uploads/2013/05/b2.jpg" alt="" width="50">
 			                </span>
 			                
@@ -168,7 +187,7 @@ if(products == null) {
 			      <div class="column">
 			          <label class="inputGroup">
 			              <span>Description</span>
-			              <textarea name="description"></textarea>
+			              <textarea name="descrizione" maxlength="1000" required></textarea>
 			          </label>
 			      </div>
 			    </div>
