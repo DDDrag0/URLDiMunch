@@ -50,11 +50,14 @@ public class ProdottoAdminServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		Part filePart = request.getPart("img");
 		String fileName = filePart.getSubmittedFileName();
 		System.out.println(fileName);
-		String uploadPath = getServletContext().getRealPath("/image");
-		filePart.write(uploadPath + "/" + fileName);
+		String uploadPath = getServletContext().getRealPath("/image/");
+		System.out.println(uploadPath);
+		filePart.write(uploadPath + fileName);
+		System.out.println();
 		
 		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))

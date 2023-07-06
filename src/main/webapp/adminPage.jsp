@@ -92,8 +92,8 @@ if(products == null) {
 			                <div class="cell cell-250 text-center"><%= bean.getPrezzo() %>$</div>
 			                <div class="cell cell-100p text-center"></div>
 			                <div class="cell cell-100 text-center">
-			                    <a href="" class="btnEdit fa fa-eye bg-1 text-fff"></a>
-			                    <a href="" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
+			                    <a href="SearchServlet?cerca=<%= bean.getIdProdotto() %>" class="btnEdit fa fa-eye bg-1 text-fff"></a>
+			                    <a href="AdminActions?action=deleteProduct&code=<%= bean.getIdProdotto() %>" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
 			                </div>
 			            </li>
 			            <%	}
