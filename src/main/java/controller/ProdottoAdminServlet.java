@@ -14,6 +14,7 @@ import javax.servlet.http.Part;
 
 import dao.ProdottoDAO;
 import model.Prodotto;
+import model.ScriptImage;
 
 @WebServlet("/prodottoAdmin")
 @MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
@@ -23,6 +24,7 @@ import model.Prodotto;
 public class ProdottoAdminServlet extends HttpServlet {
 	
 	static ProdottoDAO prodottodao = new ProdottoDAO();
+	static ScriptImage script= new ScriptImage();
 	
 	private static final long serialVersionUID = 1L;
        
@@ -53,9 +55,11 @@ public class ProdottoAdminServlet extends HttpServlet {
 		Part filePart = request.getPart("img");
 		String fileName = filePart.getSubmittedFileName();
 		System.out.println(fileName);
-		String uploadPath = getServletContext().getRealPath("/image");
+		String uploadPath = getServletContext().getRealPath("/image/");
 		System.out.println(uploadPath);
 		filePart.write(uploadPath + fileName);
+		
+		script.copy(uploadPath, fileName);
 		
 		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
