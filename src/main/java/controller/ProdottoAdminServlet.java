@@ -53,10 +53,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 		Part filePart = request.getPart("img");
 		String fileName = filePart.getSubmittedFileName();
 		System.out.println(fileName);
-		// questa è quella da mettere prima dell'esame, dato che di base non funziona
-		//String uploadPath = getServletContext().getRealPath("/image");
-		// questa è quella da cambiare, fai tasto destro sulla cartella image del progetto, dovrebbe esserci: show in.../system explorer, e prendi il path della cartella image del tuo pc, che bellezza.
-		String uploadPath="C:\\Users\\"/*qua inserisci il nome del tuo pc*/+"\\git\\URLDiMunch\\src\\main\\webapp\\image";
+		String uploadPath = getServletContext().getRealPath("/image");
 		System.out.println(uploadPath);
 		filePart.write(uploadPath + fileName);
 		
