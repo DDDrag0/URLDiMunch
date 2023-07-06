@@ -4,6 +4,20 @@
   <meta charset="UTF-8">
   <title>Informativa sulla Privacy</title>
   <style>
+    html, body, h1, h2, p, label, input, form, nav, a {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFFFFF;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
@@ -11,11 +25,11 @@
       padding: 20px;
     }
     footer {
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-      }
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
     h1 {
       font-size: 24px;
       margin-bottom: 20px;
@@ -23,43 +37,50 @@
     p {
       margin-bottom: 10px;
     }
-a {
+    a {
       color: white; 
       text-decoration: none; 
-      }
-	header {
-  	background-color: #333;
-  	color: #fff;
-  	padding: 20px;
-	}
-footer {
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-      }
-	header h1 {
-  	font-size: 28px;
-  	margin-bottom: 10px;
-	}
-
-	nav {
-  	display: flex;
-  	justify-content: flex-end;
-	}
-
-	nav a {
-  	color: #fff;
-  	text-decoration: none;
-  	margin-right: 10px;
-	}
-.grande {
-  	font-size: 25px;
-	}
-	main {
-  	padding: 20px;
-	}
-
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    footer p {
+  display: inline-block;
+  margin: 0;
+}
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .grande {
+      font-size: 25px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+    nav a:first-child {
+      margin-left: 0;
+    }
+    main {
+      padding: 20px;
+    }
   </style>
 </head>
 <body>
@@ -73,6 +94,7 @@ footer {
       </nav>
     </header>
 	<main>
+	<div class="container">
   <h1>Informativa sulla Privacy</h1>
   <p>Benvenuti nel nostro sito web! La presente Informativa sulla Privacy descrive come vengono raccolti, utilizzati e protetti i vostri dati personali. L'accesso e l'utilizzo del nostro sito implicano l'accettazione di tale informativa. Se non siete d'accordo con questa informativa, vi preghiamo di non utilizzare il nostro sito.</p>
   
@@ -94,6 +116,7 @@ footer {
   <p>Utilizzando il nostro sito, accettate di rispettare e conformarvi a questa Informativa sulla Privacy. In caso di violazione di questa informativa, ci riserviamo il diritto di sospendere o revocare il vostro accesso al sito. Vi invitiamo a contattarci per eventuali domande o commenti riguardo a questa Informativa sulla Privacy.</p>
 
   <p>Grazie per aver letto la nostra Informativa sulla Privacy e per la vostra comprensione e collaborazione.</p>
+</div>
 </main>
 <footer>
 	<p>&copy; Urldimunch 2023</p>

@@ -4,6 +4,24 @@
   <meta charset="UTF-8">
   <title>Termini e Condizioni</title>
   <style>
+  a {
+    	color: white; 
+    	text-decoration: none; 
+    }
+    html, body, h1, h2, p, label, input, form, nav, a {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFFFFF;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
@@ -11,11 +29,11 @@
       padding: 20px;
     }
     footer {
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-      }
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
     h1 {
       font-size: 24px;
       margin-bottom: 20px;
@@ -23,56 +41,62 @@
     p {
       margin-bottom: 10px;
     }
-  
-	header {
-  	background-color: #333;
-  	color: #fff;
-  	padding: 20px;
-	}
-footer {
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-      }
-	header h1 {
-  	font-size: 28px;
-  	margin-bottom: 10px;
-	}
-
-	nav {
-  	display: flex;
-  	justify-content: flex-end;
-	}
-.grande {
-  	font-size: 25px;
-	}
-	nav a {
-  	color: #fff;
-  	text-decoration: none;
-  	margin-right: 10px;
-	}
-a {
-      color: white; 
-      text-decoration: none; 
-      }
-	main {
-  	padding: 20px;
-	}
-	</style>
-
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    footer p {
+  display: inline-block;
+  margin: 0;
+}
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .grande {
+      font-size: 25px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    .menu-link {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+    .menu-link:first-child {
+      margin-left: 0;
+    }
+    main {
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
 <header>
-      <div class="grande"><a href="./index.jsp">Urldimunch</a></div>
-      <nav class="nav">
-      	<a href="./WEB-INF/prodottiCliente.jsp"style="display: inline-block; border: 1px solid #fff; padding: 5px;">Back</a>
-      	<a href="./static/jobs.html">Jobs</a>
-        <a href="./static/contatti.html">Contact</a>
-        <a href="./static/faq.html">Faq</a>
-      </nav>
-    </header>
+
+  <div class="grande"><a href="./index.jsp">Urldimunch</a></div>
+  <nav class="nav">
+    <a href="./WEB-INF/prodottiCliente.jsp" class="menu-link" style="display: inline-block; border: 1px solid #fff; padding: 5px;">Back</a>
+    <a href="./static/jobs.html" class="menu-link">Jobs</a>
+    <a href="./static/contatti.html" class="menu-link">Contact</a>
+    <a href="./static/faq.html" class="menu-link">Faq</a>
+  </nav>
+  
+</header>
 	<main>
+	<div class="container">
   <h1>Termini e Condizioni</h1>
   <p>Benvenuti nel nostro sito web! Prima di utilizzare i nostri servizi, vi invitiamo a leggere attentamente i seguenti Termini e Condizioni. L'accesso e l'utilizzo del nostro sito implicano l'accettazione di tali termini. Se non siete d'accordo con questi termini, vi preghiamo di non utilizzare il nostro sito.</p>
   
@@ -97,6 +121,7 @@ a {
   <p>Utilizzando il nostro sito, accettate di rispettare e conformarvi a questi Termini e Condizioni. In caso di violazione di talitermini, ci riserviamo il diritto di sospendere o revocare il vostro accesso al sito. Vi invitiamo a contattarci per eventuali domande o commenti riguardo a questi Termini e Condizioni.</p>
 
   <p>Grazie per aver letto i nostri Termini e Condizioni e per la vostra comprensione e collaborazione.</p>
+</div>
 </main>
 <footer>
 	<p>&copy; Urldimunch 2023</p>

@@ -11,7 +11,15 @@
         padding: 0;
         box-sizing: border-box;
       }
-      
+      .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFFFFF;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
       /* Global Styles */
       body {
         font-family: Arial, sans-serif;
@@ -88,13 +96,12 @@
         }
       
         header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-      
-        nav a {
-          margin-right: 20px;
+          background-color: #333;
+  	color: #fff;
+  	padding: 20px;
+  	display: flex;
+  	justify-content: space-between;
+  	align-items: center;
         }
       
         main {
@@ -112,6 +119,10 @@
         padding: 10px;
         text-align: center;
       }
+      footer p {
+  display: inline-block;
+  margin: 0;
+}
       .grande {
   	font-size: 25px;
 	}
@@ -131,8 +142,10 @@
         <a href="about.html">About</a>
         <a href="faq.html">Faq</a>
       </nav>
+      
     </header>
     <main>
+    <div class="container">
       <h2>Lavora con noi</h2>
       <p>Siamo sempre alla ricerca di persone appassionate d'arte e altamente qualificate per unirsi al nostro team. Se vuoi lavorare in un ambiente creativo e stimolante, mandaci il tuo CV e la tua lettera di motivazione.</p>
       <form>
@@ -146,6 +159,7 @@
         <input type="file" id="lettera" name="lettera">
         <input type="submit" value="Invia">
       </form>
+      </div>
     </main>
     <footer>
       <p>&copy; Urldimunch 2023</p>
