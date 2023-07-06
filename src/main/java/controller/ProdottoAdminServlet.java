@@ -54,10 +54,8 @@ public class ProdottoAdminServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Part filePart = request.getPart("img");
 		String fileName = filePart.getSubmittedFileName();
-		System.out.println(fileName);
 		String uploadPath = getServletContext().getRealPath("/image/");
 		System.out.println(uploadPath);
-		filePart.write(uploadPath + fileName);
 		
 		script.copy(uploadPath, fileName);
 		
