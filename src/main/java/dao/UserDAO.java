@@ -193,6 +193,7 @@ public class UserDAO {
 				user.setTelefono(rs.getString("telefono"));
 				user.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
 				user.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
+				user.setAmministratore(rs.getInt("amministratore"));
 			}
 
 		}
@@ -235,6 +236,7 @@ public class UserDAO {
 				user.setTelefono(rs.getString("telefono"));
 				user.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
 				user.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
+				user.setAmministratore(rs.getInt("amministratore"));
 				
 				users.add(user);
 			}

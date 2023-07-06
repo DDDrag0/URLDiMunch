@@ -26,6 +26,8 @@ public class AdminGestionSearchServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String link= request.getParameter("source");
     	Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		{	
@@ -51,7 +53,7 @@ public class AdminGestionSearchServlet extends HttpServlet {
         } catch (SQLException e) {
             System.out.println("Error:" + e.getMessage());
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/adminPage.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(link);
         dispatcher.forward(request, response);
     }
 
