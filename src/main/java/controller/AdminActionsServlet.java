@@ -36,6 +36,13 @@ public class AdminActionsServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		String link="/index.jsp";
 		
+		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
+		if ((adminRoles == null) || (!adminRoles.booleanValue()))
+		{	
+		    response.sendRedirect("./logIn.jsp");
+		    return;
+		}
+		
 		try {
 			if (action.equalsIgnoreCase("deleteProduct")) {
 				prodottodao.doDelete(request.getParameter("code"));
@@ -60,6 +67,10 @@ public class AdminActionsServlet extends HttpServlet {
 			else if (action.equalsIgnoreCase("deleteReview")) {
 				recensionedao.doDelete(request.getParameter("code"));
 		        link="/adminReview.jsp";
+			}
+			else if (action.equalsIgnoreCase("modifyQuant")) {
+				prodottodao.modQuant(request.getParameter("quant"),request.getParameter("code"));
+		        link="/SearchServlet?cerca="+request.getParameter("code");
 			}
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(link);

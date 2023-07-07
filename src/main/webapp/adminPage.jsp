@@ -129,11 +129,11 @@ if(products == null) {
 			            </label>
 			            <label class="inputGroup">
 			                <span>Price</span>
-			                <span><input type="text" title="only numbers" name="prezzo" pattern="[0-9]*" required></span>
+			                <span><input type="number" title="only numbers" name="prezzo" pattern="[0-9]*" required></span>
 			            </label>
 			            <label class="inputGroup">
 			                <span>Quantity</span>
-			                <span><input type="text" title="only numbers" name="quantita" pattern="[0-9]*" required></span>
+			                <span><input type="number" title="only numbers" name="quantita" pattern="[0-9]*" required></span>
 			            </label>
 			        </div>
 			        

@@ -198,6 +198,39 @@ public class ProdottoDAO {
 		return a;
     }
 	
+	public synchronized boolean modQuant(String quant, String code) throws SQLException {
+		
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String deleteSQL = "UPDATE prodotto SET quantità = ? WHERE idProdotto=?";
+		
+		int quantI = Integer.parseInt(quant);
+		
+		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setDouble(1, quantI);
+			preparedStatement.setString(2, code);
+
+			result = preparedStatement.executeUpdate();
+
+		}
+		catch (SQLException e) {
+            // process sql exception
+            printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
+        }
+		return (result != 0);
+	}
+	
 	public synchronized boolean doChangeTax(String tax) throws SQLException {
 		
 		PreparedStatement preparedStatement = null;

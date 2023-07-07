@@ -5,6 +5,7 @@
 <%@ page import="dao.RecensioneDAO" %>
 <%@ page import="model.Recensione" %>
 <%@ page import="java.util.Collection" %>
+<%@page import="model.User" %>
 
 <%
 	Prodotto prod = (Prodotto) session.getAttribute("prodottoDettagli");
@@ -65,6 +66,22 @@
   <tr>
     <td>Quantity</td>
     <td><%=prod.getQuantita()%></td>
+    <td>
+    <% 
+		User usercheck = (User) session.getAttribute("utente");
+	    if(usercheck != null) {
+		// Check user credentials
+		Boolean adminRoles = (Boolean) session.getAttribute("adminRoles");
+		if (adminRoles.booleanValue())
+		{%>
+    	<form action="<%=request.getContextPath()%>/AdminActions" method="GET">
+			<span>Nuova quantità:</span><input required type="text" name="quant" style="width: 50px" pattern="[0-9]*">
+			<input type="hidden" name="action" value="modifyQuant">
+			<input type="hidden" name="code" value="<%=prod.getIdProdotto()%>">
+			<button style="display: none;" class="btnAdd fa fa-plus bg-1 text-fff" onclick="return confirm(&quot;Do you want to change the quantity?&quot;)"></button>
+       	</form>
+		<%}}%>
+	</td>
   </tr>
   <tr>
     <td>Inserition time</td>
