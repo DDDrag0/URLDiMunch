@@ -82,7 +82,6 @@ if(orders == null) {
 			    <div class="formHeader row">
 			        <h2 class="text-1 fl">Order List</h2>
 			        <div class="fr">
-			          <button type="submit" class="btnSave bg-1 text-fff text-bold fr">SAVE</button>
 			        </div>
 			    </div>
 			    <div class="table">
@@ -109,7 +108,7 @@ if(orders == null) {
 			                <div class="cell cell-100 text-center"><%= bean.getIdUtente() %></div>
 			                <div class="cell cell-100p text-center"><%= bean.getIdProdotto() %></div>
 			                <div class="cell cell-100 text-center">
-			                    <a href="" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
+			                    <a href="AdminActions?action=deleteOrder&code=<%= bean.getIdOrdine() %>" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
 			                </div>
 			            </li>
 			            <%	}

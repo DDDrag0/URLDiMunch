@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ListaOrdiniDAO;
 import dao.ProdottoDAO;
+import dao.RecensioneDAO;
+import dao.UserDAO;
 
 /**
  * Servlet implementation class AdminActionsServlet
@@ -20,6 +23,9 @@ public class AdminActionsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	static ProdottoDAO prodottodao = new ProdottoDAO();
+	static UserDAO userdao = new UserDAO();
+	static ListaOrdiniDAO ordinedao = new ListaOrdiniDAO();
+	static RecensioneDAO recensionedao = new RecensioneDAO();
 	
     public AdminActionsServlet() {
         super();
@@ -27,7 +33,6 @@ public class AdminActionsServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
 		String action = request.getParameter("action");
 		String link="/index.jsp";
 		
@@ -35,6 +40,26 @@ public class AdminActionsServlet extends HttpServlet {
 			if (action.equalsIgnoreCase("deleteProduct")) {
 				prodottodao.doDelete(request.getParameter("code"));
 		        link="/adminPage.jsp";
+			}
+			else if (action.equalsIgnoreCase("taxchange")) {
+				prodottodao.doChangeTax(request.getParameter("taxRate"));
+		        link="/adminPage.jsp";
+			}
+			else if (action.equalsIgnoreCase("deleteOrder")) {
+				ordinedao.doDelete(request.getParameter("code"));
+		        link="/adminOrders.jsp";
+			}
+			else if (action.equalsIgnoreCase("deleteUser")) {
+				userdao.doDelete(request.getParameter("code"));
+		        link="/adminUsers.jsp";
+			}
+			else if (action.equalsIgnoreCase("adminUser")) {
+				userdao.doAdmin(request.getParameter("code"));
+		        link="/adminUsers.jsp";
+			}
+			else if (action.equalsIgnoreCase("deleteReview")) {
+				recensionedao.doDelete(request.getParameter("code"));
+		        link="/adminReview.jsp";
 			}
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(link);

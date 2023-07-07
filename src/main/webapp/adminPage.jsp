@@ -60,12 +60,14 @@ if(products == null) {
         <!-- CONTAINER  -->
         <div class="mainContent">  
 			<!-- LIST FORM -->
-			<form action="" method="GET" name="listForm" class="form scrollX">
 			    <div class="formHeader row">
 			        <h2 class="text-1 fl">Product List</h2>
 			        <div class="fr">
-						<span>TaxRate:</span><input type="text" name="taxRate" style="width: 50px" pattern="[0-9]{2}">
-						<a href="" class="btnAdd fa fa-plus bg-1 text-fff" onclick="return confirm(&quot;Do you want to change the taxes?&quot;)"></a>
+			        <form action="<%=request.getContextPath()%>/AdminActions" method="GET">
+						<span>TaxRate:</span><input required type="text" name="taxRate" style="width: 50px" pattern="[0-9]{2}">
+						<input type="hidden" name="action" value="taxchange">
+						<button class="btnAdd fa fa-plus bg-1 text-fff" onclick="return confirm(&quot;Do you want to change the taxes?&quot;)"></button>
+			        </form>
 			        </div>
 			    </div>
 			    <div class="table">
@@ -99,14 +101,13 @@ if(products == null) {
 			            <%	}
 							} else {
 						%>
-							<a>No Users available</a>
+							<a>No Product available</a>
 						<%
 							}
 						%>
 			        </ul>
 			    <!--   END LOOP -->
 			    </div>
-			</form>
 			<!-- INSERTION FORM -->
 			
 			<form action="<%=request.getContextPath()%>/prodottoAdmin" enctype='multipart/form-data' method="POST" class="form">

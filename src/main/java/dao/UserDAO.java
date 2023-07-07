@@ -169,6 +169,44 @@ public class UserDAO {
     	return check;
     }
     
+    public synchronized boolean doAdmin(String code) throws SQLException {
+		
+		PreparedStatement preparedStatement = null;
+		
+		int result = 0;
+		int val=0;
+		boolean checkadmin=checkAdmin(code);
+		if (checkadmin) {
+			val=0;
+		}
+		else {
+			val=1;
+		}
+		String deleteSQL = "UPDATE utente SET amministratore=? WHERE idUtente=?;";
+
+		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setInt(1, val);
+			preparedStatement.setString(2, code);
+
+			result = preparedStatement.executeUpdate();
+
+		}
+		catch (SQLException e) {
+	        // process sql exception
+	        printSQLException(e);
+	    }finally {
+	        try {
+	            if (preparedStatement != null) {
+	                preparedStatement.close();
+	            }
+	        } catch (SQLException e) {
+	            printSQLException(e);
+	        }
+	    }
+		return (result != 0);
+	}
+    
     public synchronized User ricercaUser(String id) throws SQLException {
 		PreparedStatement preparedStatement = null;
 
@@ -256,6 +294,36 @@ public class UserDAO {
             }
         }
 		return users;
+	}
+	
+	public synchronized boolean doDelete(String code) throws SQLException {
+		
+		PreparedStatement preparedStatement = null;
+		
+		int result = 0;
+
+		String deleteSQL = "DELETE FROM utente WHERE idutente = ?";
+
+		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setString(1, code);
+
+			result = preparedStatement.executeUpdate();
+
+		}
+		catch (SQLException e) {
+	        // process sql exception
+	        printSQLException(e);
+	    }finally {
+	        try {
+	            if (preparedStatement != null) {
+	                preparedStatement.close();
+	            }
+	        } catch (SQLException e) {
+	            printSQLException(e);
+	        }
+	    }
+		return (result != 0);
 	}
 	
     private void printSQLException(SQLException ex) {

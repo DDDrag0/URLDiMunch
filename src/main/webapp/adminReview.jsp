@@ -64,7 +64,6 @@ if(reviews == null) {
 			    <div class="formHeader row">
 			        <h2 class="text-1 fl">Review List</h2>
 			        <div class="fr">
-			          <button type="submit" class="btnSave bg-1 text-fff text-bold fr">SAVE</button>
 			        </div>
 			    </div>
 			    <div class="table">
@@ -89,7 +88,7 @@ if(reviews == null) {
 			                <div class="cell cell-150 text-center"><%= bean.getIdUtente() %></div>
 			                <div class="cell cell-100p text-center"><%= bean.getRecensione() %></div>
 			                <div class="cell cell-100 text-center">
-			                    <a href="" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
+			                    <a href="AdminActions?action=deleteReview&code=<%= bean.getIdRecensione() %>" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
 			                </div>
 			            </li>
 			            <%	}

@@ -111,8 +111,6 @@ public synchronized boolean doDelete(String code) throws SQLException {
 	
 	PreparedStatement preparedStatement = null;
 	
-	System.out.println(code);
-	
 	int result = 0;
 
 	String deleteSQL = "DELETE FROM recensione WHERE idRecensione = ?";

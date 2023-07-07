@@ -198,6 +198,38 @@ public class ProdottoDAO {
 		return a;
     }
 	
+	public synchronized boolean doChangeTax(String tax) throws SQLException {
+		
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String deleteSQL = "UPDATE prodotto SET iva = ?";
+		
+		double ivap = Double.parseDouble(tax);
+		
+		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setDouble(1, ivap);
+
+			result = preparedStatement.executeUpdate();
+
+		}
+		catch (SQLException e) {
+            // process sql exception
+            printSQLException(e);
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
+        }
+		return (result != 0);
+	}
+	
 	public synchronized boolean doDelete(String code) throws SQLException {
 		
 		PreparedStatement preparedStatement = null;

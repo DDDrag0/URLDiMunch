@@ -72,7 +72,6 @@ if(users == null) {
 			    <div class="formHeader row">
 			        <h2 class="text-1 fl">User List</h2>
 			        <div class="fr">
-			          <button type="submit" class="btnSave bg-1 text-fff text-bold fr">SAVE</button><a href="" class="btnAdd fa fa-plus bg-1 text-fff"></a>
 			        </div>
 			    </div>
 			    <div class="table">
@@ -97,9 +96,9 @@ if(users == null) {
 			                <div class="cell cell-150 text-center"><%= bean.getCognome() %></div>
 			                <div class="cell cell-100p text-center"><%= bean.getAmministratore() %></div>
 			                <div class="cell cell-100 text-center">
-			                <% if (!bean.getIdUtente().equals(login)){%>
-			                    <a href="" class="btnEdit fa fa-pencil bg-1 text-fff" onclick="return confirm(&quot;Do you really want to give administration perms?&quot;)"></a>
-			                    <a href="" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
+			                <% if (!bean.getIdUtente().equals(login)){%>			                    
+			                	<a href="AdminActions?action=adminUser&code=<%= bean.getIdUtente() %>" class="btnEdit fa fa-pencil bg-1 text-fff" onclick="return confirm(&quot;Do you really want to give administration perms?&quot;)"></a>
+			                    <a href="AdminActions?action=deleteUser&code=<%= bean.getIdUtente() %>" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
 			                <% }%>
 			                </div>
 			            </li>
