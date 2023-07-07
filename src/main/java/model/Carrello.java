@@ -59,6 +59,22 @@ public class Carrello {
         return productIds;
     }
 	
+	public List<String> getProductImages() {
+        List<String> productImages = new ArrayList<>();
+        for (Prodotto prodotti : prodotto) {
+            productImages.add(prodotti.getImagepath());
+        }
+        return productImages;
+    }
+	
+	public List<Integer> getProductQuantity() {
+        List<Integer> productQuantity = new ArrayList<>();
+        for (Prodotto prodotti : prodotto) {
+            productQuantity.add(prodotti.getQuantitaCart());
+        }
+        return productQuantity;
+    }
+	
 	public boolean prodExist(String name) {
         String namesearch;
         boolean check=false;

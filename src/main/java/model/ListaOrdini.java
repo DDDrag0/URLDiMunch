@@ -7,6 +7,8 @@ public class ListaOrdini {
 	private String idProdotto;
 	private String idUtente;
 	private String indirizzoConsegna;
+	private String quantita;
+	private String imagepath;
 	private double prezzo;
 	private String dataOrdine;
 	private double iva;
@@ -59,10 +61,24 @@ public class ListaOrdini {
 	public void setIva(double iva) {
 		this.iva = iva;
 	}
+	public String getQuantita() {
+		return quantita;
+	}
+	public void setQuantita(String quantita) {
+		this.quantita = quantita;
+	}
+	public String getImagepath() {
+		return imagepath;
+	}
+	public void setImagepath(String imagepath) {
+		this.imagepath = imagepath;
+	}
 	@Override
 	public String toString() {
-		return "ListaOrdini [idOrdine=" + idOrdine + ", nomeProdotto=" + nomeProdotto 
-				+ ", indirizzoConsegna=" + indirizzoConsegna + ", prezzo=" + prezzo + ", dataOrdine=" + dataOrdine 
-				+ ", dataConsegna=" + ", dataArrivo=" + ", iva=" + iva + "]";
+		return "ListaOrdini [idOrdine=" + idOrdine + ", nomeProdotto=" + nomeProdotto + ", idProdotto=" + idProdotto
+				+ ", idUtente=" + idUtente + ", indirizzoConsegna=" + indirizzoConsegna + ", quantita=" + quantita
+				+ ", imagepath=" + imagepath + ", prezzo=" + prezzo + ", dataOrdine=" + dataOrdine + ", iva=" + iva
+				+ "]";
 	}
+	
 }

@@ -71,12 +71,21 @@ public class FatturaServlet extends HttpServlet {
 				String[] productIdsArray = productIds.toArray(new String[productIds.size()]);
 				String idProdotti = String.join("&", productIdsArray);
 				
+
+				List<String> productImages = cart.getProductImages();
+				String[] productImagesArray = productImages.toArray(new String[productImages.size()]);
+				String immaginiProdotti = String.join("&", productImagesArray);
+				
+				List<Integer> productQuantity = cart.getProductQuantity();
+				String[] productQuantityArray = productQuantity.toArray(new String[productQuantity.size()]);
+				String quantitaProdotti = String.join("&", productQuantityArray);
+				
 				String prezzoStr = request.getParameter("prezzo");
 			    double prezzo = Double.parseDouble(prezzoStr);
 			    
 				String indirizzo= user.getIndirizzoSpedizione();
 				String idUtente= user.getIdUtente();
-		        ordiniDAO.insertOrder(idUtente,idProdotti,prezzo,indirizzo, cart);
+		        ordiniDAO.insertOrder(idUtente,idProdotti,prezzo,indirizzo, cart, immaginiProdotti, quantitaProdotti);
 		    	request.getSession().removeAttribute("cart");
 		    	link="/listaOrdini.jsp";
 			}

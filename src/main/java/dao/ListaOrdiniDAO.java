@@ -17,14 +17,14 @@ import model.User;
 	
 public class ListaOrdiniDAO {
 	
-	public void insertOrder(String idUtente, String idProdotti, double prezzo, String indirizzo, Carrello cart) {
+	public void insertOrder(String idUtente, String idProdotti, double prezzo, String indirizzo, Carrello cart, String immagini, String quantita) {
 		SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
 		byte[] bytes = new byte [20];
 		rand.nextBytes(bytes);
 		String co = null;
 		PreparedStatement checkcodice = null;
-	    String insertQuery = "INSERT INTO listaOrdini (idOrdine, nomeProdotto, idProdotto, idUtente, prezzo, dataOrdine, indirizzoConsegna, iva) " +
-	                        "VALUES (?, ?, ?, ?, ?, ?, ?, (SELECT iva FROM urldimunch.prodotto LIMIT 1))";
+	    String insertQuery = "INSERT INTO listaOrdini (idOrdine, nomeProdotto, idProdotto, idUtente, prezzo, dataOrdine, indirizzoConsegna, iva, imagepath, quantita) " +
+	                        "VALUES (?, ?, ?, ?, ?, ?, ?, (SELECT iva FROM urldimunch.prodotto LIMIT 1),?,?)";
 	    
 	    try (Connection connection = ConPool.getConnection();
 	         PreparedStatement statement = connection.prepareStatement(insertQuery)) {
@@ -52,15 +52,15 @@ public class ListaOrdiniDAO {
 	        //fine parte del controllo per l'id ordine univoco
 	    	
 	        statement.setString(1, co);
-	        
 	        String nomeProdotti = getProductNames(idProdotti, cart);
 	        statement.setString(2, nomeProdotti);
-	        
 	        statement.setString(3, idProdotti);
 	        statement.setString(4, idUtente);
 	        statement.setDouble(5, prezzo);
 	        statement.setDate(6, Date.valueOf(LocalDate.now()));
 	        statement.setString(7, indirizzo);
+	        statement.setString(8, immagini);
+	        statement.setString(9, quantita);
 	        
 	        statement.executeUpdate();
 	    } catch (SQLException e) {
@@ -111,6 +111,8 @@ public class ListaOrdiniDAO {
 				ordine.setIdOrdine(rs.getString("idOrdine"));
 				ordine.setNomeProdotto(rs.getString("nomeProdotto"));
 				ordine.setIdProdotto(rs.getString("idProdotto"));
+				ordine.setQuantita(rs.getString("quantita"));
+				ordine.setImagepath(rs.getString("imagepath"));
 				ordine.setIdUtente(rs.getString("idUtente"));
 				ordine.setPrezzo(rs.getDouble("prezzo"));
 				ordine.setDataOrdine(rs.getString("dataOrdine"));
@@ -188,6 +190,8 @@ public class ListaOrdiniDAO {
 				ordine.setIdOrdine(rs.getString("idOrdine"));
 				ordine.setNomeProdotto(rs.getString("nomeProdotto"));
 				ordine.setIdProdotto(rs.getString("idProdotto"));
+				ordine.setQuantita(rs.getString("quantita"));
+				ordine.setImagepath(rs.getString("imagepath"));
 				ordine.setIdUtente(rs.getString("idUtente"));
 				ordine.setPrezzo(rs.getDouble("prezzo"));
 				ordine.setDataOrdine(rs.getString("dataOrdine"));
@@ -233,6 +237,8 @@ public class ListaOrdiniDAO {
 				ordine.setIdOrdine(rs.getString("idOrdine"));
 				ordine.setNomeProdotto(rs.getString("nomeProdotto"));
 				ordine.setIdProdotto(rs.getString("idProdotto"));
+				ordine.setQuantita(rs.getString("quantita"));
+				ordine.setImagepath(rs.getString("imagepath"));
 				ordine.setIdUtente(rs.getString("idUtente"));
 				ordine.setPrezzo(rs.getDouble("prezzo"));
 				ordine.setDataOrdine(rs.getString("dataOrdine"));
@@ -242,7 +248,6 @@ public class ListaOrdiniDAO {
 				orders.add(ordine);
 			}
 			search.close();
-
 		}
 		catch (SQLException e) {
             // process sql exception
