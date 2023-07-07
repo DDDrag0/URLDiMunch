@@ -67,10 +67,11 @@ public class Carrello {
         return productImages;
     }
 	
-	public List<Integer> getProductQuantity() {
-        List<Integer> productQuantity = new ArrayList<>();
+	public List<String> getProductQuantity() {
+        List<String> productQuantity = new ArrayList<>();
         for (Prodotto prodotti : prodotto) {
-            productQuantity.add(prodotti.getQuantitaCart());
+        	String prod= Integer.toString(prodotti.getQuantitaCart());
+            productQuantity.add(prod);
         }
         return productQuantity;
     }

@@ -76,7 +76,7 @@ public class FatturaServlet extends HttpServlet {
 				String[] productImagesArray = productImages.toArray(new String[productImages.size()]);
 				String immaginiProdotti = String.join("&", productImagesArray);
 				
-				List<Integer> productQuantity = cart.getProductQuantity();
+				List<String> productQuantity = cart.getProductQuantity();
 				String[] productQuantityArray = productQuantity.toArray(new String[productQuantity.size()]);
 				String quantitaProdotti = String.join("&", productQuantityArray);
 				

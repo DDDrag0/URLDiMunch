@@ -44,6 +44,7 @@ if(orders == null) {
 		      <th>ID Ordine</th>
 		      <th>Nome Prodotto</th>
 		      <th>ID Prodotto</th>
+		      <th>Quantità</th>
 		      <th>ID Utente</th>
 		      <th>Indirizzo di Consegna</th>
 		      <th>Prezzo</th>
@@ -59,6 +60,7 @@ if(orders == null) {
 		      <td class="idOrdinetd"><%=bean.getIdOrdine()%></td>
 		      <td class="nomeProdotto"><%=bean.getNomeProdotto()%></td>
 		      <td class="idProdotto"><%=bean.getIdProdotto()%></td>
+		      <td class="quant"><%=bean.getQuantita()%></td>
 		      <td class="idUtente"><%=bean.getIdUtente()%></td>
 		      <td class="indirizzoConsegna"><%=bean.getIndirizzoConsegna()%></td>
 		      <td class="prezzo"><%=bean.getPrezzo()%></td>
