@@ -42,8 +42,8 @@ if(orders == null) {
 		  <table>
 		    <tr>
 		      <th>ID Ordine</th>
-		      <th>Nome Prodotto</th>
-		      <th>ID Prodotto</th>
+		      <th>Nomi Prodotti</th>
+		      <th>ID Prodotti</th>
 		      <th>Quantità</th>
 		      <th>ID Utente</th>
 		      <th>Indirizzo di Consegna</th>
