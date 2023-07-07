@@ -19,21 +19,11 @@ if(orders == null) {
 <html>
 <head>
   <title>Ordini</title>
-  <style>
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-    th, td {
-      border: 1px solid black;
-      padding: 8px;
-      text-align: left;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="./css/fattura.css">
 </head>
 <body>
 	<%@ include file="header.jsp" %>
-  <h1>Fattura</h1>
+  <h1>Lista degli ordini</h1>
   
   <%
 	if (orders != null && orders.size() != 0) {
@@ -44,7 +34,6 @@ if(orders == null) {
 		      <th>ID Ordine</th>
 		      <th>Nomi Prodotti</th>
 		      <th>ID Prodotti</th>
-		      <th>Quantità</th>
 		      <th>ID Utente</th>
 		      <th>Indirizzo di Consegna</th>
 		      <th>Prezzo</th>
@@ -60,12 +49,11 @@ if(orders == null) {
 		      <td class="idOrdinetd"><%=bean.getIdOrdine()%></td>
 		      <td class="nomeProdotto"><%=bean.getNomeProdotto()%></td>
 		      <td class="idProdotto"><%=bean.getIdProdotto()%></td>
-		      <td class="quant"><%=bean.getQuantita()%></td>
 		      <td class="idUtente"><%=bean.getIdUtente()%></td>
 		      <td class="indirizzoConsegna"><%=bean.getIndirizzoConsegna()%></td>
-		      <td class="prezzo"><%=bean.getPrezzo()%></td>
+		      <td class="prezzo"><%=bean.getPrezzo()%>$</td>
 		      <td class="dataOrdine"><%=bean.getDataOrdine()%></td>
-		      <td class="iva"><%=bean.getIva()%></td>
+		      <td class="iva"><%=bean.getIva()%>%</td>
 		      <td>
 		      	<button class="details">Details</button>
           		<input class = "idOrdine" type="hidden" value="<%=bean.getIdOrdine()%>">

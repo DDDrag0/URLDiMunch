@@ -19,6 +19,7 @@ if(fattur == null) {
 <html>
 <head>
 	<title>Fattura</title>
+  <link rel="stylesheet" type="text/css" href="./css/fattura.css">
 </head>
 <body>
 	<%@ include file="header.jsp" %>
@@ -50,7 +51,7 @@ if(fattur == null) {
 		      <td class="nomeProdotto"><%= nomeArray[i] %></td>
 		      <td class="idProdotto"><%= idArray[i] %></td>
 		      <td class="quant"><%= quantArray[i] %></td>
-		      <td class="iva"><img width="200px" onerror="this.src='./image/errImg.jpg'" alt="<%= nomeArray[i] %>" src="${pageContext.request.contextPath}<%= imgArray[i] %>"></td>
+		      <td class="iva"><img width="100px" onerror="this.src='./image/errImg.jpg'" alt="<%= nomeArray[i] %>" src="${pageContext.request.contextPath}<%= imgArray[i] %>"></td>
 		    </tr>
 		    
 		    <%
@@ -59,24 +60,38 @@ if(fattur == null) {
 		      
 		</table>
 	  
+		<table>
+			<tr>
+		      <td><h4>Indirizzo di consegna:</h4></td>
+		      <td><p><%= fattur.getIndirizzoConsegna() %></p></td>
+			</tr>
+			<tr>
+		      <td><h4>Percentuale di Iva:</h4></td>
+		      <td><p><%= fattur.getIva() %>%</p></td>
+			</tr>
+			<tr>
+		      <td><h4>Spesa totale:</h4></td>
+		      <td><p><%= fattur.getPrezzo() %>$</p></td>
+			</tr>
+			<tr>
+		      <td><h4>Data dell'ordine:</h4></td>
+		      <td><p><%= fattur.getDataOrdine() %></p></td>
+			</tr>
+		</table>
+			
+	  <button class="stamp" onclick="stampaPDF()">Stampa</button>
 	  
-		<%= fattur.getIndirizzoConsegna() %><br>
-		<%= fattur.getIva() %>%<br>
-		<%= fattur.getPrezzo() %>$<br>
-		<%= fattur.getDataOrdine() %><br>
-		
-	  <button onclick="stampaPDF()">Stampa</button>
-<script type="text/javascript">
-function stampaPDF() {
-	  // Controlla se il browser supporta la funzione di stampa PDF
-	  if (typeof window.print === 'function') {
-	    // Avvia la funzione di stampa
-	    window.print();
-	  } else {
-	    // Il browser non supporta la stampa PDF
-	    console.log('Il browser non supporta la stampa PDF');
-	  }
-	}
-</script>
+	<script type="text/javascript">
+	function stampaPDF() {
+		  // Controlla se il browser supporta la funzione di stampa PDF
+		  if (typeof window.print === 'function') {
+		    // Avvia la funzione di stampa
+		    window.print();
+		  } else {
+		    // Il browser non supporta la stampa PDF
+		    console.log('Il browser non supporta la stampa PDF');
+		  }
+		}
+	</script>
 </body>
 </html>

@@ -26,7 +26,7 @@
   <h2><%=prod.getNome() %></h2>
   <div class="container">
     <div class="left-image">
-      <img src="${pageContext.request.contextPath}<%=prod.getImagepath()%>" onerror="this.src='./image/errImg.jpg'" alt="<%=prod.getNome()%>">
+      <img id="zoom" data-zoom-image="${pageContext.request.contextPath}<%=prod.getImagepath()%>" src="${pageContext.request.contextPath}<%=prod.getImagepath()%>" onerror="this.src='./image/errImg.jpg'" alt="<%=prod.getNome()%>">
     </div>
     <div class="product-info">
       <p><%=prod.getDescrizione()%></p>
@@ -47,15 +47,15 @@
   <tr>
   </tr>
   <tr>
-    <td>Artista</td>
+    <td>Artist</td>
     <td><%=prod.getArtista()%></td>
   </tr>
   <tr>
-    <td>Tipo</td>
+    <td>Type</td>
     <td><%=prod.getTipo()%></td>
   </tr>
   <tr>
-    <td>Epoca</td>
+    <td>Age</td>
     <td><%=prod.getEpoca()%></td>
   </tr>
   <tr>
@@ -63,11 +63,11 @@
     <td><%=prod.getDimensioni()%></td>
   </tr>
   <tr>
-    <td>Quantità in stock</td>
+    <td>Quantity</td>
     <td><%=prod.getQuantita()%></td>
   </tr>
   <tr>
-    <td>Data di inserizione</td>
+    <td>Inserition time</td>
     <td><%=prod.getDataaggiunta()%></td>
   </tr>
 </table>    </div>
@@ -145,12 +145,18 @@
     <% } %>
   </div>
   </div>
-
+  
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>
   <script type="text/javascript">
     $(".btn-cart").click(function(){
       var id = $(this).parent().find(".prod_id").val()
       var qnt = $(this).parent().find(".cart-qnt").val()
       window.location.href="prodottoCliente?source=/detailsSearch.jsp&action=addC&id="+id+"&quantity="+qnt
+    });
+    
+    $('#zoom').ezPlus({
+        easing: true
     });
   </script>
 

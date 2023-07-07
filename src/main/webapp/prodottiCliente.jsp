@@ -21,20 +21,17 @@
 </head>
 <body>
 
-
 <div class="separator">
       <div class="content">
-        <span class="text">Nuovi arrivi</span>
+        <span class="text">Tutti I prodotti</span>
       </div>
     </div>
-        <div class="container">
-        <div class="row">
-            <% 	int i=0;
-            	if (products != null && products.size() != 0) {
+    <div class="container">
+        <div class="row justify-content-center">
+            <% if (products != null && products.size() != 0) {
                 Iterator<?> it = products.iterator();
-                while (it.hasNext()&& i<=4) {
+                while (it.hasNext()) {
                     Prodotto bean = (Prodotto) it.next();
-                    i++;
             %>
             <div class="col">
                 <div class="card">
@@ -44,10 +41,10 @@
                         <p>$<%=bean.getPrezzo()%></p>
                     </div>
                     <div class="card-buttons">
-				          <button class="btn btn-details">Details</button>
-				          <button class="btn btn-cart">Add to Cart</button>
-				          <input class="cart-qnt" type="number" value="1" min="1" max="<%=bean.getQuantita()%>">
-				          <input class = "prod_id" type="hidden" value="<%=bean.getIdProdotto()%>">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-cart">Add to Cart</button>
+                        <input class="cart-qnt" type="number" value="1" min="1" max="<%=bean.getQuantita()%>">
+                        <input class="prod_id" type="hidden" value="<%=bean.getIdProdotto()%>">
                     </div>
                 </div>
             </div>
@@ -57,55 +54,29 @@
         </div>
     </div>
 
-<div class="separator">
-      <div class="content">
-        <span class="text">Di tendenza</span>
-      </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <% if (products != null && products.size() != 0) {
-                Iterator<?> it = products.iterator();
-                while (it.hasNext()) {
-                    Prodotto bean = (Prodotto) it.next();
-            %>
-            <div class="col">
-                <div class="card">
-                    <img src="${pageContext.request.contextPath}<%=bean.getImagepath()%>" onerror="this.src='./image/errImg.jpg'"alt="<%=bean.getNome()%>" />
-                    <div class="card-details">
-                        <h4><%=bean.getNome()%></h4>
-                        <p>$<%=bean.getPrezzo()%></p>
-                    </div>
-                    <div class="card-buttons">
-				          <button class="btn btn-details">Details</button>
-				          <button class="btn btn-cart">Add to Cart</button>
-				          <input class="cart-qnt" type="number" value="1" min="1" max="<%=bean.getQuantita()%>">
-				          <input class = "prod_id" type="hidden" value="<%=bean.getIdProdotto()%>">
-                    </div>
-                </div>
-            </div>
-            <% } } else { %>
-            <p>No products available</p>
-            <% } %>
-        </div>
-    </div>
-
- <%@ include file="footer.jsp" %>
+<%@ include file="footer.jsp" %>
 <script src="./js/jQueryProdottiCliente.js"></script>
 <script src="./js/prodotticlienti.js"></script>
 <script src="./js/jsProdottiCliente.js"></script>
 <script type="text/javascript">
-$(".btn-cart").click(function(){
-	var id = $(this).parent().find(".prod_id").val()
-    var qnt = $(this).parent().find(".cart-qnt").val()
-    window.location.href="prodottoCliente?source=/prodottiCliente.jsp&action=addC&id="+id+"&quantity="+qnt
-});
+    $(document).ready(function() {
+        $(".card img").hover(function() {
+            $(this).css("transform", "scale(1.1)");
+        }, function() {
+            $(this).css("transform", "scale(1)");
+        });
+    });
 
-$(".btn-details").click(function(){
-	var id = $(this).parent().find(".prod_id").val()
-    window.location.href="SearchServlet?cerca="+id
-});
+    $(".btn-cart").click(function() {
+        var id = $(this).parent().find(".prod_id").val()
+        var qnt = $(this).parent().find(".cart-qnt").val()
+        window.location.href = "prodottoCliente?source=/prodottiCliente.jsp&action=addC&id=" + id + "&quantity=" + qnt
+    });
+
+    $(".btn-details").click(function() {
+        var id = $(this).parent().find(".prod_id").val()
+        window.location.href = "SearchServlet?cerca=" + id
+    });
 </script>
 </body>
 </html>
-

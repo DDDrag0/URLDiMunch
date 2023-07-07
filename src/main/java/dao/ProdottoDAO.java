@@ -27,6 +27,7 @@ public class ProdottoDAO {
 	String iva = "iva";
 	String prezzo = "prezzo";
 	String imagepath ="imagepath";
+	String data ="dataaggiunta";
 	
 	public synchronized int doSave(Prodotto product) throws SQLException {
 		SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
@@ -131,6 +132,7 @@ public class ProdottoDAO {
 				prodotto.setIva(rs.getDouble(iva));
 				prodotto.setPrezzo(rs.getDouble(prezzo));
 				prodotto.setImagepath(rs.getString(imagepath));
+				prodotto.setDataaggiunta(rs.getString(data));
 			}
 
 		}
@@ -176,6 +178,7 @@ public class ProdottoDAO {
 				prodotto.setIva(rs.getDouble(iva));
 				prodotto.setPrezzo(rs.getDouble(prezzo));
 				prodotto.setImagepath(rs.getString(imagepath));
+				prodotto.setDataaggiunta(rs.getString(data));
 
 				a.add(prodotto);
 			}
@@ -234,11 +237,6 @@ public class ProdottoDAO {
 		        Prodotto prodotto = cart.searchProduct(code[j]);
 		        quant = prodotto.getQuantitaCart();
 		        
-		        System.out.println("ciclo:"+j);
-		        System.out.println(i);
-		        System.out.println(code[j]);
-		        System.out.println(quant);
-		        
 		 		statement.setInt(1, quant);
 		        statement.setString(2, code[j]);
 		        statement.executeUpdate();
@@ -277,6 +275,7 @@ public class ProdottoDAO {
 				prodotto.setIva(rs.getDouble(iva));
 				prodotto.setPrezzo(rs.getDouble(prezzo));
 				prodotto.setImagepath(rs.getString(imagepath));
+				prodotto.setDataaggiunta(rs.getString(data));
 				
 				products.add(prodotto);
 			}
