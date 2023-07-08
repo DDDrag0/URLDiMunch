@@ -23,11 +23,12 @@ public class ListaOrdiniDAO {
 		rand.nextBytes(bytes);
 		String co = null;
 		PreparedStatement checkcodice = null;
+        PreparedStatement statement = null;
 	    String insertQuery = "INSERT INTO listaOrdini (idOrdine, nomeProdotto, idProdotto, idUtente, prezzo, dataOrdine, indirizzoConsegna, iva, imagepath, quantita) " +
 	                        "VALUES (?, ?, ?, ?, ?, ?, ?, (SELECT iva FROM urldimunch.prodotto LIMIT 1),?,?)";
 	    
-	    try (Connection connection = ConPool.getConnection();
-	         PreparedStatement statement = connection.prepareStatement(insertQuery)) {
+	    try (Connection connection = ConPool.getConnection();) {
+	    	statement = connection.prepareStatement(insertQuery);
 	    	
 	        //la parte del controllo per l'id ordine univoco
 	    	checkcodice = connection.prepareStatement("SELECT idOrdine FROM listaOrdini where idOrdine = ?");
@@ -63,9 +64,22 @@ public class ListaOrdiniDAO {
 	        statement.setString(9, quantita);
 	        
 	        statement.executeUpdate();
-	    } catch (SQLException e) {
-	        e.printStackTrace();
 	    }
+		catch (SQLException e) {
+            // process sql exception
+            printSQLException(e);
+        }finally {
+            try {
+                if (statement != null) {
+                	statement.close();
+                }
+                if (checkcodice != null) {
+                	checkcodice.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
+        }
 	}
 
 	private String getProductNames(String idProdotti, Carrello cart) {
@@ -86,7 +100,7 @@ public class ListaOrdiniDAO {
 	            search.close();
 	        }
 	    } catch (SQLException e) {
-	        e.printStackTrace();
+	        //e.printStackTrace();	//sensitive
 	    }
 	    if (nameBuilder.length() > 0) {
 	        nameBuilder.setLength(nameBuilder.length() - 1);
