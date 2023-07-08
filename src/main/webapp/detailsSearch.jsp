@@ -44,7 +44,8 @@
   </div>
     <div class="containertable">
      <div class="product-info">
-     <table aria-describeby="product-info">
+     <table>
+     	<caption>details table</caption>
 		  <tr>
 		  	<th></th>
 		  	<th></th>

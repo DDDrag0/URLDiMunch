@@ -29,7 +29,8 @@ if(orders == null) {
 	if (orders != null && orders.size() != 0) {
 		Iterator<?> it = orders.iterator();
 	%>
-		  <table aria-describeby="products-info">
+		  <table>
+     		<caption>details table</caption>
 		    <tr>
 		      <th>ID Ordine</th>
 		      <th>Nomi Prodotti</th>

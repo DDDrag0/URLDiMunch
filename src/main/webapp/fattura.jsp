@@ -28,7 +28,8 @@ if(fattur == null) {
 	
 	<h2>tabella prodotti</h2>
 	
-	<table aria-describeby="products-info">
+	<table>
+     <caption>details table</caption>
 		    <tr>
 		      <th>Nomi Prodotti</th>
 		      <th>ID Prodotti</th>
@@ -60,7 +61,8 @@ if(fattur == null) {
 		      
 		</table>
 	  
-		<table aria-describeby="products-info">
+		<table>
+     		<caption>details table</caption>
 			<tr>
 		      <th></th>
 		      <th></th>
