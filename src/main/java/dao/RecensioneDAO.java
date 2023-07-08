@@ -31,7 +31,7 @@ public class RecensioneDAO {
 
 	        ResultSet rs = preparedStatement.executeQuery();
 	        
-	        if (rs.next()!=false) {
+	        if (rs.next()) {
 	            recensione = new Recensione();
 	            
 	            recensione.setIdRecensione(rs.getInt(idRecensionet));

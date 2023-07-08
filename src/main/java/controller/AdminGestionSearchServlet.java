@@ -62,7 +62,6 @@ public class AdminGestionSearchServlet extends HttpServlet {
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		{	
 		    response.sendRedirect("./logIn.jsp");
-		    return;
 		}
 	}
 }

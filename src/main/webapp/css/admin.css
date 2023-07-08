@@ -53,9 +53,6 @@ img {
     display: inline-block; 
     max-width: 100%;
 }
-body {
-    font-family: Arial, sans-serif;
-}
 /* COLOR */
 .bg-fff {
     background-color: #fff;
@@ -497,9 +494,6 @@ strike {
 .disable {
     pointer-events: none;
 }
-strike {
-    text-decoration: line-through;
-}
 
 
 
@@ -599,7 +593,7 @@ label {
 }
 /* SWITCH BUTTON */
 .btnSwitch {
-    font-size: 16px;
+    font-size: 12px;
     width: 5em;
     height: 0.5em;
     cursor: pointer;
@@ -831,9 +825,6 @@ label {
     cursor: pointer;
     font-size: 0.95em;
 }
-.btnSwitch {
-    font-size: 10px;
-}
 .btnSwitch.all {
     position: absolute;
     bottom: calc(100% + 3.7em);
@@ -1038,8 +1029,6 @@ label {
 }
 .boxFilter select {
     margin-bottom: 20px;
-}
-.boxFilter select {
     width: 100%;
 }
 .boxFilter .btnClose {
