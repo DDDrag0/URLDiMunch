@@ -100,6 +100,9 @@ public class ProdottoDAO {
                 if (preparedStatement != null) {
                     preparedStatement.close();
                 }
+                if (checkcodice != null) {
+                	checkcodice.close();
+                }
             } catch (SQLException e) {
                 printSQLException(e);
             }

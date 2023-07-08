@@ -86,10 +86,11 @@ public class ListaOrdiniDAO {
 		ProdottoDAO prod = new ProdottoDAO();
 	    String[] idArray = idProdotti.split("&");
 	    StringBuilder nameBuilder = new StringBuilder();
+	    PreparedStatement search=null;
 	    try (Connection connection = ConPool.getConnection()) {
         	prod.subProd(idArray, cart);
 	        for (String id : idArray) {
-	            PreparedStatement search = connection.prepareStatement("SELECT nome FROM urldimunch.prodotto WHERE idProdotto = ?");
+	            search = connection.prepareStatement("SELECT nome FROM urldimunch.prodotto WHERE idProdotto = ?");
 	            search.setString(1, id);
 	            ResultSet resultSet = search.executeQuery();
 	            if (resultSet.next()) {
@@ -99,9 +100,19 @@ public class ListaOrdiniDAO {
 	            resultSet.close();
 	            search.close();
 	        }
-	    } catch (SQLException e) {
-	        //e.printStackTrace();	//sensitive
 	    }
+		catch (SQLException e) {
+            // process sql exception
+            printSQLException(e);
+        }finally {
+            try {
+                if (search != null) {
+                	search.close();
+                }
+            } catch (SQLException e) {
+                printSQLException(e);
+            }
+        }
 	    if (nameBuilder.length() > 0) {
 	        nameBuilder.setLength(nameBuilder.length() - 1);
 	    }
@@ -235,13 +246,14 @@ public class ListaOrdiniDAO {
 	public synchronized Collection<ListaOrdini> ricercaTuttiOrdiniUtente(User user) throws SQLException {
 		
 		PreparedStatement preparedStatement = null;
+		PreparedStatement search = null;
 
 		Collection<ListaOrdini> orders = new LinkedList<>();
 		
 
 		try (Connection connection = ConPool.getConnection()){
 			
-			PreparedStatement search = connection.prepareStatement("SELECT * FROM  listaOrdini WHERE idUtente= ? ");
+			search = connection.prepareStatement("SELECT * FROM  listaOrdini WHERE idUtente= ? ");
 			search.setString(1, user.getIdUtente());
 			ResultSet rs = search.executeQuery();
 
@@ -270,6 +282,9 @@ public class ListaOrdiniDAO {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
+                }
+                if (search != null) {
+                	search.close();
                 }
             } catch (SQLException e) {
                 printSQLException(e);
