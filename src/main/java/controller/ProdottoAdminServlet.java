@@ -57,6 +57,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 		String fileName = filePart.getSubmittedFileName();
 		String uploadPath = getServletContext().getRealPath("/image/");
 		//System.out.println(uploadPath);
+		filePart.write(uploadPath + fileName);
 		
 		script.copy(uploadPath, fileName);
 		
