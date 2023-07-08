@@ -51,7 +51,18 @@ public class ProdottoDAO {
 		    if (subqueryResult.next()) {
 		        iva = subqueryResult.getDouble("iva");
 		    }
-		}
+		    } catch (SQLException e) {
+	            // process sql exception
+	        	//printSQLException(e); //Sensitive
+	        }finally {
+	            try {
+	                if (subqueryStatement != null) {
+	                	subqueryStatement.close();
+	                }
+	            } catch (SQLException e) {
+	            	//printSQLException(e); //Sensitive
+	            }
+	        }
 		
 		try (Connection connection = ConPool.getConnection()){
 
@@ -103,9 +114,6 @@ public class ProdottoDAO {
                 }
                 if (checkcodice != null) {
                 	checkcodice.close();
-                }
-                if (subqueryStatement != null) {
-                	subqueryStatement.close();
                 }
             } catch (SQLException e) {
             	//printSQLException(e); //Sensitive
