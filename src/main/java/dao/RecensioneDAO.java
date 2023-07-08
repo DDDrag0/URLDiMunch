@@ -74,7 +74,6 @@ public synchronized int doSave(Recensione recensione) throws SQLException {
 				ordineValido=1;
 			}
 		}
-		System.out.println("Il codice ordine sarà: "+codr);
     } catch (SQLException e) {
         // process sql exception
         printSQLException(e);
@@ -98,8 +97,6 @@ public synchronized int doSave(Recensione recensione) throws SQLException {
 		preparedStatement.setString(2, recensione.getIdProdotto());
 		preparedStatement.setString(3, recensione.getIdUtente());
 		preparedStatement.setString(4, recensione.getRecensione());
-
-        System.out.println(preparedStatement);
 
         result = preparedStatement.executeUpdate();
 
@@ -160,7 +157,6 @@ public synchronized int modRecensione(Recensione rec) throws ClassNotFoundExcept
         preparedStatement.setString(1, rec.getRecensione());
         preparedStatement.setInt(2, rec.getIdRecensione());
 
-        System.out.println(preparedStatement);
         // Step 3: Execute the query or update query
         result = preparedStatement.executeUpdate();
 
@@ -259,19 +255,19 @@ public synchronized Collection<Recensione> doRetrieveAll() throws SQLException {
 	return recensioni;
 }
 
-private void printSQLException(SQLException ex) {
-    for (Throwable e: ex) {
-        if (e instanceof SQLException) {
-            e.printStackTrace(System.err);
-            System.err.println("SQLState: " + ((SQLException) e).getSQLState());
-            System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
-            System.err.println("Message: " + e.getMessage());
-            Throwable t = ex.getCause();
-            while (t != null) {
-                System.out.println("Cause: " + t);
-                t = t.getCause();
-            }
-        }
-    }
-}
+	private void printSQLException(SQLException ex) {
+	    for (Throwable e: ex) {
+	        if (e instanceof SQLException) {
+	            //e.printStackTrace(//System.err);
+	            //System.err.println("SQLState: " + ((SQLException) e).getSQLState());
+	            //System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
+	            //System.err.println("Message: " + e.getMessage());
+	            //Throwable t = ex.getCause();
+	            //while (t != null) {
+	                //System.out.println("Cause: " + t);
+	                //t = t.getCause();
+	            //}
+	        }
+	    }
+	}
 }

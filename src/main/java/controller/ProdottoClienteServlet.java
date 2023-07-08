@@ -57,7 +57,7 @@ public class ProdottoClienteServlet extends HttpServlet {
 				} 
 			}			
 		} catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			//System.out.println("Error:" + e.getMessage());
 		}
 
 		request.getSession().setAttribute("cart", cart);
@@ -67,7 +67,7 @@ public class ProdottoClienteServlet extends HttpServlet {
 			request.removeAttribute("products");
 			request.setAttribute("products", prodottodao.doRetrieveAll());
 		} catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			//System.out.println("Error:" + e.getMessage());
 		}
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(link);
