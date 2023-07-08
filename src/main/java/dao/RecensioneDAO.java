@@ -75,6 +75,17 @@ public synchronized int doSave(Recensione recensione) throws SQLException {
 			}
 		}
 		System.out.println("Il codice ordine sarà: "+codr);
+    } catch (SQLException e) {
+        // process sql exception
+        printSQLException(e);
+    }finally {
+        try {
+            if (checkcodice != null) {
+            	checkcodice.close();
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
     }
 	
 	int result = 0;

@@ -44,51 +44,54 @@
   </div>
     <div class="containertable">
      <div class="product-info">
-     <table>
-  <tr>
-  </tr>
-  <tr>
-    <td>Artist</td>
-    <td><%=prod.getArtista()%></td>
-  </tr>
-  <tr>
-    <td>Type</td>
-    <td><%=prod.getTipo()%></td>
-  </tr>
-  <tr>
-    <td>Age</td>
-    <td><%=prod.getEpoca()%></td>
-  </tr>
-  <tr>
-    <td>Dimensioni</td>
-    <td><%=prod.getDimensioni()%></td>
-  </tr>
-  <tr>
-    <td>Quantity</td>
-    <td><%=prod.getQuantita()%></td>
-    <td>
-    <% 
-		User usercheck = (User) session.getAttribute("utente");
-	    if(usercheck != null) {
-		// Check user credentials
-		Boolean adminRoles = (Boolean) session.getAttribute("adminRoles");
-		if (adminRoles.booleanValue())
-		{%>
-    	<form action="<%=request.getContextPath()%>/AdminActions" method="GET">
-			<span>Nuova quantità:</span><input required type="text" name="quant" style="width: 50px" pattern="[0-9]*">
-			<input type="hidden" name="action" value="modifyQuant">
-			<input type="hidden" name="code" value="<%=prod.getIdProdotto()%>">
-			<button style="display: none;" class="btnAdd fa fa-plus bg-1 text-fff" onclick="return confirm(&quot;Do you want to change the quantity?&quot;)"></button>
-       	</form>
-		<%}}%>
-	</td>
-  </tr>
-  <tr>
-    <td>Inserition time</td>
-    <td><%=prod.getDataaggiunta()%></td>
-  </tr>
-</table>    </div>
-    </div>
+     <table aria-describeby="product-info">
+		  <tr>
+		  	<th></th>
+		  	<th></th>
+		  </tr>
+		  <tr>
+		    <td>Artist</td>
+		    <td><%=prod.getArtista()%></td>
+		  </tr>
+		  <tr>
+		    <td>Type</td>
+		    <td><%=prod.getTipo()%></td>
+		  </tr>
+		  <tr>
+		    <td>Age</td>
+		    <td><%=prod.getEpoca()%></td>
+		  </tr>
+		  <tr>
+		    <td>Dimensioni</td>
+		    <td><%=prod.getDimensioni()%></td>
+		  </tr>
+		  <tr>
+		    <td>Quantity</td>
+		    <td><%=prod.getQuantita()%></td>
+		    <td>
+		    <% 
+				User usercheck = (User) session.getAttribute("utente");
+			    if(usercheck != null) {
+				// Check user credentials
+				Boolean adminRoles = (Boolean) session.getAttribute("adminRoles");
+				if (adminRoles.booleanValue())
+				{%>
+		    	<form action="<%=request.getContextPath()%>/AdminActions" method="GET">
+					<span>Nuova quantità:</span><input required type="text" name="quant" style="width: 50px" pattern="[0-9]*">
+					<input type="hidden" name="action" value="modifyQuant">
+					<input type="hidden" name="code" value="<%=prod.getIdProdotto()%>">
+					<button style="display: none;" class="btnAdd fa fa-plus bg-1 text-fff" onclick="return confirm(&quot;Do you want to change the quantity?&quot;)"></button>
+		       	</form>
+				<%}}%>
+			</td>
+		  </tr>
+		  <tr>
+		    <td>Inserition time</td>
+		    <td><%=prod.getDataaggiunta()%></td>
+		  </tr>
+	</table>    
+	</div>
+</div>
     
     
   <div class="wrapper">
@@ -148,7 +151,7 @@
     <div class="review">
       <div class="container">
         <div class="left-image">
-          <img width="20" src="./image/revpic.jpg">
+          <img width="20" src="./image/revpic.jpg" alt="immagine utent">
         </div>
         <div class="product-info img"> 
           <h3 class="approval-heading"><%= Encode.forHtml(recensione.getIdUtente()) %></h3>

@@ -16,7 +16,7 @@ if(fattur == null) {
 }
 %>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 	<title>Fattura</title>
   <link rel="stylesheet" type="text/css" href="./css/fattura.css">
@@ -28,7 +28,7 @@ if(fattur == null) {
 	
 	<h2>tabella prodotti</h2>
 	
-	<table>
+	<table aria-describeby="products-info">
 		    <tr>
 		      <th>Nomi Prodotti</th>
 		      <th>ID Prodotti</th>
@@ -60,7 +60,11 @@ if(fattur == null) {
 		      
 		</table>
 	  
-		<table>
+		<table aria-describeby="products-info">
+			<tr>
+		      <th></th>
+		      <th></th>
+			</tr>
 			<tr>
 		      <td><h4>Indirizzo di consegna:</h4></td>
 		      <td><p><%= fattur.getIndirizzoConsegna() %></p></td>

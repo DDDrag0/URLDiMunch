@@ -16,7 +16,7 @@ if(orders == null) {
 }
 %>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
   <title>Ordini</title>
   <link rel="stylesheet" type="text/css" href="./css/fattura.css">
@@ -29,7 +29,7 @@ if(orders == null) {
 	if (orders != null && orders.size() != 0) {
 		Iterator<?> it = orders.iterator();
 	%>
-		  <table>
+		  <table aria-describeby="products-info">
 		    <tr>
 		      <th>ID Ordine</th>
 		      <th>Nomi Prodotti</th>
