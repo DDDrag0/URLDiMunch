@@ -28,7 +28,7 @@ public class UserOrdersServlet extends HttpServlet {
             request.removeAttribute("orders");
             request.setAttribute("orders", listaordinidao.ricercaTuttiOrdiniUtente(user));
         } catch (SQLException e) {
-            System.out.println("Error:" + e.getMessage());
+            //System.out.println("Error:" + e.getMessage());
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/listaOrdini.jsp");
         dispatcher.forward(request, response);

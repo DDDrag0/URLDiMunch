@@ -24,7 +24,7 @@ public class ConPool{
 			ds = (DataSource) envCtx.lookup("jdbc/storage");
 
 		} catch (NamingException e) {
-			System.out.println("Error:" + e.getMessage());
+			//System.out.println("Error:" + e.getMessage());
 		}
 	}
 	

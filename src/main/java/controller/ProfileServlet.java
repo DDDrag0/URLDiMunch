@@ -17,6 +17,7 @@ public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private UserDAO profileDAO = new UserDAO();
+	String dettagliuser = "./DettagliUser.jsp";
 
     public ProfileServlet() {
         super();
@@ -25,7 +26,7 @@ public class ProfileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("./DettagliUser.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(dettagliuser);
 		dispatcher.forward(request, response);
 	}
 
@@ -56,7 +57,7 @@ public class ProfileServlet extends HttpServlet {
 			} catch (ClassNotFoundException e) {
 				//e.printStackTrace();	//sensitive
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher("./DettagliUser.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher(dettagliuser);
 			dispatcher.forward(request, response);
 		}
 		
@@ -66,7 +67,7 @@ public class ProfileServlet extends HttpServlet {
 			
 			user.setCarta(profileDAO.addCard(user, ccn));
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("./DettagliUser.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher(dettagliuser);
 			dispatcher.forward(request, response);
 		}
 	}

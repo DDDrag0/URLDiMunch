@@ -32,26 +32,25 @@ public class AdminGestionSearchServlet extends HttpServlet {
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		{	
 		    response.sendRedirect("./logIn.jsp");
-		    return;
 		}
     	
     	try {
             request.removeAttribute("adminOrders");
             request.setAttribute("adminOrders", listaordinidao.ricercaTuttiOrdini());
         } catch (SQLException e) {
-            System.out.println("Error:" + e.getMessage());
+            //System.out.println("Error:" + e.getMessage());
         }
         try {
             request.removeAttribute("adminReviews");
             request.setAttribute("adminReviews", recensionedao.doRetrieveAll());
         } catch (SQLException e) {
-            System.out.println("Error:" + e.getMessage());
+        	//System.out.println("Error:" + e.getMessage());
         }
         try {
             request.removeAttribute("adminUsers");
             request.setAttribute("adminUsers", userdao.ricercaTuttiUtenti());
         } catch (SQLException e) {
-            System.out.println("Error:" + e.getMessage());
+        	//System.out.println("Error:" + e.getMessage());
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(link);
         dispatcher.forward(request, response);

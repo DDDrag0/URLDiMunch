@@ -12,6 +12,11 @@ import model.ConPool;
 import model.Recensione;
 
 public class RecensioneDAO {
+
+    private String idRecensionet="idRecensione";
+    private String idProdottot="idProdotto";
+    private String idUtentet="idUtente";
+    private String recensionet="recensione";
 	
 	public synchronized Recensione doRetrieveByProdUser(String idUser, String idProdotto) throws SQLException {
 	    PreparedStatement preparedStatement = null;
@@ -29,12 +34,11 @@ public class RecensioneDAO {
 	        if (rs.next()!=false) {
 	            recensione = new Recensione();
 	            
-	            recensione.setIdRecensione(rs.getInt("idRecensione"));
-	            recensione.setIdProdotto(rs.getString("idProdotto"));
-	            recensione.setIdUtente(rs.getString("idUtente"));
-	            recensione.setRecensione(rs.getString("recensione"));
+	            recensione.setIdRecensione(rs.getInt(idRecensionet));
+	            recensione.setIdProdotto(rs.getString(idProdottot));
+	            recensione.setIdUtente(rs.getString(idUtentet));
+	            recensione.setRecensione(rs.getString(recensionet));
 	        }
-	        else recensione=null;
 	    } catch (SQLException e) {
 	        printSQLException(e);
 	    } finally {
@@ -65,7 +69,7 @@ public synchronized int doSave(Recensione recensione) throws SQLException {
 	        checkcodice.setInt(1, codr);
 			ResultSet resultSet = checkcodice.executeQuery();
 			while (resultSet.next()) {
-				int codRec= resultSet.getInt("idRecensione");
+				int codRec= resultSet.getInt(idRecensionet);
 				if(codr==codRec) {
 					ordineInvalido=1;
 				}
@@ -191,10 +195,10 @@ public synchronized Collection<Recensione> doRetrieveByProduct(String code) thro
 		while (rs.next()) {
 			Recensione recensione = new Recensione();
 
-			recensione.setIdRecensione(rs.getInt("idRecensione"));
-			recensione.setIdProdotto(rs.getString("idProdotto"));
-			recensione.setIdUtente(rs.getString("idUtente"));
-			recensione.setRecensione(rs.getString("recensione"));
+			recensione.setIdRecensione(rs.getInt(idRecensionet));
+			recensione.setIdProdotto(rs.getString(idProdottot));
+			recensione.setIdUtente(rs.getString(idUtentet));
+			recensione.setRecensione(rs.getString(recensionet));
 			
 			recensioni.add(recensione);
 		}
@@ -231,10 +235,10 @@ public synchronized Collection<Recensione> doRetrieveAll() throws SQLException {
 		while (rs.next()) {
 			Recensione recensione = new Recensione();
 
-			recensione.setIdRecensione(rs.getInt("idRecensione"));
-			recensione.setIdProdotto(rs.getString("idProdotto"));
-			recensione.setIdUtente(rs.getString("idUtente"));
-			recensione.setRecensione(rs.getString("recensione"));
+			recensione.setIdRecensione(rs.getInt(idRecensionet));
+			recensione.setIdProdotto(rs.getString(idProdottot));
+			recensione.setIdUtente(rs.getString(idUtentet));
+			recensione.setRecensione(rs.getString(recensionet));
 			
 			recensioni.add(recensione);
 		}

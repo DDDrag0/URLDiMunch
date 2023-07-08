@@ -19,6 +19,7 @@ public class RecensioniServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     private RecensioneDAO recensioneDAO;
+    private String idprodotto = "idProdotto";
 
     public void init() {
         recensioneDAO = new RecensioneDAO();
@@ -33,7 +34,7 @@ public class RecensioniServlet extends HttpServlet {
  
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		System.out.println(action);
+		//System.out.println(action);
 		
 		try {
 			if (action.equalsIgnoreCase("doRetrieveAll")) {
@@ -48,13 +49,13 @@ public class RecensioniServlet extends HttpServlet {
 			}
 			
 			else if (action.equalsIgnoreCase("doRetrieveByProduct")) {
-		        String idProdotto = request.getParameter("idProdotto");
+		        String idProdotto = request.getParameter(idprodotto);
 		        Collection<Recensione> recensioni = recensioneDAO.doRetrieveByProduct(idProdotto);
 		        request.setAttribute("recensioni", recensioni);
 			}
 			
 			else if (action.equalsIgnoreCase("doSave")) {
-			    String idProdotto = request.getParameter("idProdotto");
+			    String idProdotto = request.getParameter(idprodotto);
 			    String idUtente = request.getParameter("idUtente");
 			    String recensione = request.getParameter("recensione");
 
@@ -85,7 +86,7 @@ public class RecensioniServlet extends HttpServlet {
 			
 			else if (action.equalsIgnoreCase("modRecensione")) {
 				String idUser = request.getParameter("idUtente");
-				String idProdotto = request.getParameter("idProdotto");
+				String idProdotto = request.getParameter(idprodotto);
 			    String nuovaRecensione = request.getParameter("recensione");
 			    
 			    Recensione recensione = recensioneDAO.doRetrieveByProdUser(idUser, idProdotto);
@@ -106,7 +107,7 @@ public class RecensioniServlet extends HttpServlet {
 			}			
 		}
 		catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			//System.out.println("Error:" + e.getMessage());
 		} catch (ClassNotFoundException e) {
 			//e.printStackTrace();	//sensitive
 		}

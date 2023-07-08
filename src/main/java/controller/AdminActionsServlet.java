@@ -77,7 +77,7 @@ public class AdminActionsServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			//System.out.println("Error:" + e.getMessage());
 		} 
 	}
 

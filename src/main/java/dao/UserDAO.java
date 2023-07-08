@@ -11,6 +11,16 @@ import model.ConPool;
 import model.User;
 
 public class UserDAO {
+	private String idUtentet ="idUtente";
+	private String passwordt ="password";
+	private String nomet ="nome";
+	private String cognomet ="cognome";
+	private String emailt ="email";
+	private String cartat ="carta";
+	private String telefonot ="telefono";
+	private String indirizzoFatturazionet ="indirizzoFatturazione";
+	private String indirizzoSpedizionet ="indirizzoSpedizione";
+	private String amministratoret ="amministratore";
 
     public synchronized boolean validate(User user) throws ClassNotFoundException {
         boolean status = false;
@@ -148,7 +158,7 @@ public class UserDAO {
 
 			ResultSet rs = preparedStatement.executeQuery();
 			rs.next();
-			int res=rs.getInt("amministratore");
+			int res=rs.getInt(amministratoret);
 			if(res==1) {
 				check=true;
 			}
@@ -222,16 +232,16 @@ public class UserDAO {
 
 			while (rs.next()) {
 				
-				user.setIdUtente(rs.getString("idUtente"));
-				user.setPassword(rs.getString("password"));
-				user.setNome(rs.getString("nome"));
-				user.setCognome(rs.getString("cognome"));
-				user.setEmail(rs.getString("email"));
-				user.setCarta(rs.getString("carta"));
-				user.setTelefono(rs.getString("telefono"));
-				user.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
-				user.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
-				user.setAmministratore(rs.getInt("amministratore"));
+				user.setIdUtente(rs.getString(idUtentet));
+				user.setPassword(rs.getString(passwordt));
+				user.setNome(rs.getString(nomet));
+				user.setCognome(rs.getString(cognomet));
+				user.setEmail(rs.getString(emailt));
+				user.setCarta(rs.getString(cartat));
+				user.setTelefono(rs.getString(telefonot));
+				user.setIndirizzoFatturazione(rs.getString(indirizzoFatturazionet));
+				user.setIndirizzoSpedizione(rs.getString(indirizzoSpedizionet));
+				user.setAmministratore(rs.getInt(amministratoret));
 			}
 
 		}
@@ -265,16 +275,16 @@ public class UserDAO {
 
 			while (rs.next()) {
 				User user = new User();
-				
-				user.setIdUtente(rs.getString("idUtente"));
-				user.setNome(rs.getString("nome"));
-				user.setCognome(rs.getString("cognome"));
-				user.setEmail(rs.getString("email"));
-				user.setCarta(rs.getString("carta"));
-				user.setTelefono(rs.getString("telefono"));
-				user.setIndirizzoFatturazione(rs.getString("indirizzoFatturazione"));
-				user.setIndirizzoSpedizione(rs.getString("indirizzoSpedizione"));
-				user.setAmministratore(rs.getInt("amministratore"));
+
+				user.setIdUtente(rs.getString(idUtentet));
+				user.setNome(rs.getString(nomet));
+				user.setCognome(rs.getString(cognomet));
+				user.setEmail(rs.getString(emailt));
+				user.setCarta(rs.getString(cartat));
+				user.setTelefono(rs.getString(telefonot));
+				user.setIndirizzoFatturazione(rs.getString(indirizzoFatturazionet));
+				user.setIndirizzoSpedizione(rs.getString(indirizzoSpedizionet));
+				user.setAmministratore(rs.getInt(amministratoret));
 				
 				users.add(user);
 			}

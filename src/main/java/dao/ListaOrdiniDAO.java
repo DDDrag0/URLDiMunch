@@ -16,6 +16,17 @@ import model.ListaOrdini;
 import model.User;
 	
 public class ListaOrdiniDAO {
+
+	private String idOrdinet ="idOrdine";
+	private String nomeProdottot ="nomeProdotto";
+	private String idProdottot ="idProdotto";
+	private String quantitat ="quantita";
+	private String imagepatht ="imagepath";
+	private String idUtentet ="idUtente";
+	private String prezzot ="prezzo";
+	private String dataOrdinet ="dataOrdine";
+	private String indirizzoConsegnat ="indirizzoConsegna";
+	private String ivat ="iva";
 	
 	public void insertOrder(String idUtente, String idProdotti, double prezzo, String indirizzo, Carrello cart, String immagini, String quantita) {
 		SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
@@ -133,16 +144,16 @@ public class ListaOrdiniDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				ordine.setIdOrdine(rs.getString("idOrdine"));
-				ordine.setNomeProdotto(rs.getString("nomeProdotto"));
-				ordine.setIdProdotto(rs.getString("idProdotto"));
-				ordine.setQuantita(rs.getString("quantita"));
-				ordine.setImagepath(rs.getString("imagepath"));
-				ordine.setIdUtente(rs.getString("idUtente"));
-				ordine.setPrezzo(rs.getDouble("prezzo"));
-				ordine.setDataOrdine(rs.getString("dataOrdine"));
-				ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
-				ordine.setIva(rs.getDouble("iva"));
+				ordine.setIdOrdine(rs.getString(idOrdinet));
+				ordine.setNomeProdotto(rs.getString(nomeProdottot));
+				ordine.setIdProdotto(rs.getString(idProdottot));
+				ordine.setQuantita(rs.getString(quantitat));
+				ordine.setImagepath(rs.getString(imagepatht));
+				ordine.setIdUtente(rs.getString(idUtentet));
+				ordine.setPrezzo(rs.getDouble(prezzot));
+				ordine.setDataOrdine(rs.getString(dataOrdinet));
+				ordine.setIndirizzoConsegna(rs.getString(indirizzoConsegnat));
+				ordine.setIva(rs.getDouble(ivat));
 			}
 			if(!ordine.getIdUtente().equals(idUtente)){
 				return null;
@@ -212,16 +223,16 @@ public class ListaOrdiniDAO {
 			while (rs.next()) {
 				ListaOrdini ordine = new ListaOrdini();
 
-				ordine.setIdOrdine(rs.getString("idOrdine"));
-				ordine.setNomeProdotto(rs.getString("nomeProdotto"));
-				ordine.setIdProdotto(rs.getString("idProdotto"));
-				ordine.setQuantita(rs.getString("quantita"));
-				ordine.setImagepath(rs.getString("imagepath"));
-				ordine.setIdUtente(rs.getString("idUtente"));
-				ordine.setPrezzo(rs.getDouble("prezzo"));
-				ordine.setDataOrdine(rs.getString("dataOrdine"));
-				ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
-				ordine.setIva(rs.getDouble("iva"));
+				ordine.setIdOrdine(rs.getString(idOrdinet));
+				ordine.setNomeProdotto(rs.getString(nomeProdottot));
+				ordine.setIdProdotto(rs.getString(idProdottot));
+				ordine.setQuantita(rs.getString(quantitat));
+				ordine.setImagepath(rs.getString(imagepatht));
+				ordine.setIdUtente(rs.getString(idUtentet));
+				ordine.setPrezzo(rs.getDouble(prezzot));
+				ordine.setDataOrdine(rs.getString(dataOrdinet));
+				ordine.setIndirizzoConsegna(rs.getString(indirizzoConsegnat));
+				ordine.setIva(rs.getDouble(ivat));
 				
 				orders.add(ordine);
 			}
@@ -253,16 +264,16 @@ public class ListaOrdiniDAO {
 	        ResultSet rs = search.executeQuery();
 	        while (rs.next()) {
 	            ListaOrdini ordine = new ListaOrdini();
-	            ordine.setIdOrdine(rs.getString("idOrdine"));
-	            ordine.setNomeProdotto(rs.getString("nomeProdotto"));
-	            ordine.setIdProdotto(rs.getString("idProdotto"));
-	            ordine.setQuantita(rs.getString("quantita"));
-	            ordine.setImagepath(rs.getString("imagepath"));
-	            ordine.setIdUtente(rs.getString("idUtente"));
-	            ordine.setPrezzo(rs.getDouble("prezzo"));
-	            ordine.setDataOrdine(rs.getString("dataOrdine"));
-	            ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
-	            ordine.setIva(rs.getDouble("iva"));
+				ordine.setIdOrdine(rs.getString(idOrdinet));
+				ordine.setNomeProdotto(rs.getString(nomeProdottot));
+				ordine.setIdProdotto(rs.getString(idProdottot));
+				ordine.setQuantita(rs.getString(quantitat));
+				ordine.setImagepath(rs.getString(imagepatht));
+				ordine.setIdUtente(rs.getString(idUtentet));
+				ordine.setPrezzo(rs.getDouble(prezzot));
+				ordine.setDataOrdine(rs.getString(dataOrdinet));
+				ordine.setIndirizzoConsegna(rs.getString(indirizzoConsegnat));
+				ordine.setIva(rs.getDouble(ivat));
 
 	            orders.add(ordine);
 	        }

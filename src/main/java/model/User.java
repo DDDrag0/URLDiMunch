@@ -11,17 +11,18 @@ public class User {
 	private String indirizzoFatturazione;
 	private String indirizzoSpedizione;
 	private int amministratore;
+	private String empty="empty";
 	
 	public boolean checkCarta() {
 		boolean check=false;
-		if (carta.equals("empty")) {
+		if (carta.equals(empty)) {
 			check=true;
 		}
 		return check;
 	}
 	public boolean checkIndirizzi() {
 		boolean check=false;
-		if (indirizzoFatturazione.equals("empty")||indirizzoSpedizione.equals("empty")) {
+		if (indirizzoFatturazione.equals(empty)||indirizzoSpedizione.equals(empty)) {
 			check=true;
 		}
 		return check;

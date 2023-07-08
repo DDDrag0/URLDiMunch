@@ -25,6 +25,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 	
 	static ProdottoDAO prodottodao = new ProdottoDAO();
 	static ScriptImage script= new ScriptImage();
+	String adminProducts = "adminProducts";
 	
 	private static final long serialVersionUID = 1L;
        
@@ -42,10 +43,10 @@ public class ProdottoAdminServlet extends HttpServlet {
 		    return;
 		}
 		try {
-			request.removeAttribute("adminProducts");
-			request.setAttribute("adminProducts", prodottodao.doRetrieveAll());
+			request.removeAttribute(adminProducts);
+			request.setAttribute(adminProducts, prodottodao.doRetrieveAll());
 		} catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			//System.out.println("Error:" + e.getMessage());
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/adminPage.jsp");
 		dispatcher.forward(request, response);
@@ -55,7 +56,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 		Part filePart = request.getPart("img");
 		String fileName = filePart.getSubmittedFileName();
 		String uploadPath = getServletContext().getRealPath("/image/");
-		System.out.println(uploadPath);
+		//System.out.println(uploadPath);
 		
 		script.copy(uploadPath, fileName);
 		
@@ -72,12 +73,12 @@ public class ProdottoAdminServlet extends HttpServlet {
 		String epoca = request.getParameter("epoca");
 		String dimensioni = request.getParameter("dimensioni");
 		String descrizione = request.getParameter("descrizione");
-		String Squantita = request.getParameter("quantita");
-		String Sprezzo = request.getParameter("prezzo");
+		String squantita = request.getParameter("quantita");
+		String sprezzo = request.getParameter("prezzo");
 		String imagepath="/image/"+fileName;
 		
-		int quantita = Integer.parseInt(Squantita);
-		double prezzo = Double.parseDouble(Sprezzo);
+		int quantita = Integer.parseInt(squantita);
+		double prezzo = Double.parseDouble(sprezzo);
 		
 		Prodotto product = new Prodotto();
 		
@@ -99,10 +100,10 @@ public class ProdottoAdminServlet extends HttpServlet {
 		}
 		//per fare nel caso la tabella
 		try {
-			request.removeAttribute("adminProducts");
-			request.setAttribute("adminProducts", prodottodao.doRetrieveAll());
+			request.removeAttribute(adminProducts);
+			request.setAttribute(adminProducts, prodottodao.doRetrieveAll());
 		} catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			//System.out.println("Error:" + e.getMessage());
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/adminPage.jsp");

@@ -51,7 +51,7 @@ public class FatturaServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			//System.out.println("Error:" + e.getMessage());
 		} 
 	}
 
@@ -111,7 +111,7 @@ public class FatturaServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		catch (SQLException e) {
-			System.out.println("Error:" + e.getMessage());
+			//System.out.println("Error:" + e.getMessage());
 		} 
 	}
 }
