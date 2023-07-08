@@ -273,7 +273,6 @@ public class ListaOrdiniDAO {
 				
 				orders.add(ordine);
 			}
-			search.close();
 		}
 		catch (SQLException e) {
             // process sql exception
