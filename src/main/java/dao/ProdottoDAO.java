@@ -37,51 +37,42 @@ public class ProdottoDAO {
 	    PreparedStatement checkcodice = null;
 	    PreparedStatement preparedStatement = null;
 	    PreparedStatement subqueryStatement = null;
-
 	    double iva = 0.0;
 	    int result = 0;
-
 	    String subquery = "SELECT iva FROM urldimunch.prodotto LIMIT 1";
 	    String insertSQL = "INSERT INTO prodotto (idProdotto, nome, artista, tipo, epoca, dimensioni, descrizione, quantità, iva, prezzo, dataaggiunta, imagepath) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+	    try (Connection connection2 = ConPool.getConnection();
+	         Connection connection = ConPool.getConnection()) {
 
-	    try (Connection connection2 = ConPool.getConnection()) {
+	        // Esegue la subquery per ottenere il valore di iva
 	        subqueryStatement = connection2.prepareStatement(subquery);
 	        ResultSet subqueryResult = subqueryStatement.executeQuery();
 	        if (subqueryResult.next()) {
 	            iva = subqueryResult.getDouble("iva");
 	        }
-	    } finally {
-	        if (subqueryStatement != null) {
-	            subqueryStatement.close();
-	        }
-	    }
 
-	    try (Connection connection = ConPool.getConnection()) {
 	        // Parte del controllo per l'id prodotto univoco
 	        checkcodice = connection.prepareStatement("SELECT idProdotto FROM prodotto WHERE idProdotto = ?");
-
 	        int ordineValido = 0;
 	        int ordineInvalido = 0;
-
 	        while (ordineValido == 0) {
 	            int codr = rand.nextInt(99999);
 	            co = "prod-" + codr;
 	            checkcodice.setString(1, co);
 	            ResultSet resultSet = checkcodice.executeQuery();
-
 	            while (resultSet.next()) {
 	                String codOrdine = resultSet.getString("idProdotto");
 	                if (co.equals(codOrdine)) {
 	                    ordineInvalido = 1;
 	                }
 	            }
-
 	            if (ordineInvalido == 0) {
 	                ordineValido = 1;
 	            }
 	        }
 	        // Fine parte del controllo per l'id prodotto univoco
 
+	        // Esegue l'inserimento del prodotto nel database
 	        preparedStatement = connection.prepareStatement(insertSQL);
 	        preparedStatement.setString(1, co);
 	        preparedStatement.setString(2, product.getNome());
@@ -95,10 +86,9 @@ public class ProdottoDAO {
 	        preparedStatement.setDouble(10, product.getPrezzo());
 	        preparedStatement.setDate(11, Date.valueOf(LocalDate.now()));
 	        preparedStatement.setString(12, product.getImagepath());
-
 	        result = preparedStatement.executeUpdate();
 	    } catch (SQLException e) {
-	        // Process SQL exception
+	        // Processa l'eccezione SQL
 	        printSQLException(e);
 	    } finally {
 	        try {
@@ -108,14 +98,17 @@ public class ProdottoDAO {
 	            if (checkcodice != null) {
 	                checkcodice.close();
 	            }
+	            if (subqueryStatement != null) {
+	                subqueryStatement.close();
+	            }
 	        } catch (SQLException e) {
-	            // Handle or log the exception
+	            // Gestisci o registra l'eccezione
 	            printSQLException(e);
 	        }
 	    }
-
 	    return result;
 	}
+
 
 	public synchronized Prodotto doRetrieveByKey(String code) throws SQLException {
 		PreparedStatement preparedStatement = null;
