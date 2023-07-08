@@ -29,7 +29,7 @@ public class ProdottoDAO {
 	String imagepath ="imagepath";
 	String data ="dataaggiunta";
 	
-	public synchronized int doSave(Prodotto product) throws SQLException {
+	public synchronized void doSave(Prodotto product) throws SQLException {
 		SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
 		byte[] bytes = new byte [20];
 		rand.nextBytes(bytes);
@@ -39,7 +39,6 @@ public class ProdottoDAO {
 		PreparedStatement subqueryStatement=null;
 
 	    double iva = 0.0;
-		int result = 0;
 		
 		String subquery = "SELECT iva FROM urldimunch.prodotto LIMIT 1";
 		String insertSQL = "INSERT INTO prodotto (idProdotto,nome, artista, tipo, epoca, dimensioni, descrizione, quantità, iva, prezzo, dataaggiunta, imagepath) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -53,18 +52,19 @@ public class ProdottoDAO {
 		    }
 		    } catch (SQLException e) {
 	            // process sql exception
-	        	//printSQLException(e); //Sensitive
+	        	printSQLException(e); //Sensitive
 	        }finally {
 	            try {
 	                if (subqueryStatement != null) {
 	                	subqueryStatement.close();
 	                }
 	            } catch (SQLException e) {
-	            	//printSQLException(e); //Sensitive
+	            	printSQLException(e); //Sensitive
 	            }
 	        }
 		
 		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(insertSQL);
 
 			//la parte del controllo per l'id prodotto univoco
 	    	checkcodice = connection.prepareStatement("SELECT idProdotto FROM prodotto where idProdotto = ?");
@@ -88,7 +88,6 @@ public class ProdottoDAO {
 			}
 	        //fine parte del controllo per l'id prodotto univoco
 			
-			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, co);
 			preparedStatement.setString(2, product.getNome());
 			preparedStatement.setString(3, product.getArtista());
@@ -102,11 +101,11 @@ public class ProdottoDAO {
 		    preparedStatement.setDate(11, Date.valueOf(LocalDate.now()));
 		    preparedStatement.setString(12, product.getImagepath());
 
-            result = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             // process sql exception
-        	//printSQLException(e); //Sensitive
+        	printSQLException(e);
         }finally {
             try {
                 if (preparedStatement != null) {
@@ -116,10 +115,9 @@ public class ProdottoDAO {
                 	checkcodice.close();
                 }
             } catch (SQLException e) {
-            	//printSQLException(e); //Sensitive
+            	printSQLException(e);
             }
         }
-        return result;
     }
 
 	public synchronized Prodotto doRetrieveByKey(String code) throws SQLException {
@@ -153,14 +151,14 @@ public class ProdottoDAO {
 		}
 		catch (SQLException e) {
             // process sql exception
-        	//printSQLException(e); //Sensitive
+        	printSQLException(e); //Sensitive
         }finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
                 }
             } catch (SQLException e) {
-            	//printSQLException(e); //Sensitive
+            	printSQLException(e); //Sensitive
             }
         }
 		return prodotto;
@@ -200,14 +198,14 @@ public class ProdottoDAO {
 		}
 		catch (SQLException e) {
             // process sql exception
-        	//printSQLException(e); //Sensitive
+        	printSQLException(e); //Sensitive
         }finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
                 }
             } catch (SQLException e) {
-            	//printSQLException(e); //Sensitive
+            	printSQLException(e); //Sensitive
             }
         }
 		return a;
@@ -233,14 +231,14 @@ public class ProdottoDAO {
 		}
 		catch (SQLException e) {
             // process sql exception
-        	//printSQLException(e); //Sensitive
+        	printSQLException(e); //Sensitive
         }finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
                 }
             } catch (SQLException e) {
-            	//printSQLException(e); //Sensitive
+            	printSQLException(e); //Sensitive
             }
         }
 		return (result != 0);
@@ -265,14 +263,14 @@ public class ProdottoDAO {
 		}
 		catch (SQLException e) {
             // process sql exception
-        	//printSQLException(e); //Sensitive
+        	printSQLException(e); //Sensitive
         }finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
                 }
             } catch (SQLException e) {
-            	//printSQLException(e); //Sensitive
+            	printSQLException(e); //Sensitive
             }
         }
 		return (result != 0);
@@ -295,14 +293,14 @@ public class ProdottoDAO {
 		}
 		catch (SQLException e) {
             // process sql exception
-        	//printSQLException(e); //Sensitive
+        	printSQLException(e); //Sensitive
         }finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
                 }
             } catch (SQLException e) {
-            	//printSQLException(e); //Sensitive
+            	printSQLException(e); //Sensitive
             }
         }
 		return (result != 0);
@@ -323,7 +321,7 @@ public class ProdottoDAO {
 	        	
 	        }
 	    } catch (SQLException e) {
-        	//printSQLException(e); //Sensitive
+        	printSQLException(e); //Sensitive
 	        throw e;
 	    }
 	}
@@ -363,14 +361,14 @@ public class ProdottoDAO {
 		}
 		catch (SQLException e) {
             // process sql exception
-        	//printSQLException(e); //Sensitive
+        	printSQLException(e); //Sensitive
         }finally {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
                 }
             } catch (SQLException e) {
-            	//printSQLException(e); //Sensitive
+            	printSQLException(e); //Sensitive
             }
         }
 		return products;
