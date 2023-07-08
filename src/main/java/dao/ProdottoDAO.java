@@ -36,6 +36,7 @@ public class ProdottoDAO {
 		String co = null;
 		PreparedStatement checkcodice = null;
 		PreparedStatement preparedStatement = null;
+		PreparedStatement subqueryStatement=null;
 
 	    double iva = 0.0;
 		int result = 0;
@@ -45,7 +46,7 @@ public class ProdottoDAO {
 
 		try (Connection connection2 = ConPool.getConnection()) {
 		    // Esegui la subquery per ottenere il valore di iva
-		    PreparedStatement subqueryStatement = connection2.prepareStatement(subquery);
+		    subqueryStatement = connection2.prepareStatement(subquery);
 		    ResultSet subqueryResult = subqueryStatement.executeQuery();
 		    if (subqueryResult.next()) {
 		        iva = subqueryResult.getDouble("iva");
@@ -99,6 +100,12 @@ public class ProdottoDAO {
             try {
                 if (preparedStatement != null) {
                     preparedStatement.close();
+                }
+                if (checkcodice != null) {
+                	checkcodice.close();
+                }
+                if (subqueryStatement != null) {
+                	subqueryStatement.close();
                 }
             } catch (SQLException e) {
             	//printSQLException(e); //Sensitive
