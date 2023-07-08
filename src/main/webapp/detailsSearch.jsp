@@ -163,8 +163,8 @@
   </div>
   </div>
   
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>
+<script type="text/javascript" src="./js/lib/jqueryV1_4_4.min.js"></script>
+<script type="text/javascript" src="./js/lib/jquery.ez-plus.js"></script>
   <script type="text/javascript">
     $(".btn-cart").click(function(){
       var id = $(this).parent().find(".prod_id").val()

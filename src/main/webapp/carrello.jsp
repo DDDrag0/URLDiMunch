@@ -39,7 +39,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cart</title>
     <link href="#" rel="stylesheet">
-    <script type="text/javascript" src="./js/jQueryCarrello.js"></script>
+    <script type="text/javascript" src="./js/lib/jQueryCarrello.js"></script>
 </head>
 <body>
 <%@ include file="header.jsp" %>

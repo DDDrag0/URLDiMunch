@@ -79,7 +79,7 @@ public class RecensioniServlet extends HttpServlet {
 			            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Errore durante l'eliminazione della recensione.");
 			        }
 			    } catch (SQLException e) {
-			        e.printStackTrace();
+					//e.printStackTrace();	//sensitive
 			    }
 			}
 			
@@ -108,7 +108,7 @@ public class RecensioniServlet extends HttpServlet {
 		catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			//e.printStackTrace();	//sensitive
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/detailsSearch.jsp");
 		dispatcher.forward(request, response);

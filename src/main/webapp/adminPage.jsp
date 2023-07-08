@@ -23,17 +23,17 @@ if(products == null) {
 <html lang="it">
 <head>
 	<title>URLDiMunchAdmin</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/10.1.0/nouislider.css">
+	<link rel="stylesheet" href="./css/lib/fontAwsome.css">
+	<link rel="stylesheet" href="./css/lib/noUiSlider.css">
 	<link rel="stylesheet" href="./css/admin.css" type="text/css">
 </head>
 
 <body translate="no">
-  	<div class="container">
+	<div class="container">
 	<!--     SIDE AREA -->
 	    <div class="sideArea">
-	        <div class="avatar">
-	            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCNOdyoIXDDBztO_GC8MFLmG_p6lZ2lTDh1ZnxSDawl1TZY_Zw" alt="">
+			<div class="avatar">
+	            <img src="./image/revpic.jpg" alt="">
 	            <div class="avatarName">Welcome,<br><%= login %></div>
 	        </div>
 	        <ul class="sideMenu">
@@ -195,8 +195,8 @@ if(products == null) {
         <!-- END CONTAINER  -->
 	    </div>
 	</div>
-	<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/10.1.0/nouislider.js"></script>
+	<script src="./js/lib/nouislider.js"></script>
+	<script src="./js/lib/stopExecutionOnTimeout.js"></script>
 	<script id="rendered-js" src="./js/admin.js"></script>
 </body>
 </html>

@@ -95,7 +95,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 		try {
 			prodottodao.doSave(product);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();	//sensitive
 		}
 		//per fare nel caso la tabella
 		try {

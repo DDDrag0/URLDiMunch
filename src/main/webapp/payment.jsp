@@ -16,7 +16,7 @@
 <link href="#" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="./css/payment.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="./js/jquery.3_2_1.min.js"></script>
+<script type="text/javascript" src="./js/lib/jquery.3_2_1.min.js"></script>
 </head>
 <body>
 <form action="<%= request.getContextPath() %>/profile?action=paymeth" method="post">

@@ -10,7 +10,7 @@
   margin-left: auto;
 }
 </style>
-  <script src="./js/loginJQuerySrc.min.js"></script>
+  <script src="./js/lib/loginJQuerySrc.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <meta charset="ISO-8859-1">
   <title>Login</title>

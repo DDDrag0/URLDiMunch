@@ -14,10 +14,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Profile</title>
-	<link href="./css/styleSheetUser.css" rel="stylesheet">
+	<link href="./css/lib/BootstrapV5_0_0-alpha1.css" rel="stylesheet">
 	<link href="./css/dettagliUser.css" rel="stylesheet">
 	<link href="#" rel="stylesheet">
-	<script type="text/javascript" src="./js/jQueryUser.js"></script>
+	<script type="text/javascript" src="./js/lib/jQueryUser.js"></script>
 </head>
 <body>
 	<%@ include file="header.jsp" %>

@@ -36,7 +36,7 @@ public class ScriptImage {
             System.out.println("File copied successfully.");
 
         } catch (IOException e) {
-            e.printStackTrace();
-        }
+			//e.printStackTrace();	//sensitive
     }
+}
 }

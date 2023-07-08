@@ -90,9 +90,8 @@
     </div>
 
  <%@ include file="footer.jsp" %>
-<script src="./js/jQueryProdottiCliente.js"></script>
-<script src="./js/prodotticlienti.js"></script>
-<script src="./js/jsProdottiCliente.js"></script>
+<script src="./js/lib/jQueryProdottiCliente.js"></script>
+<script src="./js/lib/jsProdottiCliente.js"></script>
 <script type="text/javascript">
 $(".btn-details").click(function(){
 	var id = $(this).parent().find(".prod_id").val()

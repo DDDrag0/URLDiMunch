@@ -85,7 +85,7 @@ function toggleSidebar() {
 	sidebar.classList.toggle("open");
 }
 </script>
-<script src="./js/ajaxheadersrc.min.js"></script>
+<script src="./js/lib/ajaxheadersrc.min.js"></script>
 <script src="./js/search.js"></script>
 </body>
 
