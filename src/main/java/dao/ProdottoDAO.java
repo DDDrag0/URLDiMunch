@@ -30,89 +30,92 @@ public class ProdottoDAO {
 	String data ="dataaggiunta";
 	
 	public synchronized int doSave(Prodotto product) throws SQLException {
-		SecureRandom rand = new SecureRandom();	//per casi di security sensitive 
-		byte[] bytes = new byte [20];
-		rand.nextBytes(bytes);
-		String co = null;
-		PreparedStatement checkcodice = null;
-		PreparedStatement preparedStatement = null;
-		PreparedStatement subqueryStatement = null;
-		
+	    SecureRandom rand = new SecureRandom();
+	    byte[] bytes = new byte[20];
+	    rand.nextBytes(bytes);
+	    String co = null;
+	    PreparedStatement checkcodice = null;
+	    PreparedStatement preparedStatement = null;
+	    PreparedStatement subqueryStatement = null;
+
 	    double iva = 0.0;
-		int result = 0;
-		
-		String subquery = "SELECT iva FROM urldimunch.prodotto LIMIT 1";
-		String insertSQL = "INSERT INTO prodotto (idProdotto,nome, artista, tipo, epoca, dimensioni, descrizione, quantità, iva, prezzo, dataaggiunta, imagepath) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+	    int result = 0;
 
-		try (Connection connection2 = ConPool.getConnection()) {
-		    // Esegui la subquery per ottenere il valore di iva
-		    subqueryStatement = connection2.prepareStatement(subquery);
-		    ResultSet subqueryResult = subqueryStatement.executeQuery();
-		    if (subqueryResult.next()) {
-		        iva = subqueryResult.getDouble("iva");
-		    }
-		}
-		
-		try (Connection connection = ConPool.getConnection()){
+	    String subquery = "SELECT iva FROM urldimunch.prodotto LIMIT 1";
+	    String insertSQL = "INSERT INTO prodotto (idProdotto, nome, artista, tipo, epoca, dimensioni, descrizione, quantità, iva, prezzo, dataaggiunta, imagepath) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
-			//la parte del controllo per l'id prodotto univoco
-	    	checkcodice = connection.prepareStatement("SELECT idProdotto FROM prodotto where idProdotto = ?");
-	        
-	        int ordineValido=0;
-	        int ordineInvalido=0;
-			while(ordineValido==0) {
-				int codr = rand.nextInt(99999);
-				co= "prod-"+codr;
-				checkcodice.setString(1, co);
-				ResultSet resultSet = checkcodice.executeQuery();
-				while (resultSet.next()) {
-					String codOrdine= resultSet.getString("codice");
-					if(co.equals(codOrdine)) {
-						ordineInvalido=1;
-					}
-				}
-				if(ordineInvalido==0) {
-					ordineValido=1;
-				}
-			}
-	        //fine parte del controllo per l'id prodotto univoco
-			
-			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, co);
-			preparedStatement.setString(2, product.getNome());
-			preparedStatement.setString(3, product.getArtista());
-			preparedStatement.setString(4, product.getTipo());
-			preparedStatement.setString(5, product.getEpoca());
-			preparedStatement.setString(6, product.getDimensioni());
-			preparedStatement.setString(7, product.getDescrizione());
-			preparedStatement.setInt(8, product.getQuantita());
-		    preparedStatement.setDouble(9, iva);
-		    preparedStatement.setDouble(10, product.getPrezzo());
-		    preparedStatement.setDate(11, Date.valueOf(LocalDate.now()));
-		    preparedStatement.setString(12, product.getImagepath());
+	    try (Connection connection2 = ConPool.getConnection()) {
+	        subqueryStatement = connection2.prepareStatement(subquery);
+	        ResultSet subqueryResult = subqueryStatement.executeQuery();
+	        if (subqueryResult.next()) {
+	            iva = subqueryResult.getDouble("iva");
+	        }
+	    } finally {
+	        if (subqueryStatement != null) {
+	            subqueryStatement.close();
+	        }
+	    }
 
-            result = preparedStatement.executeUpdate();
+	    try (Connection connection = ConPool.getConnection()) {
+	        // Parte del controllo per l'id prodotto univoco
+	        checkcodice = connection.prepareStatement("SELECT idProdotto FROM prodotto WHERE idProdotto = ?");
 
-        } catch (SQLException e) {
-            // process sql exception
-            printSQLException(e);
-        }finally {
-            try {
-                if (preparedStatement != null) {
-                    preparedStatement.close();
-                }
-                if (checkcodice != null) {
-                	checkcodice.close();
-                }
-                if (subqueryStatement != null) {
-                	subqueryStatement.close();
-                }
-            } catch (SQLException e) {
-                printSQLException(e);
-            }
-        }
-        return result;
-    }
+	        int ordineValido = 0;
+	        int ordineInvalido = 0;
+
+	        while (ordineValido == 0) {
+	            int codr = rand.nextInt(99999);
+	            co = "prod-" + codr;
+	            checkcodice.setString(1, co);
+	            ResultSet resultSet = checkcodice.executeQuery();
+
+	            while (resultSet.next()) {
+	                String codOrdine = resultSet.getString("idProdotto");
+	                if (co.equals(codOrdine)) {
+	                    ordineInvalido = 1;
+	                }
+	            }
+
+	            if (ordineInvalido == 0) {
+	                ordineValido = 1;
+	            }
+	        }
+	        // Fine parte del controllo per l'id prodotto univoco
+
+	        preparedStatement = connection.prepareStatement(insertSQL);
+	        preparedStatement.setString(1, co);
+	        preparedStatement.setString(2, product.getNome());
+	        preparedStatement.setString(3, product.getArtista());
+	        preparedStatement.setString(4, product.getTipo());
+	        preparedStatement.setString(5, product.getEpoca());
+	        preparedStatement.setString(6, product.getDimensioni());
+	        preparedStatement.setString(7, product.getDescrizione());
+	        preparedStatement.setInt(8, product.getQuantita());
+	        preparedStatement.setDouble(9, iva);
+	        preparedStatement.setDouble(10, product.getPrezzo());
+	        preparedStatement.setDate(11, Date.valueOf(LocalDate.now()));
+	        preparedStatement.setString(12, product.getImagepath());
+
+	        result = preparedStatement.executeUpdate();
+	    } catch (SQLException e) {
+	        // Process SQL exception
+	        printSQLException(e);
+	    } finally {
+	        try {
+	            if (preparedStatement != null) {
+	                preparedStatement.close();
+	            }
+	            if (checkcodice != null) {
+	                checkcodice.close();
+	            }
+	        } catch (SQLException e) {
+	            // Handle or log the exception
+	            printSQLException(e);
+	        }
+	    }
+
+	    return result;
+	}
 
 	public synchronized Prodotto doRetrieveByKey(String code) throws SQLException {
 		PreparedStatement preparedStatement = null;

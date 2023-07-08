@@ -244,53 +244,45 @@ public class ListaOrdiniDAO {
 	}
 	
 	public synchronized Collection<ListaOrdini> ricercaTuttiOrdiniUtente(User user) throws SQLException {
-		
-		PreparedStatement preparedStatement = null;
-		PreparedStatement search = null;
+	    PreparedStatement search = null;
+	    Collection<ListaOrdini> orders = new LinkedList<>();
 
-		Collection<ListaOrdini> orders = new LinkedList<>();
-		
+	    try (Connection connection = ConPool.getConnection()) {
+	        search = connection.prepareStatement("SELECT * FROM listaOrdini WHERE idUtente = ?");
+	        search.setString(1, user.getIdUtente());
+	        ResultSet rs = search.executeQuery();
+	        while (rs.next()) {
+	            ListaOrdini ordine = new ListaOrdini();
+	            ordine.setIdOrdine(rs.getString("idOrdine"));
+	            ordine.setNomeProdotto(rs.getString("nomeProdotto"));
+	            ordine.setIdProdotto(rs.getString("idProdotto"));
+	            ordine.setQuantita(rs.getString("quantita"));
+	            ordine.setImagepath(rs.getString("imagepath"));
+	            ordine.setIdUtente(rs.getString("idUtente"));
+	            ordine.setPrezzo(rs.getDouble("prezzo"));
+	            ordine.setDataOrdine(rs.getString("dataOrdine"));
+	            ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
+	            ordine.setIva(rs.getDouble("iva"));
 
-		try (Connection connection = ConPool.getConnection()){
-			
-			search = connection.prepareStatement("SELECT * FROM  listaOrdini WHERE idUtente= ? ");
-			search.setString(1, user.getIdUtente());
-			ResultSet rs = search.executeQuery();
+	            orders.add(ordine);
+	        }
+	    } catch (SQLException e) {
+	        // Process SQL exception
+	        printSQLException(e);
+	    } finally {
+	        try {
+	            if (search != null) {
+	                search.close();
+	            }
+	        } catch (SQLException e) {
+	            // Handle or log the exception
+	            printSQLException(e);
+	        }
+	    }
 
-			while (rs.next()) {
-				ListaOrdini ordine = new ListaOrdini();
-
-				ordine.setIdOrdine(rs.getString("idOrdine"));
-				ordine.setNomeProdotto(rs.getString("nomeProdotto"));
-				ordine.setIdProdotto(rs.getString("idProdotto"));
-				ordine.setQuantita(rs.getString("quantita"));
-				ordine.setImagepath(rs.getString("imagepath"));
-				ordine.setIdUtente(rs.getString("idUtente"));
-				ordine.setPrezzo(rs.getDouble("prezzo"));
-				ordine.setDataOrdine(rs.getString("dataOrdine"));
-				ordine.setIndirizzoConsegna(rs.getString("indirizzoConsegna"));
-				ordine.setIva(rs.getDouble("iva"));
-				
-				orders.add(ordine);
-			}
-		}
-		catch (SQLException e) {
-            // process sql exception
-            printSQLException(e);
-        }finally {
-            try {
-                if (preparedStatement != null) {
-                    preparedStatement.close();
-                }
-                if (search != null) {
-                	search.close();
-                }
-            } catch (SQLException e) {
-                printSQLException(e);
-            }
-        }
-		return orders;
+	    return orders;
 	}
+
     
 
     private void printSQLException(SQLException ex) {
