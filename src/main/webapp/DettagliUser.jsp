@@ -94,7 +94,7 @@
 				if (adminRoles.booleanValue())
 				{	
 					%>
-                	<a class="btn btn-primary profile-button" href="adminPage.jsp" style="margin-bottom: 10px !important;">Vai alla pagina di Gestione</a>
+                	<a class="btn btn-primary profile-button" href="./admin/adminPage.jsp" style="margin-bottom: 10px !important;">Vai alla pagina di Gestione</a>
                 	<br>
 					<% 
 				}

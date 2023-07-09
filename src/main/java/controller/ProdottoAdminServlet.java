@@ -39,7 +39,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		{	
-		    response.sendRedirect("./logIn.jsp");
+		    response.sendRedirect("./access-denied.jsp");
 		    return;
 		}
 		try {
@@ -48,7 +48,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 		} catch (SQLException e) {
 			//System.out.println("Error:" + e.getMessage());
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/adminPage.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("./admin/adminPage.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -64,7 +64,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		{	
-		    response.sendRedirect("./logIn.jsp");
+		    response.sendRedirect("./access-denied.jsp");
 		    return;
 		}
 		
@@ -107,7 +107,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 			//System.out.println("Error:" + e.getMessage());
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/adminPage.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("./admin/adminPage.jsp");
 		dispatcher.forward(request, response);
 	}
 

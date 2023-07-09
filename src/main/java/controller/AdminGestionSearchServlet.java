@@ -27,11 +27,12 @@ public class AdminGestionSearchServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String link= request.getParameter("source");
+		String linko= request.getParameter("source");
+		String link = "./admin/"+linko;
     	Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		{	
-		    response.sendRedirect("./logIn.jsp");
+		    response.sendRedirect("./access-denied.jsp");
 		}
     	
     	try {
@@ -61,7 +62,7 @@ public class AdminGestionSearchServlet extends HttpServlet {
 		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		{	
-		    response.sendRedirect("./logIn.jsp");
+		    response.sendRedirect("./access-denied.jsp");
 		}
 	}
 }

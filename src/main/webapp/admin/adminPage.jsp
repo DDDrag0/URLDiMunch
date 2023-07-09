@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="javax.servlet.http.HttpSession, java.util.*, model.User, model.Prodotto" %>
 <%
-// Check user credentials
-Boolean adminRoles0 = (Boolean) session.getAttribute("adminRoles");
-if ((adminRoles0 == null) || (!adminRoles0.booleanValue()))
-{	
-    response.sendRedirect("logIn.jsp");
-    return;
-}
 
 User user = (User) session.getAttribute("utente");
 String login;
@@ -51,7 +44,7 @@ if(products == null) {
             <div class="account fr">
                 <div class="name has-submenu"><%= login %><span class="fa fa-angle-down"></span></div>
                 <ul class="accountLinks submenu">
-                    <li><a href="index.jsp">View website</a></li>
+                    <li><a href="./index.jsp">View website</a></li>
                     <li><a href="<%=request.getContextPath()%>/LogOut">Log out<span class="fa fa-sign-out fr"></span></a></li>
                 </ul>
             </div>

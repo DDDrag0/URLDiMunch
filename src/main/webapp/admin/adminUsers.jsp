@@ -1,21 +1,14 @@
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,model.Recensione,model.User"%>
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,model.User"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%
-// Check user credentials
-Boolean adminRoles = (Boolean) session.getAttribute("adminRoles");
-if ((adminRoles == null) || (!adminRoles.booleanValue()))
-{	
-    response.sendRedirect("logIn.jsp");
-    return;
-}
 
 User user = (User) session.getAttribute("utente");
 String login;
 login=user.getIdUtente();
 
-Collection<?> reviews = (Collection<?>) request.getAttribute("adminReviews");
-if(reviews == null) {
-	response.sendRedirect("./adminGestion?source=adminReview.jsp");	
+Collection<?> users = (Collection<?>) request.getAttribute("adminUsers");
+if(users == null) {
+	response.sendRedirect("./adminGestion?source=adminUsers.jsp");	
 	return;
 }
 %>
@@ -51,7 +44,7 @@ if(reviews == null) {
             <div class="account fr">
                 <div class="name has-submenu"><%= login %><span class="fa fa-angle-down"></span></div>
                 <ul class="accountLinks submenu">
-                    <li><a href="index.jsp">View website</a></li>
+                    <li><a href="./index.jsp">View website</a></li>
                     <li><a href="<%=request.getContextPath()%>/LogOut">Log out<span class="fa fa-sign-out fr"></span></a></li>
                 </ul>
             </div>
@@ -59,36 +52,47 @@ if(reviews == null) {
         <!-- END NAV -->
         <!-- CONTAINER  -->
         <div class="mainContent"> 
+        
+        <!-- SEARCH FILTER PANEL  -->
+		<div class="row filterGroup">
+		    <form action="" method="POST" class="formSearch fl">
+		        <input type="text" class="inputSearch" placeholder="Search">
+		        <button type="submit" class="btnSearch"><i class="fa fa-search"></i></button>
+		    </form>
+		</div> 
 			<!-- LIST FORM -->
 			<form action="" method="GET" name="listForm" class="form scrollX">
 			    <div class="formHeader row">
-			        <h2 class="text-1 fl">Review List</h2>
+			        <h2 class="text-1 fl">User List</h2>
 			        <div class="fr">
 			        </div>
 			    </div>
 			    <div class="table">
 			        <div class="row bg-1">
 			            <div class="cell cell-150 text-center text-fff">ID</div>
-			            <div class="cell cell-150 text-center text-fff">PRODUCT</div>
-			            <div class="cell cell-150 text-center text-fff">USER</div>
-			            <div class="cell cell-100p text-center text-fff">REVIEW</div>
+			            <div class="cell cell-150 text-center text-fff">NAME</div>
+			            <div class="cell cell-150 text-center text-fff">SURNAME</div>
+			            <div class="cell cell-100p text-center text-fff">ADMIN PERMS</div>
 			            <div class="cell cell-100 text-center text-fff">EDIT</div>
 			        </div>
 			    <!--   BEGIN LOOP -->
 			        <ul>
 						<%
-						if (reviews != null && reviews.size() != 0) {
-							Iterator<?> it = reviews.iterator();
+						if (users != null && users.size() != 0) {
+							Iterator<?> it = users.iterator();
 							while (it.hasNext()) {
-								Recensione bean = (Recensione) it.next();
+								User bean = (User) it.next();
 						%>
 			            <li class="row">
-			                <div class="cell cell-150 text-center"><%= bean.getIdRecensione() %></div>
-			                <div class="cell cell-150 text-center"><%= bean.getIdProdotto() %></div>
 			                <div class="cell cell-150 text-center"><%= bean.getIdUtente() %></div>
-			                <div class="cell cell-100p text-center"><%= bean.getRecensione() %></div>
+			                <div class="cell cell-150 text-center"><%= bean.getNome() %></div>
+			                <div class="cell cell-150 text-center"><%= bean.getCognome() %></div>
+			                <div class="cell cell-100p text-center"><%= bean.getAmministratore() %></div>
 			                <div class="cell cell-100 text-center">
-			                    <a href="AdminActions?action=deleteReview&code=<%= bean.getIdRecensione() %>" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
+			                <% if (!bean.getIdUtente().equals(login)){%>			                    
+			                	<a href="AdminActions?action=adminUser&code=<%= bean.getIdUtente() %>" class="btnEdit fa fa-pencil bg-1 text-fff" onclick="return confirm(&quot;Do you really want to give administration perms?&quot;)"></a>
+			                    <a href="AdminActions?action=deleteUser&code=<%= bean.getIdUtente() %>" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
+			                <% }%>
 			                </div>
 			            </li>
 			            <%	}

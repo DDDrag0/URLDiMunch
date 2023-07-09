@@ -41,7 +41,7 @@ public class FatturaServlet extends HttpServlet {
 		        ListaOrdini ordine = ordiniDAO.ricercaOrdine(idOrdine,idUtente);
 		        if (ordine==null) {
 		        	//nel caso si cerca di accedere ad un area riservata
-		        	response.sendRedirect("./logIn.jsp");
+		        	response.sendRedirect("./access-denied.jsp");
 		        }
 		        request.setAttribute("fatturau", ordine);
 		        link="/fattura.jsp";
@@ -100,7 +100,7 @@ public class FatturaServlet extends HttpServlet {
 				Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 				if ((adminRoles == null) || (!adminRoles.booleanValue()))
 				{	
-				    response.sendRedirect("./logIn.jsp");
+				    response.sendRedirect("./access-denied.jsp");
 				    return;
 				}
 		        Collection<ListaOrdini> ordini = ordiniDAO.ricercaTuttiOrdini();

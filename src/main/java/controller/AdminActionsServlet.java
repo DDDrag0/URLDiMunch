@@ -33,13 +33,14 @@ public class AdminActionsServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String action = request.getParameter("action");
+		String actione = request.getParameter("action");
 		String link="/index.jsp";
+		String action = "./admin/"+actione;
 		
 		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		{	
-		    response.sendRedirect("./logIn.jsp");
+		    response.sendRedirect("./access-denied.jsp");
 		    return;
 		}
 		
