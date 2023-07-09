@@ -35,7 +35,6 @@ public class ProdottoAdminServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-
 		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		{	
@@ -48,7 +47,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 		} catch (SQLException e) {
 			//System.out.println("Error:" + e.getMessage());
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("./admin/adminPage.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminPage.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -107,7 +106,7 @@ public class ProdottoAdminServlet extends HttpServlet {
 			//System.out.println("Error:" + e.getMessage());
 		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("./admin/adminPage.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminPage.jsp");
 		dispatcher.forward(request, response);
 	}
 

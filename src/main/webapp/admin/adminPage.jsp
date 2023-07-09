@@ -8,7 +8,7 @@ login=user.getIdUtente();
 
 Collection<?> products = (Collection<?>) request.getAttribute("adminProducts");
 if(products == null) {
-	response.sendRedirect("./prodottoAdmin");	
+	response.sendRedirect(request.getContextPath()+"/prodottoAdmin");	
 	return;
 }
 %>
@@ -30,10 +30,10 @@ if(products == null) {
 	            <div class="avatarName">Welcome,<br><%= login %></div>
 	        </div>
 	        <ul class="sideMenu">
-	            <li><a href="adminPage.jsp"><span class="fa fa-table"></span>PRODUCT</a>
-	            <li><a href="adminOrders.jsp"><span class="fa fa-money"></span>ORDERS</a></li>
-	            <li><a href="adminUsers.jsp"><span class="fa fa-user-o"></span>USER</a></li>
-	            <li><a href="adminReview.jsp"><span class="fa fa-envelope-o"></span>REVIEWS</a></li>
+	            <li><a href="admin/adminPage.jsp"><span class="fa fa-table"></span>PRODUCT</a>
+	            <li><a href="admin/adminOrders.jsp"><span class="fa fa-money"></span>ORDERS</a></li>
+	            <li><a href="admin/adminUsers.jsp"><span class="fa fa-user-o"></span>USER</a></li>
+	            <li><a href="admin/adminReview.jsp"><span class="fa fa-envelope-o"></span>REVIEWS</a></li>
 	        </ul>
 	    </div>
 <!--     SIDE AREA -->
@@ -87,8 +87,8 @@ if(products == null) {
 			                <div class="cell cell-250 text-center"><%= bean.getPrezzo() %>$</div>
 			                <div class="cell cell-100p text-center"></div>
 			                <div class="cell cell-100 text-center">
-			                    <a href="SearchServlet?cerca=<%= bean.getIdProdotto() %>" class="btnEdit fa fa-eye bg-1 text-fff"></a>
-			                    <a href="AdminActions?action=deleteProduct&code=<%= bean.getIdProdotto() %>" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
+			                    <a href="<%=request.getContextPath()%>/SearchServlet?cerca=<%= bean.getIdProdotto() %>" class="btnEdit fa fa-eye bg-1 text-fff"></a>
+			                    <a href="<%=request.getContextPath()%>/AdminActions?action=deleteProduct&code=<%= bean.getIdProdotto() %>" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
 			                </div>
 			            </li>
 			            <%	}
@@ -171,7 +171,7 @@ if(products == null) {
 			            <label class="inputGroup">
 			                <span>Image</span>
 			                <span>
-			                    <input type="file" name="img" >
+			                    <input type="file" name="img" required>
 			                </span>
 			                
 			            </label>

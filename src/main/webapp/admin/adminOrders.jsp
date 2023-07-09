@@ -7,7 +7,7 @@ login=user.getIdUtente();
 
 Collection<?> orders = (Collection<?>) request.getAttribute("adminOrders");
 if(orders == null) {
-	response.sendRedirect("./adminGestion?source=adminOrders.jsp");
+	response.sendRedirect(request.getContextPath()+"/adminGestion?source=admin/adminOrders.jsp");
 	return;
 }
 %>
@@ -29,10 +29,10 @@ if(orders == null) {
 	            <div class="avatarName">Welcome,<br><%= login %></div>
 	        </div>
 	        <ul class="sideMenu">
-	            <li><a href="adminPage.jsp"><span class="fa fa-table"></span>PRODUCT</a>
-	            <li><a href="adminOrders.jsp"><span class="fa fa-money"></span>ORDERS</a></li>
-	            <li><a href="adminUsers.jsp"><span class="fa fa-user-o"></span>USER</a></li>
-	            <li><a href="adminReview.jsp"><span class="fa fa-envelope-o"></span>REVIEWS</a></li>
+	            <li><a href="admin/adminPage.jsp"><span class="fa fa-table"></span>PRODUCT</a>
+	            <li><a href="admin/adminOrders.jsp"><span class="fa fa-money"></span>ORDERS</a></li>
+	            <li><a href="admin/adminUsers.jsp"><span class="fa fa-user-o"></span>USER</a></li>
+	            <li><a href="admin/adminReview.jsp"><span class="fa fa-envelope-o"></span>REVIEWS</a></li>
 	        </ul>
 	    </div>
 	<!--     SIDE AREA -->
@@ -100,7 +100,7 @@ if(orders == null) {
 			                <div class="cell cell-100 text-center"><%= bean.getIdUtente() %></div>
 			                <div class="cell cell-100p text-center"><%= bean.getIdProdotto() %></div>
 			                <div class="cell cell-100 text-center">
-			                    <a href="AdminActions?action=deleteOrder&code=<%= bean.getIdOrdine() %>" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
+			                    <a href="<%=request.getContextPath()%>/AdminActions?action=deleteOrder&code=<%= bean.getIdOrdine() %>" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm(&quot;Do you really want to remove it?&quot;)"></a>
 			                </div>
 			            </li>
 			            <%	}

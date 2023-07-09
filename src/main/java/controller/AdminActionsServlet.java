@@ -15,9 +15,6 @@ import dao.ProdottoDAO;
 import dao.RecensioneDAO;
 import dao.UserDAO;
 
-/**
- * Servlet implementation class AdminActionsServlet
- */
 @WebServlet("/AdminActions")
 public class AdminActionsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,10 +30,7 @@ public class AdminActionsServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String actione = request.getParameter("action");
-		String link="/index.jsp";
-		String action = "./admin/"+actione;
-		
+		String action = request.getParameter("action");
 		Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		{	
@@ -47,34 +41,40 @@ public class AdminActionsServlet extends HttpServlet {
 		try {
 			if (action.equalsIgnoreCase("deleteProduct")) {
 				prodottodao.doDelete(request.getParameter("code"));
-		        link="/adminPage.jsp";
+				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminPage.jsp");
+				dispatcher.forward(request, response);
 			}
 			else if (action.equalsIgnoreCase("taxchange")) {
 				prodottodao.doChangeTax(request.getParameter("taxRate"));
-		        link="/adminPage.jsp";
+				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminPage.jsp");
+				dispatcher.forward(request, response);
 			}
 			else if (action.equalsIgnoreCase("deleteOrder")) {
 				ordinedao.doDelete(request.getParameter("code"));
-		        link="/adminOrders.jsp";
+				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminOrders.jsp");
+				dispatcher.forward(request, response);
 			}
 			else if (action.equalsIgnoreCase("deleteUser")) {
 				userdao.doDelete(request.getParameter("code"));
-		        link="/adminUsers.jsp";
+				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminUsers.jsp");
+				dispatcher.forward(request, response);
 			}
 			else if (action.equalsIgnoreCase("adminUser")) {
 				userdao.doAdmin(request.getParameter("code"));
-		        link="/adminUsers.jsp";
+				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminUsers.jsp");
+				dispatcher.forward(request, response);
 			}
 			else if (action.equalsIgnoreCase("deleteReview")) {
 				recensionedao.doDelete(request.getParameter("code"));
-		        link="/adminReview.jsp";
+				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminReview.jsp");
+				dispatcher.forward(request, response);
 			}
 			else if (action.equalsIgnoreCase("modifyQuant")) {
 				prodottodao.modQuant(request.getParameter("quant"),request.getParameter("code"));
-		        link="/SearchServlet?cerca="+request.getParameter("code");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/SearchServlet?cerca="+request.getParameter("code"));
+				dispatcher.forward(request, response);
 			}
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher(link);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("./index.jsp");
 			dispatcher.forward(request, response);
 		}
 		catch (SQLException e) {

@@ -277,7 +277,6 @@ public class ProdottoDAO {
 	}
 	
 	public synchronized boolean doDelete(String code) throws SQLException {
-		
 		PreparedStatement preparedStatement = null;
 
 		int result = 0;
@@ -324,6 +323,199 @@ public class ProdottoDAO {
         	printSQLException(e); //Sensitive
 	        throw e;
 	    }
+	}
+
+public synchronized Collection<Prodotto> doRetrieveAllStatue() throws SQLException {
+		
+		PreparedStatement preparedStatement = null;
+
+		Collection<Prodotto> products = new LinkedList<>();
+
+		String selectSQL = "SELECT * FROM  prodotto WHERE tipo = 'Statue'";
+
+		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				Prodotto prodotto = new Prodotto();
+
+				prodotto.setIdProdotto(rs.getString(idProdotto));
+				prodotto.setNome(rs.getString(nome));
+				prodotto.setArtista(rs.getString(artista));
+				prodotto.setTipo(rs.getString(tipo));
+				prodotto.setEpoca(rs.getString(epoca));
+				prodotto.setDimensioni(rs.getString(dimensioni));
+				prodotto.setDescrizione(rs.getString(descrizione));
+				prodotto.setQuantita(rs.getInt(quantita));
+				prodotto.setIva(rs.getDouble(iva));
+				prodotto.setPrezzo(rs.getDouble(prezzo));
+				prodotto.setImagepath(rs.getString(imagepath));
+				prodotto.setDataaggiunta(rs.getString(data));
+				
+				products.add(prodotto);
+			}
+
+		}
+		catch (SQLException e) {
+            // process sql exception
+        	printSQLException(e); //Sensitive
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+            	printSQLException(e); //Sensitive
+            }
+        }
+		return products;
+	}
+
+
+public synchronized Collection<Prodotto> doRetrieveAllTappeti() throws SQLException {
+		
+		PreparedStatement preparedStatement = null;
+
+		Collection<Prodotto> products = new LinkedList<>();
+
+		String selectSQL = "SELECT * FROM  prodotto WHERE tipo = 'Carpet'";
+
+		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				Prodotto prodotto = new Prodotto();
+
+				prodotto.setIdProdotto(rs.getString(idProdotto));
+				prodotto.setNome(rs.getString(nome));
+				prodotto.setArtista(rs.getString(artista));
+				prodotto.setTipo(rs.getString(tipo));
+				prodotto.setEpoca(rs.getString(epoca));
+				prodotto.setDimensioni(rs.getString(dimensioni));
+				prodotto.setDescrizione(rs.getString(descrizione));
+				prodotto.setQuantita(rs.getInt(quantita));
+				prodotto.setIva(rs.getDouble(iva));
+				prodotto.setPrezzo(rs.getDouble(prezzo));
+				prodotto.setImagepath(rs.getString(imagepath));
+				prodotto.setDataaggiunta(rs.getString(data));
+				
+				products.add(prodotto);
+			}
+
+		}
+		catch (SQLException e) {
+            // process sql exception
+        	printSQLException(e); //Sensitive
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+            	printSQLException(e); //Sensitive
+            }
+        }
+		return products;
+	}
+
+public synchronized Collection<Prodotto> doRetrieveQuadri() throws SQLException {
+		
+		PreparedStatement preparedStatement = null;
+
+		Collection<Prodotto> products = new LinkedList<>();
+
+		String selectSQL = "SELECT * FROM  prodotto WHERE tipo = 'Painting'";
+
+		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				Prodotto prodotto = new Prodotto();
+
+				prodotto.setIdProdotto(rs.getString(idProdotto));
+				prodotto.setNome(rs.getString(nome));
+				prodotto.setArtista(rs.getString(artista));
+				prodotto.setTipo(rs.getString(tipo));
+				prodotto.setEpoca(rs.getString(epoca));
+				prodotto.setDimensioni(rs.getString(dimensioni));
+				prodotto.setDescrizione(rs.getString(descrizione));
+				prodotto.setQuantita(rs.getInt(quantita));
+				prodotto.setIva(rs.getDouble(iva));
+				prodotto.setPrezzo(rs.getDouble(prezzo));
+				prodotto.setImagepath(rs.getString(imagepath));
+				prodotto.setDataaggiunta(rs.getString(data));
+				
+				products.add(prodotto);
+			}
+
+		}
+		catch (SQLException e) {
+            // process sql exception
+        	printSQLException(e); //Sensitive
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+            	printSQLException(e); //Sensitive
+            }
+        }
+		return products;
+	}
+	
+public synchronized Collection<Prodotto> doRetrieveAllSort() throws SQLException {
+		
+		PreparedStatement preparedStatement = null;
+
+		Collection<Prodotto> products = new LinkedList<>();
+
+		String selectSQL = "SELECT * FROM  prodotto ";
+
+		try (Connection connection = ConPool.getConnection()){
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				Prodotto prodotto = new Prodotto();
+
+				prodotto.setIdProdotto(rs.getString(idProdotto));
+				prodotto.setNome(rs.getString(nome));
+				prodotto.setArtista(rs.getString(artista));
+				prodotto.setTipo(rs.getString(tipo));
+				prodotto.setEpoca(rs.getString(epoca));
+				prodotto.setDimensioni(rs.getString(dimensioni));
+				prodotto.setDescrizione(rs.getString(descrizione));
+				prodotto.setQuantita(rs.getInt(quantita));
+				prodotto.setIva(rs.getDouble(iva));
+				prodotto.setPrezzo(rs.getDouble(prezzo));
+				prodotto.setImagepath(rs.getString(imagepath));
+				prodotto.setDataaggiunta(rs.getString(data));
+				
+				products.add(prodotto);
+			}
+
+		}
+		catch (SQLException e) {
+            // process sql exception
+        	printSQLException(e); //Sensitive
+        }finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+            	printSQLException(e); //Sensitive
+            }
+        }
+		return products;
 	}
 
 	public synchronized Collection<Prodotto> doRetrieveAll() throws SQLException {
