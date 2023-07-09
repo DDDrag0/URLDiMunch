@@ -101,8 +101,8 @@
 
 
 .card img:hover {
-    width: 50%;
-    height: 50%
+    width: 60%;
+    height: 60%
 }
 
 .card h4 {
@@ -151,6 +151,7 @@
 }
 
 .text {
+  text-decoration: none;
   color: white;
   font-size: 18px;
   font-weight: bold;

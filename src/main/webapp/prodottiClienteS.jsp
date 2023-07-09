@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*,model.Prodotto,model.Carrello"%>
 <%
-    Collection<?> products = (Collection<?>) request.getAttribute("products");
+    Collection<?> products = (Collection<?>) request.getAttribute("productsstatue");
     if (products == null) {
-        response.sendRedirect("./prodottoCliente?source=/prodottiCliente.jsp");
+        response.sendRedirect("./prodottoCliente?source=/prodottiClienteS.jsp");
         return;
     }
 
@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All the products</title>
+    <title>Statue</title>
     <link href="./css/header.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="./css/prodotticliente.css">
     <%@ include file="header.jsp" %>
@@ -23,8 +23,8 @@
 
 <div class="separator">
       <div class="content">
-        <span class="text">All the products</span>
-        <a class="text" href="prodottiClienteS.jsp">Statue</a>
+        <a class="text" href="prodottiCliente.jsp">All the products</a>
+        <span class="text">Statue</span>
         <a class="text" href="prodottiClienteP.jsp">Paintings</a>
         <a class="text" href="prodottiClienteC.jsp">Carpets</a>
         <a class="text" href="prodottiClienteN.jsp">Addition order</a>

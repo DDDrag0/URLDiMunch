@@ -34,13 +34,46 @@
             <% 	int i=0;
             	if (productssort != null && productssort.size() != 0) {
                 Iterator<?> it = productssort.iterator();
-                while (it.hasNext()&& i<=8) {
+                while (it.hasNext()&& i<=4) {
                     Prodotto bean = (Prodotto) it.next();
                     i++;
             %>
             <div class="col">
                 <div class="card">
                     <img src="${pageContext.request.contextPath}<%=bean.getImagepath()%>" onerror="this.src='./image/errImg.jpg'" alt="<%=bean.getNome()%>" />
+                    <div class="card-details">
+                        <h4><%=bean.getNome()%></h4>
+                        <p>$<%=bean.getPrezzo()%></p>
+                    </div>
+                    <div class="card-buttons">
+				          <button class="btn btn-details">Details</button>
+				          <input class = "prod_id" type="hidden" value="<%=bean.getIdProdotto()%>">
+                    </div>
+                </div>
+            </div>
+            <% } } else { %>
+            <p>No products available</p>
+            <% } %>
+        </div>
+    </div>
+
+<div class="separator">
+      <div class="content">
+        <span class="text">Products</span>
+      </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <%  i=0;
+            	if (products != null && products.size() != 0) {
+                Iterator<?> it = products.iterator();
+                while (it.hasNext()&& i<=4) {
+                    Prodotto bean = (Prodotto) it.next();
+                    i++;
+            %>
+            <div class="col">
+                <div class="card">
+                    <img src="${pageContext.request.contextPath}<%=bean.getImagepath()%>" onerror="this.src='./image/errImg.jpg'"alt="<%=bean.getNome()%>" />
                     <div class="card-details">
                         <h4><%=bean.getNome()%></h4>
                         <p>$<%=bean.getPrezzo()%></p>
