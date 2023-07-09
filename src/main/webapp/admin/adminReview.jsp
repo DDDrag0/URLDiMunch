@@ -87,7 +87,7 @@ if(reviews == null) {
 			            <%	}
 							} else {
 						%>
-							<a>No Users available</a>
+							<a>No Reviews available</a>
 						<%
 							}
 						%>

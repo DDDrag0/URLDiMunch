@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storage DS/BF</title>
+    <title>All the products</title>
     <link href="./css/header.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="./css/prodotticliente.css">
     <%@ include file="header.jsp" %>
@@ -23,7 +23,11 @@
 
 <div class="separator">
       <div class="content">
-        <span class="text">Tutti I prodotti</span>
+        <span class="text">All the products</span>
+        <a href="prodottiClienteS.jsp">Statue</a>
+        <a href="prodottiClienteP.jsp">Paintings</a>
+        <a href="prodottiClienteC.jsp">Carpets</a>
+        <a href="prodottiClienteN.jsp">Addition order</a>
       </div>
     </div>
     <div class="container">

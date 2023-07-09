@@ -135,12 +135,15 @@ if(products == null) {
 			                <span>Dimensions</span>
 			                <span>
 			                    <select name="dimensioni">
-			                        <option value="40cm x 40cm">40cm x 40cm</option>
-			                        <option value="60cm x 40cm">60cm x 40cm</option>
-			                        <option value="40cm x 60cm">40cm x 60cm</option>
-			                        <option value="70cm x 70cm">70cm x 70cm</option>
-			                        <option value="100cm x 70cm">100cm x 70cm</option>
-			                        <option value="70cm x 100cm">70cm x 100cm</option>
+			                        <option value="100cm x 100cm">Painting: 100cm x 100cm</option>
+			                        <option value="100cm x 70cm">Painting: 100cm x 70cm</option>
+			                        <option value="70cm x 100cm">Painting: 70cm x 100cm</option>
+			                        <option value="40cm">Statue: 40cm</option>
+			                        <option value="60cm">Statue: 60cm</option>
+			                        <option value="100cm">Statue: 100cm</option>
+			                        <option value="150 cm x 240 cm">Carpet: 150 cm x 240 cm</option>
+			                        <option value="240 cm x 330 cm">Carpet: 240 cm x 330 cm</option>
+			                        <option value="350 cm x 450 cm">Carpet: 350 cm x 450 cm</option>
 			                    </select>
 			                </span>
 			            </label>

@@ -66,6 +66,18 @@ public class ProdottoClienteServlet extends HttpServlet {
 		try {
 			request.removeAttribute("products");
 			request.setAttribute("products", prodottodao.doRetrieveAll());
+			
+			request.removeAttribute("productssort");
+			request.setAttribute("productssort", prodottodao.doRetrieveAllSort());
+			
+			request.removeAttribute("productscarpet");
+			request.setAttribute("productscarpet", prodottodao.doRetrieveAllTappeti());
+			
+			request.removeAttribute("productsstatue");
+			request.setAttribute("productsstatue", prodottodao.doRetrieveAllStatue());
+			
+			request.removeAttribute("productspainting");
+			request.setAttribute("productspainting", prodottodao.doRetrieveQuadri());
 		} catch (SQLException e) {
 			//System.out.println("Error:" + e.getMessage());
 		}

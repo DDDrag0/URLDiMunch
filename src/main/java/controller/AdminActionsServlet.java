@@ -39,42 +39,35 @@ public class AdminActionsServlet extends HttpServlet {
 		}
 		
 		try {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("./index.jsp");
 			if (action.equalsIgnoreCase("deleteProduct")) {
 				prodottodao.doDelete(request.getParameter("code"));
-				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminPage.jsp");
-				dispatcher.forward(request, response);
+				dispatcher = request.getRequestDispatcher("admin/adminPage.jsp");
 			}
 			else if (action.equalsIgnoreCase("taxchange")) {
 				prodottodao.doChangeTax(request.getParameter("taxRate"));
-				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminPage.jsp");
-				dispatcher.forward(request, response);
+				dispatcher = request.getRequestDispatcher("admin/adminPage.jsp");
 			}
 			else if (action.equalsIgnoreCase("deleteOrder")) {
 				ordinedao.doDelete(request.getParameter("code"));
-				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminOrders.jsp");
-				dispatcher.forward(request, response);
+				dispatcher = request.getRequestDispatcher("admin/adminOrders.jsp");
 			}
 			else if (action.equalsIgnoreCase("deleteUser")) {
 				userdao.doDelete(request.getParameter("code"));
-				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminUsers.jsp");
-				dispatcher.forward(request, response);
+				dispatcher = request.getRequestDispatcher("admin/adminUsers.jsp");
 			}
 			else if (action.equalsIgnoreCase("adminUser")) {
 				userdao.doAdmin(request.getParameter("code"));
-				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminUsers.jsp");
-				dispatcher.forward(request, response);
+				dispatcher = request.getRequestDispatcher("admin/adminUsers.jsp");
 			}
 			else if (action.equalsIgnoreCase("deleteReview")) {
 				recensionedao.doDelete(request.getParameter("code"));
-				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminReview.jsp");
-				dispatcher.forward(request, response);
+				dispatcher = request.getRequestDispatcher("admin/adminReview.jsp");
 			}
 			else if (action.equalsIgnoreCase("modifyQuant")) {
 				prodottodao.modQuant(request.getParameter("quant"),request.getParameter("code"));
-				RequestDispatcher dispatcher = request.getRequestDispatcher("admin/SearchServlet?cerca="+request.getParameter("code"));
-				dispatcher.forward(request, response);
+				dispatcher = request.getRequestDispatcher("admin/SearchServlet?cerca="+request.getParameter("code"));
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher("./index.jsp");
 			dispatcher.forward(request, response);
 		}
 		catch (SQLException e) {

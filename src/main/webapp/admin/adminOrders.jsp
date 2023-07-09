@@ -106,7 +106,7 @@ if(orders == null) {
 			            <%	}
 							} else {
 						%>
-							<a>No Users available</a>
+							<a>No orders available</a>
 						<%
 							}
 						%>

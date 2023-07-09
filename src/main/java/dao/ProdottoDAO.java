@@ -476,7 +476,7 @@ public synchronized Collection<Prodotto> doRetrieveAllSort() throws SQLException
 
 		Collection<Prodotto> products = new LinkedList<>();
 
-		String selectSQL = "SELECT * FROM  prodotto ";
+		String selectSQL = "SELECT * FROM prodotto ORDER BY dataaggiunta DESC";
 
 		try (Connection connection = ConPool.getConnection()){
 			preparedStatement = connection.prepareStatement(selectSQL);
