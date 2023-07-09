@@ -29,7 +29,6 @@ public class AdminGestionSearchServlet extends HttpServlet {
 
 		String link= request.getParameter("source");
     	Boolean adminRoles = (Boolean) request.getSession().getAttribute("adminRoles");
-    	System.out.println(link);
 		if ((adminRoles == null) || (!adminRoles.booleanValue()))
 		{	
 		    response.sendRedirect("./access-denied.jsp");

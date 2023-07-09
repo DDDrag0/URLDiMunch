@@ -18,13 +18,7 @@ import model.User;
 
 @WebFilter("/admin/*")
 public class AdminFilter implements Filter {
-
-    public AdminFilter() {
-    }
-
-    public void destroy() {
-    }
-
+	
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
@@ -50,8 +44,5 @@ public class AdminFilter implements Filter {
 	            // Gestionare l'eccezione in modo appropriato
 	        }
         }
-    }
-
-    public void init(FilterConfig fConfig) throws ServletException {
     }
 }
