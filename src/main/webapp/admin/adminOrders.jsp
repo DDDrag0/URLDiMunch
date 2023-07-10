@@ -18,6 +18,23 @@ if(orders == null) {
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 	<link rel="stylesheet" href="./css/lib/noUiSlider.css">
 	<link rel="stylesheet" href="./css/admin.css" type="text/css">
+	<script>
+		function filterElementsByDate() {
+			var fromDate = document.getElementById('fromDate').value;
+			var toDate = document.getElementById('toDate').value;
+			var items = document.getElementsByClassName('item');
+			
+			for (var i = 0; i < items.length; i++) {
+				var itemDate = items[i].getAttribute('data-date');
+				
+				if (itemDate >= fromDate && itemDate <= toDate) {
+					items[i].style.display = 'block'; // Mostra l'elemento
+				} else {
+					items[i].style.display = 'none'; // Nascondi l'elemento
+				}
+			}
+		}
+	</script>
 </head>
 
 <body translate="no">
@@ -57,14 +74,14 @@ if(orders == null) {
 					<!-- FILTER -->
 			        <div class="btnFilter fr bg-fff"><span class="fa fa-filter"></span>Filter</div>
 			        <div class="boxFilter">
-			            <div class="btnFilter"><span class="fa fa-close"></span>Close</div>
-			            <div class="groupInput">
-			                <p class="titleInput">Date</p>
-			                    <p>From</p>
-			                    <input type="text" class="rangeValue" value="0.00">
-			                    <p>To</p>
-			                    <input type="text" class="rangeValue" value="100.00">
-		                </div>
+			            <div class="btnFilter"><span class="fa fa-close"></span>Close</div><div class="groupInput">
+						<p class="titleInput">Date</p>
+						<p>From</p>
+						<input type="date" id="fromDate">
+						<p>To</p>
+						<input type="date" id="toDate">
+					</div>
+					<button onclick="filterElementsByDate()">Apply Filter</button>
 		            </div>
 				<!-- END GROUP -->             
 		        </div>
