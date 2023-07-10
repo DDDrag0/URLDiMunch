@@ -24,6 +24,10 @@ if(orders == null) {
 			var toDate = document.getElementById('toDate').value;
 			var items = document.getElementsByClassName('item');
 			
+			// Converti le date nel formato "aaaa-mm-gg"
+			fromDate = fromDate.replaceAll("-", "/");
+			toDate = toDate.replaceAll("-", "/");
+			
 			for (var i = 0; i < items.length; i++) {
 				var itemDate = items[i].getAttribute('data-date');
 				
@@ -74,14 +78,15 @@ if(orders == null) {
 					<!-- FILTER -->
 			        <div class="btnFilter fr bg-fff"><span class="fa fa-filter"></span>Filter</div>
 			        <div class="boxFilter">
-			            <div class="btnFilter"><span class="fa fa-close"></span>Close</div><div class="groupInput">
-						<p class="titleInput">Date</p>
-						<p>From</p>
-						<input type="date" id="fromDate">
-						<p>To</p>
-						<input type="date" id="toDate">
-					</div>
-					<button onclick="filterElementsByDate()">Apply Filter</button>
+			            <div class="btnFilter"><span class="fa fa-close"></span>Close</div>
+			            <div class="groupInput">
+							<p class="titleInput">Date</p>
+							<p>From</p>
+							<input type="date" id="fromDate" pattern="\d{4}-\d{2}-\d{2}">
+							<p>To</p>
+							<input type="date" id="toDate" pattern="\d{4}-\d{2}-\d{2}">
+						</div>
+						<button onclick="filterElementsByDate()">Apply Filter</button>
 		            </div>
 				<!-- END GROUP -->             
 		        </div>

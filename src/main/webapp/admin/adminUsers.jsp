@@ -19,6 +19,27 @@ if(users == null) {
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 	<link rel="stylesheet" href="./css/lib/noUiSlider.css">
 	<link rel="stylesheet" href="./css/admin.css" type="text/css">
+	<script type="text/javascript">
+		function searchUsers() {
+		    var searchQuery = document.querySelector('.inputSearch').value.toLowerCase(); // Ottieni l'id utente
+	
+		    var userList = document.querySelectorAll('.table ul li'); // Seleziona tutti gli elementi della lista degli utenti
+	
+		    for (var i = 0; i < userList.length; i++) {
+		        var user = userList[i];
+		        var userId = user.querySelector('.cell-150').textContent.toLowerCase(); // Ottieni l'ID dell'utente corrente
+	
+		        if (userId.includes(searchQuery)) {
+		            user.style.display = 'block'; // Mostra l'utente se corrisponde l'id utente di ricerca
+		        } else {
+		            user.style.display = 'none'; // Nascondi l'utente se non corrisponde l'id utente di ricerca
+		        }
+		    }
+		}
+		// Aggiungi un gestore di eventi al campo di input per la ricerca degli utenti
+		var searchInput = document.querySelector('.inputSearch');
+		searchInput.addEventListener('input', searchUsers);
+	</script>
 </head>
 
 <body translate="no">
@@ -54,12 +75,10 @@ if(users == null) {
         <div class="mainContent"> 
         
         <!-- SEARCH FILTER PANEL  -->
-		<div class="row filterGroup">
-		    <form action="" method="POST" class="formSearch fl">
-		        <input type="text" class="inputSearch" placeholder="Search">
-		        <button type="submit" class="btnSearch"><i class="fa fa-search"></i></button>
-		    </form>
-		</div> 
+        <div class="row filterGroup">
+		    <input type="text" class="inputSearch" placeholder="Search" name="searchQuery">
+		    <button type="submit" class="btnSearch"><i class="fa fa-search"></i></button>
+		</div>
 			<!-- LIST FORM -->
 			<form action="" method="GET" name="listForm" class="form scrollX">
 			    <div class="formHeader row">
@@ -79,9 +98,17 @@ if(users == null) {
 			        <ul>
 						<%
 						if (users != null && users.size() != 0) {
-							Iterator<?> it = users.iterator();
-							while (it.hasNext()) {
-								User bean = (User) it.next();
+						    Iterator<?> it = users.iterator();
+						    String searchQuery = request.getParameter("searchQuery"); // Ottieni la query di ricerca dalla richiesta
+						
+						    while (it.hasNext()) {
+						        User bean = (User) it.next();
+						        String userId = bean.getIdUtente();
+						
+						        // Verifica se l'ID dell'utente corrente corrisponde alla query di ricerca
+						        if (searchQuery != null && !searchQuery.isEmpty() && !userId.contains(searchQuery)) {
+						            continue; // Passa all'iterazione successiva del loop se l'utente non corrisponde alla query
+						        }
 						%>
 			            <li class="row">
 			                <div class="cell cell-150 text-center"><%= bean.getIdUtente() %></div>
